@@ -1,0 +1,2071 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Extent Framework</title>
+  <link rel="apple-touch-icon" href="https://cdn.rawgit.com/extent-framework/extent-github-cdn/d74480e/commons/img/logo.png">
+  <link rel="shortcut icon" href="https://cdn.rawgit.com/extent-framework/extent-github-cdn/d74480e/commons/img/logo.png">
+  <link href="https://cdn.rawgit.com/extent-framework/extent-github-cdn/cd00a5e/spark/css/style.css" rel="stylesheet" />
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <style> </style>
+</head>
+<script src="https://cdn.rawgit.com/extent-framework/extent-github-cdn/7cc78ce/spark/js/jsontree.js"></script>
+
+
+
+<body class="test-view  standard">
+    <div class="app header-dark side-nav-folded">
+        <div class="layout">
+            <div class="header navbar">
+    <div class="header-container">
+        <div class="nav-logo">
+          <a href="index.html">
+            <div class="logo logo-dark" style="background-image: url('https://cdn.rawgit.com/extent-framework/extent-github-cdn/d74480e/commons/img/logo.png')"></div>
+            <div class="logo logo-white" style="background-image: url('https://cdn.rawgit.com/extent-framework/extent-github-cdn/d74480e/commons/img/logo.png')"></div>
+          </a>
+        </div>
+        <ul class="nav-left">
+          <li>
+            <a class="sidenav-fold-toggler" href="javascript:void(0);">
+              <i class="fa fa-bars"></i>
+            </a>
+            <a class="sidenav-expand-toggler" href="javascript:void(0);">
+              <i class="fa fa-bars"></i>
+            </a>
+          </li>
+          <li class="search-box">
+            <a class="search-toggle" href="javascript:void(0);">
+              <i class="search-icon fa fa-search"></i>
+              <i class="search-icon-close fa fa-close"></i>
+            </a>
+          </li>
+          <li class="search-input">
+            <input id="search-tests" class="form-control" type="text" placeholder="Type to search...">
+          </li>
+        </ul>
+        <ul class="nav-right">
+          <li class="m-r-10">
+            <a href="#">
+              <span class="badge badge-primary">Extent Framework</span>
+            </a>
+          </li>
+            <li class="m-r-10">
+                <a href="#">
+                    <span class="badge badge-primary">6/20/2019 11:17:09 AM</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+            <div class="side-nav side-nav-folded">
+  <div class="side-nav-inner">
+    <ul class="side-nav-menu scrollable">
+      <li class="nav-item dropdown">
+        <a id="nav-test" class="dropdown-toggle" href="index.html">
+          <span class="icon-holder">
+            <i class="fa fa-align-left"></i>
+          </span>
+          <span class="title">Tests</span>
+        </a>
+      </li>
+            <li class="nav-item dropdown">
+        <a id="nav-dashboard" class="dropdown-toggle" href="dashboard.html">
+          <span class="icon-holder">
+            <i class="fa fa-bar-chart"></i>
+          </span>
+          <span class="title">Dashboard</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="side-nav-controls">
+    <ul>
+      <li>
+        <a href="#" class="lightsout" style="color:#8a8a8a;">
+          <i class="fa fa-desktop"></i>"</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+            <div class="page-container">
+                <div class="main-content">
+                    <div class="test-wrapper row">
+                        <div class="test-list">
+                            <div class="test-list-tools">
+                                <ul class="tools pull-left">
+                                    <li>
+                                        <a href="">
+                                            <span class="font-size-14">Tests</span>
+                                        </a>
+                                    </li> 
+                                </ul>
+                                <ul class="tools text-right">
+									<li class="user-profile dropdown dropdown-animated scale-left">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+											<i class="fa fa-exclamation-circle"></i>
+										</a>
+										<ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a status="pass" class="dropdown-item" href="#"><span>Pass</span><span class="status success pull-right"></span></a>																						<a status="fatal" class="dropdown-item" href="#"><span>Fatal</span><span class="status danger pull-right"></span></a>																																												<div class="dropdown-divider"></div>
+											<a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
+										</ul>
+									</li>
+                                    <li class="user-profile dropdown dropdown-animated scale-left">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+											<i class="fa fa-user"></i>
+										</a>
+										<ul id="author-toggle" class="dropdown-menu dropdown-md p-v-0">
+												<a class="dropdown-item" href="#">BryarCole</a>
+										</ul>
+                                    </li>
+																		                                </ul>
+                            </div>
+                            <div class="test-list-wrapper scrollable">
+                                <ul class="test-list-item">
+										<li class="test-item" status="fatal" author="BryarCole" device="" tag=""> 
+											<div class="status-avatar fatal-bg">
+												<i class="fa fa-times text-white"></i>
+											</div>
+											<div class="open-test">
+												<div class="test-detail"> 
+													<p class="name">Application Mode Equals</p> 
+													<p class="duration text-sm">0h:0m:0s+196ms</p> 
+													<span class="datetime">11:17:28 AM</span>
+												</div>
+											</div>
+											<div class="test-contents d-none">
+												<div class="detail-head">
+													<div class="p-v-10 d-inline-block">	
+														<div class="info">
+															<h5 class="test-status text-fatal">Application Mode Equals</h5>
+															<span class='badge badge-success'>6/20/2019 11:17:28 AM</span>
+															<span class='badge badge-danger'>6/20/2019 11:17:28 AM</span>
+															<span class='badge badge-default'>0h:0m:0s+196ms</span>
+														</div>
+														<div class="m-t-15">
+		                                        				<div class="attributes">
+				<span class="badge badge-pill badge-default"><i class="fa fa-user-o"></i> BryarCole</span> 
+					</div>
+
+														</div>
+																											</div>
+												</div>
+<div class="detail-body mt-4">												
+	
+<table class="table table-sm">
+	<thead><tr>
+		<th class="status-col">Status</th>
+		<th class="timestamp-col">Timestamp</th>
+		<th class="details-col">Details</th>
+	</tr></thead>
+	<tbody>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>11:17:28</td>
+				<td>
+Application Mode 1 Begin									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-times text-fatal"></i></td>
+				<td>11:17:37</td>
+				<td>
+The process cannot access the file 'C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Reports\HippSearch\images\LoginSuccess4.png' because it is being used by another process.
+
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy)
+   at System.IO.FileStream..ctor(String path, FileMode mode)
+   at OpenQA.Selenium.Screenshot.SaveAsFile(String fileName, ScreenshotImageFormat format)
+   at OpenQA.Selenium.Screenshot.SaveAsFile(String fileName)
+   at NUnit.Tests1.Screenshots.TakeSreenShot(IWebDriver context, String fileLocation) in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Utilities\Screenshots.cs:line 16
+   at NUnit.Tests1.Utilities.utility.RecordPassStatus(String LogNote, Status TestStatus, String ScreenshotLocation, Int32 TestCount, String TestCase, ExtentTest test) in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Utilities\utility.cs:line 32
+   at NUnit.Tests1.hIPPSearchTest.HiPPApplicationMode(String how) in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Steps\TestScripts\HIPPSearchTest.cs:line 473									</td>
+			</tr>
+	</tbody>
+</table>
+
+</div>    
+<div class="detail-foot">
+	<ul class="attachments">
+		<li>
+			<a href="images\Error4.png" data-featherlight="image">
+				<div class="file-icon">
+					<i class="fa fa-file-image-o"></i> 
+				</div>
+				<div class="file-info">
+		                <span class="file-name">Error4.png</span>
+		                <span class="file-size"> 0Kb</span>
+				</div>
+			</a>
+		</li>
+	</ul>
+</div>
+<div class="mt-4">
+	
+	<div class="accordion">
+			<div class="card">
+				<div class="card-header" role="tab">
+					<h5 class="card-title">
+						<div class="node">Test ENVhttps://10.3.29.104/adfs/ls/?wa=wsignin1.0&wtrealm=https%3a%2f%2f10.3.29.100%3a44303%2fdefault.aspx&wctx=rm%3d0%26id%3dpassive%26ru%3d%252f&wct=2019-06-20T16%3a17%3a23Z&wreply=https%3a%2f%2f10.3.29.100%3a44303%2fdefault.aspx</div>
+						<div class="status-avatar float-right pass-bg">
+							<i class="fa fa-check text-white"></i>
+                        </div>
+					</h5>
+				</div>
+				<div class="collapse">
+					<div class="card-body">
+																	</div>
+				</div>
+			</div>
+	</div>
+
+</div>
+											</div>
+										</li>
+										<li class="test-item" status="fatal" author="BryarCole" device="" tag=""> 
+											<div class="status-avatar fatal-bg">
+												<i class="fa fa-times text-white"></i>
+											</div>
+											<div class="open-test">
+												<div class="test-detail"> 
+													<p class="name">Application Mode Starts With</p> 
+													<p class="duration text-sm">0h:0m:7s+594ms</p> 
+													<span class="datetime">11:17:28 AM</span>
+												</div>
+											</div>
+											<div class="test-contents d-none">
+												<div class="detail-head">
+													<div class="p-v-10 d-inline-block">	
+														<div class="info">
+															<h5 class="test-status text-fatal">Application Mode Starts With</h5>
+															<span class='badge badge-success'>6/20/2019 11:17:28 AM</span>
+															<span class='badge badge-danger'>6/20/2019 11:17:35 AM</span>
+															<span class='badge badge-default'>0h:0m:7s+594ms</span>
+														</div>
+														<div class="m-t-15">
+		                                        				<div class="attributes">
+				<span class="badge badge-pill badge-default"><i class="fa fa-user-o"></i> BryarCole</span> 
+					</div>
+
+														</div>
+																											</div>
+												</div>
+<div class="detail-body mt-4">												
+	
+<table class="table table-sm">
+	<thead><tr>
+		<th class="status-col">Status</th>
+		<th class="timestamp-col">Timestamp</th>
+		<th class="details-col">Details</th>
+	</tr></thead>
+	<tbody>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>11:17:28</td>
+				<td>
+Application Mode 2 Begin									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>11:17:35</td>
+				<td>
+Loggin in APHP Success									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-times text-fatal"></i></td>
+				<td>11:17:37</td>
+				<td>
+Could not find element by: By.PartialLinkText: Member
+
+   at OpenQA.Selenium.Support.PageObjects.DefaultElementLocator.LocateElement(IEnumerable`1 bys)
+   at OpenQA.Selenium.Support.PageObjects.WebElementProxy.get_Element()
+   at OpenQA.Selenium.Support.PageObjects.WebElementProxy.Invoke(IMessage msg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at OpenQA.Selenium.Internal.IWrapsElement.get_WrappedElement()
+   at OpenQA.Selenium.Interactions.Actions.GetLocatableFromElement(IWebElement element)
+   at OpenQA.Selenium.Interactions.Actions.MoveToElement(IWebElement toElement)
+   at NUnit.Tests1.Pages.WokerPortalLandingPage.MemberHover() in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Pages\WorkerPortal\WokerPortalLandingPage.cs:line 38
+   at NUnit.Tests1.Pages.WokerPortalLandingPage.HippApplicationSearch() in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Pages\WorkerPortal\WokerPortalLandingPage.cs:line 30
+   at NUnit.Tests1.hIPPSearchTest.HiPPApplicationMode(String how) in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Steps\TestScripts\HIPPSearchTest.cs:line 474									</td>
+			</tr>
+	</tbody>
+</table>
+
+</div>    
+<div class="detail-foot">
+	<ul class="attachments">
+		<li>
+			<a href="images\Error4.png" data-featherlight="image">
+				<div class="file-icon">
+					<i class="fa fa-file-image-o"></i> 
+				</div>
+				<div class="file-info">
+		                <span class="file-name">Error4.png</span>
+		                <span class="file-size"> 0Kb</span>
+				</div>
+			</a>
+		</li>
+	</ul>
+</div>
+<div class="mt-4">
+	
+	<div class="accordion">
+			<div class="card">
+				<div class="card-header" role="tab">
+					<h5 class="card-title">
+						<div class="node">Test ENVhttps://10.3.29.104/adfs/ls/?wa=wsignin1.0&wtrealm=https%3a%2f%2f10.3.29.100%3a44303%2fdefault.aspx&wctx=rm%3d0%26id%3dpassive%26ru%3d%252f&wct=2019-06-20T16%3a17%3a23Z&wreply=https%3a%2f%2f10.3.29.100%3a44303%2fdefault.aspx</div>
+						<div class="status-avatar float-right pass-bg">
+							<i class="fa fa-check text-white"></i>
+                        </div>
+					</h5>
+				</div>
+				<div class="collapse">
+					<div class="card-body">
+																	</div>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-header" role="tab">
+					<h5 class="card-title">
+						<div class="node">Loggin in APHP Success</div>
+						<div class="status-avatar float-right pass-bg">
+							<i class="fa fa-check text-white"></i>
+                        </div>
+					</h5>
+				</div>
+				<div class="collapse">
+					<div class="card-body">
+																		<div class="detail-foot">
+							<ul class="attachments">
+								<li>
+									<a href="images\LoginSuccess4.png" data-featherlight="image">
+										<div class="file-icon">
+											<i class="fa fa-file-image-o"></i> 
+										</div>
+										<div class="file-info">
+												<span class="file-name">LoginSuccess4.png</span>
+												<span class="file-size"> 0Kb</span>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+
+</div>
+											</div>
+										</li>
+										<li class="test-item" status="fatal" author="BryarCole" device="" tag=""> 
+											<div class="status-avatar fatal-bg">
+												<i class="fa fa-times text-white"></i>
+											</div>
+											<div class="open-test">
+												<div class="test-detail"> 
+													<p class="name">Application Type Equals</p> 
+													<p class="duration text-sm">0h:0m:7s+751ms</p> 
+													<span class="datetime">11:17:28 AM</span>
+												</div>
+											</div>
+											<div class="test-contents d-none">
+												<div class="detail-head">
+													<div class="p-v-10 d-inline-block">	
+														<div class="info">
+															<h5 class="test-status text-fatal">Application Type Equals</h5>
+															<span class='badge badge-success'>6/20/2019 11:17:28 AM</span>
+															<span class='badge badge-danger'>6/20/2019 11:17:36 AM</span>
+															<span class='badge badge-default'>0h:0m:7s+751ms</span>
+														</div>
+														<div class="m-t-15">
+		                                        				<div class="attributes">
+				<span class="badge badge-pill badge-default"><i class="fa fa-user-o"></i> BryarCole</span> 
+					</div>
+
+														</div>
+																											</div>
+												</div>
+<div class="detail-body mt-4">												
+	
+<table class="table table-sm">
+	<thead><tr>
+		<th class="status-col">Status</th>
+		<th class="timestamp-col">Timestamp</th>
+		<th class="details-col">Details</th>
+	</tr></thead>
+	<tbody>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>11:17:28</td>
+				<td>
+Application Type 3 Begin									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>11:17:36</td>
+				<td>
+Loggin in APHP Success									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-times text-fatal"></i></td>
+				<td>11:17:37</td>
+				<td>
+Could not find element by: By.PartialLinkText: Member
+
+   at OpenQA.Selenium.Support.PageObjects.DefaultElementLocator.LocateElement(IEnumerable`1 bys)
+   at OpenQA.Selenium.Support.PageObjects.WebElementProxy.get_Element()
+   at OpenQA.Selenium.Support.PageObjects.WebElementProxy.Invoke(IMessage msg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at OpenQA.Selenium.Internal.IWrapsElement.get_WrappedElement()
+   at OpenQA.Selenium.Interactions.Actions.GetLocatableFromElement(IWebElement element)
+   at OpenQA.Selenium.Interactions.Actions.MoveToElement(IWebElement toElement)
+   at NUnit.Tests1.Pages.WokerPortalLandingPage.MemberHover() in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Pages\WorkerPortal\WokerPortalLandingPage.cs:line 38
+   at NUnit.Tests1.Pages.WokerPortalLandingPage.HippApplicationSearch() in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Pages\WorkerPortal\WokerPortalLandingPage.cs:line 30
+   at NUnit.Tests1.hIPPSearchTest.HiPPApplicationType(String how) in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Steps\TestScripts\HIPPSearchTest.cs:line 406									</td>
+			</tr>
+	</tbody>
+</table>
+
+</div>    
+<div class="detail-foot">
+	<ul class="attachments">
+		<li>
+			<a href="images\Error4.png" data-featherlight="image">
+				<div class="file-icon">
+					<i class="fa fa-file-image-o"></i> 
+				</div>
+				<div class="file-info">
+		                <span class="file-name">Error4.png</span>
+		                <span class="file-size"> 0Kb</span>
+				</div>
+			</a>
+		</li>
+	</ul>
+</div>
+<div class="mt-4">
+	
+	<div class="accordion">
+			<div class="card">
+				<div class="card-header" role="tab">
+					<h5 class="card-title">
+						<div class="node">Test ENVhttps://10.3.29.104/adfs/ls/?wa=wsignin1.0&wtrealm=https%3a%2f%2f10.3.29.100%3a44303%2fdefault.aspx&wctx=rm%3d0%26id%3dpassive%26ru%3d%252f&wct=2019-06-20T16%3a17%3a23Z&wreply=https%3a%2f%2f10.3.29.100%3a44303%2fdefault.aspx</div>
+						<div class="status-avatar float-right pass-bg">
+							<i class="fa fa-check text-white"></i>
+                        </div>
+					</h5>
+				</div>
+				<div class="collapse">
+					<div class="card-body">
+																	</div>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-header" role="tab">
+					<h5 class="card-title">
+						<div class="node">Loggin in APHP Success</div>
+						<div class="status-avatar float-right pass-bg">
+							<i class="fa fa-check text-white"></i>
+                        </div>
+					</h5>
+				</div>
+				<div class="collapse">
+					<div class="card-body">
+																		<div class="detail-foot">
+							<ul class="attachments">
+								<li>
+									<a href="images\LoginSuccess4.png" data-featherlight="image">
+										<div class="file-icon">
+											<i class="fa fa-file-image-o"></i> 
+										</div>
+										<div class="file-info">
+												<span class="file-name">LoginSuccess4.png</span>
+												<span class="file-size"> 0Kb</span>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+
+</div>
+											</div>
+										</li>
+										<li class="test-item" status="fatal" author="BryarCole" device="" tag=""> 
+											<div class="status-avatar fatal-bg">
+												<i class="fa fa-times text-white"></i>
+											</div>
+											<div class="open-test">
+												<div class="test-detail"> 
+													<p class="name">Application Mode Contains</p> 
+													<p class="duration text-sm">0h:0m:0s+012ms</p> 
+													<span class="datetime">11:17:31 AM</span>
+												</div>
+											</div>
+											<div class="test-contents d-none">
+												<div class="detail-head">
+													<div class="p-v-10 d-inline-block">	
+														<div class="info">
+															<h5 class="test-status text-fatal">Application Mode Contains</h5>
+															<span class='badge badge-success'>6/20/2019 11:17:31 AM</span>
+															<span class='badge badge-danger'>6/20/2019 11:17:31 AM</span>
+															<span class='badge badge-default'>0h:0m:0s+012ms</span>
+														</div>
+														<div class="m-t-15">
+		                                        				<div class="attributes">
+				<span class="badge badge-pill badge-default"><i class="fa fa-user-o"></i> BryarCole</span> 
+					</div>
+
+														</div>
+																											</div>
+												</div>
+<div class="detail-body mt-4">												
+	
+<table class="table table-sm">
+	<thead><tr>
+		<th class="status-col">Status</th>
+		<th class="timestamp-col">Timestamp</th>
+		<th class="details-col">Details</th>
+	</tr></thead>
+	<tbody>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>11:17:31</td>
+				<td>
+Application Mode 4 Begin									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-times text-fatal"></i></td>
+				<td>11:17:37</td>
+				<td>
+The process cannot access the file 'C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Reports\HippSearch\images\LoginSuccess4.png' because it is being used by another process.
+
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy)
+   at System.IO.FileStream..ctor(String path, FileMode mode)
+   at OpenQA.Selenium.Screenshot.SaveAsFile(String fileName, ScreenshotImageFormat format)
+   at OpenQA.Selenium.Screenshot.SaveAsFile(String fileName)
+   at NUnit.Tests1.Screenshots.TakeSreenShot(IWebDriver context, String fileLocation) in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Utilities\Screenshots.cs:line 16
+   at NUnit.Tests1.Utilities.utility.RecordPassStatus(String LogNote, Status TestStatus, String ScreenshotLocation, Int32 TestCount, String TestCase, ExtentTest test) in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Utilities\utility.cs:line 32
+   at NUnit.Tests1.hIPPSearchTest.HiPPApplicationMode(String how) in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Steps\TestScripts\HIPPSearchTest.cs:line 473									</td>
+			</tr>
+	</tbody>
+</table>
+
+</div>    
+<div class="detail-foot">
+	<ul class="attachments">
+		<li>
+			<a href="images\Error4.png" data-featherlight="image">
+				<div class="file-icon">
+					<i class="fa fa-file-image-o"></i> 
+				</div>
+				<div class="file-info">
+		                <span class="file-name">Error4.png</span>
+		                <span class="file-size"> 0Kb</span>
+				</div>
+			</a>
+		</li>
+	</ul>
+</div>
+<div class="mt-4">
+	
+	<div class="accordion">
+			<div class="card">
+				<div class="card-header" role="tab">
+					<h5 class="card-title">
+						<div class="node">Test ENVhttps://10.3.29.104/adfs/ls/?wa=wsignin1.0&wtrealm=https%3a%2f%2f10.3.29.100%3a44303%2fdefault.aspx&wctx=rm%3d0%26id%3dpassive%26ru%3d%252f&wct=2019-06-20T16%3a17%3a27Z&wreply=https%3a%2f%2f10.3.29.100%3a44303%2fdefault.aspx</div>
+						<div class="status-avatar float-right pass-bg">
+							<i class="fa fa-check text-white"></i>
+                        </div>
+					</h5>
+				</div>
+				<div class="collapse">
+					<div class="card-body">
+																	</div>
+				</div>
+			</div>
+	</div>
+
+</div>
+											</div>
+										</li>
+										<li class="test-item" status="fatal" author="" device="" tag=""> 
+											<div class="status-avatar fatal-bg">
+												<i class="fa fa-times text-white"></i>
+											</div>
+											<div class="open-test">
+												<div class="test-detail"> 
+													<p class="name">Contains search test with Application ID</p> 
+													<p class="duration text-sm">0h:0m:11s+878ms</p> 
+													<span class="datetime">11:17:55 AM</span>
+												</div>
+											</div>
+											<div class="test-contents d-none">
+												<div class="detail-head">
+													<div class="p-v-10 d-inline-block">	
+														<div class="info">
+															<h5 class="test-status text-fatal">Contains search test with Application ID</h5>
+															<span class='badge badge-success'>6/20/2019 11:17:55 AM</span>
+															<span class='badge badge-danger'>6/20/2019 11:18:07 AM</span>
+															<span class='badge badge-default'>0h:0m:11s+878ms</span>
+														</div>
+																											</div>
+												</div>
+<div class="detail-body mt-4">												
+	
+<table class="table table-sm">
+	<thead><tr>
+		<th class="status-col">Status</th>
+		<th class="timestamp-col">Timestamp</th>
+		<th class="details-col">Details</th>
+	</tr></thead>
+	<tbody>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>11:17:55</td>
+				<td>
+Contains Search Test 5 Begin									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>11:18:07</td>
+				<td>
+Loggin in APHP Success									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-times text-fatal"></i></td>
+				<td>11:18:09</td>
+				<td>
+Could not find element by: By.PartialLinkText: Member
+
+   at OpenQA.Selenium.Support.PageObjects.DefaultElementLocator.LocateElement(IEnumerable`1 bys)
+   at OpenQA.Selenium.Support.PageObjects.WebElementProxy.get_Element()
+   at OpenQA.Selenium.Support.PageObjects.WebElementProxy.Invoke(IMessage msg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at OpenQA.Selenium.Internal.IWrapsElement.get_WrappedElement()
+   at OpenQA.Selenium.Interactions.Actions.GetLocatableFromElement(IWebElement element)
+   at OpenQA.Selenium.Interactions.Actions.MoveToElement(IWebElement toElement)
+   at NUnit.Tests1.Pages.WokerPortalLandingPage.MemberHover() in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Pages\WorkerPortal\WokerPortalLandingPage.cs:line 38
+   at NUnit.Tests1.Pages.WokerPortalLandingPage.HippApplicationSearch() in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Pages\WorkerPortal\WokerPortalLandingPage.cs:line 30
+   at NUnit.Tests1.hIPPSearchTest.HIPPContainsSearchTest(String where) in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Steps\TestScripts\HIPPSearchTest.cs:line 108									</td>
+			</tr>
+	</tbody>
+</table>
+
+</div>    
+<div class="detail-foot">
+	<ul class="attachments">
+		<li>
+			<a href="images\Error8.png" data-featherlight="image">
+				<div class="file-icon">
+					<i class="fa fa-file-image-o"></i> 
+				</div>
+				<div class="file-info">
+		                <span class="file-name">Error8.png</span>
+		                <span class="file-size"> 0Kb</span>
+				</div>
+			</a>
+		</li>
+	</ul>
+</div>
+<div class="mt-4">
+	
+	<div class="accordion">
+			<div class="card">
+				<div class="card-header" role="tab">
+					<h5 class="card-title">
+						<div class="node">Loggin in APHP Success</div>
+						<div class="status-avatar float-right pass-bg">
+							<i class="fa fa-check text-white"></i>
+                        </div>
+					</h5>
+				</div>
+				<div class="collapse">
+					<div class="card-body">
+																		<div class="detail-foot">
+							<ul class="attachments">
+								<li>
+									<a href="images\LoginSuccess8.png" data-featherlight="image">
+										<div class="file-icon">
+											<i class="fa fa-file-image-o"></i> 
+										</div>
+										<div class="file-info">
+												<span class="file-name">LoginSuccess8.png</span>
+												<span class="file-size"> 0Kb</span>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+
+</div>
+											</div>
+										</li>
+										<li class="test-item" status="fatal" author="BryarCole" device="" tag=""> 
+											<div class="status-avatar fatal-bg">
+												<i class="fa fa-times text-white"></i>
+											</div>
+											<div class="open-test">
+												<div class="test-detail"> 
+													<p class="name">Application Type Contains</p> 
+													<p class="duration text-sm">0h:0m:11s+412ms</p> 
+													<span class="datetime">11:17:56 AM</span>
+												</div>
+											</div>
+											<div class="test-contents d-none">
+												<div class="detail-head">
+													<div class="p-v-10 d-inline-block">	
+														<div class="info">
+															<h5 class="test-status text-fatal">Application Type Contains</h5>
+															<span class='badge badge-success'>6/20/2019 11:17:56 AM</span>
+															<span class='badge badge-danger'>6/20/2019 11:18:07 AM</span>
+															<span class='badge badge-default'>0h:0m:11s+412ms</span>
+														</div>
+														<div class="m-t-15">
+		                                        				<div class="attributes">
+				<span class="badge badge-pill badge-default"><i class="fa fa-user-o"></i> BryarCole</span> 
+					</div>
+
+														</div>
+																											</div>
+												</div>
+<div class="detail-body mt-4">												
+	
+<table class="table table-sm">
+	<thead><tr>
+		<th class="status-col">Status</th>
+		<th class="timestamp-col">Timestamp</th>
+		<th class="details-col">Details</th>
+	</tr></thead>
+	<tbody>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>11:17:56</td>
+				<td>
+Application Type 6 Begin									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>11:18:07</td>
+				<td>
+Loggin in APHP Success									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-times text-fatal"></i></td>
+				<td>11:18:09</td>
+				<td>
+Could not find element by: By.PartialLinkText: Member
+
+   at OpenQA.Selenium.Support.PageObjects.DefaultElementLocator.LocateElement(IEnumerable`1 bys)
+   at OpenQA.Selenium.Support.PageObjects.WebElementProxy.get_Element()
+   at OpenQA.Selenium.Support.PageObjects.WebElementProxy.Invoke(IMessage msg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at OpenQA.Selenium.Internal.IWrapsElement.get_WrappedElement()
+   at OpenQA.Selenium.Interactions.Actions.GetLocatableFromElement(IWebElement element)
+   at OpenQA.Selenium.Interactions.Actions.MoveToElement(IWebElement toElement)
+   at NUnit.Tests1.Pages.WokerPortalLandingPage.MemberHover() in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Pages\WorkerPortal\WokerPortalLandingPage.cs:line 38
+   at NUnit.Tests1.Pages.WokerPortalLandingPage.HippApplicationSearch() in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Pages\WorkerPortal\WokerPortalLandingPage.cs:line 30
+   at NUnit.Tests1.hIPPSearchTest.HiPPApplicationType(String how) in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Steps\TestScripts\HIPPSearchTest.cs:line 406									</td>
+			</tr>
+	</tbody>
+</table>
+
+</div>    
+<div class="detail-foot">
+	<ul class="attachments">
+		<li>
+			<a href="images\Error8.png" data-featherlight="image">
+				<div class="file-icon">
+					<i class="fa fa-file-image-o"></i> 
+				</div>
+				<div class="file-info">
+		                <span class="file-name">Error8.png</span>
+		                <span class="file-size"> 0Kb</span>
+				</div>
+			</a>
+		</li>
+	</ul>
+</div>
+<div class="mt-4">
+	
+	<div class="accordion">
+			<div class="card">
+				<div class="card-header" role="tab">
+					<h5 class="card-title">
+						<div class="node">Test ENVhttps://10.3.29.104/adfs/ls/?wa=wsignin1.0&wtrealm=https%3a%2f%2f10.3.29.100%3a44303%2fdefault.aspx&wctx=rm%3d0%26id%3dpassive%26ru%3d%252f&wct=2019-06-20T16%3a17%3a49Z&wreply=https%3a%2f%2f10.3.29.100%3a44303%2fdefault.aspx</div>
+						<div class="status-avatar float-right pass-bg">
+							<i class="fa fa-check text-white"></i>
+                        </div>
+					</h5>
+				</div>
+				<div class="collapse">
+					<div class="card-body">
+																	</div>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-header" role="tab">
+					<h5 class="card-title">
+						<div class="node">Loggin in APHP Success</div>
+						<div class="status-avatar float-right pass-bg">
+							<i class="fa fa-check text-white"></i>
+                        </div>
+					</h5>
+				</div>
+				<div class="collapse">
+					<div class="card-body">
+																		<div class="detail-foot">
+							<ul class="attachments">
+								<li>
+									<a href="images\LoginSuccess8.png" data-featherlight="image">
+										<div class="file-icon">
+											<i class="fa fa-file-image-o"></i> 
+										</div>
+										<div class="file-info">
+												<span class="file-name">LoginSuccess8.png</span>
+												<span class="file-size"> 0Kb</span>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+
+</div>
+											</div>
+										</li>
+										<li class="test-item" status="fatal" author="" device="" tag=""> 
+											<div class="status-avatar fatal-bg">
+												<i class="fa fa-times text-white"></i>
+											</div>
+											<div class="open-test">
+												<div class="test-detail"> 
+													<p class="name">Contains search test with Member ID</p> 
+													<p class="duration text-sm">0h:0m:7s+796ms</p> 
+													<span class="datetime">11:17:56 AM</span>
+												</div>
+											</div>
+											<div class="test-contents d-none">
+												<div class="detail-head">
+													<div class="p-v-10 d-inline-block">	
+														<div class="info">
+															<h5 class="test-status text-fatal">Contains search test with Member ID</h5>
+															<span class='badge badge-success'>6/20/2019 11:17:56 AM</span>
+															<span class='badge badge-danger'>6/20/2019 11:18:04 AM</span>
+															<span class='badge badge-default'>0h:0m:7s+796ms</span>
+														</div>
+																											</div>
+												</div>
+<div class="detail-body mt-4">												
+	
+<table class="table table-sm">
+	<thead><tr>
+		<th class="status-col">Status</th>
+		<th class="timestamp-col">Timestamp</th>
+		<th class="details-col">Details</th>
+	</tr></thead>
+	<tbody>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>11:17:56</td>
+				<td>
+Contains Search Test 7 Begin									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>11:18:04</td>
+				<td>
+Loggin in APHP Success									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-times text-fatal"></i></td>
+				<td>11:18:07</td>
+				<td>
+Could not find element by: By.PartialLinkText: Member
+
+   at OpenQA.Selenium.Support.PageObjects.DefaultElementLocator.LocateElement(IEnumerable`1 bys)
+   at OpenQA.Selenium.Support.PageObjects.WebElementProxy.get_Element()
+   at OpenQA.Selenium.Support.PageObjects.WebElementProxy.Invoke(IMessage msg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at OpenQA.Selenium.Internal.IWrapsElement.get_WrappedElement()
+   at OpenQA.Selenium.Interactions.Actions.GetLocatableFromElement(IWebElement element)
+   at OpenQA.Selenium.Interactions.Actions.MoveToElement(IWebElement toElement)
+   at NUnit.Tests1.Pages.WokerPortalLandingPage.MemberHover() in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Pages\WorkerPortal\WokerPortalLandingPage.cs:line 38
+   at NUnit.Tests1.Pages.WokerPortalLandingPage.HippApplicationSearch() in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Pages\WorkerPortal\WokerPortalLandingPage.cs:line 30
+   at NUnit.Tests1.hIPPSearchTest.HIPPContainsSearchTest(String where) in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Steps\TestScripts\HIPPSearchTest.cs:line 108									</td>
+			</tr>
+	</tbody>
+</table>
+
+</div>    
+<div class="detail-foot">
+	<ul class="attachments">
+		<li>
+			<a href="images\Error6.png" data-featherlight="image">
+				<div class="file-icon">
+					<i class="fa fa-file-image-o"></i> 
+				</div>
+				<div class="file-info">
+		                <span class="file-name">Error6.png</span>
+		                <span class="file-size"> 0Kb</span>
+				</div>
+			</a>
+		</li>
+	</ul>
+</div>
+<div class="mt-4">
+	
+	<div class="accordion">
+			<div class="card">
+				<div class="card-header" role="tab">
+					<h5 class="card-title">
+						<div class="node">Loggin in APHP Success</div>
+						<div class="status-avatar float-right pass-bg">
+							<i class="fa fa-check text-white"></i>
+                        </div>
+					</h5>
+				</div>
+				<div class="collapse">
+					<div class="card-body">
+																		<div class="detail-foot">
+							<ul class="attachments">
+								<li>
+									<a href="images\LoginSuccess8.png" data-featherlight="image">
+										<div class="file-icon">
+											<i class="fa fa-file-image-o"></i> 
+										</div>
+										<div class="file-info">
+												<span class="file-name">LoginSuccess8.png</span>
+												<span class="file-size"> 0Kb</span>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+
+</div>
+											</div>
+										</li>
+										<li class="test-item" status="fatal" author="BryarCole" device="" tag=""> 
+											<div class="status-avatar fatal-bg">
+												<i class="fa fa-times text-white"></i>
+											</div>
+											<div class="open-test">
+												<div class="test-detail"> 
+													<p class="name">Application Type Starts With</p> 
+													<p class="duration text-sm">0h:0m:10s+282ms</p> 
+													<span class="datetime">11:17:57 AM</span>
+												</div>
+											</div>
+											<div class="test-contents d-none">
+												<div class="detail-head">
+													<div class="p-v-10 d-inline-block">	
+														<div class="info">
+															<h5 class="test-status text-fatal">Application Type Starts With</h5>
+															<span class='badge badge-success'>6/20/2019 11:17:57 AM</span>
+															<span class='badge badge-danger'>6/20/2019 11:18:07 AM</span>
+															<span class='badge badge-default'>0h:0m:10s+282ms</span>
+														</div>
+														<div class="m-t-15">
+		                                        				<div class="attributes">
+				<span class="badge badge-pill badge-default"><i class="fa fa-user-o"></i> BryarCole</span> 
+					</div>
+
+														</div>
+																											</div>
+												</div>
+<div class="detail-body mt-4">												
+	
+<table class="table table-sm">
+	<thead><tr>
+		<th class="status-col">Status</th>
+		<th class="timestamp-col">Timestamp</th>
+		<th class="details-col">Details</th>
+	</tr></thead>
+	<tbody>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>11:17:57</td>
+				<td>
+Application Type 8 Begin									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>11:18:07</td>
+				<td>
+Loggin in APHP Success									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-times text-fatal"></i></td>
+				<td>11:18:08</td>
+				<td>
+Could not find element by: By.PartialLinkText: Member
+
+   at OpenQA.Selenium.Support.PageObjects.DefaultElementLocator.LocateElement(IEnumerable`1 bys)
+   at OpenQA.Selenium.Support.PageObjects.WebElementProxy.get_Element()
+   at OpenQA.Selenium.Support.PageObjects.WebElementProxy.Invoke(IMessage msg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at OpenQA.Selenium.Internal.IWrapsElement.get_WrappedElement()
+   at OpenQA.Selenium.Interactions.Actions.GetLocatableFromElement(IWebElement element)
+   at OpenQA.Selenium.Interactions.Actions.MoveToElement(IWebElement toElement)
+   at NUnit.Tests1.Pages.WokerPortalLandingPage.MemberHover() in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Pages\WorkerPortal\WokerPortalLandingPage.cs:line 38
+   at NUnit.Tests1.Pages.WokerPortalLandingPage.HippApplicationSearch() in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Pages\WorkerPortal\WokerPortalLandingPage.cs:line 30
+   at NUnit.Tests1.hIPPSearchTest.HiPPApplicationType(String how) in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Steps\TestScripts\HIPPSearchTest.cs:line 406									</td>
+			</tr>
+	</tbody>
+</table>
+
+</div>    
+<div class="detail-foot">
+	<ul class="attachments">
+		<li>
+			<a href="images\Error8.png" data-featherlight="image">
+				<div class="file-icon">
+					<i class="fa fa-file-image-o"></i> 
+				</div>
+				<div class="file-info">
+		                <span class="file-name">Error8.png</span>
+		                <span class="file-size"> 0Kb</span>
+				</div>
+			</a>
+		</li>
+	</ul>
+</div>
+<div class="mt-4">
+	
+	<div class="accordion">
+			<div class="card">
+				<div class="card-header" role="tab">
+					<h5 class="card-title">
+						<div class="node">Test ENVhttps://10.3.29.104/adfs/ls/?wa=wsignin1.0&wtrealm=https%3a%2f%2f10.3.29.100%3a44303%2fdefault.aspx&wctx=rm%3d0%26id%3dpassive%26ru%3d%252f&wct=2019-06-20T16%3a17%3a49Z&wreply=https%3a%2f%2f10.3.29.100%3a44303%2fdefault.aspx</div>
+						<div class="status-avatar float-right pass-bg">
+							<i class="fa fa-check text-white"></i>
+                        </div>
+					</h5>
+				</div>
+				<div class="collapse">
+					<div class="card-body">
+																	</div>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-header" role="tab">
+					<h5 class="card-title">
+						<div class="node">Loggin in APHP Success</div>
+						<div class="status-avatar float-right pass-bg">
+							<i class="fa fa-check text-white"></i>
+                        </div>
+					</h5>
+				</div>
+				<div class="collapse">
+					<div class="card-body">
+																		<div class="detail-foot">
+							<ul class="attachments">
+								<li>
+									<a href="images\LoginSuccess8.png" data-featherlight="image">
+										<div class="file-icon">
+											<i class="fa fa-file-image-o"></i> 
+										</div>
+										<div class="file-info">
+												<span class="file-name">LoginSuccess8.png</span>
+												<span class="file-size"> 0Kb</span>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+
+</div>
+											</div>
+										</li>
+										<li class="test-item" status="pass" author="" device="" tag=""> 
+											<div class="status-avatar pass-bg">
+												<i class="fa fa-check text-white"></i>
+											</div>
+											<div class="open-test">
+												<div class="test-detail"> 
+													<p class="name">Contains search test with Policyholder/Employee Name</p> 
+													<p class="duration text-sm">0h:0m:2s+762ms</p> 
+													<span class="datetime">11:18:20 AM</span>
+												</div>
+											</div>
+											<div class="test-contents d-none">
+												<div class="detail-head">
+													<div class="p-v-10 d-inline-block">	
+														<div class="info">
+															<h5 class="test-status text-pass">Contains search test with Policyholder/Employee Name</h5>
+															<span class='badge badge-success'>6/20/2019 11:18:20 AM</span>
+															<span class='badge badge-danger'>6/20/2019 11:18:22 AM</span>
+															<span class='badge badge-default'>0h:0m:2s+762ms</span>
+														</div>
+																											</div>
+												</div>
+<div class="detail-body mt-4">												
+	
+<table class="table table-sm">
+	<thead><tr>
+		<th class="status-col">Status</th>
+		<th class="timestamp-col">Timestamp</th>
+		<th class="details-col">Details</th>
+	</tr></thead>
+	<tbody>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>11:18:20</td>
+				<td>
+Contains Search Test 9 Begin									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>11:18:22</td>
+				<td>
+Loggin in APHP Success									</td>
+			</tr>
+	</tbody>
+</table>
+
+</div>    
+<div class="mt-4">
+	
+	<div class="accordion">
+			<div class="card">
+				<div class="card-header" role="tab">
+					<h5 class="card-title">
+						<div class="node">Loggin in APHP Success</div>
+						<div class="status-avatar float-right pass-bg">
+							<i class="fa fa-check text-white"></i>
+                        </div>
+					</h5>
+				</div>
+				<div class="collapse">
+					<div class="card-body">
+																		<div class="detail-foot">
+							<ul class="attachments">
+								<li>
+									<a href="images\LoginSuccess10.png" data-featherlight="image">
+										<div class="file-icon">
+											<i class="fa fa-file-image-o"></i> 
+										</div>
+										<div class="file-info">
+												<span class="file-name">LoginSuccess10.png</span>
+												<span class="file-size"> 0Kb</span>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+
+</div>
+											</div>
+										</li>
+										<li class="test-item" status="pass" author="" device="" tag=""> 
+											<div class="status-avatar pass-bg">
+												<i class="fa fa-check text-white"></i>
+											</div>
+											<div class="open-test">
+												<div class="test-detail"> 
+													<p class="name">Contains search test with SSN</p> 
+													<p class="duration text-sm">0h:0m:0s+000ms</p> 
+													<span class="datetime">11:18:21 AM</span>
+												</div>
+											</div>
+											<div class="test-contents d-none">
+												<div class="detail-head">
+													<div class="p-v-10 d-inline-block">	
+														<div class="info">
+															<h5 class="test-status text-pass">Contains search test with SSN</h5>
+															<span class='badge badge-success'>6/20/2019 11:18:21 AM</span>
+															<span class='badge badge-danger'>6/20/2019 11:18:21 AM</span>
+															<span class='badge badge-default'>0h:0m:0s+000ms</span>
+														</div>
+																											</div>
+												</div>
+<div class="detail-body mt-4">												
+	
+<table class="table table-sm">
+	<thead><tr>
+		<th class="status-col">Status</th>
+		<th class="timestamp-col">Timestamp</th>
+		<th class="details-col">Details</th>
+	</tr></thead>
+	<tbody>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>11:18:21</td>
+				<td>
+Contains Search Test 10 Begin									</td>
+			</tr>
+	</tbody>
+</table>
+
+</div>    
+											</div>
+										</li>
+										<li class="test-item" status="fatal" author="BryarCole" device="" tag=""> 
+											<div class="status-avatar fatal-bg">
+												<i class="fa fa-times text-white"></i>
+											</div>
+											<div class="open-test">
+												<div class="test-detail"> 
+													<p class="name">HIPP Double Search</p> 
+													<p class="duration text-sm">0h:0m:19s+763ms</p> 
+													<span class="datetime">11:18:36 AM</span>
+												</div>
+											</div>
+											<div class="test-contents d-none">
+												<div class="detail-head">
+													<div class="p-v-10 d-inline-block">	
+														<div class="info">
+															<h5 class="test-status text-fatal">HIPP Double Search</h5>
+															<span class='badge badge-success'>6/20/2019 11:18:36 AM</span>
+															<span class='badge badge-danger'>6/20/2019 11:18:56 AM</span>
+															<span class='badge badge-default'>0h:0m:19s+763ms</span>
+														</div>
+														<div class="m-t-15">
+		                                        				<div class="attributes">
+				<span class="badge badge-pill badge-default"><i class="fa fa-user-o"></i> BryarCole</span> 
+					</div>
+
+														</div>
+																											</div>
+												</div>
+<div class="detail-body mt-4">												
+	
+<table class="table table-sm">
+	<thead><tr>
+		<th class="status-col">Status</th>
+		<th class="timestamp-col">Timestamp</th>
+		<th class="details-col">Details</th>
+	</tr></thead>
+	<tbody>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>11:18:36</td>
+				<td>
+Double Search 11 Begin									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>11:18:56</td>
+				<td>
+Loggin in APHP Success									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-times text-fatal"></i></td>
+				<td>11:18:58</td>
+				<td>
+Could not find element by: By.PartialLinkText: Member
+
+   at OpenQA.Selenium.Support.PageObjects.DefaultElementLocator.LocateElement(IEnumerable`1 bys)
+   at OpenQA.Selenium.Support.PageObjects.WebElementProxy.get_Element()
+   at OpenQA.Selenium.Support.PageObjects.WebElementProxy.Invoke(IMessage msg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at OpenQA.Selenium.Internal.IWrapsElement.get_WrappedElement()
+   at OpenQA.Selenium.Interactions.Actions.GetLocatableFromElement(IWebElement element)
+   at OpenQA.Selenium.Interactions.Actions.MoveToElement(IWebElement toElement)
+   at NUnit.Tests1.Pages.WokerPortalLandingPage.MemberHover() in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Pages\WorkerPortal\WokerPortalLandingPage.cs:line 38
+   at NUnit.Tests1.Pages.WokerPortalLandingPage.HippApplicationSearch() in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Pages\WorkerPortal\WokerPortalLandingPage.cs:line 30
+   at NUnit.Tests1.hIPPSearchTest.HIPPDoubleSearchTest() in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Steps\TestScripts\HIPPSearchTest.cs:line 322									</td>
+			</tr>
+	</tbody>
+</table>
+
+</div>    
+<div class="detail-foot">
+	<ul class="attachments">
+		<li>
+			<a href="images\Error12.png" data-featherlight="image">
+				<div class="file-icon">
+					<i class="fa fa-file-image-o"></i> 
+				</div>
+				<div class="file-info">
+		                <span class="file-name">Error12.png</span>
+		                <span class="file-size"> 0Kb</span>
+				</div>
+			</a>
+		</li>
+	</ul>
+</div>
+<div class="mt-4">
+	
+	<div class="accordion">
+			<div class="card">
+				<div class="card-header" role="tab">
+					<h5 class="card-title">
+						<div class="node">Loggin in APHP Success</div>
+						<div class="status-avatar float-right pass-bg">
+							<i class="fa fa-check text-white"></i>
+                        </div>
+					</h5>
+				</div>
+				<div class="collapse">
+					<div class="card-body">
+																		<div class="detail-foot">
+							<ul class="attachments">
+								<li>
+									<a href="images\LoginSuccess13.png" data-featherlight="image">
+										<div class="file-icon">
+											<i class="fa fa-file-image-o"></i> 
+										</div>
+										<div class="file-info">
+												<span class="file-name">LoginSuccess13.png</span>
+												<span class="file-size"> 0Kb</span>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+
+</div>
+											</div>
+										</li>
+										<li class="test-item" status="fatal" author="" device="" tag=""> 
+											<div class="status-avatar fatal-bg">
+												<i class="fa fa-times text-white"></i>
+											</div>
+											<div class="open-test">
+												<div class="test-detail"> 
+													<p class="name">Equals search test with Application ID</p> 
+													<p class="duration text-sm">0h:0m:10s+305ms</p> 
+													<span class="datetime">11:18:48 AM</span>
+												</div>
+											</div>
+											<div class="test-contents d-none">
+												<div class="detail-head">
+													<div class="p-v-10 d-inline-block">	
+														<div class="info">
+															<h5 class="test-status text-fatal">Equals search test with Application ID</h5>
+															<span class='badge badge-success'>6/20/2019 11:18:48 AM</span>
+															<span class='badge badge-danger'>6/20/2019 11:18:58 AM</span>
+															<span class='badge badge-default'>0h:0m:10s+305ms</span>
+														</div>
+																											</div>
+												</div>
+<div class="detail-body mt-4">												
+	
+<table class="table table-sm">
+	<thead><tr>
+		<th class="status-col">Status</th>
+		<th class="timestamp-col">Timestamp</th>
+		<th class="details-col">Details</th>
+	</tr></thead>
+	<tbody>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>11:18:48</td>
+				<td>
+Equals Search Test 12 Begin									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>11:18:58</td>
+				<td>
+Loggin in APHP Success									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-times text-fatal"></i></td>
+				<td>11:19:00</td>
+				<td>
+Could not find element by: By.PartialLinkText: Member
+
+   at OpenQA.Selenium.Support.PageObjects.DefaultElementLocator.LocateElement(IEnumerable`1 bys)
+   at OpenQA.Selenium.Support.PageObjects.WebElementProxy.get_Element()
+   at OpenQA.Selenium.Support.PageObjects.WebElementProxy.Invoke(IMessage msg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at OpenQA.Selenium.Internal.IWrapsElement.get_WrappedElement()
+   at OpenQA.Selenium.Interactions.Actions.GetLocatableFromElement(IWebElement element)
+   at OpenQA.Selenium.Interactions.Actions.MoveToElement(IWebElement toElement)
+   at NUnit.Tests1.Pages.WokerPortalLandingPage.MemberHover() in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Pages\WorkerPortal\WokerPortalLandingPage.cs:line 38
+   at NUnit.Tests1.Pages.WokerPortalLandingPage.HippApplicationSearch() in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Pages\WorkerPortal\WokerPortalLandingPage.cs:line 30
+   at NUnit.Tests1.hIPPSearchTest.HiPPEqualsSearchTest(String where) in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Steps\TestScripts\HIPPSearchTest.cs:line 179									</td>
+			</tr>
+	</tbody>
+</table>
+
+</div>    
+<div class="detail-foot">
+	<ul class="attachments">
+		<li>
+			<a href="images\Error13.png" data-featherlight="image">
+				<div class="file-icon">
+					<i class="fa fa-file-image-o"></i> 
+				</div>
+				<div class="file-info">
+		                <span class="file-name">Error13.png</span>
+		                <span class="file-size"> 0Kb</span>
+				</div>
+			</a>
+		</li>
+	</ul>
+</div>
+<div class="mt-4">
+	
+	<div class="accordion">
+			<div class="card">
+				<div class="card-header" role="tab">
+					<h5 class="card-title">
+						<div class="node">Loggin in APHP Success</div>
+						<div class="status-avatar float-right pass-bg">
+							<i class="fa fa-check text-white"></i>
+                        </div>
+					</h5>
+				</div>
+				<div class="collapse">
+					<div class="card-body">
+																		<div class="detail-foot">
+							<ul class="attachments">
+								<li>
+									<a href="images\LoginSuccess14.png" data-featherlight="image">
+										<div class="file-icon">
+											<i class="fa fa-file-image-o"></i> 
+										</div>
+										<div class="file-info">
+												<span class="file-name">LoginSuccess14.png</span>
+												<span class="file-size"> 0Kb</span>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+
+</div>
+											</div>
+										</li>
+										<li class="test-item" status="fatal" author="" device="" tag=""> 
+											<div class="status-avatar fatal-bg">
+												<i class="fa fa-times text-white"></i>
+											</div>
+											<div class="open-test">
+												<div class="test-detail"> 
+													<p class="name">Equals search test with Member ID</p> 
+													<p class="duration text-sm">0h:0m:9s+864ms</p> 
+													<span class="datetime">11:18:50 AM</span>
+												</div>
+											</div>
+											<div class="test-contents d-none">
+												<div class="detail-head">
+													<div class="p-v-10 d-inline-block">	
+														<div class="info">
+															<h5 class="test-status text-fatal">Equals search test with Member ID</h5>
+															<span class='badge badge-success'>6/20/2019 11:18:50 AM</span>
+															<span class='badge badge-danger'>6/20/2019 11:19:00 AM</span>
+															<span class='badge badge-default'>0h:0m:9s+864ms</span>
+														</div>
+																											</div>
+												</div>
+<div class="detail-body mt-4">												
+	
+<table class="table table-sm">
+	<thead><tr>
+		<th class="status-col">Status</th>
+		<th class="timestamp-col">Timestamp</th>
+		<th class="details-col">Details</th>
+	</tr></thead>
+	<tbody>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>11:18:50</td>
+				<td>
+Equals Search Test 13 Begin									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-times text-fatal"></i></td>
+				<td>11:19:00</td>
+				<td>
+The process cannot access the file 'C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Reports\HippSearch\images\LoginSuccess14.png' because it is being used by another process.
+
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy)
+   at System.IO.FileStream..ctor(String path, FileMode mode)
+   at OpenQA.Selenium.Screenshot.SaveAsFile(String fileName, ScreenshotImageFormat format)
+   at OpenQA.Selenium.Screenshot.SaveAsFile(String fileName)
+   at NUnit.Tests1.Screenshots.TakeSreenShot(IWebDriver context, String fileLocation) in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Utilities\Screenshots.cs:line 16
+   at NUnit.Tests1.Utilities.utility.RecordPassStatus(String LogNote, Status TestStatus, String ScreenshotLocation, Int32 TestCount, String TestCase, ExtentTest test) in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Utilities\utility.cs:line 32
+   at NUnit.Tests1.hIPPSearchTest.HiPPEqualsSearchTest(String where) in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Steps\TestScripts\HIPPSearchTest.cs:line 178									</td>
+			</tr>
+	</tbody>
+</table>
+
+</div>    
+<div class="detail-foot">
+	<ul class="attachments">
+		<li>
+			<a href="images\Error13.png" data-featherlight="image">
+				<div class="file-icon">
+					<i class="fa fa-file-image-o"></i> 
+				</div>
+				<div class="file-info">
+		                <span class="file-name">Error13.png</span>
+		                <span class="file-size"> 0Kb</span>
+				</div>
+			</a>
+		</li>
+	</ul>
+</div>
+											</div>
+										</li>
+										<li class="test-item" status="fatal" author="" device="" tag=""> 
+											<div class="status-avatar fatal-bg">
+												<i class="fa fa-times text-white"></i>
+											</div>
+											<div class="open-test">
+												<div class="test-detail"> 
+													<p class="name">Equals search test with Policyholder/Employee Name</p> 
+													<p class="duration text-sm">0h:0m:8s+224ms</p> 
+													<span class="datetime">11:18:55 AM</span>
+												</div>
+											</div>
+											<div class="test-contents d-none">
+												<div class="detail-head">
+													<div class="p-v-10 d-inline-block">	
+														<div class="info">
+															<h5 class="test-status text-fatal">Equals search test with Policyholder/Employee Name</h5>
+															<span class='badge badge-success'>6/20/2019 11:18:55 AM</span>
+															<span class='badge badge-danger'>6/20/2019 11:19:03 AM</span>
+															<span class='badge badge-default'>0h:0m:8s+224ms</span>
+														</div>
+																											</div>
+												</div>
+<div class="detail-body mt-4">												
+	
+<table class="table table-sm">
+	<thead><tr>
+		<th class="status-col">Status</th>
+		<th class="timestamp-col">Timestamp</th>
+		<th class="details-col">Details</th>
+	</tr></thead>
+	<tbody>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>11:18:55</td>
+				<td>
+Equals Search Test 14 Begin									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>11:19:03</td>
+				<td>
+Loggin in APHP Success									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-times text-fatal"></i></td>
+				<td>11:19:05</td>
+				<td>
+Could not find element by: By.PartialLinkText: Member
+
+   at OpenQA.Selenium.Support.PageObjects.DefaultElementLocator.LocateElement(IEnumerable`1 bys)
+   at OpenQA.Selenium.Support.PageObjects.WebElementProxy.get_Element()
+   at OpenQA.Selenium.Support.PageObjects.WebElementProxy.Invoke(IMessage msg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at OpenQA.Selenium.Internal.IWrapsElement.get_WrappedElement()
+   at OpenQA.Selenium.Interactions.Actions.GetLocatableFromElement(IWebElement element)
+   at OpenQA.Selenium.Interactions.Actions.MoveToElement(IWebElement toElement)
+   at NUnit.Tests1.Pages.WokerPortalLandingPage.MemberHover() in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Pages\WorkerPortal\WokerPortalLandingPage.cs:line 38
+   at NUnit.Tests1.Pages.WokerPortalLandingPage.HippApplicationSearch() in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Pages\WorkerPortal\WokerPortalLandingPage.cs:line 30
+   at NUnit.Tests1.hIPPSearchTest.HiPPEqualsSearchTest(String where) in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Steps\TestScripts\HIPPSearchTest.cs:line 179									</td>
+			</tr>
+	</tbody>
+</table>
+
+</div>    
+<div class="detail-foot">
+	<ul class="attachments">
+		<li>
+			<a href="images\Error14.png" data-featherlight="image">
+				<div class="file-icon">
+					<i class="fa fa-file-image-o"></i> 
+				</div>
+				<div class="file-info">
+		                <span class="file-name">Error14.png</span>
+		                <span class="file-size"> 0Kb</span>
+				</div>
+			</a>
+		</li>
+	</ul>
+</div>
+<div class="mt-4">
+	
+	<div class="accordion">
+			<div class="card">
+				<div class="card-header" role="tab">
+					<h5 class="card-title">
+						<div class="node">Loggin in APHP Success</div>
+						<div class="status-avatar float-right pass-bg">
+							<i class="fa fa-check text-white"></i>
+                        </div>
+					</h5>
+				</div>
+				<div class="collapse">
+					<div class="card-body">
+																		<div class="detail-foot">
+							<ul class="attachments">
+								<li>
+									<a href="images\LoginSuccess14.png" data-featherlight="image">
+										<div class="file-icon">
+											<i class="fa fa-file-image-o"></i> 
+										</div>
+										<div class="file-info">
+												<span class="file-name">LoginSuccess14.png</span>
+												<span class="file-size"> 0Kb</span>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+
+</div>
+											</div>
+										</li>
+										<li class="test-item" status="pass" author="BryarCole" device="" tag=""> 
+											<div class="status-avatar pass-bg">
+												<i class="fa fa-check text-white"></i>
+											</div>
+											<div class="open-test">
+												<div class="test-detail"> 
+													<p class="name">Starts With search test Application ID</p> 
+													<p class="duration text-sm">0h:0m:0s+269ms</p> 
+													<span class="datetime">11:19:19 AM</span>
+												</div>
+											</div>
+											<div class="test-contents d-none">
+												<div class="detail-head">
+													<div class="p-v-10 d-inline-block">	
+														<div class="info">
+															<h5 class="test-status text-pass">Starts With search test Application ID</h5>
+															<span class='badge badge-success'>6/20/2019 11:19:19 AM</span>
+															<span class='badge badge-danger'>6/20/2019 11:19:20 AM</span>
+															<span class='badge badge-default'>0h:0m:0s+269ms</span>
+														</div>
+														<div class="m-t-15">
+		                                        				<div class="attributes">
+				<span class="badge badge-pill badge-default"><i class="fa fa-user-o"></i> BryarCole</span> 
+					</div>
+
+														</div>
+																											</div>
+												</div>
+<div class="detail-body mt-4">												
+	
+<table class="table table-sm">
+	<thead><tr>
+		<th class="status-col">Status</th>
+		<th class="timestamp-col">Timestamp</th>
+		<th class="details-col">Details</th>
+	</tr></thead>
+	<tbody>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>11:19:19</td>
+				<td>
+Starts With Search Test 15 Begin									</td>
+			</tr>
+	</tbody>
+</table>
+
+</div>    
+<div class="mt-4">
+	
+	<div class="accordion">
+			<div class="card">
+				<div class="card-header" role="tab">
+					<h5 class="card-title">
+						<div class="node">Test ENVhttps://10.3.29.104/adfs/ls/?wa=wsignin1.0&wtrealm=https%3a%2f%2f10.3.29.100%3a44303%2fdefault.aspx&wctx=rm%3d0%26id%3dpassive%26ru%3d%252f&wct=2019-06-20T16%3a19%3a16Z&wreply=https%3a%2f%2f10.3.29.100%3a44303%2fdefault.aspx</div>
+						<div class="status-avatar float-right pass-bg">
+							<i class="fa fa-check text-white"></i>
+                        </div>
+					</h5>
+				</div>
+				<div class="collapse">
+					<div class="card-body">
+																	</div>
+				</div>
+			</div>
+	</div>
+
+</div>
+											</div>
+										</li>
+										<li class="test-item" status="pass" author="" device="" tag=""> 
+											<div class="status-avatar pass-bg">
+												<i class="fa fa-check text-white"></i>
+											</div>
+											<div class="open-test">
+												<div class="test-detail"> 
+													<p class="name">Equals search test with SSN</p> 
+													<p class="duration text-sm">0h:0m:0s+000ms</p> 
+													<span class="datetime">11:19:21 AM</span>
+												</div>
+											</div>
+											<div class="test-contents d-none">
+												<div class="detail-head">
+													<div class="p-v-10 d-inline-block">	
+														<div class="info">
+															<h5 class="test-status text-pass">Equals search test with SSN</h5>
+															<span class='badge badge-success'>6/20/2019 11:19:21 AM</span>
+															<span class='badge badge-danger'>6/20/2019 11:19:21 AM</span>
+															<span class='badge badge-default'>0h:0m:0s+000ms</span>
+														</div>
+																											</div>
+												</div>
+<div class="detail-body mt-4">												
+	
+<table class="table table-sm">
+	<thead><tr>
+		<th class="status-col">Status</th>
+		<th class="timestamp-col">Timestamp</th>
+		<th class="details-col">Details</th>
+	</tr></thead>
+	<tbody>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>11:19:21</td>
+				<td>
+Equals Search Test 16 Begin									</td>
+			</tr>
+	</tbody>
+</table>
+
+</div>    
+											</div>
+										</li>
+										<li class="test-item" status="fatal" author="BryarCole" device="" tag=""> 
+											<div class="status-avatar fatal-bg">
+												<i class="fa fa-times text-white"></i>
+											</div>
+											<div class="open-test">
+												<div class="test-detail"> 
+													<p class="name">Starts With search test Policyholder/Employee Name</p> 
+													<p class="duration text-sm">0h:0m:2s+861ms</p> 
+													<span class="datetime">11:19:33 AM</span>
+												</div>
+											</div>
+											<div class="test-contents d-none">
+												<div class="detail-head">
+													<div class="p-v-10 d-inline-block">	
+														<div class="info">
+															<h5 class="test-status text-fatal">Starts With search test Policyholder/Employee Name</h5>
+															<span class='badge badge-success'>6/20/2019 11:19:33 AM</span>
+															<span class='badge badge-danger'>6/20/2019 11:19:36 AM</span>
+															<span class='badge badge-default'>0h:0m:2s+861ms</span>
+														</div>
+														<div class="m-t-15">
+		                                        				<div class="attributes">
+				<span class="badge badge-pill badge-default"><i class="fa fa-user-o"></i> BryarCole</span> 
+					</div>
+
+														</div>
+																											</div>
+												</div>
+<div class="detail-body mt-4">												
+	
+<table class="table table-sm">
+	<thead><tr>
+		<th class="status-col">Status</th>
+		<th class="timestamp-col">Timestamp</th>
+		<th class="details-col">Details</th>
+	</tr></thead>
+	<tbody>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>11:19:33</td>
+				<td>
+Starts With Search Test 17 Begin									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>11:19:36</td>
+				<td>
+Loggin in APHP Success									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-times text-fatal"></i></td>
+				<td>11:19:37</td>
+				<td>
+Could not find element by: By.PartialLinkText: Member
+
+   at OpenQA.Selenium.Support.PageObjects.DefaultElementLocator.LocateElement(IEnumerable`1 bys)
+   at OpenQA.Selenium.Support.PageObjects.WebElementProxy.get_Element()
+   at OpenQA.Selenium.Support.PageObjects.WebElementProxy.Invoke(IMessage msg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at OpenQA.Selenium.Internal.IWrapsElement.get_WrappedElement()
+   at OpenQA.Selenium.Interactions.Actions.GetLocatableFromElement(IWebElement element)
+   at OpenQA.Selenium.Interactions.Actions.MoveToElement(IWebElement toElement)
+   at NUnit.Tests1.Pages.WokerPortalLandingPage.MemberHover() in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Pages\WorkerPortal\WokerPortalLandingPage.cs:line 38
+   at NUnit.Tests1.Pages.WokerPortalLandingPage.HippApplicationSearch() in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Pages\WorkerPortal\WokerPortalLandingPage.cs:line 30
+   at NUnit.Tests1.hIPPSearchTest.HiPPStartsWithHowTest(String where) in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Steps\TestScripts\HIPPSearchTest.cs:line 253									</td>
+			</tr>
+	</tbody>
+</table>
+
+</div>    
+<div class="detail-foot">
+	<ul class="attachments">
+		<li>
+			<a href="images\Error18.png" data-featherlight="image">
+				<div class="file-icon">
+					<i class="fa fa-file-image-o"></i> 
+				</div>
+				<div class="file-info">
+		                <span class="file-name">Error18.png</span>
+		                <span class="file-size"> 0Kb</span>
+				</div>
+			</a>
+		</li>
+	</ul>
+</div>
+<div class="mt-4">
+	
+	<div class="accordion">
+			<div class="card">
+				<div class="card-header" role="tab">
+					<h5 class="card-title">
+						<div class="node">Test ENVhttps://10.3.29.104/adfs/ls/?wa=wsignin1.0&wtrealm=https%3a%2f%2f10.3.29.100%3a44303%2fdefault.aspx&wctx=rm%3d0%26id%3dpassive%26ru%3d%252f&wct=2019-06-20T16%3a19%3a28Z&wreply=https%3a%2f%2f10.3.29.100%3a44303%2fdefault.aspx</div>
+						<div class="status-avatar float-right pass-bg">
+							<i class="fa fa-check text-white"></i>
+                        </div>
+					</h5>
+				</div>
+				<div class="collapse">
+					<div class="card-body">
+																	</div>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-header" role="tab">
+					<h5 class="card-title">
+						<div class="node">Loggin in APHP Success</div>
+						<div class="status-avatar float-right pass-bg">
+							<i class="fa fa-check text-white"></i>
+                        </div>
+					</h5>
+				</div>
+				<div class="collapse">
+					<div class="card-body">
+																		<div class="detail-foot">
+							<ul class="attachments">
+								<li>
+									<a href="images\LoginSuccess17.png" data-featherlight="image">
+										<div class="file-icon">
+											<i class="fa fa-file-image-o"></i> 
+										</div>
+										<div class="file-info">
+												<span class="file-name">LoginSuccess17.png</span>
+												<span class="file-size"> 0Kb</span>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+
+</div>
+											</div>
+										</li>
+										<li class="test-item" status="fatal" author="BryarCole" device="" tag=""> 
+											<div class="status-avatar fatal-bg">
+												<i class="fa fa-times text-white"></i>
+											</div>
+											<div class="open-test">
+												<div class="test-detail"> 
+													<p class="name">Starts With search test SSN</p> 
+													<p class="duration text-sm">0h:0m:2s+142ms</p> 
+													<span class="datetime">11:19:35 AM</span>
+												</div>
+											</div>
+											<div class="test-contents d-none">
+												<div class="detail-head">
+													<div class="p-v-10 d-inline-block">	
+														<div class="info">
+															<h5 class="test-status text-fatal">Starts With search test SSN</h5>
+															<span class='badge badge-success'>6/20/2019 11:19:35 AM</span>
+															<span class='badge badge-danger'>6/20/2019 11:19:37 AM</span>
+															<span class='badge badge-default'>0h:0m:2s+142ms</span>
+														</div>
+														<div class="m-t-15">
+		                                        				<div class="attributes">
+				<span class="badge badge-pill badge-default"><i class="fa fa-user-o"></i> BryarCole</span> 
+					</div>
+
+														</div>
+																											</div>
+												</div>
+<div class="detail-body mt-4">												
+	
+<table class="table table-sm">
+	<thead><tr>
+		<th class="status-col">Status</th>
+		<th class="timestamp-col">Timestamp</th>
+		<th class="details-col">Details</th>
+	</tr></thead>
+	<tbody>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>11:19:35</td>
+				<td>
+Starts With Search Test 18 Begin									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>11:19:37</td>
+				<td>
+Loggin in APHP Success									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-times text-fatal"></i></td>
+				<td>11:19:38</td>
+				<td>
+Could not find element by: By.PartialLinkText: Member
+
+   at OpenQA.Selenium.Support.PageObjects.DefaultElementLocator.LocateElement(IEnumerable`1 bys)
+   at OpenQA.Selenium.Support.PageObjects.WebElementProxy.get_Element()
+   at OpenQA.Selenium.Support.PageObjects.WebElementProxy.Invoke(IMessage msg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at OpenQA.Selenium.Internal.IWrapsElement.get_WrappedElement()
+   at OpenQA.Selenium.Interactions.Actions.GetLocatableFromElement(IWebElement element)
+   at OpenQA.Selenium.Interactions.Actions.MoveToElement(IWebElement toElement)
+   at NUnit.Tests1.Pages.WokerPortalLandingPage.MemberHover() in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Pages\WorkerPortal\WokerPortalLandingPage.cs:line 38
+   at NUnit.Tests1.Pages.WokerPortalLandingPage.HippApplicationSearch() in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Pages\WorkerPortal\WokerPortalLandingPage.cs:line 30
+   at NUnit.Tests1.hIPPSearchTest.HiPPStartsWithHowTest(String where) in C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Steps\TestScripts\HIPPSearchTest.cs:line 253									</td>
+			</tr>
+	</tbody>
+</table>
+
+</div>    
+<div class="detail-foot">
+	<ul class="attachments">
+		<li>
+			<a href="images\Error18.png" data-featherlight="image">
+				<div class="file-icon">
+					<i class="fa fa-file-image-o"></i> 
+				</div>
+				<div class="file-info">
+		                <span class="file-name">Error18.png</span>
+		                <span class="file-size"> 0Kb</span>
+				</div>
+			</a>
+		</li>
+	</ul>
+</div>
+<div class="mt-4">
+	
+	<div class="accordion">
+			<div class="card">
+				<div class="card-header" role="tab">
+					<h5 class="card-title">
+						<div class="node">Test ENVhttps://10.3.29.104/adfs/ls/?wa=wsignin1.0&wtrealm=https%3a%2f%2f10.3.29.100%3a44303%2fdefault.aspx&wctx=rm%3d0%26id%3dpassive%26ru%3d%252f&wct=2019-06-20T16%3a19%3a32Z&wreply=https%3a%2f%2f10.3.29.100%3a44303%2fdefault.aspx</div>
+						<div class="status-avatar float-right pass-bg">
+							<i class="fa fa-check text-white"></i>
+                        </div>
+					</h5>
+				</div>
+				<div class="collapse">
+					<div class="card-body">
+																	</div>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-header" role="tab">
+					<h5 class="card-title">
+						<div class="node">Loggin in APHP Success</div>
+						<div class="status-avatar float-right pass-bg">
+							<i class="fa fa-check text-white"></i>
+                        </div>
+					</h5>
+				</div>
+				<div class="collapse">
+					<div class="card-body">
+																		<div class="detail-foot">
+							<ul class="attachments">
+								<li>
+									<a href="images\LoginSuccess18.png" data-featherlight="image">
+										<div class="file-icon">
+											<i class="fa fa-file-image-o"></i> 
+										</div>
+										<div class="file-info">
+												<span class="file-name">LoginSuccess18.png</span>
+												<span class="file-size"> 0Kb</span>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+
+</div>
+											</div>
+										</li>
+                                </ul>    
+                            </div>
+                        </div>
+                        <div class="test-content scrollable">
+                            <div class="test-content-tools">
+                                <ul>
+                                    <li>
+                                        <a class="back-to-test" href="javascript:void(0)">
+                                            <i class="fa fa-arrow-left"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="test-content-detail">
+                                <div class="detail-body"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	<script type='text/javascript'>
+	
+</script>
+<script src="https://cdn.rawgit.com/extent-framework/extent-github-cdn/f97b667/spark/js/script.js"></script>
+
+</body>
+
+</html>

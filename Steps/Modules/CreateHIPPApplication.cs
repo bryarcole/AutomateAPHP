@@ -476,7 +476,6 @@ namespace NUnit.Tests1.Steps
                 "333402593",
                 "Yes",
                 "Yes");
-            utility.RecordPassStatus("Household information input", Status.Pass, screenshotLocation, sucessCount, "HouseholdHiringInput", test, doc);
             generic.GenericCheveronClick("10");
             generic.GenericCheveronClick("9");
             submitApp.PolicyHolderEmployerInformationInput(
@@ -520,7 +519,7 @@ namespace NUnit.Tests1.Steps
             generic.GenericCheveronClick("15");
             submitApp.CompanyInformationInput(
                 "Insurance Co.",
-                "9483924",
+                 Utility.RandomNumericString(7),
                 "Address Line One",
                 "Address line two",
                 "Charlotesvill",
@@ -535,7 +534,8 @@ namespace NUnit.Tests1.Steps
                 false,
                 now.AddYears(-12).ToString("MM/dd/yyyy"),
                 "Monthly",
-                "200");
+                 Utility.RandomNumericString(3)
+                 );
             generic.GenericCheveronClick("16");
             generic.GenericCheveronClick("14");
             generic.GenericCheveronClick("17");
@@ -809,17 +809,23 @@ namespace NUnit.Tests1.Steps
         {
 
             IWebDriver context = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
+            context = new ChromeDriver();
+            context.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            Generic generic = new Generic(context);
+            Utility utility = new Utility(context);
+         
+            APHPHomePage loginPage = new APHPHomePage(context);
+            WorkerPortalLandingPage landingPage = new WorkerPortalLandingPage(context);
+            HIPPSearchPage hIPPSearch = new HIPPSearchPage(context);
             HIPPSubmitApplicationPage submitApp = new HIPPSubmitApplicationPage(context);
             WorkItemComponent workitem = new WorkItemComponent(context);
-            Generic generic = new Generic(context);
-            APHPHomePage loginPage = new APHPHomePage(context);
-            HIPPSearchPage hIPPSearch = new HIPPSearchPage(context);
-            WorkerPortalLandingPage landingPage = new WorkerPortalLandingPage(context);
-            APHPHomePage homepage = new APHPHomePage(context);
+            CreateHIPPApplication app = new CreateHIPPApplication();
+
+            context.Manage().Window.Maximize();
+            DateTime now = DateTime.Now;
 
             context.Url = url;
             context.Manage().Window.Maximize();
-            DateTime now = DateTime.Now;
             loginPage.LoginPage(userName, passWord);
             landingPage.HippApplicationSearch();
             hIPPSearch.ClickBeginNewApp();

@@ -10,13 +10,20 @@ using OpenQA.Selenium;
 using NUnit.Tests1.Pages;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Support.PageObjects;
+using NUnit.Tests1.Utilities;
+using OpenQA.Selenium.Chrome;
+using TFSCommon.Common;
+using TFSCommon.Data;
+using Xceed.Words.NET;
+using System.Drawing;
+using RequirementsTraceability;
 
 namespace NUnit.Tests1.Steps.StartUp
 {
-    public class StartUp 
+    public class InitiateTest 
     {
         IWebDriver context;
-        public StartUp(IWebDriver context)
+        public InitiateTest(IWebDriver context)
         {
             this.context = context;
             PageFactory.InitElements(context, this);
@@ -28,6 +35,8 @@ namespace NUnit.Tests1.Steps.StartUp
         public string AWSINTWoker = "https://10.3.29.100:44305";
         public string AWSINTMember = "https://10.3.29.100:44304";
         public string AWSINTProvider = "https://10.3.29.100:44303";
+
+
         //private static void FireFoxStartUp(string username, string password, string url)
         //{
         //    FireFoxBrowser.Goto(url);

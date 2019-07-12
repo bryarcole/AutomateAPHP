@@ -21,7 +21,7 @@ namespace NUnit.Tests1.Pages
         /// Information 
         /// </summary>
 
-        [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'txtQueueStatus')]")]
+        [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'WorkItem_txtQueueStatus')]")]
         public IWebElement txtQueueStatus { get; set; }
         [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'txtDtCreated')]")]
         public IWebElement txtDtCreated { get; set; }
@@ -34,9 +34,108 @@ namespace NUnit.Tests1.Pages
         public IWebElement applicationNumber { get; set; }
         [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'btnClose')]")]
         public IWebElement btnClose { get; set; }
+        public string  gatherAppNumber()
+        {
+            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(10));
+            string text = "";
 
-       
-        
+            wait.Until(context =>
+            {
+                try
+                {
+                    text = applicationNumber.Text;
+
+                }
+                catch (Exception ex)
+                {
+                    Type exType = ex.GetType();
+                    if (exType == typeof(TargetInvocationException) ||
+                        exType == typeof(NoSuchElementException) ||
+                        exType == typeof(ElementClickInterceptedException) ||
+                        exType == typeof(ElementNotVisibleException) ||
+                        exType == typeof(InvalidOperationException))
+                    {
+                        return false; //By returning false, wait will still rerun the func.
+                    }
+                    else
+                    {
+                        throw; //Rethrow exception if it's not ignore type.
+                    }
+                }
+
+                return true;
+            });
+            return text;
+        }
+        public string gatherWorkItemType()
+        {
+            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(10));
+            string text = "";
+
+            wait.Until(context =>
+            {
+                try
+                {
+                    text = txtWorkItemType.Text;
+
+                }
+                catch (Exception ex)
+                {
+                    Type exType = ex.GetType();
+                    if (exType == typeof(TargetInvocationException) ||
+                        exType == typeof(NoSuchElementException) ||
+                        exType == typeof(ElementClickInterceptedException) ||
+                        exType == typeof(ElementNotVisibleException) ||
+                        exType == typeof(InvalidOperationException))
+                    {
+                        return false; //By returning false, wait will still rerun the func.
+                    }
+                    else
+                    {
+                        throw; //Rethrow exception if it's not ignore type.
+                    }
+                }
+
+                return true;
+            });
+            return text;
+        }
+        public string gatherWorkItemStatus()
+        {
+            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(10));
+            string text = "";
+
+            wait.Until(context =>
+            {
+                try
+                {
+                    text = txtQueueStatus.Text;
+
+                }
+                catch (Exception ex)
+                {
+                    Type exType = ex.GetType();
+                    if (exType == typeof(TargetInvocationException) ||
+                        exType == typeof(NoSuchElementException) ||
+                        exType == typeof(ElementClickInterceptedException) ||
+                        exType == typeof(ElementNotVisibleException) ||
+                        exType == typeof(InvalidOperationException))
+                    {
+                        return false; //By returning false, wait will still rerun the func.
+                    }
+                    else
+                    {
+                        throw; //Rethrow exception if it's not ignore type.
+                    }
+                }
+
+                return true;
+            });
+            return text;
+        }
+
+
+
 
         /// <summary>
         /// Buttons
@@ -67,6 +166,100 @@ namespace NUnit.Tests1.Pages
         public IWebElement btnActivityDone { get; set; }
         [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'btnWorkItemTop')]")]
         public IWebElement btnWorkItemTop { get; set; }
+
+        public void ClickApproveButton()
+        {
+            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(10));
+            wait.Until(context =>
+            {
+                try
+                {
+                    btnActivityApprove.Click();
+
+                }
+                catch (Exception ex)
+                {
+                    Type exType = ex.GetType();
+                    if (exType == typeof(TargetInvocationException) ||
+                        exType == typeof(NoSuchElementException) ||
+                        exType == typeof(ElementClickInterceptedException) ||
+                        exType == typeof(ElementNotVisibleException) ||
+                        exType == typeof(InvalidOperationException))
+                    {
+                        return false; //By returning false, wait will still rerun the func.
+                    }
+                    else
+                    {
+                        throw; //Rethrow exception if it's not ignore type.
+                    }
+                }
+
+                return true;
+            });
+        }
+        public void ClickPendButton()
+        {
+            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(10));
+            wait.Until(context =>
+            {
+                try
+                {
+                    btnActivityPend.Click();
+
+                }
+                catch (Exception ex)
+                {
+                    Type exType = ex.GetType();
+                    if (exType == typeof(TargetInvocationException) ||
+                        exType == typeof(NoSuchElementException) ||
+                        exType == typeof(ElementClickInterceptedException) ||
+                        exType == typeof(ElementNotVisibleException) ||
+                        exType == typeof(InvalidOperationException))
+                    {
+                        return false; //By returning false, wait will still rerun the func.
+                    }
+                    else
+                    {
+                        throw; //Rethrow exception if it's not ignore type.
+                    }
+                }
+
+                return true;
+            });
+        }
+        public void ClickDenyButton()
+        {
+            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(10));
+            wait.Until(context =>
+            {
+                try
+                {
+                    btnActivityDeny.Click();
+
+                }
+                catch (Exception ex)
+                {
+                    Type exType = ex.GetType();
+                    if (exType == typeof(TargetInvocationException) ||
+                        exType == typeof(NoSuchElementException) ||
+                        exType == typeof(ElementClickInterceptedException) ||
+                        exType == typeof(ElementNotVisibleException) ||
+                        exType == typeof(InvalidOperationException))
+                    {
+                        return false; //By returning false, wait will still rerun the func.
+                    }
+                    else
+                    {
+                        throw; //Rethrow exception if it's not ignore type.
+                    }
+                }
+
+                return true;
+            });
+        }
+
+
+
 
         public void ClickCompletedButton()
         {
@@ -158,20 +351,6 @@ namespace NUnit.Tests1.Pages
                 return true;
             });
         }
-        public string GetQueueStatus()
-        {
-            string queueStatus = txtQueueStatus.Text;
-            return queueStatus;
-        }
-        public string GetCreateDate()
-        {
-            string createDate = txtDtCreated.Text;
-            return createDate;
-        }
-        public string GetWorkerPortal()
-        {
-            string createdBy = WorkItem_btncreatedby.Text;
-            return createdBy;
-        }
+
     }
 }

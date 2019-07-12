@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFSCommon", "..\..\VA_TFSTo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFSRequirementsTraceability", "..\..\VA_TFSTools-master\VA_TFSTools-master\TFSRequirementsTraceability\TFSRequirementsTraceability\TFSRequirementsTraceability.csproj", "{6CDC820A-DD87-4175-9A07-A22D6D0CE809}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HIPPAppSubmission", "..\HIPPAppSubmission\HIPPAppSubmission.csproj", "{44A9E4AD-91A7-4313-B7AA-15E85602F913}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetEvidenceDoc", "..\GetEvidenceDoc\GetEvidenceDoc.csproj", "{62ABA1F0-6349-4757-9765-AF05CAE93800}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,10 +31,10 @@ Global
 		{6CDC820A-DD87-4175-9A07-A22D6D0CE809}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6CDC820A-DD87-4175-9A07-A22D6D0CE809}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6CDC820A-DD87-4175-9A07-A22D6D0CE809}.Release|Any CPU.Build.0 = Release|Any CPU
-		{44A9E4AD-91A7-4313-B7AA-15E85602F913}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{44A9E4AD-91A7-4313-B7AA-15E85602F913}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{44A9E4AD-91A7-4313-B7AA-15E85602F913}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{44A9E4AD-91A7-4313-B7AA-15E85602F913}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62ABA1F0-6349-4757-9765-AF05CAE93800}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62ABA1F0-6349-4757-9765-AF05CAE93800}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62ABA1F0-6349-4757-9765-AF05CAE93800}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62ABA1F0-6349-4757-9765-AF05CAE93800}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -7,16 +7,18 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using NUnit.Tests1;
 using System.Threading;
+using NUnit.Tests1.Steps.StartUp;
+
 
 namespace NUnit.Tests1.Pages
 {
     public class APHPHomePage
     {
-        IWebDriver driver;
-        public APHPHomePage(IWebDriver driver)
+        IWebDriver context;
+        public APHPHomePage(IWebDriver context)
         {
-            this.driver = driver;
-            PageFactory.InitElements(driver, this);
+            this.context = context;
+            PageFactory.InitElements(context, this);
         }
 
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'Username')]")]
@@ -32,7 +34,11 @@ namespace NUnit.Tests1.Pages
 
         public void LoginPage(string username, string password)
         {
+
+            InitiateTest startUp = new InitiateTest(context);
             //Thread.Sleep(3000);
+            context.Url = startUp.AWSINTWoker;
+            context.Manage().Window.Maximize();
             UserNameInput.SendKeys(username);
             PasswordOverlay.Click();
             PasswordInput.SendKeys(password);

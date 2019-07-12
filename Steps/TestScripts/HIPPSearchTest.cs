@@ -82,7 +82,7 @@ namespace NUnit.Tests1
             APHPHomePage loginPage = new APHPHomePage(context);
             WorkerPortalLandingPage landingPage = new WorkerPortalLandingPage(context);
             HIPPSearchPage hIPPSearch = new HIPPSearchPage(context);
-            StartUp startUp = new StartUp(context);
+            InitiateTest startUp = new InitiateTest(context);
             Utility utility = new Utility(context);
             Generic generic = new Generic(context);
 
@@ -160,7 +160,7 @@ namespace NUnit.Tests1
             WorkerPortalLandingPage landingPage = new WorkerPortalLandingPage(context);
             HIPPSearchPage hIPPSearch = new HIPPSearchPage(context);
             Generic generic = new Generic(context);
-            StartUp startUp = new StartUp(context);
+            InitiateTest startUp = new InitiateTest(context);
             context.Url = startUp.AWSINTWoker;
             context.Manage().Window.Maximize();
             TestCount = TestCount + 1;
@@ -229,7 +229,7 @@ namespace NUnit.Tests1
             APHPHomePage loginPage = new APHPHomePage(context);
             WorkerPortalLandingPage landingPage = new WorkerPortalLandingPage(context);
             HIPPSearchPage hIPPSearch = new HIPPSearchPage(context);
-            StartUp startUp = new StartUp(context);
+            InitiateTest startUp = new InitiateTest(context);
             Utility utility = new Utility(context);
             Generic generic = new Generic(context);
             context.Url = startUp.AWSINTWoker;
@@ -297,7 +297,7 @@ namespace NUnit.Tests1
             APHPHomePage loginPage = new APHPHomePage(context);
             WorkerPortalLandingPage landingPage = new WorkerPortalLandingPage(context);
             HIPPSearchPage hIPPSearch = new HIPPSearchPage(context);
-            StartUp startUp = new StartUp(context);
+            InitiateTest startUp = new InitiateTest(context);
             Utility utility = new Utility(context);
             Generic generic = new Generic(context);
             context.Url = startUp.AWSINTWoker;
@@ -382,7 +382,7 @@ namespace NUnit.Tests1
             APHPHomePage loginPage = new APHPHomePage(context);
             WorkerPortalLandingPage landingPage = new WorkerPortalLandingPage(context);
             HIPPSearchPage hIPPSearch = new HIPPSearchPage(context);
-            StartUp startUp = new StartUp(context);
+            InitiateTest startUp = new InitiateTest(context);
             Utility utility = new Utility(context);
             Generic generic = new Generic(context);
             context.Url = startUp.AWSINTWoker;
@@ -450,7 +450,7 @@ namespace NUnit.Tests1
             APHPHomePage loginPage = new APHPHomePage(context);
             WorkerPortalLandingPage landingPage = new WorkerPortalLandingPage(context);
             HIPPSearchPage hIPPSearch = new HIPPSearchPage(context);
-            StartUp startUp = new StartUp(context);
+            InitiateTest startUp = new InitiateTest(context);
             Utility utility = new Utility(context);
             Generic generic = new Generic(context);
             context.Url = startUp.AWSINTWoker;

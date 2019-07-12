@@ -19,6 +19,7 @@ using System.Linq;
 using System.Diagnostics;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace NUnit.Tests1
 {
@@ -69,9 +70,9 @@ namespace NUnit.Tests1
             APHPHomePage loginPage = new APHPHomePage(context);
             WorkerPortalLandingPage landingPage = new WorkerPortalLandingPage(context);
             HIPPSearchPage hIPPSearch = new HIPPSearchPage(context);
-            StartUp startUp = new StartUp(context);
+            InitiateTest startUp = new InitiateTest(context);
             HIPPSubmitApplicationPage submitApp = new HIPPSubmitApplicationPage(context);
-            context.Url = "https://10.3.36.214:44305";
+            context.Url = startUp.AWSINTWoker;
             context.Manage().Window.Maximize();
             try
             {
@@ -198,8 +199,8 @@ namespace NUnit.Tests1
         }
 
         [Test]
-        [Category("CreateWprdDocSuite")]
-        public void CreateWprdDocSuite()
+        [Category("CreateWordDocSuite")]
+        public void CreateWordDocSuite()
         {
 
             #region Boring stuff
@@ -225,13 +226,15 @@ namespace NUnit.Tests1
             props.Logger = logger;
             #endregion
 
-
+            Color royalBlue = Color.FromName("RoyalBlue");
+            Color white = Color.FromName("White");
             RequirementsTraceabilityJobs requirementsTraceabilityJob = new RequirementsTraceabilityJobs(props);
 
-
+            string location = "C:\\Users\\bryar.h.cole\\Desktop\\Evidence Docs for Suite " + 150885;
+            System.IO.Directory.CreateDirectory(location);
 
             List<TestCase> cases = new List<TestCase>();
-            cases = requirementsTraceabilityJob.GetTestCaseGivenPlanSuite(149579, 153812);
+            cases = requirementsTraceabilityJob.GetTestCaseGivenPlanSuite(149579, 150885);
  
             foreach (TestCase testCase in cases)
             {
@@ -242,9 +245,12 @@ namespace NUnit.Tests1
                 //Test Objective table
 
                 doc.InsertParagraph("Test Objective").FontSize(16);
-                testSummary.Rows[0].Cells[0].Paragraphs.First().Append("#");
-                testSummary.Rows[0].Cells[1].Paragraphs.First().Append("Title");
-                testSummary.Rows[0].Cells[2].Paragraphs.First().Append("Test Objective");
+                testSummary.Rows[0].Cells[0].Paragraphs.First().Append("#").Color(white);
+                testSummary.Rows[0].Cells[1].Paragraphs.First().Append("Title").Color(white);
+                testSummary.Rows[0].Cells[2].Paragraphs.First().Append("Test Objective").Color(white);
+                testSummary.Rows[0].Cells[0].FillColor = royalBlue;
+                testSummary.Rows[0].Cells[1].FillColor = royalBlue;
+                testSummary.Rows[0].Cells[2].FillColor = royalBlue;
 
                 testSummary.Rows[1].Cells[0].Paragraphs.First().Append(testCase.TestCaseId.ToString());
                 testSummary.Rows[1].Cells[1].Paragraphs.First().Append(testCase.TestDescription);
@@ -256,9 +262,12 @@ namespace NUnit.Tests1
                 doc.InsertParagraph("Steps to follow").FontSize(16);
                 Table testActionResult = doc.AddTable(testCase.TestSteps.Count + 1, 3);
                 testActionResult.SetWidths(columnWidths);
-                testActionResult.Rows[0].Cells[0].Paragraphs.First().Append("Steps");
-                testActionResult.Rows[0].Cells[1].Paragraphs.First().Append("Action");
-                testActionResult.Rows[0].Cells[2].Paragraphs.First().Append("Expected Result");
+                testActionResult.Rows[0].Cells[0].Paragraphs.First().Append("Steps").Color(white);
+                testActionResult.Rows[0].Cells[1].Paragraphs.First().Append("Action").Color(white);
+                testActionResult.Rows[0].Cells[2].Paragraphs.First().Append("Expected Result").Color(white);
+                testActionResult.Rows[0].Cells[0].FillColor = royalBlue;
+                testActionResult.Rows[0].Cells[1].FillColor = royalBlue;
+                testActionResult.Rows[0].Cells[2].FillColor = royalBlue;
                 Console.WriteLine(testName);
                 int i = 0;
                 Console.WriteLine("Test Case Count " + testCase.TestSteps.Count);
@@ -276,11 +285,10 @@ namespace NUnit.Tests1
 
 
                 }
-
+ 
                 doc.InsertTable(testActionResult);
-                doc.SaveAs("C:\\Users\\bryar.h.cole\\Desktop\\TestResults\\" + testName + ".docx");
-            }
-            ;
+                doc.SaveAs(location + "//" + testName + ".docx");
+            };
             #endregion
 
 

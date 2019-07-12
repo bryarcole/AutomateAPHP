@@ -96,7 +96,7 @@ namespace NUnit.Tests1.Steps
         /// <param name="elementLinkText"></param>
         public IWebElement Click(string elementLinkText)
         {
-            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(10));
+            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(20));
 
             IWebElement element = context.FindElement(By.PartialLinkText(elementLinkText));
             wait.Until(ExpectedConditions.ElementToBeClickable(element));
@@ -108,7 +108,7 @@ namespace NUnit.Tests1.Steps
         //Yes IDs matter bruh
         public void GenericCheveronClick(string id)
         {
-            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(10));
+            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(20));
             wait.Until(context =>
             {
                 try
@@ -143,7 +143,7 @@ namespace NUnit.Tests1.Steps
         {
 
 
-            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(10));
+            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(20));
             wait.Until(context =>
             {
                 try
@@ -181,7 +181,7 @@ namespace NUnit.Tests1.Steps
         {
 
             IWebElement cell = context.FindElement(By.XPath("'//*[@id=" + tableID + "]//tr["+ row + "]//td[" + column + "]'"));
-            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(10));
+            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(20));
             wait.Until(context =>
             {
                 try

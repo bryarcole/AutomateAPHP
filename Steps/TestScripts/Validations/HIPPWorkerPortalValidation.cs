@@ -64,7 +64,7 @@ namespace NUnit.Tests1
             string fileName = "TestDoc";
             var doc = DocX.Create(fileName);
             //Steps used
-            StartUp startUp = new StartUp(context);
+            InitiateTest startUp = new InitiateTest(context);
             Generic generic = new Generic(context);
             Utility utility = new Utility(context);
 

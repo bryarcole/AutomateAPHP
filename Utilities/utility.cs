@@ -144,6 +144,8 @@ namespace NUnit.Tests1.Utilities
             test.Log(TestStatus, LogNote);
             return test;
         }
+
+#region Random Strings Number
         public static string RandomAlphaNumericSpecialCharacterString(int length)
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
@@ -185,6 +187,7 @@ namespace NUnit.Tests1.Utilities
         {
             return Regex.IsMatch(value, @"</?(p|div)>");
         }
+#endregion
 
         /// <summary>
         /// Remove tags from a html string

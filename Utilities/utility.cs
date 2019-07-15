@@ -118,9 +118,9 @@ namespace NUnit.Tests1.Utilities
             string TestCase, 
             ExtentTest test)
         {
-            Screenshots.TakeSreenShot(context, ScreenshotLocation + TestCase + TestCount + ".png");
+            Screenshots.TakeSreenShot(context, ScreenshotLocation + TestCase + ".png");
             test.Log(TestStatus, LogNote);
-            test.CreateNode(LogNote).AddScreenCaptureFromPath("images\\" + TestCase + TestCount + ".png");
+            test.CreateNode(LogNote).AddScreenCaptureFromPath("images\\" + TestCase + ".png");
             return test;
         }
         public ExtentTest RecordStepStatusExtent(
@@ -152,7 +152,7 @@ namespace NUnit.Tests1.Utilities
 
             return test;
         }
-        public ExtentTest RecordPassStatusMAIN(
+        public ExtentTest RecordStepStatusMAIN(
             string LogNote,
             Status TestStatus,
             string ScreenshotLocation,
@@ -179,11 +179,10 @@ namespace NUnit.Tests1.Utilities
             return test;
         }
 
-        public void RecordPassStatusMAIN(
+        public void RecordStepStatusMAIN(
             string LogNote,
             string ScreenshotLocation,
             string TestCase,
-            string description,
             DocX doc
             )
         {
@@ -195,7 +194,6 @@ namespace NUnit.Tests1.Utilities
             p.HeightInches = 3.8;
             p.WidthInches = 6.8;
             par.AppendPicture(p);
-            Paragraph desc = doc.InsertParagraph(description);
             par.Alignment = Alignment.center;
             par.FontSize(16);
             par.AppendLine("\n");
@@ -263,37 +261,37 @@ namespace NUnit.Tests1.Utilities
         }
 
         #region Random Strings Number
-        public static string RandomAlphaNumericSpecialCharacterString(int length)
+        public string RandomAlphaNumericSpecialCharacterString(int length)
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
             return new string(Enumerable.Repeat(chars, length)
               .Select(s => s[random.Next(s.Length)]).ToArray());
         }
-        public static string RandomNumericString(int length)
+        public string RandomNumericString(int length)
         {
             const string chars = "0123456789";
             return new string(Enumerable.Repeat(chars, length)
               .Select(s => s[random.Next(s.Length)]).ToArray());
         }
-        public static string RandomOneTwoThree(int length)
+        public string RandomOneTwoThree(int length)
         {
             const string chars = "123";
             return new string(Enumerable.Repeat(chars, length)
               .Select(s => s[random.Next(s.Length)]).ToArray());
         }
-        public static string RandomNumericAndSpciaChracterString(int length)
+        public string RandomNumericAndSpciaChracterString(int length)
         {
             const string chars = "0123456789!@#$%^&*()/<>.,[]}{;";
             return new string(Enumerable.Repeat(chars, length)
               .Select(s => s[random.Next(s.Length)]).ToArray());
         }
-        public static string RandomAlphaString(int length)
+        public string RandomAlphaString(int length)
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             return new string(Enumerable.Repeat(chars, length)
               .Select(s => s[random.Next(s.Length)]).ToArray());
         }
-        public static string RandomSpecialCharacterString(int length)
+        public string RandomSpecialCharacterString(int length)
         {
             const string chars = "!@#$%^&*()/<>.,[]}{;'";
             return new string(Enumerable.Repeat(chars, length)
@@ -304,6 +302,46 @@ namespace NUnit.Tests1.Utilities
         {
             return Regex.IsMatch(value, @"</?(p|div)>");
         }
+        #endregion
+        #region Random Strings Number Static
+        public static string RandomAlphaNumericSpecialCharacterStringStatic(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+        public static string RandomNumericStringStatic(int length)
+        {
+            const string chars = "0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+        public static string RandomOneTwoThreeStatic(int length)
+        {
+            const string chars = "123";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+        public static string RandomNumericAndSpciaChracterStringStatic(int length)
+        {
+            const string chars = "0123456789!@#$%^&*()/<>.,[]}{;";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+        public static string RandomAlphaStringStatic(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+        public static string RandomSpecialCharacterStringStatic(int length)
+        {
+            const string chars = "!@#$%^&*()/<>.,[]}{;'";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
+
         #endregion
 
         /// <summary>

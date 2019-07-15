@@ -42,11 +42,16 @@ namespace NUnit.Tests1
 
         int sucessCount = 1;
         int errorCount = 1;
-        
+
         [Test]
         [Category("Access Data Elements")]
         public void AccessDataElements()
         {
+            ExtentTest test = null;
+            context = new ChromeDriver();
+            context.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            test = extent.CreateTest("Test " + "<scenario>").Pass("Access Data " + sucessCount + " Begin");
+
             context = new ChromeDriver();
         }
 

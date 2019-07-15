@@ -159,7 +159,7 @@
     <Compile Include="Pages\WorkerPortal\WorkerPortalLandingPage.cs" />
     <Compile Include="Steps\Generic.cs" />
     <Compile Include="Utilities\StartUp.cs" />
-    <Compile Include="Help\TestClassTemplate.cs" />
+    <Compile Include="Help\ExtentReportTemplate.cs" />
     <Compile Include="Steps\TestScripts\HIPPWorkFlowTest.cs" />
     <Compile Include="Steps\TestScripts\Validations\HIPPWorkerPortalValidation.cs" />
     <Compile Include="Steps\TestScripts\HIPPApplicationInput.cs" />

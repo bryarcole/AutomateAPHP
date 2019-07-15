@@ -19,22 +19,24 @@ namespace NUnit.Tests1.Pages
     {
 
         IWebDriver context;
-
         public HIPPWorkerPortalNegativeValidation(IWebDriver context) : base(context)
         {
             this.context = context;
             PageFactory.InitElements(context, this);
         }
-        string randomSpecial8CharacterString = Utility.RandomSpecialCharacterString(8);
-        string random51CharacterString = Utility.RandomAlphaNumericSpecialCharacterString(51);
-        string random101CharacterString = Utility.RandomAlphaNumericSpecialCharacterString(101);
+
+
+        string randomSpecial8CharacterString = Utility.RandomNumericStringStatic(8);
+        string random51CharacterString = Utility.RandomAlphaNumericSpecialCharacterStringStatic(51);
+        string random101CharacterString = Utility.RandomAlphaNumericSpecialCharacterStringStatic(101);
         public void ValidateApplicationOverveiw(ExtentTest test, Utility utility)
         {
 
+            
             #region Generate Random Nums
-            string randomSpecial8CharacterString = Utility.RandomSpecialCharacterString(8);
-            string random51CharacterString = Utility.RandomAlphaNumericSpecialCharacterString(51);
-            string random101CharacterString = Utility.RandomAlphaNumericSpecialCharacterString(101);
+            string randomSpecial8CharacterString = utility.RandomSpecialCharacterString(8);
+            string random51CharacterString = utility.RandomAlphaNumericSpecialCharacterString(51);
+            string random101CharacterString = utility.RandomAlphaNumericSpecialCharacterString(101);
             #endregion
             #region Application Recieve Date Negative Check
             ApplicationRecieveDateOverlay.Click();
@@ -137,10 +139,10 @@ namespace NUnit.Tests1.Pages
         {
 
             #region Generate Random Nums
-            string randomSpecial10CharacterString = Utility.RandomSpecialCharacterString(10);
-            string random51CharacterString = Utility.RandomAlphaNumericSpecialCharacterString(51);
-            string random101CharacterString = Utility.RandomAlphaNumericSpecialCharacterString(101);
-            string randomNumericSpecialString = Utility.RandomNumericAndSpciaChracterString(10);
+            string randomSpecial10CharacterString = utility.RandomSpecialCharacterString(10);
+            string random51CharacterString = utility.RandomAlphaNumericSpecialCharacterString(51);
+            string random101CharacterString = utility.RandomAlphaNumericSpecialCharacterString(101);
+            string randomNumericSpecialString = utility.RandomNumericAndSpciaChracterString(10);
             #endregion
             #region First Name Field
             txtFirstName.SendKeys(random51CharacterString);
@@ -300,10 +302,10 @@ namespace NUnit.Tests1.Pages
         {
 
             #region Generate Random Nums
-            string randomSpecial10CharacterString = Utility.RandomSpecialCharacterString(10);
-            string random51CharacterString = Utility.RandomAlphaNumericSpecialCharacterString(51);
-            string random101CharacterString = Utility.RandomAlphaNumericSpecialCharacterString(101);
-            string randomNumericSpecialString = Utility.RandomNumericAndSpciaChracterString(10);
+            string randomSpecial10CharacterString = utility.RandomSpecialCharacterString(10);
+            string random51CharacterString = utility.RandomAlphaNumericSpecialCharacterString(51);
+            string random101CharacterString = utility.RandomAlphaNumericSpecialCharacterString(101);
+            string randomNumericSpecialString = utility.RandomNumericAndSpciaChracterString(10);
             #endregion
 
             HouseHoldAdd.Click();
@@ -451,10 +453,10 @@ namespace NUnit.Tests1.Pages
         {
 
             #region Generate Random Nums
-            string randomSpecial10CharacterString = Utility.RandomSpecialCharacterString(10);
-            string random51CharacterString = Utility.RandomAlphaNumericSpecialCharacterString(51);
-            string random101CharacterString = Utility.RandomAlphaNumericSpecialCharacterString(101);
-            string randomNumericSpecialString = Utility.RandomNumericAndSpciaChracterString(10);
+            string randomSpecial10CharacterString = utility.RandomSpecialCharacterString(10);
+            string random51CharacterString = utility.RandomAlphaNumericSpecialCharacterString(51);
+            string random101CharacterString = utility.RandomAlphaNumericSpecialCharacterString(101);
+            string randomNumericSpecialString = utility.RandomNumericAndSpciaChracterString(10);
             #endregion
             Thread.Sleep(2000);
 
@@ -547,11 +549,11 @@ namespace NUnit.Tests1.Pages
         {
 
             #region Generate Random Nums
-            string randomSpecial10CharacterString = Utility.RandomSpecialCharacterString(10);
-            string randomSpecial9CharacterString = Utility.RandomSpecialCharacterString(9);
-            string random51CharacterString = Utility.RandomAlphaNumericSpecialCharacterString(51);
-            string random101CharacterString = Utility.RandomAlphaNumericSpecialCharacterString(101);
-            string randomNumericSpecialString = Utility.RandomNumericAndSpciaChracterString(10);
+            string randomSpecial10CharacterString = utility.RandomSpecialCharacterString(10);
+            string randomSpecial9CharacterString = utility.RandomSpecialCharacterString(9);
+            string random51CharacterString = utility.RandomAlphaNumericSpecialCharacterString(51);
+            string random101CharacterString = utility.RandomAlphaNumericSpecialCharacterString(101);
+            string randomNumericSpecialString = utility.RandomNumericAndSpciaChracterString(10);
             #endregion
 
 
@@ -686,9 +688,9 @@ namespace NUnit.Tests1.Pages
         {
 
             #region Generate Random Nums
-            string randomSpecial10CharacterString = Utility.RandomSpecialCharacterString(10);
-            string randomSpecial9CharacterString = Utility.RandomSpecialCharacterString(9);
-            string random51CharacterString = Utility.RandomAlphaNumericSpecialCharacterString(51);
+            string randomSpecial10CharacterString = utility.RandomSpecialCharacterString(10);
+            string randomSpecial9CharacterString = utility.RandomSpecialCharacterString(9);
+            string random51CharacterString = utility.RandomAlphaNumericSpecialCharacterString(51);
             #endregion
 
             #region Employer Name
@@ -811,10 +813,10 @@ namespace NUnit.Tests1.Pages
         {
 
             #region Generate Random Nums
-            string randomSpecial10CharacterString = Utility.RandomSpecialCharacterString(10);
-            string randomSpecial9CharacterString = Utility.RandomSpecialCharacterString(9);
-            string random51CharacterString = Utility.RandomAlphaNumericSpecialCharacterString(51);
-            string randomNumbericString = Utility.RandomNumericString(9);
+            string randomSpecial10CharacterString = utility.RandomSpecialCharacterString(10);
+            string randomSpecial9CharacterString = utility.RandomSpecialCharacterString(9);
+            string random51CharacterString = utility.RandomAlphaNumericSpecialCharacterString(51);
+            string randomNumbericString = utility.RandomNumericString(9);
             #endregion
 
             #region Employme Status
@@ -940,10 +942,10 @@ namespace NUnit.Tests1.Pages
         {
 
             #region Generate Random Nums
-            string randomSpecial10CharacterString = Utility.RandomSpecialCharacterString(10);
-            string random51CharacterString = Utility.RandomAlphaNumericSpecialCharacterString(51);
-            string random101CharacterString = Utility.RandomAlphaNumericSpecialCharacterString(101);
-            string randomNumericSpecialString = Utility.RandomNumericAndSpciaChracterString(8);
+            string randomSpecial10CharacterString = utility.RandomSpecialCharacterString(10);
+            string random51CharacterString = utility.RandomAlphaNumericSpecialCharacterString(51);
+            string random101CharacterString = utility.RandomAlphaNumericSpecialCharacterString(101);
+            string randomNumericSpecialString = utility.RandomNumericAndSpciaChracterString(8);
             #endregion
             #region First Name Field
             txtEmpFName.SendKeys(random51CharacterString);
@@ -1096,10 +1098,10 @@ namespace NUnit.Tests1.Pages
         {
 
             #region Generate Random Nums
-            string randomSpecial10CharacterString = Utility.RandomSpecialCharacterString(10);
-            string random51CharacterString = Utility.RandomAlphaNumericSpecialCharacterString(51);
-            string random101CharacterString = Utility.RandomAlphaNumericSpecialCharacterString(101);
-            string randomNumericSpecialString = Utility.RandomNumericAndSpciaChracterString(8);
+            string randomSpecial10CharacterString = utility.RandomSpecialCharacterString(10);
+            string random51CharacterString = utility.RandomAlphaNumericSpecialCharacterString(51);
+            string random101CharacterString = utility.RandomAlphaNumericSpecialCharacterString(101);
+            string randomNumericSpecialString = utility.RandomNumericAndSpciaChracterString(8);
             #endregion
             btnMembershipAdd.Click();
 
@@ -1199,10 +1201,10 @@ namespace NUnit.Tests1.Pages
         {
 
             #region Generate Random Nums
-            string randomSpecial10CharacterString = Utility.RandomSpecialCharacterString(10);
-            string random51CharacterString = Utility.RandomAlphaNumericSpecialCharacterString(51);
-            string random101CharacterString = Utility.RandomAlphaNumericSpecialCharacterString(101);
-            string randomNumericSpecialString = Utility.RandomNumericAndSpciaChracterString(10);
+            string randomSpecial10CharacterString = utility.RandomSpecialCharacterString(10);
+            string random51CharacterString = utility.RandomAlphaNumericSpecialCharacterString(51);
+            string random101CharacterString = utility.RandomAlphaNumericSpecialCharacterString(101);
+            string randomNumericSpecialString = utility.RandomNumericAndSpciaChracterString(10);
             #endregion
 
 
@@ -1285,10 +1287,10 @@ namespace NUnit.Tests1.Pages
         {
 
             #region Generate Random Nums
-            string randomSpecial10CharacterString = Utility.RandomSpecialCharacterString(10);
-            string random51CharacterString = Utility.RandomAlphaNumericSpecialCharacterString(51);
-            string random101CharacterString = Utility.RandomAlphaNumericSpecialCharacterString(101);
-            string randomNumericSpecialString = Utility.RandomNumericAndSpciaChracterString(10);
+            string randomSpecial10CharacterString = utility.RandomSpecialCharacterString(10);
+            string random51CharacterString = utility.RandomAlphaNumericSpecialCharacterString(51);
+            string random101CharacterString = utility.RandomAlphaNumericSpecialCharacterString(101);
+            string randomNumericSpecialString = utility.RandomNumericAndSpciaChracterString(10);
             #endregion
 
             #region Date input
@@ -1337,11 +1339,11 @@ namespace NUnit.Tests1.Pages
         {
 
             #region Generate Random Nums
-            string randomSpecial10CharacterString = Utility.RandomSpecialCharacterString(10);
-            string random51CharacterString = Utility.RandomAlphaNumericSpecialCharacterString(51);
-            string random101CharacterString = Utility.RandomAlphaNumericSpecialCharacterString(101);
-            string randomNumericSpecialString = Utility.RandomSpecialCharacterString(10);
-            string number = Utility.RandomOneTwoThree(1);
+            string randomSpecial10CharacterString = utility.RandomSpecialCharacterString(10);
+            string random51CharacterString = utility.RandomAlphaNumericSpecialCharacterString(51);
+            string random101CharacterString = utility.RandomAlphaNumericSpecialCharacterString(101);
+            string randomNumericSpecialString = utility.RandomSpecialCharacterString(10);
+            string number = utility.RandomOneTwoThree(1);
            
             #endregion
 

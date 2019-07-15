@@ -21,7 +21,7 @@ namespace NUnit.Tests1.Steps
 {
     public class CreateHIPPApplication
     {
-        public void SubmitHIPPCaseSubmissionUltimate(IWebDriver context, bool renewal, string testName, string screenshotLocation, string activityReason, ExtentTest test, DocX doc)
+        public void SubmitHIPPCaseSubmissionUltimate(IWebDriver context, bool renewal, string screenshotLocation, DocX doc)
         {
             APHPHomePage loginPage = new APHPHomePage(context);
             WorkerPortalLandingPage landingPage = new WorkerPortalLandingPage(context);
@@ -32,8 +32,8 @@ namespace NUnit.Tests1.Steps
             Utility utility = new Utility(context);
 
             DateTime now = DateTime.Today;
-            #region New or RenewalLogic
-            if (!renewal)
+            #region New or Renewal Logic
+            if (renewal)
             {
                 submitApp.ApplicationOverviewInput(
                     DateTime.Today.AddMonths(+2).AddYears(-1).ToString("MM/dd/yyyy"),
@@ -41,7 +41,7 @@ namespace NUnit.Tests1.Steps
                     DateTime.Today.AddMonths(-6).ToString("MM/dd/yyyy"),
                     DateTime.Today.ToString("MM/dd/yyyy"),
                     DateTime.Today.ToString("MM/dd/yyyy"),
-                    Utility.RandomNumericString(9)
+                    utility.RandomNumericString(9)
                     )   ;
             }
             else
@@ -52,13 +52,13 @@ namespace NUnit.Tests1.Steps
                     DateTime.Today.AddMonths(-6).ToString("MM/dd/yyyy"),
                     DateTime.Today.ToString("MM/dd/yyyy"),
                     DateTime.Today.ToString("MM/dd/yyyy"),
-                    Utility.RandomNumericString(9)
+                    utility.RandomNumericString(9)
                     );
             }
 #endregion
 
-            #region No optional
-            utility.RecordPassStatusMAIN("Input application Overview Sucess", screenshotLocation,  "ApplicationOverview", Status.Pass, test, doc);
+            #region Required Input
+            utility.RecordStepStatusMAIN("Input application Overview Sucess", screenshotLocation,  "ApplicationOverview", doc);
             generic.GenericCheveronClick("10");
             submitApp.HouseHoldInformationInput(
                 "Self",
@@ -128,7 +128,7 @@ namespace NUnit.Tests1.Steps
                 false,
                 now.AddYears(-12).ToString("MM/dd/yyyy"),
                 "Monthly",
-                Utility.RandomNumericString(3));
+                utility.RandomNumericString(3));
             generic.GenericCheveronClick("16");
             generic.GenericCheveronClick("14");
             generic.GenericCheveronClick("17");
@@ -211,8 +211,12 @@ namespace NUnit.Tests1.Steps
                 false);
             Thread.Sleep(2000);
             submitApp.ClickSave();
+
+
             Thread.Sleep(2000);
             generic.HoverByElement(workitem.txtWorkItemType);
+
+            utility.RecordStepStatus("Application Saved", screenshotLocation, "ApplicationSaveStatus", doc);
             #endregion
 
             #region Approve/Deny/Pend Logic

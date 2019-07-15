@@ -29,7 +29,7 @@ namespace NUnit.Tests1.Steps
         /// <param name="screenshotLocation"></param>
         /// <param name="test"></param>
         /// <param name="doc"></param>
-        public string HippWorkFlow(string activityReason,IWebDriver context, string screenshotLocation, ExtentTest test, DocX doc)
+        public string HippWorkFlow(string activityReason,IWebDriver context, string screenshotLocation, DocX doc)
         {
 
             APHPHomePage loginPage = new APHPHomePage(context);
@@ -48,7 +48,7 @@ namespace NUnit.Tests1.Steps
 
             ///Pend Application
             workitem.ActivitystatusResn_Input.Click();
-            workitem.ActivitystatusResn_Input.SendKeys("Denied");
+            workitem.ActivitystatusResn_Input.SendKeys(activityReason);
 
             switch(activityReason){
                 case "Approved":
@@ -70,9 +70,9 @@ namespace NUnit.Tests1.Steps
             string workItem = workitem.gatherWorkItemType();
             string appQueue = workitem.gatherWorkItemStatus();
             doc.InsertAtBookmark(appNumber + "\n " + workItem + "\n " + appQueue, "Results of pass: ");
-            utility.RecordPassStatus("App in " + appQueue + "and in status of " + activityReason, Status.Pass, screenshotLocation, "CheckAppStaus", test, doc);
+            utility.RecordStepStatusMAIN("App in " + appQueue + "and in status of " + activityReason, screenshotLocation, "CheckAppStaus", doc);
             workitem.ClickCompletedButton();
-            utility.RecordPassStatus("Applciation Completed", Status.Pass, screenshotLocation, "Application Completed", test, doc);
+            utility.RecordStepStatusMAIN("Appliciation Completed", screenshotLocation, "Application Completed", doc);
 
             return appNumber;
 
@@ -88,7 +88,7 @@ namespace NUnit.Tests1.Steps
         /// <param name="screenshotLocation"></param>
         /// <param name="test"></param>
         /// <param name="doc"></param>
-        public void HippPendCase(string appNumber, IWebDriver context, int sucessCount, string screenshotLocation, ExtentTest test, DocX doc)
+        public void HippPendCase(string appNumber, IWebDriver context, string screenshotLocation, DocX doc)
         {
 
             APHPHomePage loginPage = new APHPHomePage(context);
@@ -122,7 +122,7 @@ namespace NUnit.Tests1.Steps
             hIPPSearchpage.SearchHiPPCase("Contains", "Application ID", appNumber);
             hIPPSearchpage.SearchButtonClick();
             generic.HoverByLinkText(appNumber);
-            utility.RecordPassStatus("Search Results 2", Status.Pass, screenshotLocation, sucessCount, "SearchResults2", test, doc);
+            utility.RecordStepStatusMAIN("Search results", screenshotLocation, "SearchResults", doc);
             generic.genericLinkTextClick(appNumber);
             workitem.ClickWorkItemButton();
             Thread.Sleep(3000);
@@ -139,10 +139,10 @@ namespace NUnit.Tests1.Steps
             generic.GenericCheveronClick("3");
             generic.GenericCheveronClick("4");
             generic.HoverByElement(workitem.ActivitystatusResn);
-            utility.RecordPassStatus("Status is Pended", Status.Pass, screenshotLocation, sucessCount, "PendedStatus", test, doc);
+            utility.RecordStepStatusMAIN("Status is Pended", screenshotLocation, "PendedStatus", doc);
 
             workitem.ClickCompletedButton();
-            utility.RecordPassStatus("Case Completed", Status.Pass, screenshotLocation, sucessCount, "appcompleted", test, doc);
+            utility.RecordStepStatusMAIN("Case Completed", screenshotLocation, "Case Completed", doc);
         }
 
     }

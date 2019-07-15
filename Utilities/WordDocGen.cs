@@ -17,7 +17,7 @@ namespace NUnit.Tests1.Utilities
     {
         public void CreateWordDocSuite(string userName, int planID, int suiteID)
         {
-
+            
             #region Boring stuff
             // Test Case Pull
             #region Pull Test Case from TFS
@@ -44,7 +44,6 @@ namespace NUnit.Tests1.Utilities
             Color royalBlue = Color.FromName("RoyalBlue");
             Color white = Color.FromName("White");
             RequirementsTraceabilityJobs requirementsTraceabilityJob = new RequirementsTraceabilityJobs(props);
-
             string location = "C:\\Users\\" + userName + "\\Desktop\\Evidence Docs for Suite " + suiteID;
             System.IO.Directory.CreateDirectory(location);
 
@@ -107,7 +106,7 @@ namespace NUnit.Tests1.Utilities
             #endregion
         }
 
-        public DocX CreateWordDoc(int suiteID, int testCaseId)
+        public DocX CreateWordDoc( int testCaseId,int suiteID)
         {
 
             #region Pull Test Case from TFS

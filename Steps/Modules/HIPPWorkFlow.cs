@@ -39,7 +39,7 @@ namespace NUnit.Tests1.Steps
             WorkItemComponent workitem = new WorkItemComponent(context);
             Generic generic = new Generic(context);
             Utility utility = new Utility(context);
-
+            InitiateTest startUp = new InitiateTest(context);
 
             //Gather Data from app
             generic.GenericCheveronClick("2");
@@ -73,6 +73,18 @@ namespace NUnit.Tests1.Steps
             utility.RecordStepStatusMAIN("App in " + appQueue + "and in status of " + activityReason, screenshotLocation, "CheckAppStaus", doc);
             workitem.ClickCompletedButton();
             utility.RecordStepStatusMAIN("Appliciation Completed", screenshotLocation, "Application Completed", doc);
+            context.Url = startUp.AWSINTWoker;
+
+            landingPage.HippApplicationSearch();
+            hIPPSearchpage.SearchHiPPCase("Contains", "Application ID", appNumber);
+            hIPPSearchpage.SearchButtonClick();
+            workitem.ClickWorkItemButton();
+            Thread.Sleep(3000);
+            generic.GenericCheveronClick("3");
+            generic.GenericCheveronClick("4");
+            string workItem2 = workitem.gatherWorkItemType();
+            string appQueue2 = workitem.gatherWorkItemStatus();
+            doc.InsertAtBookmark("\n " + "Pass 2: " + workItem2 + "\n " + appQueue2, "Pass 2");
 
             return appNumber;
 

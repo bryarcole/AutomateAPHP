@@ -69,15 +69,40 @@ namespace NUnit.Tests1.Steps
             string appNumber = workitem.gatherAppNumber();
             string workItem = workitem.gatherWorkItemType();
             string appQueue = workitem.gatherWorkItemStatus();
-            doc.InsertAtBookmark(appNumber + "\n " + workItem + "\n " + appQueue, "Results of pass: ");
+            doc.InsertAtBookmark(appNumber + "\n " + workItem + "\n " + appQueue, "Pass 1");
             utility.RecordStepStatusMAIN("App in " + appQueue + "and in status of " + activityReason, screenshotLocation, "CheckAppStaus", doc);
             workitem.ClickCompletedButton();
             utility.RecordStepStatusMAIN("Appliciation Completed", screenshotLocation, "Application Completed", doc);
             context.Url = startUp.AWSINTWoker;
 
+            workitem.ClickExitButton();
+
+            try
+            {
+                workitem.ClickExitButton();
+            }
+            catch (Exception ex)
+            {
+                Type exType = ex.GetType();
+                if (exType == typeof(TargetInvocationException) ||
+                    exType == typeof(NoSuchElementException) ||
+                    exType == typeof(ElementClickInterceptedException) ||
+                    exType == typeof(ElementNotVisibleException) ||
+                    exType == typeof(InvalidOperationException))
+                {
+                    //Do nothing and continue
+                }
+            }
             landingPage.HippApplicationSearch();
             hIPPSearchpage.SearchHiPPCase("Contains", "Application ID", appNumber);
             hIPPSearchpage.SearchButtonClick();
+            generic.HoverByLinkText(appNumber);
+            utility.RecordStepStatusMAIN("Search results", screenshotLocation, "SearchResults", doc);
+            generic.genericLinkTextClick(appNumber);
+            if(activityReason == "Denied")
+            {
+                return appNumber;
+            }
             workitem.ClickWorkItemButton();
             Thread.Sleep(3000);
             generic.GenericCheveronClick("3");
@@ -85,8 +110,13 @@ namespace NUnit.Tests1.Steps
             string workItem2 = workitem.gatherWorkItemType();
             string appQueue2 = workitem.gatherWorkItemStatus();
             doc.InsertAtBookmark("\n " + "Pass 2: " + workItem2 + "\n " + appQueue2, "Pass 2");
-
+            if (activityReason == "Pended")
+            {
+                HippPendCase(appNumber, context, screenshotLocation, doc);
+            }
             return appNumber;
+
+    
 
         }
 
@@ -113,48 +143,37 @@ namespace NUnit.Tests1.Steps
             HIPPSearch hIPPSearch = new HIPPSearch();
             InitiateTest startUp = new InitiateTest(context);
             context.Url = startUp.AWSINTWoker;
-
-            try
-            {
-                workitem.ClickExitButton();
-            }
-            catch (Exception ex)
-            {
-                Type exType = ex.GetType();
-                if (exType == typeof(TargetInvocationException) ||
-                    exType == typeof(NoSuchElementException) ||
-                    exType == typeof(ElementClickInterceptedException) ||
-                    exType == typeof(ElementNotVisibleException) ||
-                    exType == typeof(InvalidOperationException))
-                {
-                    //Do nothing and continue
-                }
-            }
+            generic.GenericCheveronClick("3");
+            generic.GenericCheveronClick("4");
+            workitem.btnActivityDone.Click();
+            workitem.ClickCompletedButton();
+            context.Url = startUp.AWSINTWoker;
+            workitem.ClickExitButton();
             landingPage.HippApplicationSearch();
             hIPPSearchpage.SearchHiPPCase("Contains", "Application ID", appNumber);
             hIPPSearchpage.SearchButtonClick();
             generic.HoverByLinkText(appNumber);
             utility.RecordStepStatusMAIN("Search results", screenshotLocation, "SearchResults", doc);
             generic.genericLinkTextClick(appNumber);
+
             workitem.ClickWorkItemButton();
             Thread.Sleep(3000);
+
             generic.GenericCheveronClick("3");
             generic.GenericCheveronClick("4");
-            string workItem2 = workitem.gatherWorkItemType();
-            string appQueue2 = workitem.gatherWorkItemStatus();
-            doc.InsertAtBookmark("\n " + "Pass 2: " + workItem2 + "\n " + appQueue2, "Pass 2");
-
-            workitem.ActivitystatusResn_Input.SendKeys("Pend");
-
             workitem.ClickPendButton();
-            Thread.Sleep(3000);
             generic.GenericCheveronClick("3");
             generic.GenericCheveronClick("4");
             generic.HoverByElement(workitem.ActivitystatusResn);
+
+            Thread.Sleep(2000);
             utility.RecordStepStatusMAIN("Status is Pended", screenshotLocation, "PendedStatus", doc);
 
             workitem.ClickCompletedButton();
             utility.RecordStepStatusMAIN("Case Completed", screenshotLocation, "Case Completed", doc);
+
+
+
         }
 
     }

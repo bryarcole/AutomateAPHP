@@ -44,15 +44,15 @@ namespace NUnit.Tests1
 
 
         public IWebDriver context;
-        string screenshotLocation = @"C:\\Users\\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Reports\HIPPWorkFlow\images\";
+        string screenshotLocation = @"C:\\Users\\bryar.h.cole\Desktop\AutomationProjects\AutomateAPHP\Reports\HIPPWorkFlow\images\";
 
 
         //Finished
         [Test]
         [TestCase("Approved", 152492, false)]
         [TestCase("Denied", 152493, false)]
-        [TestCase("Pended", 152493, false)]
-        [Category("HIPP WorkFlow"), Category("Renewal")]
+        [TestCase("Pended", 152494, false)]
+        [Category("HIPP WorkFlow"), Category("Paper Initial")]
         public void TC_IT03_HIPP_Workflow(string stat, int testCaseID, bool renewalStatus)
         {
 
@@ -62,14 +62,11 @@ namespace NUnit.Tests1
             context.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
 
 
-            Generic generic = new Generic(context);
             Utility utility = new Utility(context);
             APHPHomePage loginPage = new APHPHomePage(context);
             WorkerPortalLandingPage landingPage = new WorkerPortalLandingPage(context);
             HIPPSearchPage hIPPSearch = new HIPPSearchPage(context);
             InitiateTest startUp = new InitiateTest(context);
-            HIPPSubmitApplicationPage submitApp = new HIPPSubmitApplicationPage(context);
-            WorkItemComponent workitem = new WorkItemComponent(context);
             CreateHIPPApplication app = new CreateHIPPApplication();
             HIPPWorkFlow workFlow = new HIPPWorkFlow();
             WordDocGen genWordDoc = new WordDocGen();
@@ -98,11 +95,6 @@ namespace NUnit.Tests1
                 
                 app.SubmitHIPPCaseSubmissionUltimate(context, false,  screenshotLocation, doc);
                 string appNumber = workFlow.HippWorkFlow(stat, context,screenshotLocation, doc);
-
-                if(stat == "Pended")
-                {
-                    workFlow.HippPendCase(appNumber, context, screenshotLocation, doc);
-                }
 
 
             }

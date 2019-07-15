@@ -20,7 +20,7 @@ namespace NUnit.Tests1.Steps
     public class HIPPSearch
     {
 
-        public void HIPPMemberSearch(string appNumber, IWebDriver context, int sucessCount, string screenshotLocation, ExtentTest test, DocX doc)
+        public void HIPPMemberSearch(string appNumber, IWebDriver context)
         {
 
             APHPHomePage loginPage = new APHPHomePage(context);
@@ -37,7 +37,6 @@ namespace NUnit.Tests1.Steps
             hIPPSearch.SearchHiPPCase("Contains", "MemberID", appNumber);
             hIPPSearch.SearchButtonClick();
             generic.HoverByLinkText(appNumber);
-            utility.RecordPassStatus("Search Results", Status.Pass, screenshotLocation, sucessCount, "SearchResults2", test, doc);
             generic.genericLinkTextClick(appNumber);
 
         }
@@ -51,7 +50,7 @@ namespace NUnit.Tests1.Steps
         /// <param name="screenshotLocation"></param>
         /// <param name="test"></param>
         /// <param name="doc"></param>
-        public void HIPPAppSearch(string appNumber, IWebDriver context, int sucessCount, string screenshotLocation, ExtentTest test, DocX doc)
+        public void HIPPAppSearch(string appNumber, IWebDriver context)
         {
 
             APHPHomePage loginPage = new APHPHomePage(context);
@@ -68,7 +67,11 @@ namespace NUnit.Tests1.Steps
             hIPPSearch.SearchHiPPCase("Contains", "Application ID", appNumber);
             hIPPSearch.SearchButtonClick();
             generic.HoverByLinkText(appNumber);
-            utility.RecordPassStatus("Search Results", Status.Pass, screenshotLocation, sucessCount, "SearchResults2", test, doc);
+
+        }
+
+        public void HIPPClickSearchResult(string appNumber)
+        {
 
         }
     }

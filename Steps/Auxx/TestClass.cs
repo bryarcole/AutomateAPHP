@@ -21,6 +21,11 @@ namespace NUnit.Tests1
     [Author("Bryar Cole", "Bryar.h.cole@gmail.com")]
     public class TestClass
     {
+
+
+
+
+
         ExtentReports extent = null;
         [OneTimeSetUp]
         public void ExtentStart()
@@ -77,10 +82,10 @@ namespace NUnit.Tests1
                 landingPage.HippApplicationSearch();
                 hIPPSearch.ClickBeginNewApp();
 
-                utility.RecordPassStatus("Navigate to Page successfully", Status.Pass, screenshotLocation, testCount, "NavtoPageSucess", test);
+                utility.RecordPassStatusExtent("Navigate to Page successfully", Status.Pass, screenshotLocation, testCount, "NavtoPageSucess", test);
 
                 generic.HoverByLinkText("Member");
-                utility.RecordPassStatus("Top menu appears", Status.Pass, screenshotLocation, testCount, "InputDateSucess", test);
+                utility.RecordPassStatusExtent("Top menu appears", Status.Pass, screenshotLocation, testCount, "InputDateSucess", test);
 
 
 
@@ -95,12 +100,12 @@ namespace NUnit.Tests1
             }
             catch(NoSuchElementException e)
             {
-                utility.RecordPassStatus(e.Message, Status.Fail, screenshotLocation, errorCount, "fail", test);
+                utility.RecordPassStatusExtent(e.Message, Status.Fail, screenshotLocation, errorCount, "fail", test);
                 throw;
             }
             catch(Exception e)
             {
-                utility.RecordPassStatus(e.Message + "/n" + e.InnerException + "/n" + e.StackTrace, Status.Fail, screenshotLocation, errorCount, "error", test);
+                utility.RecordPassStatusExtent(e.Message + "/n" + e.InnerException + "/n" + e.StackTrace, Status.Fail, screenshotLocation, errorCount, "error", test);
                 throw;
 
             }

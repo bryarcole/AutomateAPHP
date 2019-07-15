@@ -11,7 +11,7 @@ using OpenQA.Selenium.Support.PageObjects;
 using System.Threading;
 using OpenQA.Selenium.Support.UI;
 
-namespace NUnit.Tests1.Steps
+namespace NUnit.Tests1.Utilities
 {
 
     public class Generic
@@ -24,7 +24,7 @@ namespace NUnit.Tests1.Steps
         }
 
         [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'signoutBtn')]")]
-        public IWebElement signoutBtn { get; set; }
+        public static IWebElement signoutBtn { get; set; }
 
 
         #region Search Result and assigned items buttons
@@ -32,19 +32,19 @@ namespace NUnit.Tests1.Steps
         /// Search Result buttons
         /// </summary>
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'btnNext')]")]
-        private IWebElement assignedItemsNext { get; set; }
+        private static IWebElement assignedItemsNext { get; set; }
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'btnPrev')]")]
-        private IWebElement assignedItemsPrev { get; set; }
+        private static IWebElement assignedItemsPrev { get; set; }
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'btnLast')]")]
-        private IWebElement assignedItemsLast { get; set; }
+        private static IWebElement assignedItemsLast { get; set; }
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'btnFirst')]")]
-        private IWebElement assignedItemsFirst { get; set; }
+        private static IWebElement assignedItemsFirst { get; set; }
 
-        public void searchResultNext()
+        public static void searchResultNext()
         {
             assignedItemsNext.Click();
         }
-        public void searchResultPrev()
+        public static void searchResultPrev()
         {
             assignedItemsPrev.Click();
         }

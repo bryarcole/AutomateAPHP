@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 using AventStack.ExtentReports;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using RequirementsTraceability;
+using TFSCommon.Common;
+using TFSCommon.Data;
 using Xceed.Words.NET;
 
 namespace NUnit.Tests1.Utilities
@@ -26,11 +29,92 @@ namespace NUnit.Tests1.Utilities
         {
             return Regex.IsMatch(value, @"</?(p|div)>");
         }
-        public ExtentTest RecordPassStatus(
+        public TestCase GetTestCase(int testCaseId, int suiteID)
+        {
+            #region Pull Test Case from TFS
+            PropertiesReader config = new PropertiesReader("config.txt");
+
+            Properties props = new Properties();
+            props.PersonalAccessToken = config.get("personalaccesstoken");
+            props.TestPlanId = Convert.ToInt32(config.get("testplanid"));
+            props.TestSuiteId = Convert.ToInt32(config.get("testsuiteid"));
+            props.Project = config.get("project");
+            props.Uri = config.get("server");
+            props.SaveLocation = config.get("saveLocation");
+            props.FileName = StringTools.addExtension(config.get("fileName"), "xlsx"); ;
+            props.ExecutionSheetName = config.get("executionsheetname");
+            props.ScriptSheetName = config.get("scriptsheetname");
+            props.TestPlanId = Convert.ToInt32(config.get("testplanid"));
+            props.TestSuiteId = Convert.ToInt32(config.get("testsuiteid"));
+
+            Logger logger = new Logger(props.SaveLocation);
+
+            props.Logger = logger;
+
+            TestCase thisTestCase = new TestCase();
+            RequirementsTraceabilityJobs requirementsTraceabilityJob = new RequirementsTraceabilityJobs(props);
+            thisTestCase = requirementsTraceabilityJob.GetSingleTestCase(testCaseId, suiteID);
+            return thisTestCase;
+        }
+        #endregion
+        #region Record status from Step for word doc
+        /// <summary>
+        /// Record Status for Word doc
+        /// </summary>
+        /// <param name="LogNote"></param>
+        /// <param name="ScreenshotLocation"></param>
+        /// <param name="TestCase"></param>
+        /// <param name="doc"></param>
+        public void RecordStepStatus(
+            string LogNote,
+            string ScreenshotLocation,
+            string TestCase,
+            DocX doc)
+        {
+
+            Screenshots.TakeSreenShot(context, ScreenshotLocation + TestCase + ".png");
+            //Document
+            Xceed.Words.NET.Image img = doc.AddImage(ScreenshotLocation + TestCase + ".png");
+            Picture p = img.CreatePicture();
+            //Create a new paragraph  
+            Paragraph par = doc.InsertParagraph(LogNote);
+            p.HeightInches = 3.8;
+            p.WidthInches = 6.8;
+            par.AppendPicture(p);
+            par.Alignment = Alignment.center;
+            par.FontSize(16);
+            par.AppendLine("\n");
+            par.AppendLine("\n");
+        }
+        public void RecordStepStatus(
+            string LogNote,
+            string Description,
+            string ScreenshotLocation,
+            string TestCase,
+            DocX doc)
+        {
+
+            Screenshots.TakeSreenShot(context, ScreenshotLocation + TestCase + ".png");
+            //Document
+            Xceed.Words.NET.Image img = doc.AddImage(ScreenshotLocation + TestCase + ".png");
+            Picture p = img.CreatePicture();
+            //Create a new paragraph  
+            Paragraph par = doc.InsertParagraph(LogNote);
+            par.Append(Description);
+            p.HeightInches = 3.8;
+            p.WidthInches = 6.8;
+            par.AppendPicture(p);
+            par.Alignment = Alignment.center;
+            par.FontSize(16);
+            par.AppendLine("\n");
+            par.AppendLine("\n");
+        }
+        #endregion
+        #region RecordPass Statuses with Extent Report and Word doc
+        public ExtentTest RecordPassStatusExtent(
             string LogNote, 
             Status TestStatus, 
             string ScreenshotLocation, 
-            int TestCount, 
             string TestCase, 
             ExtentTest test)
         {
@@ -39,23 +123,22 @@ namespace NUnit.Tests1.Utilities
             test.CreateNode(LogNote).AddScreenCaptureFromPath("images\\" + TestCase + TestCount + ".png");
             return test;
         }
-        public ExtentTest RecordPassStatus(
+        public ExtentTest RecordStepStatusExtent(
             string LogNote,
             Status TestStatus,
             string ScreenshotLocation,
-            int TestCount,
             string TestCase,
             ExtentTest test,
             DocX doc)
         { 
 
-            Screenshots.TakeSreenShot(context, ScreenshotLocation + TestCase + TestCount + ".png");
+            Screenshots.TakeSreenShot(context, ScreenshotLocation + TestCase + ".png");
             //Extent Report
             test.Log(TestStatus, LogNote);
-            test.CreateNode(LogNote).AddScreenCaptureFromPath("images\\" + TestCase + TestCount + ".png");
+            test.CreateNode(LogNote).AddScreenCaptureFromPath("images\\" + TestCase  + ".png");
 
             //Document
-            Xceed.Words.NET.Image img = doc.AddImage(ScreenshotLocation + TestCase + TestCount + ".png");
+            Xceed.Words.NET.Image img = doc.AddImage(ScreenshotLocation + TestCase  + ".png");
             Picture p = img.CreatePicture();
             //Create a new paragraph  
             Paragraph par = doc.InsertParagraph(LogNote);
@@ -69,20 +152,68 @@ namespace NUnit.Tests1.Utilities
 
             return test;
         }
-        public ExtentTest RecordPassStatus(
+        public ExtentTest RecordPassStatusMAIN(
             string LogNote,
             Status TestStatus,
             string ScreenshotLocation,
-            int TestCount,
             string TestCase,
             string description,
+            DocX doc,
+            ExtentTest test)
+        {
+            Screenshots.TakeSreenShot(context, ScreenshotLocation + TestCase  + ".png");
+            test.Log(TestStatus, LogNote);
+            test.CreateNode(LogNote).Log(TestStatus, description).AddScreenCaptureFromPath("images\\" + TestCase + ".png");
+            Xceed.Words.NET.Image img = doc.AddImage(ScreenshotLocation + TestCase + ".png");
+            Picture p = img.CreatePicture();
+            //Create a new paragraph  
+            Paragraph par = doc.InsertParagraph(LogNote);
+            p.HeightInches = 3.8;
+            p.WidthInches = 6.8;
+            par.AppendPicture(p);
+            Paragraph desc = doc.InsertParagraph(description);
+            par.Alignment = Alignment.center;
+            par.FontSize(16);
+            par.AppendLine("\n");
+            par.AppendLine("\n");
+            return test;
+        }
+
+        public void RecordPassStatusMAIN(
+            string LogNote,
+            string ScreenshotLocation,
+            string TestCase,
+            string description,
+            DocX doc
+            )
+        {
+            Screenshots.TakeSreenShot(context, ScreenshotLocation + TestCase + ".png");
+            Xceed.Words.NET.Image img = doc.AddImage(ScreenshotLocation + TestCase + ".png");
+            Picture p = img.CreatePicture();
+            //Create a new paragraph  
+            Paragraph par = doc.InsertParagraph(LogNote);
+            p.HeightInches = 3.8;
+            p.WidthInches = 6.8;
+            par.AppendPicture(p);
+            Paragraph desc = doc.InsertParagraph(description);
+            par.Alignment = Alignment.center;
+            par.FontSize(16);
+            par.AppendLine("\n");
+            par.AppendLine("\n");
+        }
+        public ExtentTest RecordPassStatus(
+            string LogNote,
+            string ScreenshotLocation,
+            string TestCase,
+            string description,
+            Status TestStatus,
             ExtentTest test,
             DocX doc)
         {
-            Screenshots.TakeSreenShot(context, ScreenshotLocation + TestCase + TestCount + ".png");
+            Screenshots.TakeSreenShot(context, ScreenshotLocation + TestCase + ".png");
             test.Log(TestStatus, LogNote);
-            test.CreateNode(LogNote).Log(TestStatus, description).AddScreenCaptureFromPath("images\\" + TestCase + TestCount + ".png");
-            Xceed.Words.NET.Image img = doc.AddImage(ScreenshotLocation + TestCase + TestCount + ".png");
+            test.CreateNode(LogNote).Log(TestStatus, description).AddScreenCaptureFromPath("images\\" + TestCase + ".png");
+            Xceed.Words.NET.Image img = doc.AddImage(ScreenshotLocation + TestCase  + ".png");
             Picture p = img.CreatePicture();
             //Create a new paragraph  
             Paragraph par = doc.InsertParagraph(LogNote);
@@ -96,23 +227,9 @@ namespace NUnit.Tests1.Utilities
             par.AppendLine("\n");
             return test;
         }
-        public ExtentTest RecordPassStatus(
-            string LogNote,
-            Status TestStatus,
-            string ScreenshotLocation,
-            int TestCount,
-            string TestCase,
-            string description,
-            ExtentTest test)
-        {
-            Screenshots.TakeSreenShot(context, ScreenshotLocation + TestCase + TestCount + ".png");
-            test.Log(TestStatus, LogNote);
-            test.CreateNode(LogNote).Log(TestStatus, description).AddScreenCaptureFromPath(ScreenshotLocation + TestCase + TestCount + ".png");
-            return test;
-        }
 
 
-
+        #endregion
 
 
 
@@ -145,7 +262,7 @@ namespace NUnit.Tests1.Utilities
             return test;
         }
 
-#region Random Strings Number
+        #region Random Strings Number
         public static string RandomAlphaNumericSpecialCharacterString(int length)
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
@@ -187,7 +304,7 @@ namespace NUnit.Tests1.Utilities
         {
             return Regex.IsMatch(value, @"</?(p|div)>");
         }
-#endregion
+        #endregion
 
         /// <summary>
         /// Remove tags from a html string
@@ -238,3 +355,4 @@ namespace NUnit.Tests1.Utilities
         }
     }
 }
+

@@ -29,7 +29,7 @@ namespace NUnit.Tests1.Steps
         /// <param name="screenshotLocation"></param>
         /// <param name="test"></param>
         /// <param name="doc"></param>
-        public string HippWorkFlow(string activityReason,IWebDriver context, int sucessCount, string screenshotLocation, ExtentTest test, DocX doc)
+        public string HippWorkFlow(string activityReason,IWebDriver context, string screenshotLocation, ExtentTest test, DocX doc)
         {
 
             APHPHomePage loginPage = new APHPHomePage(context);
@@ -70,9 +70,9 @@ namespace NUnit.Tests1.Steps
             string workItem = workitem.gatherWorkItemType();
             string appQueue = workitem.gatherWorkItemStatus();
             doc.InsertAtBookmark(appNumber + "\n " + workItem + "\n " + appQueue, "Results of pass: ");
-            utility.RecordPassStatus("App in " + appQueue + "and in status of " + activityReason, Status.Pass, screenshotLocation, sucessCount, "CheckAppStaus", test, doc);
+            utility.RecordPassStatus("App in " + appQueue + "and in status of " + activityReason, Status.Pass, screenshotLocation, "CheckAppStaus", test, doc);
             workitem.ClickCompletedButton();
-            utility.RecordPassStatus("Applciation Completed", Status.Pass, screenshotLocation, sucessCount, "Application Completed", test, doc);
+            utility.RecordPassStatus("Applciation Completed", Status.Pass, screenshotLocation, "Application Completed", test, doc);
 
             return appNumber;
 
@@ -98,6 +98,7 @@ namespace NUnit.Tests1.Steps
             WorkItemComponent workitem = new WorkItemComponent(context);
             Generic generic = new Generic(context);
             Utility utility = new Utility(context);
+            HIPPSearch hIPPSearch = new HIPPSearch();
             InitiateTest startUp = new InitiateTest(context);
             context.Url = startUp.AWSINTWoker;
 

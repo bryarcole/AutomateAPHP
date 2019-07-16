@@ -24,7 +24,7 @@ using System.IO;
 namespace NUnit.Tests1
 {
     [Author("Bryar Cole", "Bryar.h.cole@gmail.com")]
-    public class HIPPWorkFlowTest
+    public class HIPPWorkFlowTestProject
     {
         static string userName = "bryar.h.cole";
         public IWebDriver context;
@@ -168,6 +168,24 @@ namespace NUnit.Tests1
 
 
 
+        }
+
+
+        public void TestProjectWorkflow()
+        {
+            var driver = new ChromeDriver();
+            var app = new CreateHIPPApplication();
+            var loginPage = new APHPHomePage(driver);
+            var landingPage = new WorkerPortalLandingPage(driver);
+            var hIPPSearch = new HIPPSearchPage(driver);
+
+
+            loginPage.LoginPage("bryar.h.wrkr", "Password123");
+            landingPage.HippApplicationSearch();
+            hIPPSearch.ClickBeginNewApp();
+            //hIPPSearch.ClickBeginNewApp();
+
+            app.SubmitHIPPCaseSubmissionUltimate(context, false);
         }
     }
 

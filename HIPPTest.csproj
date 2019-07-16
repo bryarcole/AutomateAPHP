@@ -158,7 +158,6 @@
     <Compile Include="Pages\WorkerPortal\HIPPSearchPage.cs" />
     <Compile Include="Pages\WorkerPortal\WorkerPortalLandingPage.cs" />
     <Compile Include="Steps\Generic.cs" />
-    <Compile Include="Steps\TestScripts\HIPPWorkFlowTestProject.cs" />
     <Compile Include="Utilities\StartUp.cs" />
     <Compile Include="Help\ExtentReportTemplate.cs" />
     <Compile Include="Steps\TestScripts\HIPPWorkFlowTest.cs" />

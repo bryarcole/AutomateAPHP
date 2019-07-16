@@ -162,7 +162,6 @@
     <Compile Include="Utilities\StartUp.cs" />
     <Compile Include="Help\ExtentReportTemplate.cs" />
     <Compile Include="Steps\TestScripts\HIPPWorkFlowTest.cs" />
-    <Compile Include="Steps\TestScripts\Validations\HIPPWorkerPortalValidation.cs" />
     <Compile Include="Steps\TestScripts\HIPPApplicationInput.cs" />
     <Compile Include="Steps\Auxx\AuxTest.cs" />
     <Compile Include="Steps\Auxx\TestClass.cs" />

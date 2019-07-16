@@ -1,23 +1,10 @@
-﻿using System.Collections;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using NUnit.Tests1.Pages;
-using NUnit.Tests1.Steps.StartUp;
-using NUnit.Tests1.Steps;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using NUnit.Tests1.Utilities;
-using System;
-using AventStack.ExtentReports;
-using AventStack.ExtentReports.Reporter;
-using TFSCommon.Common;
-using TFSCommon.Data;
-using Xceed.Words.NET;
-using RequirementsTraceability;
-using System.Linq;
-using System.Diagnostics;
-using System.Windows.Forms;
-using System.Collections.Generic;
-using System.Drawing;
+
+
 namespace NUnit.Tests1
 {
     [TestFixture]

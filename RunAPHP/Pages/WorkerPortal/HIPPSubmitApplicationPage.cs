@@ -1,19 +1,13 @@
-﻿using NUnit.Tests1.Steps;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.Events;
-using OpenQA.Selenium.Support.PageObjects;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
-using NUnit.Tests1.Utilities;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Reflection;
+using TestProject.Common;
 using TestProject.SDK.PageObjects;
+using SeleniumExtras.PageObjects;
 
-namespace NUnit.Tests1.Pages
+namespace AutomateAPHP
 {
     public class HIPPSubmitApplicationPage
     {
@@ -71,9 +65,33 @@ namespace NUnit.Tests1.Pages
         public void clickAppRecieveDate()
         {
             WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(10));
-            wait.Until(ExpectedConditions.ElementToBeClickable(ApplicationRecieveDateOverlay));
-            ApplicationRecieveDateOverlay.Click();
+            
+            wait.Until(context =>
+            {
+                try
+                {
+                    ApplicationRecieveDateOverlay.Click();
+                }
+                catch (Exception ex)
+                {
+                    Type exType = ex.GetType();
+                    if (exType == typeof(TargetInvocationException) ||
+                        exType == typeof(NoSuchElementException) ||
+                        exType == typeof(ElementClickInterceptedException) ||
+                        exType == typeof(ElementNotVisibleException) ||
+                        exType == typeof(InvalidOperationException))
+                    {
+                        Console.Write(ex);
+                        return false; //By returning false, wait will still rerun the func.
+                    }
+                    else
+                    {
+                        throw; //Rethrow exception if it's not ignore type.
+                    }
+                }
 
+                return true;
+            });
         }
         public void ApplicationTypeInput(string input)
         {
@@ -114,39 +132,39 @@ namespace NUnit.Tests1.Pages
 
         //Applicate recieve date  (needs overlay click to be invovable.)
         [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'ApplicationRecievedDate_dateInput_wrapper')]")]
-        public IWebElement ApplicationRecieveDateOverlay { get; set; }
+        public IWebElement ApplicationRecieveDateOverlay;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'ApplicationRecievedDate_dateInput')]")]
-        public IWebElement ApplicationReceiveDate { get; set; }
+        public IWebElement ApplicationReceiveDate;
         //Annual Date  (needs overlay click to be invovable.)
         [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'AnnualToDate_dateInput_wrapper')]")]
-        public IWebElement AnnualRenewalDatesOverlay { get; set; }
+        public IWebElement AnnualRenewalDatesOverlay;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'AnnualToDate_dateInput')]")]
-        public IWebElement AnnualRenewalDates { get; set; }
+        public IWebElement AnnualRenewalDates;
         //EIV recievedDate  (needs overlay click to be invovable.)
         [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'EIVRecievedDate_dateInput_wrapper')]")]
-        public IWebElement EIVRecievedDateOverlay { get; set; }
+        public IWebElement EIVRecievedDateOverlay;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'EIVRecievedDate_dateInput')]")]
-        public IWebElement EIVRecieveDate { get; set; }
+        public IWebElement EIVRecieveDate;
 
         //Anunnual TO date  (needs overlay click to be invovable.)
 
         [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'AnnualRenewalDates_dateInput_wrapper')]")]
-        public IWebElement AnnualToDateOverlay { get; set; }
+        public IWebElement AnnualToDateOverlay;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'AnnualRenewalDates_dateInput')]")]
-        public IWebElement AnnualToDate { get; set; }
+        public IWebElement AnnualToDate;
 
         //Application Type (needs overlay click to be invovable.)
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'ApplicationType')]")]
-        public IWebElement ApplicationType { get; set; }
+        public IWebElement ApplicationType;
 
 
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'HIPPCaseNo')]")]
-        public IWebElement HIPPCaseNo { get; set; }
+        public IWebElement HIPPCaseNo;
 
         [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'QuarterlyValidationDueDates_dateInput_wrapper')]")]
-        public IWebElement QuarterlyValidationDueDatesOverlay { get; set; }
+        public IWebElement QuarterlyValidationDueDatesOverlay;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'QuarterlyValidationDueDates_dateInput')]")]
-        public IWebElement QuarterlyValidationDueDates { get; set; }
+        public IWebElement QuarterlyValidationDueDates;
 
         #endregion
         #region Validation Overview
@@ -155,31 +173,31 @@ namespace NUnit.Tests1.Pages
         /// Cheveron ID: 8
         /// </summary>
         [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'btnAddSchool')]")]
-        public IWebElement btnAddSchool { get; set; }
+        public IWebElement btnAddSchool;
         [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'btnAddCobra')]")]
-        public IWebElement btnAddCobra { get; set; }
+        public IWebElement btnAddCobra;
         [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'btnAddReEval')]")]
-        public IWebElement btnAddReEval { get; set; }
+        public IWebElement btnAddReEval;
         [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'btnAddQuarterlyValidation')]")]
-        public IWebElement btnAddQuarterlyValidation { get; set; }
+        public IWebElement btnAddQuarterlyValidation;
         [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'btnAddCostSharingValidation')]")]
-        public IWebElement btnAddCostSharingValidation { get; set; }
+        public IWebElement btnAddCostSharingValidation;
         [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'btnAddAnnualRewnewalValidation')]")]
-        public IWebElement btnAddAnnualRewnewalValidation { get; set; }
+        public IWebElement btnAddAnnualRewnewalValidation;
         [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'btnValid')]")]
-        public IWebElement btnValid { get; set; }
+        public IWebElement btnValid;
         [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'btnNotValid')]")]
-        public IWebElement btnNotValid { get; set; }
+        public IWebElement btnNotValid;
         [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'ValidationUd')]")]
-        public IWebElement ValidationUd { get; set; }
+        public IWebElement ValidationUd;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'ValidationStatusUd')]")]
-        public IWebElement ValidationStatusUd { get; set; }
+        public IWebElement ValidationStatusUd;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'ValidatedBy')]")]
-        public IWebElement ValidatedBy { get; set; }
+        public IWebElement ValidatedBy;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'RDIPFDateValidated_dateInput')]")]
-        public IWebElement RDIPFDateValidated_dateInput { get; set; }
+        public IWebElement RDIPFDateValidated_dateInput;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'ValidationReason')]")]
-        public IWebElement ValidationReason { get; set; }
+        public IWebElement ValidationReason;
 
         #endregion
         #region PolicyHolder/Employee Information
@@ -236,43 +254,43 @@ namespace NUnit.Tests1.Pages
 
 
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'cboPrefix_Input')]")]
-        public IWebElement cboPrefix_Input { get; set; }
+        public IWebElement cboPrefix_Input;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtFirstName')]")]
-        public IWebElement txtFirstName { get; set; }
+        public IWebElement txtFirstName;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtMiddleName')]")]
-        public IWebElement txtMiddleName { get; set; }
+        public IWebElement txtMiddleName;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtLastName')]")]
-        public IWebElement txtLastName { get; set; }
+        public IWebElement txtLastName;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'cboSuffix_Input')]")]
-        public IWebElement cboSuffix_Input { get; set; }
+        public IWebElement cboSuffix_Input;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtAddOne')]")]
-        public IWebElement txtAddOne { get; set; }
+        public IWebElement txtAddOne;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtAddTwo')]")]
-        public IWebElement txtAddTwo { get; set; }
+        public IWebElement txtAddTwo;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtCity')]")]
-        public IWebElement txtCity { get; set; }
+        public IWebElement txtCity;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'State_Input')]")]
-        public IWebElement State_Input { get; set; }
+        public IWebElement State_Input;
         [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'txtZipCode_wrapper')]")]
-        public IWebElement txtZipCodeOverlay { get; set; }
+        public IWebElement txtZipCodeOverlay;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtZipCode')]")]
-        public IWebElement txtZipCode { get; set; }
+        public IWebElement txtZipCode;
 
         [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'txtHomePhone_wrapper')]")]
-        public IWebElement HomePhoneOverlay { get; set; }
+        public IWebElement HomePhoneOverlay;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'HomePhone')]")]
-        public IWebElement HomePhone { get; set; }
+        public IWebElement HomePhone;
 
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'CellPhone')]")]
-        public IWebElement CellPhone { get; set; }
+        public IWebElement CellPhone;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'WorkPhone')]")]
-        public IWebElement WorkPhone { get; set; }
+        public IWebElement WorkPhone;
         [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'txtCellPhone_wrapper')]")]
-        public IWebElement CellPhoneOverlay { get; set; }
+        public IWebElement CellPhoneOverlay;
         [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'txtWorkPhone_wrapper')]")]
-        public IWebElement WorkPhoneOverlay { get; set; }
+        public IWebElement WorkPhoneOverlay;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtEmail')]")]
-        public IWebElement txtEmail { get; set; }
+        public IWebElement txtEmail;
         #endregion
         #region Household Info
         #region HouseHoldInformation Methods
@@ -501,38 +519,38 @@ namespace NUnit.Tests1.Pages
 
         #region Household Elements
         [FindsBy(How = How.XPath, Using = "//a[contains(@id, 'HouseHoldAdd')]")]
-        public IWebElement HouseHoldAdd { get; set; }
+        public IWebElement HouseHoldAdd;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'cboRelation_ClientState')]")]
-        public IWebElement RelationOverlay { get; set; }
+        public IWebElement RelationOverlay;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'cboRelation_Input')]")]
-        public IWebElement Relation { get; set; }
+        public IWebElement Relation;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtFirstNameHHI')]")]
-        public IWebElement txtFirstNameHHI { get; set; }
+        public IWebElement txtFirstNameHHI;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtMiddleNameHHI')]")]
-        public IWebElement txtMiddleNameHHI { get; set; }
+        public IWebElement txtMiddleNameHHI;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtLastNameHHI')]")]
-        public IWebElement txtLastNameHHI { get; set; }
+        public IWebElement txtLastNameHHI;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'dpDOBHHI_dateInput')]")]
-        public IWebElement dpDOBHHI_dateInput { get; set; }
+        public IWebElement dpDOBHHI_dateInput;
         [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'DOBHHI_wrapper')]")]
-        public IWebElement DOBHHI_wrapperOverlay { get; set; }
+        public IWebElement DOBHHI_wrapperOverlay;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'HouseholdInformationMemberID')]")]
-        public IWebElement HouseholdInformationMemberID { get; set; }
+        public IWebElement HouseholdInformationMemberID;
         //txtSSN_wrapper
         [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'txtSSN_wrapper')]")]
-        public IWebElement txtSSN_wrapper { get; set; }
+        public IWebElement txtSSN_wrapper;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtSSN')]")]
-        public IWebElement txtSSN { get; set; }
+        public IWebElement txtSSN;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'rbPersonMedicareYN')]")]
-        public IWebElement PersonMedicareYesRadioButton { get; set; }
+        public IWebElement PersonMedicareYesRadioButton;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'rbPersonMedicareYN_1')]")]
-        public IWebElement PersonMedicareNoRadioButton { get; set; }
+        public IWebElement PersonMedicareNoRadioButton;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'rbPersonCoveredInsurance_0')]")]
-        public IWebElement YesPersonCoveredInsurance { get; set; }
+        public IWebElement YesPersonCoveredInsurance;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'rbPersonCoveredInsurance_1')]")]
-        public IWebElement NoPersonCoveredInsurance { get; set; }
+        public IWebElement NoPersonCoveredInsurance;
         [FindsBy(How = How.XPath, Using = "//a[contains(@id, 'btnHouseHoldSave')]")]
-        public IWebElement btnHouseHoldSave { get; set; }
+        public IWebElement btnHouseHoldSave;
         #endregion
 
         #endregion
@@ -730,26 +748,26 @@ namespace NUnit.Tests1.Pages
 
 
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'rbEmpStatus')]")]
-        public IWebElement EmpStatusYes { get; set; }
+        public IWebElement EmpStatusYes;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'rbEmpStatus_1')]")]
-        public IWebElement EmpStatusNo { get; set; }
+        public IWebElement EmpStatusNo;
         //txtDateHired_dateInput_wrapper
         [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'txtDateHired_dateInput_wrapper')]")]
-        public IWebElement txtDateHired_dateInput_wrapper { get; set; }
+        public IWebElement txtDateHired_dateInput_wrapper;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtDateHired_dateInput')]")]
-        public IWebElement DateHired_dateInput { get; set; }
+        public IWebElement DateHired_dateInput;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'rbRetired_0')]")]
-        public IWebElement RetiredYes { get; set; }
+        public IWebElement RetiredYes;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'rbRetired_1')]")]
-        public IWebElement RetiredNo { get; set; }
+        public IWebElement RetiredNo;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'rbSchoolEmp_0')]")]
-        public IWebElement SchoolEmpYes { get; set; }
+        public IWebElement SchoolEmpYes;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'SchoolEmp_1')]")]
-        public IWebElement SchoolEmpNo { get; set; }
+        public IWebElement SchoolEmpNo;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'SchoolEmpPeriod')]")]
-        public IWebElement SchoolEmpPeriod { get; set; }
+        public IWebElement SchoolEmpPeriod;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'SchoolEmpPeriod')]")]
-        public IWebElement SchoolEmpPeriod2 { get; set; }
+        public IWebElement SchoolEmpPeriod2;
 
         #endregion
         #region Employment Information > EMployer and Resources Information
@@ -797,31 +815,31 @@ namespace NUnit.Tests1.Pages
         #endregion
         #region Employment Info Elements
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtEmployerName')]")]
-        public IWebElement txtEmployerName { get; set; }
+        public IWebElement txtEmployerName;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtFedEmp')]")]
-        public IWebElement txtFedEmp { get; set; }
+        public IWebElement txtFedEmp;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtEmpAddOne')]")]
-        public IWebElement txtEmpAddOne { get; set; }
+        public IWebElement txtEmpAddOne;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtEmpAddTwo')]")]
-        public IWebElement txtEmpAddTwo { get; set; }
+        public IWebElement txtEmpAddTwo;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtEmpCity')]")]
-        public IWebElement txtEmpCity { get; set; }
+        public IWebElement txtEmpCity;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'EmpState_Input')]")]
-        public IWebElement EmpState_Input { get; set; }
+        public IWebElement EmpState_Input;
         //txtEmpZip_wrapper
         [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'txtEmpZip_wrapper')]")]
-        public IWebElement txtEmpZip_wrapper { get; set; }
+        public IWebElement txtEmpZip_wrapper;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtEmpZip')]")]
-        public IWebElement txtEmpZip { get; set; }
+        public IWebElement txtEmpZip;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtHuman')]")]
-        public IWebElement txtHuman { get; set; }
+        public IWebElement txtHuman;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtDepartment')]")]
-        public IWebElement txtDepartment { get; set; }
+        public IWebElement txtDepartment;
         //txtPhoneNum_wrapper
         [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'txtPhoneNum_wrapper')]")]
-        public IWebElement txtPhoneNum_wrapper { get; set; }
+        public IWebElement txtPhoneNum_wrapper;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtPhoneNum')]")]
-        public IWebElement txtPhoneNum { get; set; }
+        public IWebElement txtPhoneNum;
         #endregion
         #region Company Information
         /// <summary>
@@ -862,27 +880,27 @@ namespace NUnit.Tests1.Pages
 
         }
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtCompName')]")]
-        public IWebElement txtCompName { get; set; }
+        public IWebElement txtCompName;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtFEIN')]")]
-        public IWebElement txtFEIN { get; set; }
+        public IWebElement txtFEIN;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtCompAddOne')]")]
-        public IWebElement txtCompAddOne { get; set; }
+        public IWebElement txtCompAddOne;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtCompAddTwo')]")]
-        public IWebElement txtCompAddTwo { get; set; }
+        public IWebElement txtCompAddTwo;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtCompCity')]")]
-        public IWebElement txtCompCity { get; set; }
+        public IWebElement txtCompCity;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'CompState_Input')]")]
-        public IWebElement CompState_Input { get; set; }
+        public IWebElement CompState_Input;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtCompZip')]")]
-        public IWebElement txtCompZip { get; set; }
+        public IWebElement txtCompZip;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtContactPer')]")]
-        public IWebElement txtContactPer { get; set; }
+        public IWebElement txtContactPer;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtCompPhoneNum')]")]
-        public IWebElement txtCompPhoneNum { get; set; }
+        public IWebElement txtCompPhoneNum;
         [FindsBy(How = How.Id, Using = "//div[contains(@id, 'txtCompZip_wrapper')]")]
-        public IWebElement txtCompZip_wrapper { get; set; }
+        public IWebElement txtCompZip_wrapper;
         [FindsBy(How = How.Id, Using = "//div[contains(@id, 'txtCompPhoneNum_wrapper')]")]
-        public IWebElement txtCompPhoneNumWrapper { get; set; }
+        public IWebElement txtCompPhoneNumWrapper;
         #endregion
         #region Plan Information
         /// <summary>
@@ -991,30 +1009,30 @@ namespace NUnit.Tests1.Pages
 
         }
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'cbInsuranceType_0')]")]
-        public IWebElement EmployerPlan { get; set; }
+        public IWebElement EmployerPlan;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'cbInsuranceType_1')]")]
-        public IWebElement COBRARadio { get; set; }
+        public IWebElement COBRARadio;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'cbInsuranceType_2')]")]
-        public IWebElement IndividualPolicyRadioButton { get; set; }
+        public IWebElement IndividualPolicyRadioButton;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'rbPolHold_0')]")]
-        public IWebElement SelfemployedYesRadioButton { get; set; }
+        public IWebElement SelfemployedYesRadioButton;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'rbPolHold_1')]")]
-        public IWebElement SelfEmployedNoRadioButton { get; set; }
+        public IWebElement SelfEmployedNoRadioButton;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'rbPolHold_2')]")]
-        public IWebElement SelfEmployedNARadioButton { get; set; }
+        public IWebElement SelfEmployedNARadioButton;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'PlanEff_dateInput')]")]
-        public IWebElement PlanEff_dateInput { get; set; }
+        public IWebElement PlanEff_dateInput;
         [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'dateInput_wrapper')]")]
-        public IWebElement dateInput_wrapper { get; set; }
+        public IWebElement dateInput_wrapper;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'cboPayInsur_Input')]")]
-        public IWebElement cboPayInsur_Input { get; set; }
+        public IWebElement cboPayInsur_Input;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtOtherFrequency')]")]
-        public IWebElement txtOtherFrequency { get; set; }
+        public IWebElement txtOtherFrequency;
         [FindsBy(How = How.Id, Using = "//div[contains(@id, txtAmountPaid_wrapper')]")]
-        public IWebElement txtAmountPaidWrapper { get; set; }
+        public IWebElement txtAmountPaidWrapper;
 
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtAmountPaid')]")]
-        public IWebElement txtAmountPaid { get; set; }
+        public IWebElement txtAmountPaid;
 
         #endregion
         #region Insurnace Verification > Employee Information
@@ -1088,36 +1106,36 @@ namespace NUnit.Tests1.Pages
 
         }
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtEmpFName')]")]
-        public IWebElement txtEmpFName { get; set; }
+        public IWebElement txtEmpFName;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtEmpMName')]")]
-        public IWebElement txtEmpMName { get; set; }
+        public IWebElement txtEmpMName;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtEmpLName')]")]
-        public IWebElement txtEmpLName { get; set; }
+        public IWebElement txtEmpLName;
 
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtEmpSSN')]")]
-        public IWebElement txtEmpSSN { get; set; }
+        public IWebElement txtEmpSSN;
         [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'txtEmpSSN_wrapper')]")]
-        public IWebElement txtEmpSSN_wrapper { get; set; }
+        public IWebElement txtEmpSSN_wrapper;
         [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'dpEmpDOB_dateInput_wrapper')]")]
-        public IWebElement dpEmpDOB_dateInput_wrapper { get; set; }
+        public IWebElement dpEmpDOB_dateInput_wrapper;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'EmpDOB_dateInput')]")]
-        public IWebElement EmpDOB_dateInput { get; set; }
+        public IWebElement EmpDOB_dateInput;
         [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'dpEmpDateH_dateInput_wrapper')]")]
-        public IWebElement dpEmpDateH_dateInput_wrapper { get; set; }
+        public IWebElement dpEmpDateH_dateInput_wrapper;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'EmpDateH_dateInput')]")]
-        public IWebElement EmpDateH_dateInput { get; set; }
+        public IWebElement EmpDateH_dateInput;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'rbEmpRetired_0')]")]
-        public IWebElement rbEmpRetired_0 { get; set; }
+        public IWebElement rbEmpRetired_0;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'rbEmpRetired_1')]")]
-        public IWebElement rbEmpRetired_1 { get; set; }
+        public IWebElement rbEmpRetired_1;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'SchEmp_0')]")]
-        public IWebElement EmployeeInformationSchoolEmpYes { get; set; }
+        public IWebElement EmployeeInformationSchoolEmpYes;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'SchEmp_1')]")]
-        public IWebElement EmployeeInformationSchoolEmpNo { get; set; }
+        public IWebElement EmployeeInformationSchoolEmpNo;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'rbEmpLen_0')]")]
-        public IWebElement SchoolEmployeeLength10Month { get; set; }
+        public IWebElement SchoolEmployeeLength10Month;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'rbEmpLen_1')]")]
-        public IWebElement SchoolEmployeeLength12Month { get; set; }
+        public IWebElement SchoolEmployeeLength12Month;
         #endregion
         #region Membership (Starting with employee)
         /// <summary>
@@ -1160,29 +1178,29 @@ namespace NUnit.Tests1.Pages
         }
 
         [FindsBy(How = How.XPath, Using = "//a[contains(@id, 'btnMembershipAdd')]")]
-        public IWebElement btnMembershipAdd { get; set; }
+        public IWebElement btnMembershipAdd;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtMemFName')]")]
-        public IWebElement txtMemFName { get; set; }
+        public IWebElement txtMemFName;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtMemMName')]")]
-        public IWebElement txtMemMName { get; set; }
+        public IWebElement txtMemMName;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtMemLName')]")]
-        public IWebElement txtMemLName { get; set; }
+        public IWebElement txtMemLName;
         [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'dpMemDOB_dateInput_wrapper')]")]
-        public IWebElement dpMemDOB_dateInput_wrapper { get; set; }
+        public IWebElement dpMemDOB_dateInput_wrapper;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'dpMemDOB_dateInput')]")]
-        public IWebElement dpMemDOB_dateInput { get; set; }
+        public IWebElement dpMemDOB_dateInput;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'cboRelPolHold_Input')]")]
         
-        public IWebElement cboRelPolHold_Input { get; set; }
+        public IWebElement cboRelPolHold_Input;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'rbEnrPlan_0')]")]
 
-        public IWebElement rbEnrPlan_0 { get; set; }
+        public IWebElement rbEnrPlan_0;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'rbEnrPlan_1')]")]
 
-        public IWebElement rbEnrPlan_1 { get; set; }
+        public IWebElement rbEnrPlan_1;
         [FindsBy(How = How.XPath, Using = "//a[contains(@id, 'btnMembershipSav')]")]
         
-        public IWebElement btnMembershipSav { get; set; }
+        public IWebElement btnMembershipSav;
         #endregion
 
 
@@ -1246,19 +1264,19 @@ namespace NUnit.Tests1.Pages
         /// Cheveron ID: 20
         /// </summary>
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'cbCovType_0')]")]
-        public IWebElement EmployeeOnlyRadioButton { get; set; }
+        public IWebElement EmployeeOnlyRadioButton;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'cbCovType_1')]")]
-        public IWebElement EmployeeSpouseRadioButton { get; set; }
+        public IWebElement EmployeeSpouseRadioButton;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'cbCovType_2')]")]
-        public IWebElement EmployeeChildRadioButton { get; set; }
+        public IWebElement EmployeeChildRadioButton;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'cbCovType_3')]")]
-        public IWebElement EmployeeChildrenRadioButton { get; set; }
+        public IWebElement EmployeeChildrenRadioButton;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'cbCovType_4')]")]
-        public IWebElement FamilyRadioButton { get; set; }
+        public IWebElement FamilyRadioButton;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'cbCovType_5')]")]
-        public IWebElement OtherRadioButton { get; set; }
+        public IWebElement OtherRadioButton;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'cbCovType_6')]")]
-        public IWebElement COBRARadioButton { get; set; }
+        public IWebElement COBRARadioButton;
 
 
         #endregion
@@ -1286,17 +1304,17 @@ namespace NUnit.Tests1.Pages
         /// Open enrollment Information
         /// </summary>
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'PlanEffD_dateInput')]")]
-        public IWebElement PlanEffD_dateInput { get; set; }
+        public IWebElement PlanEffD_dateInput;
         [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'PlanEffD_dateInput_wrapper')]")]
-        public IWebElement PlanEffD_dateInput_wrapper { get; set; }
+        public IWebElement PlanEffD_dateInput_wrapper;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'EnrollEffD_dateInput')]")]
-        public IWebElement EnrollEffD_dateInput { get; set; }
+        public IWebElement EnrollEffD_dateInput;
         [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'EnrollEffD_dateInput_wrapper')]")]
-        public IWebElement EnrollEffD_dateInput_wrapper { get; set; }
+        public IWebElement EnrollEffD_dateInput_wrapper;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'EnrollEffTD_dateInput')]")]
-        public IWebElement EnrollEffTD_dateInput { get; set; }
+        public IWebElement EnrollEffTD_dateInput;
         [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'EnrollEffTD_dateInput_wrapper')]")]
-        public IWebElement EnrollEffTD_dateInput_wrapper { get; set; }
+        public IWebElement EnrollEffTD_dateInput_wrapper;
 #endregion
 
         /// <summary>
@@ -1376,36 +1394,36 @@ namespace NUnit.Tests1.Pages
         }
 
         [FindsBy(How = How.XPath, Using = "//a[contains(@id, 'grdPlanBenefits_ctl00_ctl04_Edit')]")]
-        public IWebElement MedicalEditLink { get; set; }
+        public IWebElement MedicalEditLink;
         [FindsBy(How = How.XPath, Using = "//a[contains(@id, 'grdPlanBenefits_ctl00_ctl06_Edit')]")]
-        public IWebElement DentalEditLink { get; set; }
+        public IWebElement DentalEditLink;
         [FindsBy(How = How.XPath, Using = "//a[contains(@id, 'grdPlanBenefits_ctl00_ctl08_Edit')]")]
-        public IWebElement VisionEditLink { get; set; }
+        public IWebElement VisionEditLink;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtCompanyName')]")]
-        public IWebElement txtCompanyName { get; set; }
+        public IWebElement txtCompanyName;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtInsurAddOne')]")]
-        public IWebElement txtInsurAddOne { get; set; }
+        public IWebElement txtInsurAddOne;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtInsurAddOne')]")]
-        public IWebElement txtInsurAddTwo { get; set; }
+        public IWebElement txtInsurAddTwo;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtInsurCity')]")]
-        public IWebElement txtInsurCity { get; set; }
+        public IWebElement txtInsurCity;
         [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'cboInsurState')]")]
-        public IWebElement cboInsurState_wrapper { get; set; }
+        public IWebElement cboInsurState_wrapper;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'cboInsurState_Input')]")]
-        public IWebElement cboInsurState_Input { get; set; }
+        public IWebElement cboInsurState_Input;
         [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'txtInsurZip_wrapper')]")]
-        public IWebElement txtInsurZip_wrapper { get; set; }
+        public IWebElement txtInsurZip_wrapper;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtInsurZip')]")]
-        public IWebElement txtInsurZip { get; set; }
+        public IWebElement txtInsurZip;
         [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'txtInsurPNum_wrapper')]")]
-        public IWebElement txtInsurPNum_wrapper { get; set; }
+        public IWebElement txtInsurPNum_wrapper;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtInsurPNum')]")]
-        public IWebElement txtInsurPNum { get; set; }
+        public IWebElement txtInsurPNum;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtInsurPol')]")]
-        public IWebElement txtInsurPol { get; set; }
+        public IWebElement txtInsurPol;
 
         [FindsBy(How = How.XPath, Using = "//a[contains(@id, 'btnPlanBenefitsSave')]")]
-        public IWebElement btnPlanBenefitsSave { get; set; }
+        public IWebElement btnPlanBenefitsSave;
 
 
         /// <summary>
@@ -1483,33 +1501,33 @@ namespace NUnit.Tests1.Pages
         }
 
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'rbHSA_0')]")]
-        public IWebElement HSAYes { get; set; }
+        public IWebElement HSAYes;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'rbHSA_1')]")]
-        public IWebElement HSANo { get; set; }
+        public IWebElement HSANo;
         [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'txtIndDeduct_wrapper')]")]
-        public IWebElement txtIndDeduct_wrapper { get; set; }
+        public IWebElement txtIndDeduct_wrapper;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtIndDeduct')]")]
-        public IWebElement txtIndDeduct { get; set; }
+        public IWebElement txtIndDeduct;
         [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'txtFamDeduct_wrapper')]")]
-        public IWebElement txtFamDeduct_wrapper { get; set; }
+        public IWebElement txtFamDeduct_wrapper;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtFamDeduct')]")]
-        public IWebElement txtFamDeduct { get; set; }
+        public IWebElement txtFamDeduct;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'cbHealthPlan_0')]")]
-        public IWebElement comprehensiveMajorMedical { get; set; }
+        public IWebElement comprehensiveMajorMedical;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'cbHealthPlan_1')]")]
-        public IWebElement hmoPPO { get; set; }
+        public IWebElement hmoPPO;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'cbHealthPlan_2')]")]
-        public IWebElement hospitalOnlyHealPlan { get; set; }
+        public IWebElement hospitalOnlyHealPlan;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'cbHealthPlan_3')]")]
-        public IWebElement healthPlanOther { get; set; }
+        public IWebElement healthPlanOther;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'cbCoveredServ_0')]")]
-        public IWebElement medicalCovered { get; set; }
+        public IWebElement medicalCovered;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'cbCoveredServ_1')]")]
-        public IWebElement pharmacyCovered { get; set; }
+        public IWebElement pharmacyCovered;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'cbCoveredServ_2')]")]
-        public IWebElement visionCovered { get; set; }
+        public IWebElement visionCovered;
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'cbCoveredServ_3')]")]
-        public IWebElement dentalCovered { get; set; }
+        public IWebElement dentalCovered;
 
         /// <summary>
         /// Click Save
@@ -1529,11 +1547,11 @@ namespace NUnit.Tests1.Pages
         /// Buttons
         /// </summary>
         [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'lnkSavePanel')]")]
-        public IWebElement lnkSavePanel { get; set; }
+        public IWebElement lnkSavePanel;
         [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'btnWorkItemTop')]")]
-        public IWebElement HiPPWorkItemTop { get; set; }
+        public IWebElement HiPPWorkItemTop;
         [FindsBy(How = How.ClassName, Using = "errorTitle")]
-        public IWebElement errorTitle { get; set; }
+        public IWebElement errorTitle;
 
 
     }

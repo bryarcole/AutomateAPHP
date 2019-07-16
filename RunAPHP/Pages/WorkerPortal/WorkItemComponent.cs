@@ -1,12 +1,11 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.PageObjects;
 using NUnit.Tests1.Steps;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Reflection;
 using TestProject.SDK.PageObjects;
-
-namespace NUnit.Tests1.Pages
+using SeleniumExtras.PageObjects;
+namespace AutomateAPHP
 {
     public class WorkItemComponent
     {

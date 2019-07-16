@@ -18,6 +18,12 @@ namespace AutomateAPHP
 {
     public class APHPHomePage
     {
+        IWebDriver context;
+        public APHPHomePage(IWebDriver context)
+        {
+            this.context = context;
+            PageFactory.InitElements(context, this);
+        }
 
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'Username')]")]
         public IWebElement Username;

@@ -12,7 +12,7 @@ using TestProject.SDK.PageObjects;
 namespace AutomateAPHP
 {
 
-    public class MyFirstTestProjectTest : IWebTest
+    public class SubmitHIPPApplication : IWebTest
     {
 
         public ExecutionResult Execute(WebTestHelper helper)
@@ -20,20 +20,20 @@ namespace AutomateAPHP
 
             var driver = helper.Driver;
             
-            var app = new CreateHIPPApplication();
 
-            APHPHomePage loginPage = new APHPHomePage();
-            PageFactory.InitElements(driver, loginPage);
+            APHPHomePage loginPage = new APHPHomePage(driver);
             driver.Url = "https://10.3.29.100:44305";
             driver.Manage().Window.Maximize();
             WorkerPortalLandingPage landingPage = new WorkerPortalLandingPage(driver);
             HIPPSearchPage hIPPSearch = new HIPPSearchPage(driver);
-
+            CreateHIPPApplication app = new CreateHIPPApplication();
 
             loginPage.LoginPage("bryar.h.wrkr", "Password123");
             landingPage.HippApplicationSearch();
+            hIPPSearch.ClickBeginNewApp();
+            app.SubmitHIPPCaseSubmissionUltimate(driver, false);
 
-            return hIPPSearch.BeginNewHIPPApplication.Displayed ? ExecutionResult.Passed : ExecutionResult.Failed;
+            return ExecutionResult.Passed;
 
         }
     }

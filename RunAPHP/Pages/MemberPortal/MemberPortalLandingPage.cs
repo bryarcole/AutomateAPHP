@@ -7,7 +7,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support;
 using OpenQA.Selenium.Support.PageObjects;
 
-namespace NUnit.Tests1.Pages
+namespace AutomateAPHP
 {
     public class MemberPortalLandingPage
     {

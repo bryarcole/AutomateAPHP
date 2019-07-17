@@ -28,17 +28,20 @@ namespace NUnit.Tests1.Pages.MemberPortal
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, btnBeginApp")]
         private IWebElement BeginAppButton { get; set; }
 
-
+        public Generic GrabGeneric(IWebDriver context)
+        {
+            return new Generic(context);
+        }
 
 
         public void InputSelectType(string text)
         {
-            Generic.ProtectedElementClick(SelectTypeInput);
-            Generic.ProtectedElementSendKeys(SelectTypeInput, text);
+            GrabGeneric(context).ProtectedElementClick(SelectTypeInput);
+            GrabGeneric(context).ProtectedElementSendKeys(SelectTypeInput, text);
         }
         public void BeginApplicationClick()
         {
-            Generic.ProtectedElementClick(BeginAppButton);
+            GrabGeneric(context).ProtectedElementClick(BeginAppButton);
         }
     }
 }

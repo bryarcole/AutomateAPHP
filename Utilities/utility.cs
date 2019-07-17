@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+using System.Threading;
 using AventStack.ExtentReports;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
@@ -161,6 +161,8 @@ namespace NUnit.Tests1.Utilities
             DocX doc,
             ExtentTest test)
         {
+            Thread.Sleep(2000);
+
             Screenshots.TakeSreenShot(context, ScreenshotLocation + TestCase  + ".png");
             test.Log(TestStatus, LogNote);
             test.CreateNode(LogNote).Log(TestStatus, description).AddScreenCaptureFromPath("images\\" + TestCase + ".png");
@@ -186,6 +188,7 @@ namespace NUnit.Tests1.Utilities
             DocX doc
             )
         {
+            Thread.Sleep(2000);
             Screenshots.TakeSreenShot(context, ScreenshotLocation + TestCase + ".png");
             Xceed.Words.NET.Image img = doc.AddImage(ScreenshotLocation + TestCase + ".png");
             Picture p = img.CreatePicture();
@@ -242,7 +245,7 @@ namespace NUnit.Tests1.Utilities
         /// <param name="description"></param>
         /// <param name="test"></param>
         /// <returns></returns>
-        public ExtentTest RecordSimpleStatus(
+        public static ExtentTest RecordSimpleStatus(
             string LogNote,
             Status TestStatus,
             string description,

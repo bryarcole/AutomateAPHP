@@ -21,7 +21,10 @@ namespace NUnit.Tests1.Pages
             PageFactory.InitElements(context, this);
 
         }
-
+        public Generic GrabGeneric(IWebDriver context)
+        {
+            return new Generic(context);
+        }
         [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'btnCreateNewMemberPanel')]")]
         private IWebElement CreateNewMemberPanel { get; set; }
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'Where_Input')]")]
@@ -64,7 +67,7 @@ namespace NUnit.Tests1.Pages
         //}
         public void CreateNewMemberPanelClick()
         {
-            Generic.ProtectedElementClick(CreateNewMemberPanel);
+            GrabGeneric(context).ProtectedElementClick(CreateNewMemberPanel);
         }
         /// <summary>
         /// Case ID, 
@@ -76,8 +79,8 @@ namespace NUnit.Tests1.Pages
         /// <param name="searchCriteria"></param>
         public void WhereSearchInput(string searchCriteria)
         {
-            Generic.ProtectedElementClear(Where);
-            Generic.ProtectedElementSendKeys(Where, searchCriteria);
+            GrabGeneric(context).ProtectedElementClear(Where);
+            GrabGeneric(context).ProtectedElementSendKeys(Where, searchCriteria);
 
         }
         /// <summary>
@@ -88,8 +91,8 @@ namespace NUnit.Tests1.Pages
         /// <param name="searchCriteria"></param>
         private void HowSearchInput(string searchCriteria)
         {
-            Generic.ProtectedElementClear(HowSearch);
-            Generic.ProtectedElementSendKeys(HowSearch, searchCriteria);
+            GrabGeneric(context).ProtectedElementClear(HowSearch);
+            GrabGeneric(context).ProtectedElementSendKeys(HowSearch, searchCriteria);
 
         }
 
@@ -99,15 +102,13 @@ namespace NUnit.Tests1.Pages
         /// <returns></returns>
         public void SearchButtonClick()
         {
-
-            Generic.ProtectedElementClick(SearchButton);
-            
+            GrabGeneric(context).ProtectedElementClick(SearchButton);
         }
         public void SearchInputBox(string searchInput)
         {
 
-            Generic.ProtectedElementClear(AdditionalCriterias);
-            Generic.ProtectedElementSendKeys(AdditionalCriterias, searchInput);
+            GrabGeneric(context).ProtectedElementClear(AdditionalCriterias);
+            GrabGeneric(context).ProtectedElementSendKeys(AdditionalCriterias, searchInput);
 
         }
         public bool ChkReturnNoRecords()
@@ -115,10 +116,11 @@ namespace NUnit.Tests1.Pages
             return ReturnNoRecords.Displayed;
         }
 
-        public void SearchMember(string How, string Where, string InputValue)
+        public void SearchMember(string Where, string How,  string InputValue)
         {
-            HowSearchInput(How);
+
             WhereSearchInput(Where);
+            HowSearchInput(How);
             SearchInputBox(InputValue);
             SearchButtonClick();
         }

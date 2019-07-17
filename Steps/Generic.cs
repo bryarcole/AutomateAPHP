@@ -27,65 +27,95 @@ namespace NUnit.Tests1.Utilities
         public static IWebElement signoutBtn { get; set; }
 
 
-        static public IWebElement ProtectedElementClick(IWebElement ele)
+        public void ProtectedElementClick(IWebElement ele)
         {
-            try
+            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(5));
+            wait.Until(context =>
             {
-                ele.Click();
-            }
-            catch (Exception ex)
-            {
-                Type exType = ex.GetType();
-                if (exType == typeof(TargetInvocationException) ||
-                    exType == typeof(NoSuchElementException) ||
-                    exType == typeof(ElementClickInterceptedException) ||
-                    exType == typeof(ElementNotVisibleException) ||
-                    exType == typeof(InvalidOperationException))
+                try
                 {
-                    //Do nothing and continue
+                    ele.Click();
                 }
-            }
-            return ele;
+                catch (Exception ex)
+                {
+                    Type exType = ex.GetType();
+                    if (exType == typeof(TargetInvocationException) ||
+                        exType == typeof(NoSuchElementException) ||
+                        exType == typeof(ElementClickInterceptedException) ||
+                        exType == typeof(ElementNotVisibleException) ||
+                        exType == typeof(StaleElementReferenceException) ||
+                        exType == typeof(InvalidOperationException))
+                    {
+                        return false; //By returning false, wait will still rerun the func.
+                    }
+                    else
+                    {
+                        throw; //Rethrow exception if it's not ignore type.
+                    }
+                }
+                return true;
+
+            });
         }
-        static public IWebElement ProtectedElementSendKeys(IWebElement ele, string text)
+        public void ProtectedElementSendKeys(IWebElement ele, string text)
         {
-            try
+            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(5));
+            wait.Until(context =>
             {
-                ele.SendKeys(text);
-            }
-            catch (Exception ex)
-            {
-                Type exType = ex.GetType();
-                if (exType == typeof(TargetInvocationException) ||
-                    exType == typeof(NoSuchElementException) ||
-                    exType == typeof(ElementClickInterceptedException) ||
-                    exType == typeof(ElementNotVisibleException) ||
-                    exType == typeof(InvalidOperationException))
+                try
                 {
-                    //Do nothing and continue
+                    ele.SendKeys(text);
                 }
-            }
-            return ele;
+                catch (Exception ex)
+                {
+                    Type exType = ex.GetType();
+                    if (exType == typeof(TargetInvocationException) ||
+                        exType == typeof(NoSuchElementException) ||
+                        exType == typeof(ElementClickInterceptedException) ||
+                        exType == typeof(ElementNotVisibleException) ||
+                        exType == typeof(StaleElementReferenceException) ||
+                        exType == typeof(InvalidOperationException))
+                    {
+                        return false; //By returning false, wait will still rerun the func.
+                    }
+                    else
+                    {
+                        throw; //Rethrow exception if it's not ignore type.
+                    }
+                }
+                return true;
+
+            });
         }
-        static public IWebElement ProtectedElementClear(IWebElement ele)
+        public void ProtectedElementClear(IWebElement ele)
         {
-            try
+            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(5));
+            wait.Until(context =>
             {
-                ele.Clear();
-            }
-            catch (Exception ex)
-            {
-                Type exType = ex.GetType();
-                if (exType == typeof(TargetInvocationException) ||
-                    exType == typeof(NoSuchElementException) ||
-                    exType == typeof(ElementClickInterceptedException) ||
-                    exType == typeof(ElementNotVisibleException) ||
-                    exType == typeof(InvalidOperationException))
+                try
                 {
-                    //Do nothing and continue
+                    ele.Clear();
                 }
-            }
-            return ele;
+                catch (Exception ex)
+                {
+                    Type exType = ex.GetType();
+                    if (exType == typeof(TargetInvocationException) ||
+                        exType == typeof(NoSuchElementException) ||
+                        exType == typeof(ElementClickInterceptedException) ||
+                        exType == typeof(ElementNotVisibleException) ||
+                        exType == typeof(StaleElementReferenceException) ||
+                        exType == typeof(InvalidOperationException))
+                    {
+                        return false; //By returning false, wait will still rerun the func.
+                    }
+                    else
+                    {
+                        throw; //Rethrow exception if it's not ignore type.
+                    }
+                }
+                return true;
+
+            });
         }
 
         #region Search Result and assigned items buttons
@@ -204,7 +234,7 @@ namespace NUnit.Tests1.Utilities
         {
 
 
-            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(20));
+            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(5));
             wait.Until(context =>
             {
                 try

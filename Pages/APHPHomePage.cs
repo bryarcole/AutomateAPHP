@@ -20,7 +20,10 @@ namespace NUnit.Tests1.Pages
             this.context = context;
             PageFactory.InitElements(context, this);
         }
-
+        public Generic GrabGeneric(IWebDriver context)
+        {
+            return new Generic(context);
+        }
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'Username')]")]
         public IWebElement UserNameInput { get; set; }
 
@@ -39,10 +42,10 @@ namespace NUnit.Tests1.Pages
             //Thread.Sleep(3000);
             context.Url = startUp.AWSINTWoker;
             context.Manage().Window.Maximize();
-            Generic.ProtectedElementSendKeys(UserNameInput, username);
-            Generic.ProtectedElementClick(PasswordOverlay);
-            Generic.ProtectedElementSendKeys(PasswordInput, password);
-            Generic.ProtectedElementClick(LoginButton);
+            GrabGeneric(context).ProtectedElementSendKeys(UserNameInput, username);
+            GrabGeneric(context).ProtectedElementClick(PasswordOverlay);
+            GrabGeneric(context).ProtectedElementSendKeys(PasswordInput, password);
+            GrabGeneric(context).ProtectedElementClick(LoginButton);
         }
         
         public static IWebElement User(IWebDriver driver)

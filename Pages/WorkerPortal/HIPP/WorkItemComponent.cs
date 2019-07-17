@@ -38,6 +38,8 @@ namespace NUnit.Tests1.Pages
         public IWebElement btnClose { get; set; }
         public string  gatherAppNumber()
         {
+
+            
             WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(10));
             string text = "";
 

@@ -21,7 +21,10 @@ namespace NUnit.Tests1.Pages
             PageFactory.InitElements(context, this);
 
         }
-
+        public Generic GrabGeneric(IWebDriver context)
+        {
+            return new Generic(context);
+        }
         [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'btnCreateNewHippApplication')]")]
         private IWebElement BeginNewHIPPApplication { get; set; }
         [FindsBy(How= How.XPath, Using ="//input[contains(@id, 'Where_Input')]")]
@@ -100,8 +103,8 @@ namespace NUnit.Tests1.Pages
         /// <param name="searchCriteria"></param>
         public void WhereSearchInput(string searchCriteria)
         {
-            Generic.ProtectedElementClear(Where);
-            Generic.ProtectedElementSendKeys(Where, searchCriteria);
+            GrabGeneric(context).ProtectedElementClear(Where);
+            GrabGeneric(context).ProtectedElementSendKeys(Where, searchCriteria);
 
         }
         /// <summary>
@@ -196,7 +199,7 @@ namespace NUnit.Tests1.Pages
         public void SearchHiPPCase(string How, string Where, string InputValue, string Mode, string Type)
         {
             Generic generic = new Generic(context);
-            generic.GenericCheveronClick("0");
+            GrabGeneric(context).GenericCheveronClick("0");
             HowSearchInput(How);
             WhereSearchInput(Where);
             SearchInputBox(InputValue);

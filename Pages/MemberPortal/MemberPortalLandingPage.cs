@@ -20,6 +20,10 @@ namespace NUnit.Tests1.Pages
             PageFactory.InitElements(context, this);
         }
 
+        public Generic GrabGeneric(IWebDriver context)
+        {
+            return new Generic(context);
+        }
         [FindsBy(How = How.PartialLinkText, Using = "My Claims")]
         public IWebElement myClaims { get; set; }
         [FindsBy(How = How.PartialLinkText, Using = "Find a Provider")]
@@ -36,13 +40,14 @@ namespace NUnit.Tests1.Pages
 
         public void HIPPMyApplication()
         {
+            GrabGeneric(context);
             HiPPApplicationHover();
-            Generic.ProtectedElementClick(MyHIPPApplication);
+            GrabGeneric(context).ProtectedElementClick(MyHIPPApplication);
         }
         public void HIPPEIVData()
         {
             HiPPApplicationHover();
-            Generic.ProtectedElementClick(HIPPEIV);
+            GrabGeneric(context).ProtectedElementClick(HIPPEIV);
         }
 
 

@@ -49,13 +49,9 @@ namespace NUnit.Tests1.Steps
         public void HIPPAppSearch(string appNumber, IWebDriver context)
         {
 
-            APHPHomePage loginPage = new APHPHomePage(context);
             WorkerPortalLandingPage landingPage = new WorkerPortalLandingPage(context);
             HIPPSearchPage hIPPSearch = new HIPPSearchPage(context);
-            HIPPSubmitApplicationPage submitApp = new HIPPSubmitApplicationPage(context);
-            WorkItemComponent workitem = new WorkItemComponent(context);
             Generic generic = new Generic(context);
-            Utility utility = new Utility(context);
 
 
             //Gather Data from app

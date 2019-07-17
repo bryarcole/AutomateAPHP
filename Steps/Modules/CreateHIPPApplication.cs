@@ -36,7 +36,7 @@ namespace NUnit.Tests1.Steps
             else
             {
                 submitApp.ApplicationOverviewInput(
-                    DateTime.Today.ToString("MM/dd/yyyy"),
+                    now.ToString("MM/dd/yyyy"),
                     DateTime.Today.ToString("MM/dd/yyyy"),
                     DateTime.Today.AddMonths(-6).ToString("MM/dd/yyyy"),
                     DateTime.Today.ToString("MM/dd/yyyy"),

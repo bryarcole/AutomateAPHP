@@ -27,6 +27,67 @@ namespace NUnit.Tests1.Utilities
         public static IWebElement signoutBtn { get; set; }
 
 
+        static public IWebElement ProtectedElementClick(IWebElement ele)
+        {
+            try
+            {
+                ele.Click();
+            }
+            catch (Exception ex)
+            {
+                Type exType = ex.GetType();
+                if (exType == typeof(TargetInvocationException) ||
+                    exType == typeof(NoSuchElementException) ||
+                    exType == typeof(ElementClickInterceptedException) ||
+                    exType == typeof(ElementNotVisibleException) ||
+                    exType == typeof(InvalidOperationException))
+                {
+                    //Do nothing and continue
+                }
+            }
+            return ele;
+        }
+        static public IWebElement ProtectedElementSendKeys(IWebElement ele, string text)
+        {
+            try
+            {
+                ele.SendKeys(text);
+            }
+            catch (Exception ex)
+            {
+                Type exType = ex.GetType();
+                if (exType == typeof(TargetInvocationException) ||
+                    exType == typeof(NoSuchElementException) ||
+                    exType == typeof(ElementClickInterceptedException) ||
+                    exType == typeof(ElementNotVisibleException) ||
+                    exType == typeof(InvalidOperationException))
+                {
+                    //Do nothing and continue
+                }
+            }
+            return ele;
+        }
+        static public IWebElement ProtectedElementClear(IWebElement ele)
+        {
+            try
+            {
+                ele.Clear();
+            }
+            catch (Exception ex)
+            {
+                Type exType = ex.GetType();
+                if (exType == typeof(TargetInvocationException) ||
+                    exType == typeof(NoSuchElementException) ||
+                    exType == typeof(ElementClickInterceptedException) ||
+                    exType == typeof(ElementNotVisibleException) ||
+                    exType == typeof(InvalidOperationException))
+                {
+                    //Do nothing and continue
+                }
+            }
+            return ele;
+        }
+
         #region Search Result and assigned items buttons
         /// <summary>
         /// Search Result buttons
@@ -215,7 +276,7 @@ namespace NUnit.Tests1.Utilities
         /// <param name="testCase"></param>
         /// <param name="testCount"></param>
         /// <returns></returns>
-        public string GenerateImageLocation(string testCase, int testCount)
+        static public string GenerateImageLocation(string testCase, int testCount)
         {
             string location = "images\\" + testCase + testCount + ".png";
             return location;

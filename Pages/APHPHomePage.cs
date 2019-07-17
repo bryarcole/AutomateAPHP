@@ -8,7 +8,7 @@ using OpenQA.Selenium.Support.PageObjects;
 using NUnit.Tests1;
 using System.Threading;
 using NUnit.Tests1.Steps.StartUp;
-
+using NUnit.Tests1.Utilities;
 
 namespace NUnit.Tests1.Pages
 {
@@ -39,10 +39,10 @@ namespace NUnit.Tests1.Pages
             //Thread.Sleep(3000);
             context.Url = startUp.AWSINTWoker;
             context.Manage().Window.Maximize();
-            UserNameInput.SendKeys(username);
-            PasswordOverlay.Click();
-            PasswordInput.SendKeys(password);
-            LoginButton.Click();
+            Generic.ProtectedElementSendKeys(UserNameInput, username);
+            Generic.ProtectedElementClick(PasswordOverlay);
+            Generic.ProtectedElementSendKeys(PasswordInput, password);
+            Generic.ProtectedElementClick(LoginButton);
         }
         
         public static IWebElement User(IWebDriver driver)
@@ -69,4 +69,6 @@ namespace NUnit.Tests1.Pages
             return PasswordInput;
         }
     }
+
 }
+

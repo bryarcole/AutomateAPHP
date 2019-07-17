@@ -36,6 +36,9 @@ namespace NUnit.Tests1
         [TestCase("Approved", 152492, false)]
         [TestCase("Denied", 152493, false)]
         [TestCase("Pended", 152494, false)]
+        [TestCase("Approved", 152499, true)]
+        [TestCase("Denied", 152500, true)]
+        [TestCase("Pended", 152501, true)]
         [Category("HIPP WorkFlow"), Category("Paper Initial")]
         public void TC_IT03_HIPP_Workflow(string stat, int testCaseID, bool renewalStatus)
         {

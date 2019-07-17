@@ -2,10 +2,11 @@
 using OpenQA.Selenium.Support.PageObjects;
 using NUnit.Tests1.Steps;
 using NUnit.Tests1.Utilities;
-
+using SeleniumExtras;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Reflection;
+using System.Collections.Generic;
 
 namespace NUnit.Tests1.Pages
 {
@@ -18,6 +19,7 @@ namespace NUnit.Tests1.Pages
         {
             this.context = context;
             PageFactory.InitElements(context, this);
+
         }
 
         [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'btnCreateNewHippApplication')]")]
@@ -35,14 +37,29 @@ namespace NUnit.Tests1.Pages
         [FindsBy(How = How.XPath, Using ="//input[contains(@id, 'SearchValue')]")]
         private IWebElement SearchValue { get; set; }
         [FindsBy (How = How.ClassName, Using = "rgNorecords")]
-        public IWebElement ReturnNoRecords { get; set; }
+        private IWebElement ReturnNoRecords { get; set; }
         [FindsBy(How = How.XPath, Using = "//table[contains(@id, 'HippSearchResults')]")]
-        public IWebElement SearchResults { get; set; }
+        private IWebElement SearchResults { get; set; }
         [FindsBy(How = How.Id, Using = "//ctl00_ctl00_pageContentMaster_criteria1_grdHippSearchResults_ctl00_ctl04_lnkColumn")]
-        public IWebElement FirstCell { get; set; }
+        private IWebElement FirstCell { get; set; }
+        //[FindsBy(How = How.XPath, Using = "//*[contains(@id, 'ctl00_ctl00_pageContentMaster_pageContent_grdNewAssignedWI_ctl00__0')]")]
+        //private List<IWebElement> returnedTable { get; set; }
+        ////*[@id="ctl00_ctl00_pageContentMaster_pageContent_grdNewAssignedWI_ctl00__0"]/td[1]
 
+        
 
+        //public void GetTableCell()
+        //{
+        //    int i = 0;
+            
+        //    for(i = 0; 1 < returnedTable.Count; i++ ){
 
+        //        IWebElement row = context.FindElement(By.XPath("//*[@id=\"ctl00_ctl00_pageContentMaster_pageContent_grdNewAssignedWI_ctl00__" + i + "\"]"));
+
+        //        //*[@id="ctl00_ctl00_pageContentMaster_pageContent_grdNewAssignedWI_ctl00_ctl04_WorkItemId"]
+        //        //*[@id="ctl00_ctl00_pageContentMaster_pageContent_grdNewAssignedWI_ctl00__0"]/td[1]
+        //    }
+        //}
         public void ClickBeginNewApp()
         {
             WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(10));
@@ -81,12 +98,10 @@ namespace NUnit.Tests1.Pages
         /// SSN 
         /// </summary>
         /// <param name="searchCriteria"></param>
-        public IWebElement WhereSearchInput(string searchCriteria)
+        public void WhereSearchInput(string searchCriteria)
         {
-            
-            Where.Clear();
-            Where.SendKeys(searchCriteria);
-            return Where;
+            Generic.ProtectedElementClear(Where);
+            Generic.ProtectedElementSendKeys(Where, searchCriteria);
 
         }
         /// <summary>
@@ -95,8 +110,9 @@ namespace NUnit.Tests1.Pages
         /// Starts With
         /// </summary>
         /// <param name="searchCriteria"></param>
-        public IWebElement HowSearchInput(string searchCriteria)
+        private IWebElement HowSearchInput(string searchCriteria)
         {
+
             HowSearch.Clear();
             HowSearch.SendKeys(searchCriteria);
             return HowSearch;
@@ -107,7 +123,7 @@ namespace NUnit.Tests1.Pages
         /// Renewal 
         /// </summary>
         /// <param name="searchCriteria"></param>
-        public IWebElement ApplicationTypeInput(string searchCriteria)
+        private IWebElement ApplicationTypeInput(string searchCriteria)
         {
             ApplicationType.Clear();
             ApplicationType.SendKeys(searchCriteria);
@@ -118,7 +134,7 @@ namespace NUnit.Tests1.Pages
         /// Electronic 
         /// </summary>
         /// <param name="searchCriteria"></param>
-        public IWebElement ApplicationModeInput(string searchCriteria)
+        private IWebElement ApplicationModeInput(string searchCriteria)
         {
             ApplicationMode.Clear();
             ApplicationMode.SendKeys(searchCriteria);
@@ -188,7 +204,7 @@ namespace NUnit.Tests1.Pages
             ApplicationTypeInput(Type);
         }
 
-        public IWebElement SelectTableCell(string row, string column)
+        private IWebElement SelectTableCell(string row, string column)
         {
             SearchResults.FindElement(By.XPath("//*[contains(@id,'Results_ctl00__0'])"));
             IWebElement cell = context.FindElement(By.XPath("'//table[contains(@id=" + "SearchResults" + ")]//tr[" + row + "]//td[" + column + "]'"));

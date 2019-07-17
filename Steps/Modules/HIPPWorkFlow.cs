@@ -1,18 +1,10 @@
-﻿using NUnit.Framework;
-using NUnit.Tests1.Pages;
+﻿using NUnit.Tests1.Pages;
 using NUnit.Tests1.Steps.StartUp;
-using NUnit.Tests1.Steps;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using NUnit.Tests1.Utilities;
 using System;
-using AventStack.ExtentReports;
-using AventStack.ExtentReports.Reporter;
 using System.Threading;
-using System.Linq;
 using Xceed.Words.NET;
-using System.Diagnostics;
-using System.Windows.Forms;
 using System.Reflection;
 
 namespace NUnit.Tests1.Steps
@@ -73,6 +65,8 @@ namespace NUnit.Tests1.Steps
             utility.RecordStepStatusMAIN("App in " + appQueue + "and in status of " + activityReason, screenshotLocation, "CheckAppStaus", doc);
             workitem.ClickCompletedButton();
             utility.RecordStepStatusMAIN("Appliciation Completed", screenshotLocation, "Application Completed", doc);
+
+            ///Refresh Page
             context.Url = startUp.AWSINTWoker;
 
             workitem.ClickExitButton();
@@ -115,9 +109,6 @@ namespace NUnit.Tests1.Steps
                 HippPendCase(appNumber, context, screenshotLocation, doc);
             }
             return appNumber;
-
-    
-
         }
 
         /// <summary>

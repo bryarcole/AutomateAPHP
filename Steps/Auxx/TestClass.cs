@@ -61,7 +61,17 @@ namespace NUnit.Tests1
         [Category("Nav to HIPP Submission"), TestCaseSource("testCount")]
         public void NavToHIPPSubmission(int testCount)
         {
-            
+
+            IWebDriver driver = new ChromeDriver();
+            APHPHomePage loginPage = new APHPHomePage(driver);
+            driver.Url = "https://10.3.29.100:44305";
+            driver.Manage().Window.Maximize();
+            WorkerPortalLandingPage landingPage = new WorkerPortalLandingPage(driver);
+            HIPPSearchPage hIPPSearch = new HIPPSearchPage(driver);
+
+
+            loginPage.LoginPage("bryar.h.wrkr", "Password123");
+            landingPage.HippApplicationSearch();
         }
 
 

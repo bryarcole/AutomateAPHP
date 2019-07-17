@@ -1,21 +1,10 @@
-﻿using NUnit.Framework;
-using NUnit.Tests1.Pages;
-using NUnit.Tests1.Steps.StartUp;
-using NUnit.Tests1.Steps;
+﻿using NUnit.Tests1.Pages;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using NUnit.Tests1.Utilities;
 using System;
-using AventStack.ExtentReports;
-using AventStack.ExtentReports.Reporter;
 using System.Threading;
-using System.Linq;
 using Xceed.Words.NET;
-using System.Diagnostics;
-using System.Windows.Forms;
-using OpenQA.Selenium.Support.UI;
-using System.IO;
-using System.Reflection;
+
 
 namespace NUnit.Tests1.Steps
 {
@@ -225,9 +214,7 @@ namespace NUnit.Tests1.Steps
         }
         public void SubmitHIPPCaseSubmissionUltimate(IWebDriver context, bool renewal)
         {
-            APHPHomePage loginPage = new APHPHomePage(context);
-            WorkerPortalLandingPage landingPage = new WorkerPortalLandingPage(context);
-            HIPPSearchPage hIPPSearch = new HIPPSearchPage(context);
+
             HIPPSubmitApplicationPage submitApp = new HIPPSubmitApplicationPage(context);
             WorkItemComponent workitem = new WorkItemComponent(context);
             Generic generic = new Generic(context);

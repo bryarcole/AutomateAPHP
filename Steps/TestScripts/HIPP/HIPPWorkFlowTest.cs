@@ -20,6 +20,7 @@ using TFSCommon.Common;
 using RequirementsTraceability;
 using TFSCommon.Data;
 using System.IO;
+using NUnit.Tests1.Pages.WorkerPortal;
 
 namespace NUnit.Tests1
 {

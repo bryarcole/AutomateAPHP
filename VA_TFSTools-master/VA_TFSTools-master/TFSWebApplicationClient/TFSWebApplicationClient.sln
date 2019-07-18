@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28922.388
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "TFSWebApplicationClient", ".\TFSWebApplicationClient\TFSWebApplicationClient.njsproj", "{8B1F7C70-696C-41D1-928C-73B6A792EC0F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8B1F7C70-696C-41D1-928C-73B6A792EC0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B1F7C70-696C-41D1-928C-73B6A792EC0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B1F7C70-696C-41D1-928C-73B6A792EC0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B1F7C70-696C-41D1-928C-73B6A792EC0F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3C7D3338-AF24-49C6-BF05-CE3897ACBB35}
+	EndGlobalSection
+EndGlobal

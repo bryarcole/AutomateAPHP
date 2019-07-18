@@ -1,0 +1,49 @@
+personalaccesstoken=
+server=http://10.3.28.4/
+project=APHP Virginia
+saveLocation=C:\Users\cody.hui\Desktop\VA Metrics\
+fileName=VA - SIT IT 3 Execution Status Template 26JUNE2019
+executionsheetname=Execution Actuals
+scriptsheetname=Execution Input Data
+folderCountsSheetName=Folder Counts
+tfsDefectsSheetName=Defects from TFS
+tfsTestCaseWithDefectSheetName=Test Case With Defect
+tfsDefectsProposedSheetName=Defects from TFS Proposed
+executionPlannedDailySheetName=Execution Planned By Day
+readyForTestCritialHighSheetName=Ready for Test - CriticalHigh
+readyForTestMediumLowSheetName=Ready for Test - MediumLow
+testplanid=149579
+testsuiteid=149580
+startdate=4/1/2019
+enddate=6/26/2019
+usewebapi=1
+numberoftestruns=200
+
+##### Jobs To Be Run --> 1 to enable and 0 to disable
+# Jobs are in order that should be run 
+# 1) Gathers 'numberoftestruns' properties number of most recent Test Runs and writes to the DB
+GatherTestRunAndResultsAndWriteToDb=0
+
+# 2) Updates the Execution Input Data sheet (scriptsheetname property). 
+#		Updates Test Cases if there were changes in TFS and then adds additional test cases
+UpdateExcelExecutionInputData=0
+
+# 3) Updates Daily Test Case Runs (executionsheetname property).
+UpdateExcelDailyTestCaseRun=0
+
+# 4) Updates the sheet names as referenced by the first column of folderCountsSheetName property.
+UpdateExcelDailyExecutionStatus=0
+
+# 5) Updates the following properties: 
+#		1. tfsDefectsSheetName
+#		2. tfsTestCaseWithDefectSheetName
+#		3. tfsDefectsProposedSheetName
+UpdateExcelDefectWithTestCaseCount=1
+
+# 6) Updates the test cases ready for test on the following properties:
+#		1. readyForTestCritialHighSheetName
+#		2. readyForTestMediumLowSheetName
+UpdateTestCasesReadyForTest=0
+
+# 7) Updates the 'Failed with Minor Defects' column in folderCountsSheetName property.
+UpdateExcelFolderCounts=0

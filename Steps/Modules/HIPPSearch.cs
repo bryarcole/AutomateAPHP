@@ -14,6 +14,7 @@ using Xceed.Words.NET;
 using System.Diagnostics;
 using System.Windows.Forms;
 using System.Reflection;
+using NUnit.Tests1.Pages.WorkerPortal;
 
 namespace NUnit.Tests1.Steps
 {

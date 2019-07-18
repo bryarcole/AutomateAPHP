@@ -143,26 +143,30 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\MemberPortal\MyHIPPApplication.cs" />
+    <Compile Include="Pages\MemberPortal\MyHIPPApplicationSubmitPage.cs" />
+    <Compile Include="Pages\WorkerPortal\Member\MemberEligibilityDetails.cs" />
+    <Compile Include="Pages\WorkerPortal\Member\MemberSearchPage.cs" />
     <Compile Include="Pages\WorkerPortal\Validations\HIPPWorkerPortalNegativeValidation.cs" />
-    <Compile Include="Pages\WorkerPortal\HIPPSubmitApplicationPage.cs" />
-    <Compile Include="Pages\WorkerPortal\WorkItemComponent.cs" />
+    <Compile Include="Pages\WorkerPortal\HIPP\HIPPSubmitApplicationPage.cs" />
+    <Compile Include="Pages\WorkerPortal\HIPP\WorkItemComponent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShowAndTell.cs" />
     <Compile Include="Steps\Auxx\SimpleDelegate.cs" />
     <Compile Include="Steps\Modules\CreateHIPPApplication.cs" />
     <Compile Include="Steps\Modules\HIPPSearch.cs" />
     <Compile Include="Steps\Modules\HIPPWorkFlow.cs" />
-    <Compile Include="Steps\TestScripts\HIPPSearchTest.cs" />
+    <Compile Include="Steps\TestScripts\HIPP\HIPPSearchTest.cs" />
     <Compile Include="Pages\APHPHomePage.cs" />
     <Compile Include="Pages\MemberPortal\MemberPortalLandingPage.cs" />
-    <Compile Include="Pages\WorkerPortal\HIPPSearchPage.cs" />
+    <Compile Include="Pages\WorkerPortal\HIPP\HIPPSearchPage.cs" />
     <Compile Include="Pages\WorkerPortal\WorkerPortalLandingPage.cs" />
     <Compile Include="Steps\Generic.cs" />
-    <Compile Include="Steps\TestScripts\HIPPWorkFlowTestProject.cs" />
+    <Compile Include="Steps\TestScripts\Member\MemberBuyInTest.cs" />
     <Compile Include="Utilities\StartUp.cs" />
     <Compile Include="Help\ExtentReportTemplate.cs" />
-    <Compile Include="Steps\TestScripts\HIPPWorkFlowTest.cs" />
-    <Compile Include="Steps\TestScripts\HIPPApplicationInput.cs" />
+    <Compile Include="Steps\TestScripts\HIPP\HIPPWorkFlowTest.cs" />
+    <Compile Include="Steps\TestScripts\HIPP\HIPPApplicationInput.cs" />
     <Compile Include="Steps\Auxx\AuxTest.cs" />
     <Compile Include="Steps\Auxx\TestClass.cs" />
     <Compile Include="Utilities\REFERENCEONLYCreateWordDoc.cs" />

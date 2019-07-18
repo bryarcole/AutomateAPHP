@@ -1,0 +1,11 @@
+﻿personalaccesstoken=7wwgihgjbgchepkpvn4adotkd7bmt3ewtwsr7u4grny7yisrwe3a
+server=http://10.3.28.4/
+project=APHP Virginia
+saveLocation=C:\Users\cody.hui\Desktop\
+fileName=(Lead_Name)_Test_Case_Tracker_26APR19
+testExecutionSheetName=Test Execution
+testScriptSheetName=Test Script
+executionsheetname=Test Execution
+scriptsheetname=Test Script
+testplanid=142838
+testsuiteid=149850

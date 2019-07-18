@@ -12,7 +12,8 @@ using System.Threading;
 using Xceed.Words.NET;
 using System.Diagnostics;
 using TFSCommon.Data;
-using static NUnit.Tests1.Pages.MemberEligibilityDetails;
+using NUnit.Tests1.Pages.WorkerPortal;
+using static NUnit.Tests1.Pages.WorkerPortal.MemberEligibilityDetails;
 
 namespace NUnit.Tests1
 {
@@ -841,12 +842,12 @@ namespace NUnit.Tests1
                     Thread.Sleep(3000);
                     doc.SaveAs("C:\\Users\\" + userName + "\\Desktop\\TestResults\\" + testName);
                     Process.Start("WINWORD.EXE", "C:\\Users\\" + userName + "\\Desktop\\TestResults\\" + testName);
-                    //Generic.signoutBtn.Click();
-                    //context.Close();
+                    Generic.signoutBtn.Click();
+                    context.Close();
                 }
                 catch
                 {
-                    //context.Close();
+                    context.Close();
                 }
 
             }

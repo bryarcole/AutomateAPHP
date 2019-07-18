@@ -8,7 +8,7 @@ using System;
 using System.Reflection;
 using System.Collections.Generic;
 
-namespace NUnit.Tests1.Pages
+namespace NUnit.Tests1.Pages.WorkerPortal
 {
     public class MemberSearchPage
     {

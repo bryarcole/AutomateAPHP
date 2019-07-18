@@ -8,7 +8,7 @@ using System;
 using System.Reflection;
 using System.Collections.Generic;
 
-namespace NUnit.Tests1.Pages
+namespace NUnit.Tests1.Pages.WorkerPortal
 {
     public class MemberEligibilityDetails
     {
@@ -59,7 +59,7 @@ namespace NUnit.Tests1.Pages
             private IWebElement SentRecievedDate_dateInput { get; set; }
             [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'SentRecievedDate_dateInput_wrapper')]")]
             private IWebElement SentRecievedDate_dateInput_wrapper { get; set; }
-            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'BuyInEffToDate$dateInput')]")]
+            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'BuyInEffToDate_dateInput')]")]
             private IWebElement BuyInEffToDatedateInput { get; set; }
             [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'BuyInEffToDate_dateInput_wrapper')]")]
             private IWebElement dpBuyInEffToDate_dateInput_wrapper { get; set; }
@@ -111,22 +111,22 @@ namespace NUnit.Tests1.Pages
             public void TransactionEffectiveDateFromInput(string input)
             {
                 GrabGeneric(context).ProtectedElementClick(BuyInEffFromDate_dateInput_wrapper);
+
                 GrabGeneric(context).ProtectedElementSendKeys(BuyInEffFromDate_dateInput, input);
-                GrabGeneric(context).ProtectedElementSendKeys(BuyInEffFromDate_dateInput ,Keys.Tab);
 
             }
             public void TransactionEffectiveToFromInput(string input)
             {
                 GrabGeneric(context).ProtectedElementClick(dpBuyInEffToDate_dateInput_wrapper);
-                GrabGeneric(context).ProtectedElementSendKeys(BuyInEffToDatedateInput, input);
-                GrabGeneric(context).ProtectedElementSendKeys(BuyInEffToDatedateInput, Keys.Tab);
+                BuyInEffToDatedateInput.SendKeys(input);
+
+                //GrabGeneric(context).ProtectedElementSendKeys(BuyInEffToDatedateInput, input);
 
             }
             public void SentRecievedDateInput(string input)
             {
                 GrabGeneric(context).ProtectedElementClick(SentRecievedDate_dateInput_wrapper);
                 GrabGeneric(context).ProtectedElementSendKeys(SentRecievedDate_dateInput, input);
-                GrabGeneric(context).ProtectedElementSendKeys(SentRecievedDate_dateInput, Keys.Tab);
 
             }
             public void PremiumInput(string input)
@@ -155,6 +155,43 @@ namespace NUnit.Tests1.Pages
                 TransactionEffectiveToFromInput(transactionTo);
                 SentRecievedDateInput(DateSentRecieved);
                 PremiumInput(Premium);
+            }
+            public void MedicareBuyInput(string RIC,
+                string medicarePart,
+                string transactionCode,
+                string subCode,
+                string eligibilityCode,
+                string transactionFrom,
+                string transactionTo,
+                string DateSentRecieved
+                )
+            {
+                RICInput(RIC);
+                MedicarePartInput(medicarePart);
+                TransactionCodeInput(transactionCode);
+                SubCodeInput(subCode);
+                BuyInEligibilityCodeInput(eligibilityCode);
+                TransactionEffectiveDateFromInput(transactionFrom);
+                TransactionEffectiveToFromInput(transactionTo);
+                SentRecievedDateInput(DateSentRecieved);
+            }
+            public void MedicareBuyInput(string RIC,
+                string medicarePart,
+                string transactionCode,
+                string subCode,
+                string eligibilityCode,
+                string transactionFrom,
+                string transactionTo
+
+                )
+            {
+                RICInput(RIC);
+                MedicarePartInput(medicarePart);
+                TransactionCodeInput(transactionCode);
+                SubCodeInput(subCode);
+                BuyInEligibilityCodeInput(eligibilityCode);
+                TransactionEffectiveDateFromInput(transactionFrom);
+                TransactionEffectiveToFromInput(transactionTo);
             }
         }
     }

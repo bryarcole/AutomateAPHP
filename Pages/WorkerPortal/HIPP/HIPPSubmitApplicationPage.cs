@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace NUnit.Tests1.Pages
+namespace NUnit.Tests1.Pages.WorkerPortal
 {
     public class HIPPSubmitApplicationPage
     {

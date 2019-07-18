@@ -7,7 +7,7 @@ using System.Reflection;
 
 
 
-namespace NUnit.Tests1.Pages
+namespace NUnit.Tests1.Pages.WorkerPortal
 {
     public class WorkItemComponent
     {

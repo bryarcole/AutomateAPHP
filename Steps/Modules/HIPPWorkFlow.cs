@@ -6,6 +6,7 @@ using System;
 using System.Threading;
 using Xceed.Words.NET;
 using System.Reflection;
+using NUnit.Tests1.Pages.WorkerPortal;
 
 namespace NUnit.Tests1.Steps
 {

@@ -12,6 +12,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using AventStack.ExtentReports;
 using AventStack.ExtentReports.Configuration;
+using NUnit.Tests1.Pages.WorkerPortal;
 
 namespace NUnit.Tests1.Pages
 {

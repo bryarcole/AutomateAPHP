@@ -161,14 +161,15 @@ namespace NUnit.Tests1
             loginPage.LoginPage("bryar.h.wrkr", "Password123");
             utility.RecordStepStatusMAIN("Log in in APHP Sucess", screenshotLocation, "LoginSuccess", doc);
             landingPage.HippApplicationSearch();
-            hIPPSearch.SearchHiPPCase("Contains", "Application ID", "10000156");
+            hIPPSearch.SearchHiPPCase("Contains", "Application ID", "10000203");
             hIPPSearch.SearchButtonClick();
             utility.RecordStepStatusMAIN("Search results", screenshotLocation, "SearchResults", doc);
-            generic.genericLinkTextClick("10000156");
+            generic.genericLinkTextClick("10000203");
             
             workitem.ClickWorkItemButton();
             Thread.Sleep(3000);
             //hIPPSearch.ClickBeginNewApp();
+            app.SubmitHIPPCaseSubmissionUltimate(context, false, screenshotLocation, doc);
 
 
 

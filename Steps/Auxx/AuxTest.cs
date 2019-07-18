@@ -153,7 +153,8 @@ namespace NUnit.Tests1
 
             WordDocGen docs = new WordDocGen();
 
-            docs.CreateWordDocSuite("Bryar.h.cole", 149579, 153805);
+            docs.CreateWordDocSuite("Bryar.h.cole", 149579, 153811);
+            docs.CreateWordDocSuite("Bryar.h.cole", 149579, 153812);
             #region Boring stuff
             //// Test Case Pull
             //#region Pull Test Case from TFS

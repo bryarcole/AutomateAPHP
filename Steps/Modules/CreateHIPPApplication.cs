@@ -40,7 +40,7 @@ namespace NUnit.Tests1.Steps
                     DateTime.Today.ToString("MM/dd/yyyy"),
                     DateTime.Today.AddMonths(-6).ToString("MM/dd/yyyy"),
                     DateTime.Today.ToString("MM/dd/yyyy"),
-                    DateTime.Today.ToString("MM/dd/yyyy"),
+                    DateTime.Today.AddDays(-7).ToString("MM/dd/yyyy"),
                     utility.RandomNumericString(9)
                     );
             }

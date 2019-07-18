@@ -46,6 +46,8 @@ namespace NUnit.Tests1.Utilities
                         exType == typeof(StaleElementReferenceException) ||
                         exType == typeof(InvalidOperationException))
                     {
+                        Console.Write(ex.Message);
+
                         return false; //By returning false, wait will still rerun the func.
                     }
                     else
@@ -106,6 +108,7 @@ namespace NUnit.Tests1.Utilities
                         exType == typeof(StaleElementReferenceException) ||
                         exType == typeof(InvalidOperationException))
                     {
+                        Console.Write(ex.Message);
                         return false; //By returning false, wait will still rerun the func.
                     }
                     else
@@ -217,6 +220,7 @@ namespace NUnit.Tests1.Utilities
                         exType == typeof(StaleElementReferenceException) ||
                         exType == typeof(InvalidOperationException))
                     {
+                        Console.Write(ex.Message);
                         return false; //By returning false, wait will still rerun the func.
                     }
                     else

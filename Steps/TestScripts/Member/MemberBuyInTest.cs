@@ -730,6 +730,8 @@ namespace NUnit.Tests1
         [Category("Member Buy In WorkFlow")]
         public void General_test(string memberId, int testCaseID)
         {
+
+
             string location = "C:\\Users\\" + userName + "\\Desktop\\EvidenceDocsforcase " + testCaseID + "GeneralTest";
             string screenshotLocation = location + "\\images\\";
 
@@ -785,9 +787,12 @@ namespace NUnit.Tests1
                 buyIn.TransactionCodeInput(utility.RandomNumericString(9));
                 buyIn.BuyInEligibilityCodeInput("A");
                 buyIn.SentRecievedDateInput(now.ToString("MM/dd/yyyy"));
-                buyIn.TransactionEffectiveToFromInput(now.ToString("MM/dd/yyyy"));
+                buyIn.TransactionEffectiveToFromInput(now.ToString("01/01/1991"));
+                //buyIn.TransactionEffectiveToFromInput(now.ToString("MM/dd/yyyy"));
+
                 buyIn.SubCodeInput("B");
-                buyIn.TransactionEffectiveDateFromInput(now.AddMonths(-9).ToString("MM/dd/yyyy"));
+                buyIn.TransactionEffectiveDateFromInput(now.AddMonths(-9).ToString("01/01/1991"));
+                //buyIn.TransactionEffectiveDateFromInput(now.AddMonths(-9).ToString("MM/dd/yyyy"));
                 buyIn.PremiumInput("00120$");
                 //end Inputs
 

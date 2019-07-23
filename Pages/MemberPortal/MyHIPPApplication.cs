@@ -12,11 +12,11 @@ using OpenQA.Selenium.Support.PageObjects;
 
 namespace NUnit.Tests1.Pages.MemberPortal
 {
-    public class MyHIPPApplication
+    public class MyHIPPApplicationPage
     {
         IWebDriver context;
 
-        public MyHIPPApplication(IWebDriver context)
+        public MyHIPPApplicationPage(IWebDriver context)
         {
             this.context = context;
             PageFactory.InitElements(context, this);

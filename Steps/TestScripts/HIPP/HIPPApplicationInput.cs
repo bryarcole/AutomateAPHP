@@ -11,6 +11,14 @@ using RequirementsTraceability;
 using TFSCommon.Data;
 using TFSCommon.Common;
 using OpenQA.Selenium.Support.UI;
+using NUnit.Tests1.Utilities;
+using NUnit.Tests1.Pages;
+using NUnit.Tests1.Steps.StartUp;
+using NUnit.Tests1.Steps;
+using NUnit.Tests1.Pages.WorkerPortal;
+using OpenQA.Selenium.Chrome;
+using System.Diagnostics;
+using System.Threading;
 
 namespace NUnit.Tests1
 {
@@ -33,16 +41,92 @@ namespace NUnit.Tests1
         }
 
         public IWebDriver context;
-        string bryar = "bryar.h.cole";
+
         string screenshotLocation = @"C:\\Users\\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Reports\HIPPSubmit\images\";
         int sucessCount = 1;
         int errorCount = 1;
-
-        [Test]
-        [Category("HIPP WF Paper App")]
-        public void TC_IT03_HIPP_Workflow_Approve_Initial_Paper_Application()
+        [TestCase("Approved", 152492, false)]
+        [Category("HIPP WorkFlow"), Category("Paper Initial")]
+        public void TC_IT03_HIPP_Workflow(string stat, int testCaseID, bool renewalStatus)
         {
+            string userName = "bryar.h.cole";
+            #region Start up
+            ExtentTest test = null;
+            context = new ChromeDriver();
+            context.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
 
+
+            Utility utility = new Utility(context);
+            APHPHomePage loginPage = new APHPHomePage(context);
+            WorkerPortalLandingPage landingPage = new WorkerPortalLandingPage(context);
+            HIPPSearchPage hIPPSearch = new HIPPSearchPage(context);
+            InitiateTest startUp = new InitiateTest(context);
+            CreateHIPPApplication app = new CreateHIPPApplication();
+            HIPPWorkFlow workFlow = new HIPPWorkFlow();
+            WordDocGen genWordDoc = new WordDocGen();
+            context.Url = startUp.AWSINTWoker;
+            context.Manage().Window.Maximize();
+            DateTime now = DateTime.Now;
+
+            #endregion
+
+            System.IO.Directory.CreateDirectory(screenshotLocation);
+
+            DocX doc = genWordDoc.CreateWordDoc(testCaseID, 152045);
+            TestCase testCase = utility.GetTestCase(testCaseID, 152045);
+            string testName = testCase.TestCaseId.ToString() + "_" + testCase.TestCaseName.Replace(" ", "_") + ".docx";
+            string scenario = testCase.TestCaseName;
+
+
+            try
+            {
+                doc.InsertBookmark("Pass 1");
+                doc.InsertBookmark("Pass 2");
+                loginPage.LoginPage("bryar.h.wrkr", "Password123");
+                utility.RecordStepStatusMAIN("Login APHP success", screenshotLocation, "LoginSuccess", doc);
+                landingPage.HippApplicationSearch();
+                hIPPSearch.ClickBeginNewApp();
+                //hIPPSearch.ClickBeginNewApp();
+
+                app.SubmitHIPPCaseSubmissionUltimate(context, renewalStatus, screenshotLocation, doc);
+                string appNumber = workFlow.HippWorkFlow(stat, context, screenshotLocation, doc);
+
+
+            }
+
+
+            catch (NoSuchElementException e)
+            {
+
+                utility.RecordStepStatusMAIN("Element you are looking for does not exist, error mssage is as follows: " + e.Message, screenshotLocation, "NoSuchElement", doc);
+
+                throw;
+            }
+            catch (Exception e)
+            {
+
+                utility.RecordStepStatusMAIN("An exception occurred within the code, please see error message: " + e.Message, screenshotLocation, "Error", doc);
+
+                throw;
+            }
+
+            finally
+            {
+
+                try
+                {
+                    Thread.Sleep(3000);
+                    doc.SaveAs("C:\\Users\\" + userName + "\\Desktop\\TestResults\\" + testName);
+                    Process.Start("WINWORD.EXE", "C:\\Users\\" + userName + "\\Desktop\\TestResults\\" + testName);
+                    Generic.signoutBtn.Click();
+                    context.Close();
+                }
+                catch
+                {
+                    context.Close();
+                }
+
+            }
         }
         [Test]
         [Category("HIPP WF Paper App")]
@@ -62,6 +146,8 @@ namespace NUnit.Tests1
         { 
 
         }
+
+        #region deadcode
         //[Test]
         //[Category("HIPP WF Paper App")]
         //public void TC_IT03_HIPP_Workflow_Approve_Initial_Paper_Application()
@@ -614,8 +700,8 @@ namespace NUnit.Tests1
         //    }
 
         //}
-        
 
+        #endregion
         [Test]
         [Category("HIPP Submission")]
         public void HIPPSubmissionDev()

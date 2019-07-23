@@ -9,7 +9,7 @@ using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support;
 using OpenQA.Selenium.Support.PageObjects;
 
-namespace NUnit.Tests1.Pages
+namespace NUnit.Tests1.Pages.MemberPortal
 {
     public class MemberPortalDashBoard
     {

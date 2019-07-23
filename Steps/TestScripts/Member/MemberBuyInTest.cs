@@ -59,10 +59,6 @@ namespace NUnit.Tests1
             DocX doc = genWordDoc.CreateWordDoc(testCaseID, 152045);
             TestCase testCase = utility.GetTestCase(testCaseID, 152045);
             string testName = testCase.TestCaseId.ToString() + "_" + testCase.TestCaseName.Replace(" ", "_") + ".docx";
-            string scenario = testCase.TestCaseName;
-
-
-
 
             try
             {

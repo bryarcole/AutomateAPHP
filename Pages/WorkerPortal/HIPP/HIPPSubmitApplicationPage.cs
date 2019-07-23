@@ -182,98 +182,101 @@ namespace NUnit.Tests1.Pages.WorkerPortal
         public IWebElement ValidationReason { get; set; }
 
         #endregion
+
         #region PolicyHolder/Employee Information
-        /// <summary>
-        /// Policyholder/Employee Information
-        /// Cheveron ID: 9
-        /// </summary>
-        /// <param name="firstName"></param>
-        /// <param name="midddleName"></param>
-        /// <param name="lastName"></param>
-        /// <param name="addressLineOne"></param>
-        /// <param name="addressLineTwo"></param>
-        /// <param name="city"></param>
-        /// <param name="state"></param>
-        /// <param name="zip"></param>
-        /// <param name="homePhone"></param>
-        /// <param name="cellPhone"></param>
-        /// <param name="workPhone"></param>
-        /// <param name="emailAddress"></param>
-        public void PolicyHolderEmployerInformationInput(
-            string firstName,
-            string midddleName,
-            string lastName,
-            string addressLineOne,
-            string addressLineTwo,
-            string city,
-            string state,
-            string zip,
-            string homePhone,
-            string cellPhone,
-            string workPhone,
-            string emailAddress)
-        {
+            /// <summary>
+            /// Policyholder/Employee Information
+            /// Cheveron ID: 9
+            /// </summary>
+            /// <param name="firstName"></param>
+            /// <param name="midddleName"></param>
+            /// <param name="lastName"></param>
+            /// <param name="addressLineOne"></param>
+            /// <param name="addressLineTwo"></param>
+            /// <param name="city"></param>
+            /// <param name="state"></param>
+            /// <param name="zip"></param>
+            /// <param name="homePhone"></param>
+            /// <param name="cellPhone"></param>
+            /// <param name="workPhone"></param>
+            /// <param name="emailAddress"></param>
+            public void PolicyHolderEmployerInformationInput(
+                string firstName,
+                string midddleName,
+                string lastName,
+                string addressLineOne,
+                string addressLineTwo,
+                string city,
+                string state,
+                string zip,
+                string homePhone,
+                string cellPhone,
+                string workPhone,
+                string emailAddress)
+            {
 
-            txtFirstName.SendKeys(firstName);
-            txtMiddleName.SendKeys(midddleName);
-            txtLastName.SendKeys(lastName);
-            txtAddOne.SendKeys(addressLineOne);
-            txtAddTwo.SendKeys(addressLineTwo);
-            txtCity.SendKeys(city);
-            State_Input.SendKeys(state);
-            txtZipCodeOverlay.Click();
-            txtZipCode.SendKeys(zip);
-            HomePhoneOverlay.Click();
-            HomePhone.SendKeys(homePhone);
-            CellPhoneOverlay.Click();
-            CellPhone.SendKeys(cellPhone);
-            WorkPhoneOverlay.Click();
-            WorkPhone.SendKeys(workPhone);
-            txtEmail.SendKeys(emailAddress);
+                txtFirstName.SendKeys(firstName);
+                txtMiddleName.SendKeys(midddleName);
+                txtLastName.SendKeys(lastName);
+                txtAddOne.SendKeys(addressLineOne);
+                txtAddTwo.SendKeys(addressLineTwo);
+                txtCity.SendKeys(city);
+                State_Input.SendKeys(state);
+                txtZipCodeOverlay.Click();
+                txtZipCode.SendKeys(zip);
+                HomePhoneOverlay.Click();
+                HomePhone.SendKeys(homePhone);
+                CellPhoneOverlay.Click();
+                CellPhone.SendKeys(cellPhone);
+                WorkPhoneOverlay.Click();
+                WorkPhone.SendKeys(workPhone);
+                txtEmail.SendKeys(emailAddress);
 
-        }
+            }
 
 
 
-        [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'cboPrefix_Input')]")]
-        public IWebElement cboPrefix_Input { get; set; }
-        [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtFirstName')]")]
-        public IWebElement txtFirstName { get; set; }
-        [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtMiddleName')]")]
-        public IWebElement txtMiddleName { get; set; }
-        [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtLastName')]")]
-        public IWebElement txtLastName { get; set; }
-        [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'cboSuffix_Input')]")]
-        public IWebElement cboSuffix_Input { get; set; }
-        [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtAddOne')]")]
-        public IWebElement txtAddOne { get; set; }
-        [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtAddTwo')]")]
-        public IWebElement txtAddTwo { get; set; }
-        [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtCity')]")]
-        public IWebElement txtCity { get; set; }
-        [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'State_Input')]")]
-        public IWebElement State_Input { get; set; }
-        [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'txtZipCode_wrapper')]")]
-        public IWebElement txtZipCodeOverlay { get; set; }
-        [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtZipCode')]")]
-        public IWebElement txtZipCode { get; set; }
+            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'cboPrefix_Input')]")]
+            public IWebElement cboPrefix_Input { get; set; }
+            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtFirstName')]")]
+            public IWebElement txtFirstName { get; set; }
+            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtMiddleName')]")]
+            public IWebElement txtMiddleName { get; set; }
+            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtLastName')]")]
+            public IWebElement txtLastName { get; set; }
+            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'cboSuffix_Input')]")]
+            public IWebElement cboSuffix_Input { get; set; }
+            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtAddOne')]")]
+            public IWebElement txtAddOne { get; set; }
+            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtAddTwo')]")]
+            public IWebElement txtAddTwo { get; set; }
+            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtCity')]")]
+            public IWebElement txtCity { get; set; }
+            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'State_Input')]")]
+            public IWebElement State_Input { get; set; }
+            [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'txtZipCode_wrapper')]")]
+            public IWebElement txtZipCodeOverlay { get; set; }
+            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtZipCode')]")]
+            public IWebElement txtZipCode { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'txtHomePhone_wrapper')]")]
-        public IWebElement HomePhoneOverlay { get; set; }
-        [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'HomePhone')]")]
-        public IWebElement HomePhone { get; set; }
+            [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'txtHomePhone_wrapper')]")]
+            public IWebElement HomePhoneOverlay { get; set; }
+            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'HomePhone')]")]
+            public IWebElement HomePhone { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'CellPhone')]")]
-        public IWebElement CellPhone { get; set; }
-        [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'WorkPhone')]")]
-        public IWebElement WorkPhone { get; set; }
-        [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'txtCellPhone_wrapper')]")]
-        public IWebElement CellPhoneOverlay { get; set; }
-        [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'txtWorkPhone_wrapper')]")]
-        public IWebElement WorkPhoneOverlay { get; set; }
-        [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtEmail')]")]
-        public IWebElement txtEmail { get; set; }
-        #endregion
+            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'CellPhone')]")]
+            public IWebElement CellPhone { get; set; }
+            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'WorkPhone')]")]
+            public IWebElement WorkPhone { get; set; }
+            [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'txtCellPhone_wrapper')]")]
+            public IWebElement CellPhoneOverlay { get; set; }
+            [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'txtWorkPhone_wrapper')]")]
+            public IWebElement WorkPhoneOverlay { get; set; }
+            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtEmail')]")]
+            public IWebElement txtEmail { get; set; }
+            #endregion
+
+        
         #region Household Info
         #region HouseHoldInformation Methods
 
@@ -823,6 +826,7 @@ namespace NUnit.Tests1.Pages.WorkerPortal
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtPhoneNum')]")]
         public IWebElement txtPhoneNum { get; set; }
         #endregion
+
         #region Company Information
         /// <summary>
         /// Company Information
@@ -1140,22 +1144,26 @@ namespace NUnit.Tests1.Pages.WorkerPortal
             bool enrolled
             )
         {
-            btnMembershipAdd.Click();
-            txtMemFName.SendKeys(firstName);
-            txtMemMName.SendKeys(middleName);
-            txtMemLName.SendKeys(lastName);
-            dpMemDOB_dateInput_wrapper.Click();
-            dpMemDOB_dateInput.SendKeys(date);
-            cboRelPolHold_Input.SendKeys(relationShipToPolicy);
+
+            Generic generic = new Generic(context);
+            generic.ProtectedElementClick(btnMembershipAdd);
+
+            generic.ProtectedElementSendKeys(txtMemFName, firstName);
+            generic.ProtectedElementSendKeys(txtMemMName, middleName);
+            generic.ProtectedElementSendKeys(txtMemLName, lastName);
+            generic.ProtectedElementClick(dpMemDOB_dateInput_wrapper);
+            generic.ProtectedElementSendKeys(dpMemDOB_dateInput, date);
+            generic.ProtectedElementSendKeys(cboRelPolHold_Input, relationShipToPolicy);
             if (enrolled)
             {
-                rbEnrPlan_0.Click();
+                generic.ProtectedElementClick(rbEnrPlan_0);
             }
             else
             {
-                rbEnrPlan_1.Click();
+                generic.ProtectedElementClick(rbEnrPlan_1);
+
             }
-            btnMembershipSav.Click();
+            generic.ProtectedElementClick(btnMembershipSav);
             Thread.Sleep(2000);
 
         }
@@ -1324,54 +1332,54 @@ namespace NUnit.Tests1.Pages.WorkerPortal
             string insurancePolicyGroupNumber
             )
         {
+            Generic generic = new Generic(context);
             switch (InsuranceType)
             {
                 case "Medical":
-                    MedicalEditLink.Click();
-                    txtCompanyName.SendKeys(companyName);
-                    txtInsurAddOne.SendKeys(addressLineOne);
-                    txtInsurAddTwo.SendKeys(addressLineTwo);
-                    txtInsurCity.SendKeys(city);
-                    cboInsurState_wrapper.Click();
-                    cboInsurState_Input.SendKeys(state);
-                    txtInsurZip_wrapper.Click();
-                    txtInsurZip.SendKeys(zipCode);
-                    txtInsurPNum_wrapper.Click();
-                    txtInsurPNum.SendKeys(phoneNumber);
-                    txtInsurPol.SendKeys(insurancePolicyGroupNumber);
-                    btnPlanBenefitsSave.Click();
 
+                    generic.ProtectedElementClick(MedicalEditLink);
+                    generic.ProtectedElementSendKeys(txtCompanyName, companyName);
+                    generic.ProtectedElementSendKeys(txtInsurAddOne, addressLineOne);
+                    generic.ProtectedElementSendKeys(txtInsurAddTwo, addressLineTwo);
+                    generic.ProtectedElementSendKeys(txtInsurCity, city);
+                    generic.ProtectedElementClick(cboInsurState_wrapper);
+                    generic.ProtectedElementSendKeys(cboInsurState_Input, state);
+                    generic.ProtectedElementClick(txtInsurZip_wrapper);
+                    generic.ProtectedElementSendKeys(txtInsurZip, zipCode);
+                    generic.ProtectedElementClick(txtInsurPNum_wrapper);
+                    generic.ProtectedElementSendKeys(txtInsurPNum, phoneNumber);
+                    generic.ProtectedElementSendKeys(txtInsurPol, insurancePolicyGroupNumber);
+                    generic.ProtectedElementClick(btnPlanBenefitsSave);
                     break;
                 case "Dental":
-                    DentalEditLink.Click();
-                    txtCompanyName.SendKeys(companyName);
-                    txtInsurAddOne.SendKeys(addressLineOne);
-                    txtInsurAddTwo.SendKeys(addressLineTwo);
-                    txtInsurCity.SendKeys(city);
-                    cboInsurState_wrapper.Click();
-                    cboInsurState_Input.SendKeys(state);
-                    txtInsurZip_wrapper.Click();
-                    txtInsurZip.SendKeys(zipCode);
-                    txtInsurPNum_wrapper.Click();
-                    txtInsurPNum.SendKeys(phoneNumber);
-                    txtInsurPol.SendKeys(insurancePolicyGroupNumber);
-                    btnPlanBenefitsSave.Click();
+                    generic.ProtectedElementClick(DentalEditLink);
+                    generic.ProtectedElementSendKeys(txtCompanyName, companyName);
+                    generic.ProtectedElementSendKeys(txtInsurAddOne, addressLineOne);
+                    generic.ProtectedElementSendKeys(txtInsurAddTwo, addressLineTwo);
+                    generic.ProtectedElementSendKeys(txtInsurCity, city);
+                    generic.ProtectedElementClick(cboInsurState_wrapper);
+                    generic.ProtectedElementSendKeys(cboInsurState_Input, state);
+                    generic.ProtectedElementClick(txtInsurZip_wrapper);
+                    generic.ProtectedElementSendKeys(txtInsurZip, zipCode);
+                    generic.ProtectedElementClick(txtInsurPNum_wrapper);
+                    generic.ProtectedElementSendKeys(txtInsurPNum, phoneNumber);
+                    generic.ProtectedElementSendKeys(txtInsurPol, insurancePolicyGroupNumber);
+                    generic.ProtectedElementClick(btnPlanBenefitsSave);
                     break;
                 case "Vision":
-                    VisionEditLink.Click();
-
-                    txtCompanyName.SendKeys(companyName);
-                    txtInsurAddOne.SendKeys(addressLineOne);
-                    txtInsurAddTwo.SendKeys(addressLineTwo);
-                    txtInsurCity.SendKeys(city);
-                    cboInsurState_wrapper.Click();
-                    cboInsurState_Input.SendKeys(state);
-                    txtInsurZip_wrapper.Click();
-                    txtInsurZip.SendKeys(zipCode);
-                    txtInsurPNum_wrapper.Click();
-                    txtInsurPNum.SendKeys(phoneNumber);
-                    txtInsurPol.SendKeys(insurancePolicyGroupNumber);
-                    btnPlanBenefitsSave.Click();
+                    generic.ProtectedElementClick(VisionEditLink);
+                    generic.ProtectedElementSendKeys(txtCompanyName, companyName);
+                    generic.ProtectedElementSendKeys(txtInsurAddOne, addressLineOne);
+                    generic.ProtectedElementSendKeys(txtInsurAddTwo, addressLineTwo);
+                    generic.ProtectedElementSendKeys(txtInsurCity, city);
+                    generic.ProtectedElementClick(cboInsurState_wrapper);
+                    generic.ProtectedElementSendKeys(cboInsurState_Input, state);
+                    generic.ProtectedElementClick(txtInsurZip_wrapper);
+                    generic.ProtectedElementSendKeys(txtInsurZip, zipCode);
+                    generic.ProtectedElementClick(txtInsurPNum_wrapper);
+                    generic.ProtectedElementSendKeys(txtInsurPNum, phoneNumber);
+                    generic.ProtectedElementSendKeys(txtInsurPol, insurancePolicyGroupNumber);
+                    generic.ProtectedElementClick(btnPlanBenefitsSave);
                     break;
             }
         }

@@ -1,24 +1,10 @@
 ﻿// NUnit 3 tests
 // See documentation : https://github.com/nunit/docs/wiki/NUnit-Documentation
 using NUnit.Framework;
-using NUnit.Tests1.Pages;
-using NUnit.Tests1.Steps.StartUp;
-using NUnit.Tests1.Steps;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using NUnit.Tests1.Utilities;
-using System;
 using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
-using System.Threading;
-using System.Linq;
-using Xceed.Words.NET;
-using System.Diagnostics;
-using System.Windows.Forms;
 using System.Collections;
-using TFSCommon.Common;
-using RequirementsTraceability;
-using TFSCommon.Data;
 
 namespace NUnit.Tests1
 {

@@ -78,13 +78,13 @@ namespace NUnit.Tests1.Utilities
                 if (!claims)
                 {
                     testActionResult = doc.AddTable(testCase.TestSteps.Count + 1, 3);
-                    Console.WriteLine("Create three rows");
+                    //Console.WriteLine("Create three rows");
 
                 }
                 else
                 {
                     testActionResult = doc.AddTable(testCase.TestSteps.Count + 1, 4);
-                    Console.WriteLine("Create four rows");
+                    //Console.WriteLine("Create four rows");
                 }
                 testActionResult.SetWidths(columnWidths);
                 testActionResult.Rows[0].Cells[0].Paragraphs.First().Append("Steps").Color(white);
@@ -96,7 +96,7 @@ namespace NUnit.Tests1.Utilities
 
                 if (claims)
                 {
-                    testActionResult.Rows[0].Cells[3].Paragraphs.First().Append("Action Result").Color(white);
+                    testActionResult.Rows[0].Cells[3].Paragraphs.First().Append("Actual Result").Color(white);
                     testActionResult.Rows[0].Cells[3].FillColor = royalBlue;
 
                 }
@@ -107,7 +107,6 @@ namespace NUnit.Tests1.Utilities
                 Console.WriteLine("Test Case Count " + testCase.TestSteps.Count);
                 foreach (TestStep testStep in testCase.TestSteps)
                 {
-
                     i++;
                     string action = Utility.RemoveTags(testStep.Action);
                     string expected = Utility.RemoveTags(testStep.Expected);
@@ -120,10 +119,7 @@ namespace NUnit.Tests1.Utilities
                     {
                         testActionResult.Rows[i].Cells[3].Paragraphs.First();
                     }
-
-
                 }
-
                 doc.InsertTable(testActionResult);
                 doc.SaveAs(location + "//" + testName + ".docx");
             };

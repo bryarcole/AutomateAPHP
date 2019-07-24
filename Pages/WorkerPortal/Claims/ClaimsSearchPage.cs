@@ -25,6 +25,8 @@ namespace NUnit.Tests1.Pages.WorkerPortal
         {
             return new Generic(context);
         }
+
+
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'StartsWith_Input')]")]
         private IWebElement StartsWith { get; }
         [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'lbtnReferral')]")]
@@ -35,8 +37,6 @@ namespace NUnit.Tests1.Pages.WorkerPortal
         private IWebElement HowSearch { get; set; }
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'For_Input')]")]
         private IWebElement LookingFor { get; set; }
-        [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'Mode_Input')]")]
-        private IWebElement ApplicationMode { get; set; }
         [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'btnSearch')]")]
         private IWebElement SearchButton { get; set; }
         [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'btnReset')]")]
@@ -109,8 +109,9 @@ namespace NUnit.Tests1.Pages.WorkerPortal
         private IWebElement txtCheckOrEFTNumber { get; set; }
 
 
-         
+
         #region Methods and Calls
+        
         public void InputCheckOrEFTNumber(string CheckOrEFTNumber)
         {
             GrabGeneric(context).ProtectedElementSendKeys(txtCheckOrEFTNumber, CheckOrEFTNumber);

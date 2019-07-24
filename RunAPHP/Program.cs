@@ -10,17 +10,13 @@ namespace AutomateAPHP
 {
     class Program
     {
-       
+
         static void Main(string[] args)
         {
 
             Console.WriteLine("Select the test you wish to run");
 
-            }
-
-
         }
-        
-
     }
+
 }

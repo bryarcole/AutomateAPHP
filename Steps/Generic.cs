@@ -89,6 +89,38 @@ namespace NUnit.Tests1.Utilities
 
             });
         }
+        public string ProtectedElementGetText(IWebElement ele)
+        {
+            string text = "";
+            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(5));
+            wait.Until(context =>
+            {
+                try
+                {
+                    text = ele.Text;
+                }
+                catch (Exception ex)
+                {
+                    Type exType = ex.GetType();
+                    if (exType == typeof(TargetInvocationException) ||
+                        exType == typeof(NoSuchElementException) ||
+                        exType == typeof(ElementClickInterceptedException) ||
+                        exType == typeof(ElementNotVisibleException) ||
+                        exType == typeof(StaleElementReferenceException) ||
+                        exType == typeof(InvalidOperationException))
+                    {
+                        return false; //By returning false, wait will still rerun the func.
+                    }
+                    else
+                    {
+                        throw; //Rethrow exception if it's not ignore type.
+                    }
+                }
+                return true;
+            });
+            return text;
+        }
+
         public void ProtectedElementClear(IWebElement ele)
         {
             WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(5));

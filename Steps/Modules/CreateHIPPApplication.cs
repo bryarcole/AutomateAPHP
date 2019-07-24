@@ -185,7 +185,6 @@ namespace NUnit.Tests1.Steps
                 "7039837771",
                 "86903954");
             Thread.Sleep(2000);
-            Thread.Sleep(2000);
             submitApp.PlanBenifitsInput(
                 true,
                 "300",

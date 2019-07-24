@@ -148,7 +148,9 @@
   <ItemGroup>
     <Compile Include="Pages\MemberPortal\MyHIPPApplication.cs" />
     <Compile Include="Pages\MemberPortal\MyHIPPApplicationSubmitPage.cs" />
+    <Compile Include="Pages\WorkerPortal\Claims\BeginNewClaimPage.cs" />
     <Compile Include="Pages\WorkerPortal\Claims\ClaimsSearchPage.cs" />
+    <Compile Include="Pages\WorkerPortal\Claims\SubmitClaimApplicationPage.cs" />
     <Compile Include="Pages\WorkerPortal\Member\MemberEligibilityDetails.cs" />
     <Compile Include="Pages\WorkerPortal\Member\MemberSearchPage.cs" />
     <Compile Include="Pages\WorkerPortal\Validations\HIPPWorkerPortalNegativeValidation.cs" />
@@ -167,6 +169,7 @@
     <Compile Include="Pages\WorkerPortal\HIPP\HIPPSearchPage.cs" />
     <Compile Include="Pages\WorkerPortal\WorkerPortalLandingPage.cs" />
     <Compile Include="Steps\Generic.cs" />
+    <Compile Include="Steps\TestScripts\Claims\ClaimsTest.cs" />
     <Compile Include="Steps\TestScripts\Member\MemberBuyInTest.cs" />
     <Compile Include="Utilities\StartUp.cs" />
     <Compile Include="Help\ExtentReportTemplate.cs" />
@@ -187,8 +190,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pages\ProviderPortal\" />
-    <Folder Include="Pages\SkinnyReference\MemberReference\" />
-    <Folder Include="Pages\SkinnyReference\ProviderReference\" />
     <Folder Include="Reports\" />
   </ItemGroup>
   <ItemGroup>

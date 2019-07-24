@@ -23,8 +23,6 @@ namespace NUnit.Tests1.Pages.WorkerPortal
         DateTime today = new DateTime();
         //utility utility = new utility(context);
 
-
-
         public HIPPSubmitApplicationPage(IWebDriver context)
         {
             this.context = context;

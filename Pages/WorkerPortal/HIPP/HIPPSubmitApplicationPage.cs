@@ -109,7 +109,7 @@ namespace NUnit.Tests1.Pages.WorkerPortal
         /// Cheveron ID: 7
         /// </summary>
         /// 
-
+        #region Elements
         //Applicate recieve date  (needs overlay click to be invovable.)
         [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'ApplicationRecievedDate_dateInput_wrapper')]")]
         public IWebElement ApplicationRecieveDateOverlay { get; set; }
@@ -145,7 +145,7 @@ namespace NUnit.Tests1.Pages.WorkerPortal
         public IWebElement QuarterlyValidationDueDatesOverlay { get; set; }
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'QuarterlyValidationDueDates_dateInput')]")]
         public IWebElement QuarterlyValidationDueDates { get; set; }
-
+        #endregion
         #endregion
         #region Validation Overview
         /// <summary>

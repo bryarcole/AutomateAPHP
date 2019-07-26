@@ -72,7 +72,7 @@ namespace NUnit.Tests1.Utilities
             DocX doc)
         {
 
-            Screenshots.TakeSreenShot(context, ScreenshotLocation + TestCase + ".png");
+            ScreenCaputres.TakeSreenShot(context, ScreenshotLocation + TestCase + ".png");
             //Document
             Xceed.Words.NET.Image img = doc.AddImage(ScreenshotLocation + TestCase + ".png");
             Picture p = img.CreatePicture();
@@ -94,7 +94,7 @@ namespace NUnit.Tests1.Utilities
             DocX doc)
         {
 
-            Screenshots.TakeSreenShot(context, ScreenshotLocation + TestCase + ".png");
+            ScreenCaputres.TakeSreenShot(context, ScreenshotLocation + TestCase + ".png");
             //Document
             Xceed.Words.NET.Image img = doc.AddImage(ScreenshotLocation + TestCase + ".png");
             Picture p = img.CreatePicture();
@@ -118,7 +118,7 @@ namespace NUnit.Tests1.Utilities
             string TestCase, 
             ExtentTest test)
         {
-            Screenshots.TakeSreenShot(context, ScreenshotLocation + TestCase + ".png");
+            ScreenCaputres.TakeSreenShot(context, ScreenshotLocation + TestCase + ".png");
             test.Log(TestStatus, LogNote);
             test.CreateNode(LogNote).AddScreenCaptureFromPath("images\\" + TestCase + ".png");
             return test;
@@ -132,7 +132,7 @@ namespace NUnit.Tests1.Utilities
             DocX doc)
         { 
 
-            Screenshots.TakeSreenShot(context, ScreenshotLocation + TestCase + ".png");
+            ScreenCaputres.TakeSreenShot(context, ScreenshotLocation + TestCase + ".png");
             //Extent Report
             test.Log(TestStatus, LogNote);
             test.CreateNode(LogNote).AddScreenCaptureFromPath("images\\" + TestCase  + ".png");
@@ -163,7 +163,7 @@ namespace NUnit.Tests1.Utilities
         {
             Thread.Sleep(2000);
 
-            Screenshots.TakeSreenShot(context, ScreenshotLocation + TestCase  + ".png");
+            ScreenCaputres.TakeSreenShot(context, ScreenshotLocation + TestCase  + ".png");
             test.Log(TestStatus, LogNote);
             test.CreateNode(LogNote).Log(TestStatus, description).AddScreenCaptureFromPath("images\\" + TestCase + ".png");
             Xceed.Words.NET.Image img = doc.AddImage(ScreenshotLocation + TestCase + ".png");
@@ -189,7 +189,7 @@ namespace NUnit.Tests1.Utilities
             )
         {
             Thread.Sleep(2000);
-            Screenshots.TakeSreenShot(context, ScreenshotLocation + TestCase + ".png");
+            ScreenCaputres.TakeSreenShot(context, ScreenshotLocation + TestCase + ".png");
             Xceed.Words.NET.Image img = doc.AddImage(ScreenshotLocation + TestCase + ".png");
             Picture p = img.CreatePicture();
             //Create a new paragraph  
@@ -211,7 +211,7 @@ namespace NUnit.Tests1.Utilities
             ExtentTest test,
             DocX doc)
         {
-            Screenshots.TakeSreenShot(context, ScreenshotLocation + TestCase + ".png");
+            ScreenCaputres.TakeSreenShot(context, ScreenshotLocation + TestCase + ".png");
             test.Log(TestStatus, LogNote);
             test.CreateNode(LogNote).Log(TestStatus, description).AddScreenCaptureFromPath("images\\" + TestCase + ".png");
             Xceed.Words.NET.Image img = doc.AddImage(ScreenshotLocation + TestCase  + ".png");

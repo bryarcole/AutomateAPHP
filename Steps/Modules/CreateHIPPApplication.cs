@@ -12,9 +12,7 @@ namespace NUnit.Tests1.Steps
     {
         public void SubmitHIPPCaseSubmissionUltimate(IWebDriver context, bool renewal, string screenshotLocation, DocX doc)
         {
-            APHPHomePage loginPage = new APHPHomePage(context);
-            WorkerPortalLandingPage landingPage = new WorkerPortalLandingPage(context);
-            HIPPSearchPage hIPPSearch = new HIPPSearchPage(context);
+
             HIPPSubmitApplicationPage submitApp = new HIPPSubmitApplicationPage(context);
             WorkItemComponent workitem = new WorkItemComponent(context);
             Generic generic = new Generic(context);

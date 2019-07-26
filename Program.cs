@@ -54,7 +54,7 @@ namespace NUnit.Tests1
                 _ = new WordDocGen();
                 ClaimsSearchPage claimsSearchPage = new ClaimsSearchPage(context);
                 _ = new SubmitClaimApplicationPage();
-                SummaryInformation summaryInformation = new SummaryInformation(context);
+                ClaimsSummaryInformation summaryInformation = new ClaimsSummaryInformation(context);
                 BeginNewClaimPage beginNewClaimPage = new BeginNewClaimPage(context);
                 context.Url = startUp.AWSINTWoker;
                 context.Manage().Window.Maximize();
@@ -77,14 +77,14 @@ namespace NUnit.Tests1
                     loginPage.LoginPage(usernameINTWorker, passwordINTWorker);
                     //utility.RecordStepStatusMAIN("Login APHP success", screenshotLocation, "LoginSuccess", doc);
                     generic.HoverByLinkText("Claims And Authorizations");
-                    generic.genericLinkTextClick("Claim Search");
+                    generic.GenericLinkTextClick("Claim Search");
                     claimsSearchPage.BeginNewClaimClick();
                     beginNewClaimPage.SelectClaimType("Professional");
                     beginNewClaimPage.ClickBeginNewClaim();
                     generic.GenericCheveronClick("9");
-                    Console.WriteLine(summaryInformation.GetAdjustedStatus());
-                    Console.WriteLine(summaryInformation.GetBenefitPlan());
-                    Console.WriteLine(summaryInformation.GetClaimEncounterStatus());
+                    Console.WriteLine(summaryInformation.GetAdjustedStatus);
+                    Console.WriteLine(summaryInformation.GetBenefitPlan);
+                    Console.WriteLine(summaryInformation.GetClaimEncounterStatus);
 
 
 

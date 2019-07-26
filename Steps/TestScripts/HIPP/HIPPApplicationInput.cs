@@ -42,19 +42,20 @@ namespace NUnit.Tests1
 
         public IWebDriver context;
 
-        string screenshotLocation = @"C:\\Users\\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Reports\HIPPSubmit\images\";
+        string screenshotLocation = @"C:\\Users\\bryar.h.cole\Desktop\AutomationProjects\NUnit.Tests1\Reports\HIPPSubmit\images\";
         int sucessCount = 1;
         int errorCount = 1;
         [TestCase("Approved", 152492, false)]
         [Category("HIPP WorkFlow"), Category("Paper Initial")]
         public void TC_IT03_HIPP_Workflow(string stat, int testCaseID, bool renewalStatus)
         {
+            ScreenCaputres caputres = new ScreenCaputres();
+            //caputres.TakeVideo(@"C:\\Users\\bryar.h.cole\Desktop\\TestResults\\");
             string userName = "bryar.h.cole";
             #region Start up
             ExtentTest test = null;
             context = new ChromeDriver();
             context.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-
 
             Utility utility = new Utility(context);
             APHPHomePage loginPage = new APHPHomePage(context);
@@ -99,13 +100,14 @@ namespace NUnit.Tests1
             {
 
                 utility.RecordStepStatusMAIN("Element you are looking for does not exist, error mssage is as follows: " + e.Message, screenshotLocation, "NoSuchElement", doc);
-
+                //caputres.StopVideo();
                 throw;
             }
             catch (Exception e)
             {
 
                 utility.RecordStepStatusMAIN("An exception occurred within the code, please see error message: " + e.Message, screenshotLocation, "Error", doc);
+                //caputres.StopVideo();
 
                 throw;
             }

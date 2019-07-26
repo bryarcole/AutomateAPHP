@@ -59,9 +59,9 @@ namespace NUnit.Tests1.Steps
             generic.GenericCheveronClick("4");
             generic.HoverByElement(workitem.CompletedBottom);
 
-            string appNumber = workitem.gatherAppNumber();
-            string workItem = workitem.gatherWorkItemType();
-            string appQueue = workitem.gatherWorkItemStatus();
+            string appNumber = workitem.GatherAppNumber();
+            string workItem = workitem.GatherWorkItemType();
+            string appQueue = workitem.GetGatherWorkItemStatus();
             doc.InsertAtBookmark(appNumber + "\n " + workItem + "\n " + appQueue, "Pass 1");
             utility.RecordStepStatusMAIN("App in " + appQueue + "and in status of " + activityReason, screenshotLocation, "CheckAppStaus", doc);
             workitem.ClickCompletedButton();
@@ -93,7 +93,7 @@ namespace NUnit.Tests1.Steps
             hIPPSearchpage.SearchButtonClick();
             generic.HoverByLinkText(appNumber);
             utility.RecordStepStatusMAIN("Search results", screenshotLocation, "SearchResults", doc);
-            generic.genericLinkTextClick(appNumber);
+            generic.GenericLinkTextClick(appNumber);
             if(activityReason == "Denied")
             {
                 return appNumber;
@@ -102,8 +102,8 @@ namespace NUnit.Tests1.Steps
             Thread.Sleep(3000);
             generic.GenericCheveronClick("3");
             generic.GenericCheveronClick("4");
-            string workItem2 = workitem.gatherWorkItemType();
-            string appQueue2 = workitem.gatherWorkItemStatus();
+            string workItem2 = workitem.GatherWorkItemType();
+            string appQueue2 = workitem.GetGatherWorkItemStatus();
             doc.InsertAtBookmark("\n " + "Pass 2: " + workItem2 + "\n " + appQueue2, "Pass 2");
             if (activityReason == "Pended")
             {
@@ -149,9 +149,9 @@ namespace NUnit.Tests1.Steps
             generic.GenericCheveronClick("4");
             generic.HoverByElement(workitem.CompletedBottom);
 
-            string appNumber = workitem.gatherAppNumber();
-            string workItem = workitem.gatherWorkItemType();
-            string appQueue = workitem.gatherWorkItemStatus();
+            string appNumber = workitem.GatherAppNumber();
+            string workItem = workitem.GatherWorkItemType();
+            string appQueue = workitem.GetGatherWorkItemStatus();
             doc.InsertAtBookmark(appNumber + "\n " + workItem + "\n " + appQueue, "Pass 1");
             utility.RecordStepStatusMAIN("App in " + appQueue + "and in status of " + activityReason, screenshotLocation, "CheckAppStaus", doc);
             workitem.ClickCompletedButton();
@@ -168,7 +168,7 @@ namespace NUnit.Tests1.Steps
             hIPPSearchpage.SearchButtonClick();
             generic.HoverByLinkText(appNumber);
             utility.RecordStepStatusMAIN("Search results", screenshotLocation, "SearchResults", doc);
-            generic.genericLinkTextClick(appNumber);
+            generic.GenericLinkTextClick(appNumber);
             if (activityReason == "Denied")
             {
                 return appNumber;
@@ -177,8 +177,8 @@ namespace NUnit.Tests1.Steps
             Thread.Sleep(3000);
             generic.GenericCheveronClick("3");
             generic.GenericCheveronClick("4");
-            string workItem2 = workitem.gatherWorkItemType();
-            string appQueue2 = workitem.gatherWorkItemStatus();
+            string workItem2 = workitem.GatherWorkItemType();
+            string appQueue2 = workitem.GetGatherWorkItemStatus();
             doc.InsertAtBookmark("\n " + "Pass 2: " + workItem2 + "\n " + appQueue2, "Pass 2");
             if (activityReason == "Pended")
             {
@@ -221,7 +221,7 @@ namespace NUnit.Tests1.Steps
             hIPPSearchpage.SearchButtonClick();
             generic.HoverByLinkText(appNumber);
             utility.RecordStepStatusMAIN("Search results", screenshotLocation, "SearchResults", doc);
-            generic.genericLinkTextClick(appNumber);
+            generic.GenericLinkTextClick(appNumber);
 
             workitem.ClickWorkItemButton();
             Thread.Sleep(3000);

@@ -36,7 +36,7 @@ namespace NUnit.Tests1.Pages.WorkerPortal
         public IWebElement applicationNumber { get; set; }
         [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'btnClose')]")]
         public IWebElement btnClose { get; set; }
-        public string  gatherAppNumber()
+        public string  GatherAppNumber()
         {
 
             
@@ -71,7 +71,7 @@ namespace NUnit.Tests1.Pages.WorkerPortal
             });
             return text;
         }
-        public string gatherWorkItemType()
+        public string GatherWorkItemType()
         {
             WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(10));
             string text = "";
@@ -104,7 +104,8 @@ namespace NUnit.Tests1.Pages.WorkerPortal
             });
             return text;
         }
-        public string gatherWorkItemStatus()
+
+        public string GetGatherWorkItemStatus()
         {
             WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(10));
             string text = "";

@@ -34,7 +34,7 @@ namespace NUnit.Tests1.Steps
             hIPPSearch.SearchHiPPCase("Contains", "MemberID", appNumber);
             hIPPSearch.SearchButtonClick();
             generic.HoverByLinkText(appNumber);
-            generic.genericLinkTextClick(appNumber);
+            generic.GenericLinkTextClick(appNumber);
 
         }
 

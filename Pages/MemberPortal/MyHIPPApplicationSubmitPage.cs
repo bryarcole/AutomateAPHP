@@ -31,7 +31,14 @@ namespace NUnit.Tests1.Pages.MemberPortal
                 this.context = context;
                 PageFactory.InitElements(context, this);
             }
-
+            private Generic Generic
+            {
+                get
+                {
+                    Generic generic = new Generic(context);
+                    return generic;
+                }
+            }
             #region Elements
             [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'AccountYN_0')]")]
             private IWebElement PolicyHolderYes { get; set; }
@@ -115,17 +122,26 @@ namespace NUnit.Tests1.Pages.MemberPortal
 
             }
 
+            
             #endregion
 
         }
         class HouseholdInformation
         {
             IWebDriver context;
-            Generic generic;
             public HouseholdInformation(IWebDriver context)
             {
                 this.context = context;
                 PageFactory.InitElements(context, this);
+            }
+
+            private Generic Generic
+            {
+                get
+                {
+                    Generic generic = new Generic(context);
+                    return generic;
+                }
             }
 
             [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'rbMemPortAcc_0')]")]
@@ -165,96 +181,44 @@ namespace NUnit.Tests1.Pages.MemberPortal
             private IWebElement cboMemOnAccount_Input { get; set; }
 
             #region Methods and Calls
-            public void MemeberAccountYesNo(string yesno)
-            {
-                switch (yesno)
-                {
-                    case "Yes":
-                        generic.ProtectedElementClick(rbMemPortAcc_0);
-                        break;
-                    case "No":
-                        generic.ProtectedElementClick(rbMemPortAcc_1);
-                        break;
-                }
-            }
+            public void MemeberAccountYesNo(string yesno) => Generic.ProtectedDecisionClick(rbMemPortAcc_0, rbMemPortAcc_1, yesno);
 
-            public void InputFirstName(string text)
-            {
-                generic.ProtectedElementSendKeys(FirstNameHHI, text);
-            }
-            public void InputLastName(string text)
-            {
-                generic.ProtectedElementSendKeys(LastNameHHI, text);
+            public void InputFirstName(string text) => Generic.ProtectedElementSendKeys(FirstNameHHI, text);
+            public void InputLastName(string text) => Generic.ProtectedElementSendKeys(LastNameHHI, text);
+            public void InputMiddleName(string text) => Generic.ProtectedElementSendKeys(MiddleNameHHI, text);
 
-            }
-            public void InputMiddleName(string text)
-            {
-                generic.ProtectedElementSendKeys(MiddleNameHHI, text);
-            }
+            public void InputRelationInfo(string text) => Generic.ProtectedAccessElement(Relation, Relation, text);
 
-            public void InputRelationInfo( string text)
-            {
-                generic.ProtectedElementClick(Relation);
-                generic.ProtectedElementSendKeys(Relation, text);
-            }
+            public void InputDate(string text) => Generic.ProtectedAccessElement(HHI_dateInput, HHI_dateInput_wrapper, text);
+
+            public void InputSSN(string text) => Generic.ProtectedAccessElement(SSN, SSN_wrapper, text);
+            public void PersonMedicareYesNo(string yesno) => Generic.ProtectedDecisionClick(rbPersonMedicareYN_0, rbPersonMedicareYN_1, yesno);
+            public void PersonCoveredInsuranceYesNo(string yesno) => Generic.ProtectedDecisionClick(rbPersonCoveredInsurance_0, rbPersonCoveredInsurance_1, yesno);
+
+            public void InputMemberInfo(string text) => Generic.ProtectedAccessElement(cboMemOnAccount_Input, cboMemOnAccount_Input, text);
             #endregion
-
-            public void InputDate(string text)
-            {
-                generic.ProtectedElementClick(HHI_dateInput_wrapper);
-                generic.ProtectedElementSendKeys(HHI_dateInput, text);
-            }
-
-            public void InputSSN(string text)
-            {
-                generic.ProtectedElementClick(SSN_wrapper);
-                generic.ProtectedElementSendKeys(SSN, text);
-            }
-            public void PersonMedicareYesNo(string yesno)
-            {
-                switch (yesno)
-                {
-                    case "Yes":
-                        generic.ProtectedElementClick(rbPersonMedicareYN_0);
-                        break;
-                    case "No":
-                        generic.ProtectedElementClick(rbPersonMedicareYN_1);
-                        break;
-                }
-            }
-            public void PersonCoveredInsuranceYesNo(string yesno)
-            {
-                switch (yesno)
-                {
-                    case "Yes":
-                        generic.ProtectedElementClick(rbPersonCoveredInsurance_0);
-                        break;
-                    case "No":
-                        generic.ProtectedElementClick(rbPersonCoveredInsurance_1);
-                        break;
-                }
-            }
-
-            public void InputMemberInfo(string text)
-            {
-                generic.ProtectedElementClick(cboMemOnAccount_Input);
-                generic.ProtectedElementSendKeys(cboMemOnAccount_Input, text);
-            }
 
         }
 
         class EmployeeStatusAndHiringDetails
         {
             IWebDriver context;
-            Generic generic;
             public EmployeeStatusAndHiringDetails(IWebDriver context)
             {
                 this.context = context;
                 PageFactory.InitElements(context, this);
             }
+
+            private Generic Generic
+            {
+                get
+                {
+                    Generic generic = new Generic(context);
+                    return generic;
+                }
+            }
             /// <summary>
             /// Employer and Resources Information
-            /// Cheveron  ID: 11 > 13
             /// </summary>
             /// <param name="employerName"></param>
             /// <param name="federalEmployIDNumber"></param>
@@ -266,7 +230,7 @@ namespace NUnit.Tests1.Pages.MemberPortal
             /// <param name="humanResourcesRep"></param>
             /// <param name="department"></param>
             /// <param name="phoneNumber"></param>
-            public void EmploymentHumanResourcesInformation(
+            public void InputEmploymentHumanResourcesInformation(
                 string employerName,
                 string federalEmployIDNumber,
                 string addressLineOne,
@@ -290,41 +254,55 @@ namespace NUnit.Tests1.Pages.MemberPortal
                 txtDepartment.SendKeys(department);
                 txtPhoneNum_wrapper.Click();
                 txtPhoneNum.SendKeys(phoneNumber);
-
-
             }
             #region Employment Info Elements
             [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtEmployerName')]")]
-            public IWebElement txtEmployerName { get; set; }
+            private IWebElement txtEmployerName { get; set; }
             [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtFedEmp')]")]
-            public IWebElement txtFedEmp { get; set; }
+            private IWebElement txtFedEmp { get; set; }
             [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtEmpAddOne')]")]
-            public IWebElement txtEmpAddOne { get; set; }
+            private IWebElement txtEmpAddOne { get; set; }
             [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtEmpAddTwo')]")]
-            public IWebElement txtEmpAddTwo { get; set; }
+            private IWebElement txtEmpAddTwo { get; set; }
             [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtEmpCity')]")]
-            public IWebElement txtEmpCity { get; set; }
+            private IWebElement txtEmpCity { get; set; }
             [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'EmpState_Input')]")]
-            public IWebElement EmpState_Input { get; set; }
+            private IWebElement EmpState_Input { get; set; }
             [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'txtEmpZip_wrapper')]")]
-            public IWebElement txtEmpZip_wrapper { get; set; }
+            private IWebElement txtEmpZip_wrapper { get; set; }
             [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtEmpZip')]")]
-            public IWebElement txtEmpZip { get; set; }
+            private IWebElement txtEmpZip { get; set; }
             [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtHuman')]")]
-            public IWebElement txtHuman { get; set; }
+            private IWebElement txtHuman { get; set; }
             [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtDepartment')]")]
-            public IWebElement txtDepartment { get; set; }
+            private IWebElement txtDepartment { get; set; }
             [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'txtPhoneNum_wrapper')]")]
-            public IWebElement txtPhoneNum_wrapper { get; set; }
+            private IWebElement txtPhoneNum_wrapper { get; set; }
             [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtPhoneNum')]")]
-            public IWebElement txtPhoneNum { get; set; }
+            private IWebElement txtPhoneNum { get; set; }
+            #endregion
+
+            #region Method and Calls
+            public void InputEmployerName(string text) => Generic.ProtectedElementSendKeys(txtEmployerName, text);
+            public void InputFedEmployerID(string text) => Generic.ProtectedElementSendKeys(txtFedEmp, text);
+            public void InputEmployeeAddressOne(string text) => Generic.ProtectedElementSendKeys(txtEmpAddOne, text);
+            public void InputEmployeeAddressTwo(string text) => Generic.ProtectedElementSendKeys(txtEmpAddTwo, text);
+            public void InputEmployeeCity(string text) => Generic.ProtectedElementSendKeys(txtEmpCity, text);
+            public void InputEmployeeState(string text) => Generic.ProtectedElementSendKeys(txtEmpCity, text);
+            public void InputEmployerZipCode(string text) => Generic.ProtectedElementSendKeys(txtEmpZip, text);
+            public void ClickEmployerZip() => Generic.ProtectedElementClick(txtEmpZip_wrapper);
+            public void InputHumanResource(string text) => Generic.ProtectedElementSendKeys(txtHuman, text);
+            public void InputEmployerDepartment(string text) => Generic.ProtectedElementSendKeys(txtDepartment, text);
+            public void ClickEmployerPhoneNumber() => Generic.ProtectedElementClick(txtPhoneNum_wrapper);
+            public void InputEmployerPhoneNumber(string text) => Generic.ProtectedElementSendKeys(txtPhoneNum, text);
+
+
             #endregion
         }
 
         class CompanyInformation
         {
             IWebDriver context;
-            Generic generic;
             public CompanyInformation(IWebDriver context)
             {
                 this.context = context;
@@ -369,27 +347,27 @@ namespace NUnit.Tests1.Pages.MemberPortal
 
             }
             [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtCompName')]")]
-            public IWebElement txtCompName { get; set; }
+            private IWebElement txtCompName { get; set; }
             [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtFEIN')]")]
-            public IWebElement txtFEIN { get; set; }
+            private IWebElement txtFEIN { get; set; }
             [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtCompAddOne')]")]
-            public IWebElement txtCompAddOne { get; set; }
+            private IWebElement txtCompAddOne { get; set; }
             [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtCompAddTwo')]")]
-            public IWebElement txtCompAddTwo { get; set; }
+            private IWebElement txtCompAddTwo { get; set; }
             [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtCompCity')]")]
-            public IWebElement txtCompCity { get; set; }
+            private IWebElement txtCompCity { get; set; }
             [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'CompState_Input')]")]
-            public IWebElement CompState_Input { get; set; }
+            private IWebElement CompState_Input { get; set; }
             [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtCompZip')]")]
-            public IWebElement txtCompZip { get; set; }
+            private IWebElement txtCompZip { get; set; }
             [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtContactPer')]")]
-            public IWebElement txtContactPer { get; set; }
+            private IWebElement txtContactPer { get; set; }
             [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtCompPhoneNum')]")]
-            public IWebElement txtCompPhoneNum { get; set; }
+            private IWebElement txtCompPhoneNum { get; set; }
             [FindsBy(How = How.Id, Using = "//div[contains(@id, 'txtCompZip_wrapper')]")]
-            public IWebElement txtCompZip_wrapper { get; set; }
+            private IWebElement txtCompZip_wrapper { get; set; }
             [FindsBy(How = How.Id, Using = "//div[contains(@id, 'txtCompPhoneNum_wrapper')]")]
-            public IWebElement txtCompPhoneNumWrapper { get; set; }
+            private IWebElement txtCompPhoneNumWrapper { get; set; }
             #endregion
         }
 
@@ -401,6 +379,15 @@ namespace NUnit.Tests1.Pages.MemberPortal
             {
                 this.context = context;
                 PageFactory.InitElements(context, this);
+            }
+
+            private Generic Generic
+            {
+                get
+                {
+                    Generic generic = new Generic(context);
+                    return generic;
+                }
             }
             #region Plan Information
             /// <summary>
@@ -419,120 +406,56 @@ namespace NUnit.Tests1.Pages.MemberPortal
                 string premiumPayFrequency,
                 string amountEachPayPeriod)
             {
-
-                WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(10));
-
-                wait.Until(context =>
-                {
-                    try
-                    {
-                        switch (insuranceType)
-                        {
-                            case "Employer Plan":
-                                EmployerPlan.Click();
-                                SelfEmployedNARadioButton.Click();
-                                break;
-                            case "COBRA":
-                                COBRARadio.Click();
-                                SelfEmployedNARadioButton.Click();
-                                break;
-                            case "Individual Policy":
-                                IndividualPolicyRadioButton.Click();
-                                if (selfEmployed == true)
-                                {
-                                    SelfemployedYesRadioButton.Click();
-                                }
-                                else
-                                {
-                                    SelfEmployedNoRadioButton.Click();
-                                }
-                                break;
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        Type exType = ex.GetType();
-                        if (exType == typeof(TargetInvocationException) ||
-                            exType == typeof(NoSuchElementException) ||
-                            exType == typeof(ElementClickInterceptedException) ||
-                            exType == typeof(ElementNotVisibleException) ||
-                            exType == typeof(InvalidOperationException))
-                        {
-                            return false; //By returning false, wait will still rerun the func.
-                        }
-                        else
-                        {
-                            throw; //Rethrow exception if it's not ignore type.
-                        }
-                    }
-
-                    return true;
-                });
-
-
-                wait.Until(context =>
-                {
-                    try
-                    {
-                        dateInput_wrapper.Click();
-                        PlanEff_dateInput.Clear();
-                        PlanEff_dateInput.SendKeys(planDate);
-                        //Monthly
-
-                        cboPayInsur_Input.Clear();
-                        cboPayInsur_Input.SendKeys(premiumPayFrequency);
-                        cboPayInsur_Input.SendKeys(OpenQA.Selenium.Keys.Tab);
-                        txtAmountPaid.Clear();
-                        txtAmountPaid.SendKeys(amountEachPayPeriod);
-                        txtAmountPaid.SendKeys(OpenQA.Selenium.Keys.Tab);
-                    }
-                    catch (Exception ex)
-                    {
-                        Type exType = ex.GetType();
-                        if (exType == typeof(TargetInvocationException) ||
-                            exType == typeof(NoSuchElementException) ||
-                            exType == typeof(ElementClickInterceptedException) ||
-                            exType == typeof(ElementNotVisibleException) ||
-                            exType == typeof(InvalidOperationException))
-                        {
-                            return false; //By returning false, wait will still rerun the func.
-                        }
-                        else
-                        {
-                            throw; //Rethrow exception if it's not ignore type.
-                        }
-                    }
-
-                    return true;
-                });
                 //Monthly
 
             }
             [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'cbInsuranceType_0')]")]
-            public IWebElement EmployerPlan { get; set; }
+            private IWebElement EmployerPlan { get; set; }
             [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'cbInsuranceType_1')]")]
-            public IWebElement COBRARadio { get; set; }
+            private IWebElement COBRARadio { get; set; }
             [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'cbInsuranceType_2')]")]
-            public IWebElement IndividualPolicyRadioButton { get; set; }
+            private IWebElement IndividualPolicyRadioButton { get; set; }
             [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'rbPolHold_0')]")]
-            public IWebElement SelfemployedYesRadioButton { get; set; }
+            private IWebElement SelfemployedYesRadioButton { get; set; }
             [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'rbPolHold_1')]")]
-            public IWebElement SelfEmployedNoRadioButton { get; set; }
+            private IWebElement SelfEmployedNoRadioButton { get; set; }
             [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'rbPolHold_2')]")]
-            public IWebElement SelfEmployedNARadioButton { get; set; }
+            private IWebElement SelfEmployedNARadioButton { get; set; }
             [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'PlanEff_dateInput')]")]
-            public IWebElement PlanEff_dateInput { get; set; }
+            private IWebElement PlanEff_dateInput { get; set; }
             [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'dateInput_wrapper')]")]
-            public IWebElement dateInput_wrapper { get; set; }
+            private IWebElement dateInput_wrapper { get; set; }
             [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'cboPayInsur_Input')]")]
-            public IWebElement cboPayInsur_Input { get; set; }
+            private IWebElement cboPayInsur_Input { get; set; }
             [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtOtherFrequency')]")]
-            public IWebElement txtOtherFrequency { get; set; }
+            private IWebElement txtOtherFrequency { get; set; }
             [FindsBy(How = How.Id, Using = "//div[contains(@id, txtAmountPaid_wrapper')]")]
-            public IWebElement txtAmountPaidWrapper { get; set; }
+            private IWebElement txtAmountPaidWrapper { get; set; }
 
             [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtAmountPaid')]")]
-            public IWebElement txtAmountPaid { get; set; }
+            private IWebElement txtAmountPaid { get; set; }
+
+            #endregion
+
+            #region Methods and Calls
+
+            public void ClickEmployerPlan() => Generic.ProtectedElementClick(EmployerPlan);
+            public void ClickCOBRA() => Generic.ProtectedElementClick(COBRARadio);
+            public void ClickIndividualPolicy() => Generic.ProtectedElementClick(IndividualPolicyRadioButton);
+            public void ClickYesRadioButton() => Generic.ProtectedElementClick(SelfemployedYesRadioButton);
+            public void ClickNoRadioButton() => Generic.ProtectedElementClick(SelfEmployedNoRadioButton);
+            public void ClickNotApplicableRadioButton() => Generic.ProtectedElementClick(SelfEmployedNARadioButton);
+            public void InputEffectiveDate(string date)
+            {
+                Generic.ProtectedElementClick(dateInput_wrapper);
+                Generic.ProtectedElementClick(PlanEff_dateInput);
+            }
+            public void InputInsurancePaymentFrequency() => Generic.ProtectedElementClick(cboPayInsur_Input);
+            public void InputAmountEachPayPeriod(string text)
+            {
+                Generic.ProtectedElementClick(txtAmountPaidWrapper);
+                Generic.ProtectedElementSendKeys(txtAmountPaid, text);
+            }
 
             #endregion
 
@@ -541,26 +464,3 @@ namespace NUnit.Tests1.Pages.MemberPortal
     }
 
 }
-
-        
-
-
-  
-
-
-
-
-
-
-
-        //public void InputSelectType(string text)
-        //{
-        //    Generic.ProtectedElementClick(SelectTypeInput);
-        //    Generic.ProtectedElementSendKeys(SelectTypeInput, text);
-        //}
-        //public void BeginApplicationClick()
-        //{
-        //    Generic.ProtectedElementClick(BeginAppButton);
-        //}
-//    }
-//}

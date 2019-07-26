@@ -26,7 +26,24 @@ namespace NUnit.Tests1.Utilities
         [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'signoutBtn')]")]
         public static IWebElement signoutBtn { get; set; }
 
-
+        public void ProtectedAccessElement(IWebElement element, IWebElement wrapper, string text)
+        {
+            ProtectedElementClick(wrapper);
+            ProtectedElementClear(element);
+            ProtectedElementSendKeys(element, text);
+        }
+        public void ProtectedDecisionClick(IWebElement yes, IWebElement no, string text)
+        {
+            switch (text)
+            {
+                case "Yes":
+                    ProtectedElementClick(yes);
+                    break;
+                case "No":
+                    ProtectedElementClick(no);
+                    break;
+            }
+        }
         public void ProtectedElementClick(IWebElement ele)
         {
             WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(5));
@@ -66,6 +83,7 @@ namespace NUnit.Tests1.Utilities
             {
                 try
                 {
+                    ele.Clear();
                     ele.SendKeys(text);
                 }
                 catch (Exception ex)
@@ -216,20 +234,6 @@ namespace NUnit.Tests1.Utilities
             action.MoveToElement(context.FindElement(By.ClassName(ClassName))).Perform();
             return action;
         }
-        /// <summary>
-        /// Uses PartialLinkText
-        /// </summary>
-        /// <param name="elementLinkText"></param>
-        public IWebElement Click(string elementLinkText)
-        {
-            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(20));
-
-            IWebElement element = context.FindElement(By.PartialLinkText(elementLinkText));
-            wait.Until(ExpectedConditions.ElementToBeClickable(element));
-
-            element.Click();
-            return element;
-        }
         #endregion
         //Yes IDs matter bruh
         public void GenericCheveronClick(string id)
@@ -266,7 +270,7 @@ namespace NUnit.Tests1.Utilities
 
         }
 
-        public void genericLinkTextClick(string linkText)
+        public void GenericLinkTextClick(string linkText)
         {
 
 

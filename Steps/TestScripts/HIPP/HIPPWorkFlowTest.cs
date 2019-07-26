@@ -158,13 +158,13 @@ namespace NUnit.Tests1
 
             doc.InsertBookmark("Pass 1");
             doc.InsertBookmark("Pass 2");
-            loginPage.LoginPage("bryar.h.wrkr", "Password123");
+            loginPage.LoginPage("bryar.h.wrkr", "user@123A");
             utility.RecordStepStatusMAIN("Log in in APHP Sucess", screenshotLocation, "LoginSuccess", doc);
             landingPage.HippApplicationSearch();
-            hIPPSearch.SearchHiPPCase("Contains", "Application ID", "10000203");
+            hIPPSearch.SearchHiPPCase("Contains", "Application ID", "10000214");
             hIPPSearch.SearchButtonClick();
             utility.RecordStepStatusMAIN("Search results", screenshotLocation, "SearchResults", doc);
-            generic.genericLinkTextClick("10000203");
+            generic.GenericLinkTextClick("10000214");
             
             workitem.ClickWorkItemButton();
             Thread.Sleep(3000);

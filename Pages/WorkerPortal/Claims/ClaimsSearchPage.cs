@@ -21,12 +21,17 @@ namespace NUnit.Tests1.Pages.WorkerPortal
             PageFactory.InitElements(context, this);
 
         }
-        public Generic GrabGeneric(IWebDriver context)
+
+
+        private Generic Generic
         {
-            return new Generic(context);
+            get
+            {
+                Generic generic = new Generic(context);
+                return generic;
+            }
         }
-
-
+        #region elements
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'StartsWith_Input')]")]
         private IWebElement StartsWith { get; }
         [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'lbtnReferral')]")]
@@ -107,18 +112,18 @@ namespace NUnit.Tests1.Pages.WorkerPortal
         private IWebElement txtRemittanceAdviceNumber { get; set; }
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtCheckOrEFTNumber')]")]
         private IWebElement txtCheckOrEFTNumber { get; set; }
-
+        #endregion
 
 
         #region Methods and Calls
-        
+
         public void InputCheckOrEFTNumber(string CheckOrEFTNumber)
         {
-            GrabGeneric(context).ProtectedElementSendKeys(txtCheckOrEFTNumber, CheckOrEFTNumber);
+            Generic.SendKeys(txtCheckOrEFTNumber, CheckOrEFTNumber);
         }
         public void InputRemittanceAdviceNumber(string AdviceNumber)
         {
-            GrabGeneric(context).ProtectedElementSendKeys(txtRemittanceAdviceNumber, AdviceNumber);
+            Generic.SendKeys(txtRemittanceAdviceNumber, AdviceNumber);
         }
         /// <summary>
         /// Three digits from 001-109
@@ -126,8 +131,8 @@ namespace NUnit.Tests1.Pages.WorkerPortal
         /// <param name="ProgType"></param>
         public void InputProgType(string ProgType)
         {
-            GrabGeneric(context).ProtectedElementSendKeys(cboProgType_Input, ProgType);
-            GrabGeneric(context).ProtectedElementClick(cboProgType_Arrow);
+            Generic.SendKeys(cboProgType_Input, ProgType);
+            Generic.Click(cboProgType_Arrow);
         }
 
         /// <summary>
@@ -145,29 +150,29 @@ namespace NUnit.Tests1.Pages.WorkerPortal
         /// <param name="EpisodeType"></param>
         public void InputEpisodeType(string EpisodeType)
         {
-            GrabGeneric(context).ProtectedElementSendKeys(CboEpisodeType_Input, EpisodeType);
-            GrabGeneric(context).ProtectedElementClick(CboEpisodeType_Arrow);
+            Generic.SendKeys(CboEpisodeType_Input, EpisodeType);
+            Generic.Click(CboEpisodeType_Arrow);
         }
         public void InputEpisodeId(string epID)
         {
-            GrabGeneric(context).ProtectedElementSendKeys(txtEpiId, epID);
+            Generic.SendKeys(txtEpiId, epID);
         }
         public void InputMediaType(string MediaType)
         {
-            GrabGeneric(context).ProtectedElementSendKeys(cboMediaType_Input, MediaType);
-            GrabGeneric(context).ProtectedElementClick(cboMediaType_Arrow);
+            Generic.SendKeys(cboMediaType_Input, MediaType);
+            Generic.Click(cboMediaType_Arrow);
         }
         public void InputProcCode(string ProcCode)
         {
-            GrabGeneric(context).ProtectedElementSendKeys(txtProcCode, ProcCode);
+            Generic.SendKeys(txtProcCode, ProcCode);
         }
         public void InputDiagnosisCode(string DiagnosisCode)
         {
-            GrabGeneric(context).ProtectedElementSendKeys(txtDiagnosisCode, DiagnosisCode);
+            Generic.SendKeys(txtDiagnosisCode, DiagnosisCode);
         }
         public void InputResultCode(string ResultCode)
         {
-            GrabGeneric(context).ProtectedElementSendKeys(txtResultCode, ResultCode);
+            Generic.SendKeys(txtResultCode, ResultCode);
         }
         /// <summary>
         /// 
@@ -175,30 +180,30 @@ namespace NUnit.Tests1.Pages.WorkerPortal
         /// <param name="ProvNtwk"></param>
         public void InputProvNtwk(string ProvNtwk)
         {
-            GrabGeneric(context).ProtectedElementSendKeys(cboProvNtwk_Input, ProvNtwk);
-            GrabGeneric(context).ProtectedElementClick(cboProvNtwk_Arrow);
+            Generic.SendKeys(cboProvNtwk_Input, ProvNtwk);
+            Generic.Click(cboProvNtwk_Arrow);
         }
         public void InputReferProvNPI(string ReferProvNPI)
         {
-            GrabGeneric(context).ProtectedElementSendKeys(txtReferProvNPI, ReferProvNPI);
+            Generic.SendKeys(txtReferProvNPI, ReferProvNPI);
         }
         public void InputRendProvNPI(string Rend)
         {
-            GrabGeneric(context).ProtectedElementSendKeys(txtRend, Rend);
+            Generic.SendKeys(txtRend, Rend);
         }
         public void InputBillProvNPI(string BillProvNPI)
         {
 
-            GrabGeneric(context).ProtectedElementSendKeys(txtBillProvNPI, BillProvNPI);
+            Generic.SendKeys(txtBillProvNPI, BillProvNPI);
         }
         public void InputAuthReferralID(string AuthRefID)
         {
             
-            GrabGeneric(context).ProtectedElementSendKeys(txtAuthRefID, AuthRefID);
+            Generic.SendKeys(txtAuthRefID, AuthRefID);
         }
         public void InputFinancialAccountNumber(string accountNumber)
         {
-            GrabGeneric(context).ProtectedElementSendKeys(xtFinacialAccNo, accountNumber);
+            Generic.SendKeys(xtFinacialAccNo, accountNumber);
         }
         /// <summary>
         /// Building Independence Waiver,
@@ -213,17 +218,17 @@ namespace NUnit.Tests1.Pages.WorkerPortal
         /// <param name="type"></param>
         public void InputBenefitPlan(string type)
         {
-            GrabGeneric(context).ProtectedElementSendKeys(cboBenefitPaln_Input, type);
-            GrabGeneric(context).ProtectedElementClick(cboBenefitPaln_Arrow);
+            Generic.SendKeys(cboBenefitPaln_Input, type);
+            Generic.Click(cboBenefitPaln_Arrow);
         }
         public void InputMemberID(string ID)
         {
-            GrabGeneric(context).ProtectedElementSendKeys(txtMemberId, ID);
+            Generic.SendKeys(txtMemberId, ID);
         }
         public void InputClaimStatus(string type)
         {
-            GrabGeneric(context).ProtectedElementSendKeys(CboClaimStatus_Input, type);
-            GrabGeneric(context).ProtectedElementClick(CboClaimStatus_Arrow);
+            Generic.SendKeys(CboClaimStatus_Input, type);
+            Generic.Click(CboClaimStatus_Arrow);
         }
         /// <summary>
         /// Dental,
@@ -233,23 +238,23 @@ namespace NUnit.Tests1.Pages.WorkerPortal
         /// <param name="type"></param>
         public void InputClaimType(string type)
         {
-            GrabGeneric(context).ProtectedElementSendKeys(ClaimType_Input, type);
-            GrabGeneric(context).ProtectedElementClick(CboClaimType_Arrow);
+            Generic.SendKeys(ClaimType_Input, type);
+            Generic.Click(CboClaimType_Arrow);
 
         }
         public void InputDateFrom(string date)
         {
-            GrabGeneric(context).ProtectedElementClick(DOSFrom_dateInput_wrapper);
-            GrabGeneric(context).ProtectedElementSendKeys(DOSFrom_dateInput, date);
+            Generic.Click(DOSFrom_dateInput_wrapper);
+            Generic.SendKeys(DOSFrom_dateInput, date);
         }
         public void InputDateTO(string date)
         {
-            GrabGeneric(context).ProtectedElementClick(DOSTo_dateInput_wrapper);
-            GrabGeneric(context).ProtectedElementSendKeys(DOSTo_dateInput, date);
+            Generic.Click(DOSTo_dateInput_wrapper);
+            Generic.SendKeys(DOSTo_dateInput, date);
         }
         public void BeginNewClaimClick()
         {
-            GrabGeneric(context).ProtectedElementClick(BeginNewClaim);
+            Generic.Click(BeginNewClaim);
         }
         /// <summary>
         /// Claim/EncounterNumber, 
@@ -265,8 +270,8 @@ namespace NUnit.Tests1.Pages.WorkerPortal
         /// <param name="searchCriteria"></param>
         public void WhereSearchInput(string searchCriteria)
         {
-            GrabGeneric(context).ProtectedElementClear(Where);
-            GrabGeneric(context).ProtectedElementSendKeys(Where, searchCriteria);
+            Generic.Clear(Where);
+            Generic.SendKeys(Where, searchCriteria);
 
         }
         /// <summary>
@@ -275,28 +280,14 @@ namespace NUnit.Tests1.Pages.WorkerPortal
         /// Starts With
         /// </summary>
         /// <param name="searchCriteria"></param>
-        private void HowSearchInput(string searchCriteria)
-        {
-            GrabGeneric(context).ProtectedElementClear(HowSearch);
-            GrabGeneric(context).ProtectedElementSendKeys(HowSearch, searchCriteria);
-
-        }
+        public void HowSearchInput(string searchCriteria) => Generic.AccessElement(HowSearch, HowSearch, searchCriteria);
 
         /// <summary>
         /// Click Search Button
         /// </summary>
         /// <returns></returns>
-        public void SearchButtonClick()
-        {
-            GrabGeneric(context).ProtectedElementClick(SearchButton);
-        }
-        public void SearchInputBox(string searchInput)
-        {
-
-            GrabGeneric(context).ProtectedElementClear(txtCommunicationSearch);
-            GrabGeneric(context).ProtectedElementSendKeys(txtCommunicationSearch, searchInput);
-
-        }
+        public void SearchButtonClick() => Generic.Click(SearchButton);
+        public void SearchInputBox(string searchInput) => Generic.AccessElement(txtCommunicationSearch, txtCommunicationSearch, searchInput);
         public bool ChkReturnNoRecords()
         {
             return ReturnNoRecords.Displayed;

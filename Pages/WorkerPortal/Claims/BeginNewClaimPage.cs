@@ -45,8 +45,8 @@ namespace NUnit.Tests1.Pages
         public void SelectClaimType(string text)
         {
             Generic generic = new Generic(context);
-            generic.ProtectedElementSendKeys(CboSelectType, text);
-            generic.ProtectedElementClick(CboSelectType_Arrow);
+            generic.SendKeys(CboSelectType, text);
+            generic.Click(CboSelectType_Arrow);
         }
 
         /// <summary>
@@ -63,14 +63,14 @@ namespace NUnit.Tests1.Pages
         public void SelectTypeOfBill(string text)
         {
             Generic generic = new Generic(context);
-            generic.ProtectedElementSendKeys(ComboBoxTypeOfBill, text);
-            generic.ProtectedElementClick(TypeOfBill_Arrow);
+            generic.SendKeys(ComboBoxTypeOfBill, text);
+            generic.Click(TypeOfBill_Arrow);
         }
 
         public void ClickBeginNewClaim()
         {
             Generic generic = new Generic(context);
-            generic.ProtectedElementClick(btnBeginNewClaim);
+            generic.Click(btnBeginNewClaim);
         }
     }
 }

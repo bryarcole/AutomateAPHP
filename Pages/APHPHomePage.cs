@@ -42,10 +42,10 @@ namespace NUnit.Tests1.Pages
             //Thread.Sleep(3000);
             context.Url = startUp.AWSINTWoker;
             context.Manage().Window.Maximize();
-            GrabGeneric(context).ProtectedElementSendKeys(UserNameInput, username);
-            GrabGeneric(context).ProtectedElementClick(PasswordOverlay);
-            GrabGeneric(context).ProtectedElementSendKeys(PasswordInput, password);
-            GrabGeneric(context).ProtectedElementClick(LoginButton);
+            GrabGeneric(context).SendKeys(UserNameInput, username);
+            GrabGeneric(context).Click(PasswordOverlay);
+            GrabGeneric(context).SendKeys(PasswordInput, password);
+            GrabGeneric(context).Click(LoginButton);
         }
         
         public static IWebElement User(IWebDriver driver)

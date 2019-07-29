@@ -42,12 +42,12 @@ namespace NUnit.Tests1.Pages.MemberPortal
         {
             GrabGeneric(context);
             HiPPApplicationHover();
-            GrabGeneric(context).ProtectedElementClick(MyHIPPApplication);
+            GrabGeneric(context).Click(MyHIPPApplication);
         }
         public void HIPPEIVData()
         {
             HiPPApplicationHover();
-            GrabGeneric(context).ProtectedElementClick(HIPPEIV);
+            GrabGeneric(context).Click(HIPPEIV);
         }
 
 

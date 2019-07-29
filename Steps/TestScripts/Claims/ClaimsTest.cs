@@ -56,7 +56,7 @@ namespace NUnit.Tests1
             WordDocGen genWordDoc = new WordDocGen();
             ClaimsSearchPage claimsSearchPage = new ClaimsSearchPage(context);
             SubmitClaimApplicationPage submitClaimApplicationPage = new SubmitClaimApplicationPage();
-            ClaimsSummaryInformation summaryInformation = new ClaimsSummaryInformation(context);
+            ClaimSummaryInformation summaryInformation = new ClaimSummaryInformation(context);
             BeginNewClaimPage beginNewClaimPage = new BeginNewClaimPage(context);
             context.Url = startUp.AWSINTWoker;
             context.Manage().Window.Maximize();

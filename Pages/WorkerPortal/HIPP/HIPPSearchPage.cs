@@ -103,8 +103,8 @@ namespace NUnit.Tests1.Pages.WorkerPortal
         /// <param name="searchCriteria"></param>
         public void WhereSearchInput(string searchCriteria)
         {
-            GrabGeneric(context).ProtectedElementClear(Where);
-            GrabGeneric(context).ProtectedElementSendKeys(Where, searchCriteria);
+            GrabGeneric(context).Clear(Where);
+            GrabGeneric(context).SendKeys(Where, searchCriteria);
 
         }
         /// <summary>

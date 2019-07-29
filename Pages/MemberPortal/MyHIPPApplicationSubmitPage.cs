@@ -181,21 +181,21 @@ namespace NUnit.Tests1.Pages.MemberPortal
             private IWebElement cboMemOnAccount_Input { get; set; }
 
             #region Methods and Calls
-            public void MemeberAccountYesNo(string yesno) => Generic.ProtectedDecisionClick(rbMemPortAcc_0, rbMemPortAcc_1, yesno);
+            public void MemeberAccountYesNo(string yesno) => Generic.DecisionClick(rbMemPortAcc_0, rbMemPortAcc_1, yesno);
 
-            public void InputFirstName(string text) => Generic.ProtectedElementSendKeys(FirstNameHHI, text);
-            public void InputLastName(string text) => Generic.ProtectedElementSendKeys(LastNameHHI, text);
-            public void InputMiddleName(string text) => Generic.ProtectedElementSendKeys(MiddleNameHHI, text);
+            public void InputFirstName(string text) => Generic.SendKeys(FirstNameHHI, text);
+            public void InputLastName(string text) => Generic.SendKeys(LastNameHHI, text);
+            public void InputMiddleName(string text) => Generic.SendKeys(MiddleNameHHI, text);
 
-            public void InputRelationInfo(string text) => Generic.ProtectedAccessElement(Relation, Relation, text);
+            public void InputRelationInfo(string text) => Generic.AccessElement(Relation, Relation, text);
 
-            public void InputDate(string text) => Generic.ProtectedAccessElement(HHI_dateInput, HHI_dateInput_wrapper, text);
+            public void InputDate(string text) => Generic.AccessElement(HHI_dateInput, HHI_dateInput_wrapper, text);
 
-            public void InputSSN(string text) => Generic.ProtectedAccessElement(SSN, SSN_wrapper, text);
-            public void PersonMedicareYesNo(string yesno) => Generic.ProtectedDecisionClick(rbPersonMedicareYN_0, rbPersonMedicareYN_1, yesno);
-            public void PersonCoveredInsuranceYesNo(string yesno) => Generic.ProtectedDecisionClick(rbPersonCoveredInsurance_0, rbPersonCoveredInsurance_1, yesno);
+            public void InputSSN(string text) => Generic.AccessElement(SSN, SSN_wrapper, text);
+            public void PersonMedicareYesNo(string yesno) => Generic.DecisionClick(rbPersonMedicareYN_0, rbPersonMedicareYN_1, yesno);
+            public void PersonCoveredInsuranceYesNo(string yesno) => Generic.DecisionClick(rbPersonCoveredInsurance_0, rbPersonCoveredInsurance_1, yesno);
 
-            public void InputMemberInfo(string text) => Generic.ProtectedAccessElement(cboMemOnAccount_Input, cboMemOnAccount_Input, text);
+            public void InputMemberInfo(string text) => Generic.AccessElement(cboMemOnAccount_Input, cboMemOnAccount_Input, text);
             #endregion
 
         }
@@ -283,18 +283,18 @@ namespace NUnit.Tests1.Pages.MemberPortal
             #endregion
 
             #region Method and Calls
-            public void InputEmployerName(string text) => Generic.ProtectedElementSendKeys(txtEmployerName, text);
-            public void InputFedEmployerID(string text) => Generic.ProtectedElementSendKeys(txtFedEmp, text);
-            public void InputEmployeeAddressOne(string text) => Generic.ProtectedElementSendKeys(txtEmpAddOne, text);
-            public void InputEmployeeAddressTwo(string text) => Generic.ProtectedElementSendKeys(txtEmpAddTwo, text);
-            public void InputEmployeeCity(string text) => Generic.ProtectedElementSendKeys(txtEmpCity, text);
-            public void InputEmployeeState(string text) => Generic.ProtectedElementSendKeys(txtEmpCity, text);
-            public void InputEmployerZipCode(string text) => Generic.ProtectedElementSendKeys(txtEmpZip, text);
-            public void ClickEmployerZip() => Generic.ProtectedElementClick(txtEmpZip_wrapper);
-            public void InputHumanResource(string text) => Generic.ProtectedElementSendKeys(txtHuman, text);
-            public void InputEmployerDepartment(string text) => Generic.ProtectedElementSendKeys(txtDepartment, text);
-            public void ClickEmployerPhoneNumber() => Generic.ProtectedElementClick(txtPhoneNum_wrapper);
-            public void InputEmployerPhoneNumber(string text) => Generic.ProtectedElementSendKeys(txtPhoneNum, text);
+            public void InputEmployerName(string text) => Generic.SendKeys(txtEmployerName, text);
+            public void InputFedEmployerID(string text) => Generic.SendKeys(txtFedEmp, text);
+            public void InputEmployeeAddressOne(string text) => Generic.SendKeys(txtEmpAddOne, text);
+            public void InputEmployeeAddressTwo(string text) => Generic.SendKeys(txtEmpAddTwo, text);
+            public void InputEmployeeCity(string text) => Generic.SendKeys(txtEmpCity, text);
+            public void InputEmployeeState(string text) => Generic.SendKeys(txtEmpCity, text);
+            public void InputEmployerZipCode(string text) => Generic.SendKeys(txtEmpZip, text);
+            public void ClickEmployerZip() => Generic.Click(txtEmpZip_wrapper);
+            public void InputHumanResource(string text) => Generic.SendKeys(txtHuman, text);
+            public void InputEmployerDepartment(string text) => Generic.SendKeys(txtDepartment, text);
+            public void ClickEmployerPhoneNumber() => Generic.Click(txtPhoneNum_wrapper);
+            public void InputEmployerPhoneNumber(string text) => Generic.SendKeys(txtPhoneNum, text);
 
 
             #endregion
@@ -439,22 +439,22 @@ namespace NUnit.Tests1.Pages.MemberPortal
 
             #region Methods and Calls
 
-            public void ClickEmployerPlan() => Generic.ProtectedElementClick(EmployerPlan);
-            public void ClickCOBRA() => Generic.ProtectedElementClick(COBRARadio);
-            public void ClickIndividualPolicy() => Generic.ProtectedElementClick(IndividualPolicyRadioButton);
-            public void ClickYesRadioButton() => Generic.ProtectedElementClick(SelfemployedYesRadioButton);
-            public void ClickNoRadioButton() => Generic.ProtectedElementClick(SelfEmployedNoRadioButton);
-            public void ClickNotApplicableRadioButton() => Generic.ProtectedElementClick(SelfEmployedNARadioButton);
+            public void ClickEmployerPlan() => Generic.Click(EmployerPlan);
+            public void ClickCOBRA() => Generic.Click(COBRARadio);
+            public void ClickIndividualPolicy() => Generic.Click(IndividualPolicyRadioButton);
+            public void ClickYesRadioButton() => Generic.Click(SelfemployedYesRadioButton);
+            public void ClickNoRadioButton() => Generic.Click(SelfEmployedNoRadioButton);
+            public void ClickNotApplicableRadioButton() => Generic.Click(SelfEmployedNARadioButton);
             public void InputEffectiveDate(string date)
             {
-                Generic.ProtectedElementClick(dateInput_wrapper);
-                Generic.ProtectedElementClick(PlanEff_dateInput);
+                Generic.Click(dateInput_wrapper);
+                Generic.Click(PlanEff_dateInput);
             }
-            public void InputInsurancePaymentFrequency() => Generic.ProtectedElementClick(cboPayInsur_Input);
+            public void InputInsurancePaymentFrequency() => Generic.Click(cboPayInsur_Input);
             public void InputAmountEachPayPeriod(string text)
             {
-                Generic.ProtectedElementClick(txtAmountPaidWrapper);
-                Generic.ProtectedElementSendKeys(txtAmountPaid, text);
+                Generic.Click(txtAmountPaidWrapper);
+                Generic.SendKeys(txtAmountPaid, text);
             }
 
             #endregion

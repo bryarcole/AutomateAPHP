@@ -21,9 +21,14 @@ namespace NUnit.Tests1.Pages.WorkerPortal
             PageFactory.InitElements(context, this);
 
         }
-        public Generic GrabGeneric(IWebDriver context)
+
+        private Generic Generic
         {
-            return new Generic(context);
+            get
+            {
+                Generic generic = new Generic(context);
+                return generic;
+            }
         }
         [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'btnCreateNewMemberPanel')]")]
         private IWebElement CreateNewMemberPanel { get; set; }
@@ -47,27 +52,10 @@ namespace NUnit.Tests1.Pages.WorkerPortal
         private IWebElement SearchResults { get; set; }
         [FindsBy(How = How.XPath, Using = "//table[contains(@id, 'MemberSearchResults_ctl00']")]
         private IWebElement FirstCell { get; set; }
-        //[FindsBy(How = How.XPath, Using = "//*[contains(@id, 'ctl00_ctl00_pageContentMaster_pageContent_grdNewAssignedWI_ctl00__0')]")]
-        //private List<IWebElement> returnedTable { get; set; }
-        ////*[@id="ctl00_ctl00_pageContentMaster_pageContent_grdNewAssignedWI_ctl00__0"]/td[1]
 
-
-
-        //public void GetTableCell()
-        //{
-        //    int i = 0;
-
-        //    for(i = 0; 1 < returnedTable.Count; i++ ){
-
-        //        IWebElement row = context.FindElement(By.XPath("//*[@id=\"ctl00_ctl00_pageContentMaster_pageContent_grdNewAssignedWI_ctl00__" + i + "\"]"));
-
-        //        //*[@id="ctl00_ctl00_pageContentMaster_pageContent_grdNewAssignedWI_ctl00_ctl04_WorkItemId"]
-        //        //*[@id="ctl00_ctl00_pageContentMaster_pageContent_grdNewAssignedWI_ctl00__0"]/td[1]
-        //    }
-        //}
         public void CreateNewMemberPanelClick()
         {
-            GrabGeneric(context).ProtectedElementClick(CreateNewMemberPanel);
+            Generic.Click(CreateNewMemberPanel);
         }
         /// <summary>
         /// Case ID, 
@@ -79,8 +67,8 @@ namespace NUnit.Tests1.Pages.WorkerPortal
         /// <param name="searchCriteria"></param>
         public void WhereSearchInput(string searchCriteria)
         {
-            GrabGeneric(context).ProtectedElementClear(Where);
-            GrabGeneric(context).ProtectedElementSendKeys(Where, searchCriteria);
+            Generic.Clear(Where);
+            Generic.SendKeys(Where, searchCriteria);
 
         }
         /// <summary>
@@ -91,8 +79,8 @@ namespace NUnit.Tests1.Pages.WorkerPortal
         /// <param name="searchCriteria"></param>
         private void HowSearchInput(string searchCriteria)
         {
-            GrabGeneric(context).ProtectedElementClear(HowSearch);
-            GrabGeneric(context).ProtectedElementSendKeys(HowSearch, searchCriteria);
+            Generic.Clear(HowSearch);
+            Generic.SendKeys(HowSearch, searchCriteria);
 
         }
 
@@ -102,13 +90,13 @@ namespace NUnit.Tests1.Pages.WorkerPortal
         /// <returns></returns>
         public void SearchButtonClick()
         {
-            GrabGeneric(context).ProtectedElementClick(SearchButton);
+            Generic.Click(SearchButton);
         }
         public void SearchInputBox(string searchInput)
         {
 
-            GrabGeneric(context).ProtectedElementClear(AdditionalCriterias);
-            GrabGeneric(context).ProtectedElementSendKeys(AdditionalCriterias, searchInput);
+            Generic.Clear(AdditionalCriterias);
+            Generic.SendKeys(AdditionalCriterias, searchInput);
 
         }
         public bool ChkReturnNoRecords()

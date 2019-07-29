@@ -26,25 +26,28 @@ namespace NUnit.Tests1.Utilities
         [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'signoutBtn')]")]
         public static IWebElement signoutBtn { get; set; }
 
-        public void ProtectedAccessElement(IWebElement element, IWebElement wrapper, string text)
+        public IWebElement AccessElement(IWebElement element, IWebElement wrapper, string text)
         {
-            ProtectedElementClick(wrapper);
-            ProtectedElementClear(element);
-            ProtectedElementSendKeys(element, text);
+            Click(wrapper);
+            Clear(element);
+            SendKeys(element, text);
+            return element;
         }
-        public void ProtectedDecisionClick(IWebElement yes, IWebElement no, string text)
+        public IWebElement DecisionClick(IWebElement yes, IWebElement no, string text)
         {
             switch (text)
             {
                 case "Yes":
-                    ProtectedElementClick(yes);
-                    break;
+                    Click(yes);
+                    return yes;
                 case "No":
-                    ProtectedElementClick(no);
-                    break;
+                    Click(no);
+                    return no;
             }
+            return null;
+
         }
-        public void ProtectedElementClick(IWebElement ele)
+        public IWebElement Click(IWebElement ele)
         {
             WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(5));
             wait.Until(context =>
@@ -61,8 +64,10 @@ namespace NUnit.Tests1.Utilities
                         exType == typeof(ElementClickInterceptedException) ||
                         exType == typeof(ElementNotVisibleException) ||
                         exType == typeof(StaleElementReferenceException) ||
+                        exType == typeof(WebDriverTimeoutException) ||
                         exType == typeof(InvalidOperationException))
                     {
+
                         Console.Write(ex.Message);
 
                         return false; //By returning false, wait will still rerun the func.
@@ -73,10 +78,10 @@ namespace NUnit.Tests1.Utilities
                     }
                 }
                 return true;
-
             });
+            return ele;
         }
-        public void ProtectedElementSendKeys(IWebElement ele, string text)
+        public IWebElement SendKeys(IWebElement ele, string text)
         {
             WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(5));
             wait.Until(context =>
@@ -104,10 +109,10 @@ namespace NUnit.Tests1.Utilities
                     }
                 }
                 return true;
-
             });
+            return ele;
         }
-        public string ProtectedElementGetText(IWebElement ele)
+        public string GetText(IWebElement ele)
         {
             string text = "";
             WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(5));
@@ -124,6 +129,7 @@ namespace NUnit.Tests1.Utilities
                         exType == typeof(NoSuchElementException) ||
                         exType == typeof(ElementClickInterceptedException) ||
                         exType == typeof(ElementNotVisibleException) ||
+
                         exType == typeof(StaleElementReferenceException) ||
                         exType == typeof(InvalidOperationException))
                     {
@@ -138,8 +144,7 @@ namespace NUnit.Tests1.Utilities
             });
             return text;
         }
-
-        public void ProtectedElementClear(IWebElement ele)
+        public IWebElement Clear(IWebElement ele)
         {
             WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(5));
             wait.Until(context =>
@@ -167,8 +172,167 @@ namespace NUnit.Tests1.Utilities
                     }
                 }
                 return true;
+            });
+            return ele;
+        }
+
+        public IWebElement Click(IWebElement ele, int timeInSeconds)
+        {
+            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(timeInSeconds));
+            wait.Until(context =>
+            {
+                try
+                {
+                    ele.Click();
+                }
+                catch (Exception ex)
+                {
+                    Type exType = ex.GetType();
+                    if (exType == typeof(TargetInvocationException) ||
+                        exType == typeof(NoSuchElementException) ||
+                        exType == typeof(ElementClickInterceptedException) ||
+                        exType == typeof(ElementNotVisibleException) ||
+                        exType == typeof(StaleElementReferenceException) ||
+                        exType == typeof(InvalidOperationException))
+                    {
+                        Console.Write(ex.Message);
+
+                        return false; //By returning false, wait will still rerun the func.
+                    }
+                    else
+                    {
+                        throw; //Rethrow exception if it's not ignore type.
+                    }
+                }
+                return true;
+            });
+            return ele;
+        }
+        public IWebElement SendKeys(IWebElement ele, string text, int timeInSeconds)
+        {
+            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(timeInSeconds));
+            wait.Until(context =>
+            {
+                try
+                {
+                    ele.Clear();
+                    ele.SendKeys(text);
+                }
+                catch (Exception ex)
+                {
+                    Type exType = ex.GetType();
+                    if (exType == typeof(TargetInvocationException) ||
+                        exType == typeof(NoSuchElementException) ||
+                        exType == typeof(ElementClickInterceptedException) ||
+                        exType == typeof(ElementNotVisibleException) ||
+                        exType == typeof(StaleElementReferenceException) ||
+                        exType == typeof(InvalidOperationException))
+                    {
+                        return false; //By returning false, wait will still rerun the func.
+                    }
+                    else
+                    {
+                        throw; //Rethrow exception if it's not ignore type.
+                    }
+                }
+                return true;
 
             });
+            return ele;
+        }
+        public string GetText(IWebElement ele, int timeInSeconds)
+        {
+            string text = "";
+            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(timeInSeconds));
+            wait.Until(context =>
+            {
+                try
+                {
+                    text = ele.Text;
+                }
+                catch (Exception ex)
+                {
+                    Type exType = ex.GetType();
+                    if (exType == typeof(TargetInvocationException) ||
+                        exType == typeof(NoSuchElementException) ||
+                        exType == typeof(ElementClickInterceptedException) ||
+                        exType == typeof(ElementNotVisibleException) ||
+                        exType == typeof(StaleElementReferenceException) ||
+                        exType == typeof(InvalidOperationException))
+                    {
+                        return false; //By returning false, wait will still rerun the func.
+                    }
+                    else
+                    {
+                        throw; //Rethrow exception if it's not ignore type.
+                    }
+                }
+                return true;
+            });
+            return text;
+        }
+        public IWebElement Clear(IWebElement ele, int timeInSeconds)
+        {
+            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(timeInSeconds));
+            wait.Until(context =>
+            {
+                try
+                {
+                    ele.Clear();
+                }
+                catch (Exception ex)
+                {
+                    Type exType = ex.GetType();
+                    if (exType == typeof(TargetInvocationException) ||
+                        exType == typeof(NoSuchElementException) ||
+                        exType == typeof(ElementClickInterceptedException) ||
+                        exType == typeof(ElementNotVisibleException) ||
+                        exType == typeof(StaleElementReferenceException) ||
+                        exType == typeof(InvalidOperationException))
+                    {
+                        Console.Write(ex.Message);
+                        return false; //By returning false, wait will still rerun the func.
+                    }
+                    else
+                    {
+                        throw; //Rethrow exception if it's not ignore type.
+                    }
+                }
+                return true;
+            });
+            return ele;
+        }
+
+        public IWebElement CheckBox(IWebElement ele, int timeInSeconds)
+        {
+            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(timeInSeconds));
+            wait.Until(context =>
+            {
+                try
+                {
+                    ele.Click();
+                }
+                catch (Exception ex)
+                {
+                    Type exType = ex.GetType();
+                    if (exType == typeof(TargetInvocationException) ||
+                        exType == typeof(NoSuchElementException) ||
+                        exType == typeof(ElementClickInterceptedException) ||
+                        exType == typeof(ElementNotVisibleException) ||
+                        exType == typeof(StaleElementReferenceException) ||
+                        exType == typeof(InvalidOperationException))
+                    {
+                        Console.Write(ex.Message);
+                        return false; //By returning false, wait will still rerun the func.
+                    }
+                    else
+                    {
+                        throw; //Rethrow exception if it's not ignore type.
+                    }
+                }
+                return true;
+            });
+            return ele;
         }
 
         #region Search Result and assigned items buttons

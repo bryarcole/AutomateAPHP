@@ -36,12 +36,12 @@ namespace NUnit.Tests1.Pages.MemberPortal
 
         public void InputSelectType(string text)
         {
-            GrabGeneric(context).ProtectedElementClick(SelectTypeInput);
-            GrabGeneric(context).ProtectedElementSendKeys(SelectTypeInput, text);
+            GrabGeneric(context).Click(SelectTypeInput);
+            GrabGeneric(context).SendKeys(SelectTypeInput, text);
         }
         public void BeginApplicationClick()
         {
-            GrabGeneric(context).ProtectedElementClick(BeginAppButton);
+            GrabGeneric(context).Click(BeginAppButton);
         }
     }
 }

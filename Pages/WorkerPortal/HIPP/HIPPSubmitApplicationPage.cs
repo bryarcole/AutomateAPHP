@@ -1144,24 +1144,24 @@ namespace NUnit.Tests1.Pages.WorkerPortal
         {
 
             Generic generic = new Generic(context);
-            generic.ProtectedElementClick(btnMembershipAdd);
+            generic.Click(btnMembershipAdd);
 
-            generic.ProtectedElementSendKeys(txtMemFName, firstName);
-            generic.ProtectedElementSendKeys(txtMemMName, middleName);
-            generic.ProtectedElementSendKeys(txtMemLName, lastName);
-            generic.ProtectedElementClick(dpMemDOB_dateInput_wrapper);
-            generic.ProtectedElementSendKeys(dpMemDOB_dateInput, date);
-            generic.ProtectedElementSendKeys(cboRelPolHold_Input, relationShipToPolicy);
+            generic.SendKeys(txtMemFName, firstName);
+            generic.SendKeys(txtMemMName, middleName);
+            generic.SendKeys(txtMemLName, lastName);
+            generic.Click(dpMemDOB_dateInput_wrapper);
+            generic.SendKeys(dpMemDOB_dateInput, date);
+            generic.SendKeys(cboRelPolHold_Input, relationShipToPolicy);
             if (enrolled)
             {
-                generic.ProtectedElementClick(rbEnrPlan_0);
+                generic.Click(rbEnrPlan_0);
             }
             else
             {
-                generic.ProtectedElementClick(rbEnrPlan_1);
+                generic.Click(rbEnrPlan_1);
 
             }
-            generic.ProtectedElementClick(btnMembershipSav);
+            generic.Click(btnMembershipSav);
             Thread.Sleep(2000);
 
         }
@@ -1335,49 +1335,49 @@ namespace NUnit.Tests1.Pages.WorkerPortal
             {
                 case "Medical":
 
-                    generic.ProtectedElementClick(MedicalEditLink);
-                    generic.ProtectedElementSendKeys(txtCompanyName, companyName);
-                    generic.ProtectedElementSendKeys(txtInsurAddOne, addressLineOne);
-                    generic.ProtectedElementSendKeys(txtInsurAddTwo, addressLineTwo);
-                    generic.ProtectedElementSendKeys(txtInsurCity, city);
-                    generic.ProtectedElementClick(cboInsurState_wrapper);
-                    generic.ProtectedElementSendKeys(cboInsurState_Input, state);
-                    generic.ProtectedElementClick(txtInsurZip_wrapper);
-                    generic.ProtectedElementSendKeys(txtInsurZip, zipCode);
-                    generic.ProtectedElementClick(txtInsurPNum_wrapper);
-                    generic.ProtectedElementSendKeys(txtInsurPNum, phoneNumber);
-                    generic.ProtectedElementSendKeys(txtInsurPol, insurancePolicyGroupNumber);
-                    generic.ProtectedElementClick(btnPlanBenefitsSave);
+                    generic.Click(MedicalEditLink);
+                    generic.SendKeys(txtCompanyName, companyName);
+                    generic.SendKeys(txtInsurAddOne, addressLineOne);
+                    generic.SendKeys(txtInsurAddTwo, addressLineTwo);
+                    generic.SendKeys(txtInsurCity, city);
+                    generic.Click(cboInsurState_wrapper);
+                    generic.SendKeys(cboInsurState_Input, state);
+                    generic.Click(txtInsurZip_wrapper);
+                    generic.SendKeys(txtInsurZip, zipCode);
+                    generic.Click(txtInsurPNum_wrapper);
+                    generic.SendKeys(txtInsurPNum, phoneNumber);
+                    generic.SendKeys(txtInsurPol, insurancePolicyGroupNumber);
+                    generic.Click(btnPlanBenefitsSave);
                     break;
                 case "Dental":
-                    generic.ProtectedElementClick(DentalEditLink);
-                    generic.ProtectedElementSendKeys(txtCompanyName, companyName);
-                    generic.ProtectedElementSendKeys(txtInsurAddOne, addressLineOne);
-                    generic.ProtectedElementSendKeys(txtInsurAddTwo, addressLineTwo);
-                    generic.ProtectedElementSendKeys(txtInsurCity, city);
-                    generic.ProtectedElementClick(cboInsurState_wrapper);
-                    generic.ProtectedElementSendKeys(cboInsurState_Input, state);
-                    generic.ProtectedElementClick(txtInsurZip_wrapper);
-                    generic.ProtectedElementSendKeys(txtInsurZip, zipCode);
-                    generic.ProtectedElementClick(txtInsurPNum_wrapper);
-                    generic.ProtectedElementSendKeys(txtInsurPNum, phoneNumber);
-                    generic.ProtectedElementSendKeys(txtInsurPol, insurancePolicyGroupNumber);
-                    generic.ProtectedElementClick(btnPlanBenefitsSave);
+                    generic.Click(DentalEditLink);
+                    generic.SendKeys(txtCompanyName, companyName);
+                    generic.SendKeys(txtInsurAddOne, addressLineOne);
+                    generic.SendKeys(txtInsurAddTwo, addressLineTwo);
+                    generic.SendKeys(txtInsurCity, city);
+                    generic.Click(cboInsurState_wrapper);
+                    generic.SendKeys(cboInsurState_Input, state);
+                    generic.Click(txtInsurZip_wrapper);
+                    generic.SendKeys(txtInsurZip, zipCode);
+                    generic.Click(txtInsurPNum_wrapper);
+                    generic.SendKeys(txtInsurPNum, phoneNumber);
+                    generic.SendKeys(txtInsurPol, insurancePolicyGroupNumber);
+                    generic.Click(btnPlanBenefitsSave);
                     break;
                 case "Vision":
-                    generic.ProtectedElementClick(VisionEditLink);
-                    generic.ProtectedElementSendKeys(txtCompanyName, companyName);
-                    generic.ProtectedElementSendKeys(txtInsurAddOne, addressLineOne);
-                    generic.ProtectedElementSendKeys(txtInsurAddTwo, addressLineTwo);
-                    generic.ProtectedElementSendKeys(txtInsurCity, city);
-                    generic.ProtectedElementClick(cboInsurState_wrapper);
-                    generic.ProtectedElementSendKeys(cboInsurState_Input, state);
-                    generic.ProtectedElementClick(txtInsurZip_wrapper);
-                    generic.ProtectedElementSendKeys(txtInsurZip, zipCode);
-                    generic.ProtectedElementClick(txtInsurPNum_wrapper);
-                    generic.ProtectedElementSendKeys(txtInsurPNum, phoneNumber);
-                    generic.ProtectedElementSendKeys(txtInsurPol, insurancePolicyGroupNumber);
-                    generic.ProtectedElementClick(btnPlanBenefitsSave);
+                    generic.Click(VisionEditLink);
+                    generic.SendKeys(txtCompanyName, companyName);
+                    generic.SendKeys(txtInsurAddOne, addressLineOne);
+                    generic.SendKeys(txtInsurAddTwo, addressLineTwo);
+                    generic.SendKeys(txtInsurCity, city);
+                    generic.Click(cboInsurState_wrapper);
+                    generic.SendKeys(cboInsurState_Input, state);
+                    generic.Click(txtInsurZip_wrapper);
+                    generic.SendKeys(txtInsurZip, zipCode);
+                    generic.Click(txtInsurPNum_wrapper);
+                    generic.SendKeys(txtInsurPNum, phoneNumber);
+                    generic.SendKeys(txtInsurPol, insurancePolicyGroupNumber);
+                    generic.Click(btnPlanBenefitsSave);
                     break;
             }
         }

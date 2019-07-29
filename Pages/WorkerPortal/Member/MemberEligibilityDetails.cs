@@ -71,67 +71,67 @@ namespace NUnit.Tests1.Pages.WorkerPortal
 
             public void clickSaveButton()
             {
-                GrabGeneric(context).ProtectedElementClick(btnSave);
+                GrabGeneric(context).Click(btnSave);
             }
             public void ClickCancelButton()
             {
-                GrabGeneric(context).ProtectedElementClick(btnCancel);
+                GrabGeneric(context).Click(btnCancel);
             }
             public void RICInput(string input)
             {
-                GrabGeneric(context).ProtectedElementClick(RicValue_Input);
-                GrabGeneric(context).ProtectedElementSendKeys(RicValue_Input, input);
-                GrabGeneric(context).ProtectedElementSendKeys(RicValue_Input, Keys.Tab);
+                GrabGeneric(context).Click(RicValue_Input);
+                GrabGeneric(context).SendKeys(RicValue_Input, input);
+                GrabGeneric(context).SendKeys(RicValue_Input, Keys.Tab);
 
             }
             public void MedicarePartInput(string input)
             {
-                GrabGeneric(context).ProtectedElementClick(MedicarePart_Input);
-                GrabGeneric(context).ProtectedElementSendKeys(MedicarePart_Input, input);
-                GrabGeneric(context).ProtectedElementSendKeys(MedicarePart_Input, Keys.Tab);
+                GrabGeneric(context).Click(MedicarePart_Input);
+                GrabGeneric(context).SendKeys(MedicarePart_Input, input);
+                GrabGeneric(context).SendKeys(MedicarePart_Input, Keys.Tab);
 
             }
             public void TransactionCodeInput(string input)
             {
-                GrabGeneric(context).ProtectedElementSendKeys(TransactionCode, input);
+                GrabGeneric(context).SendKeys(TransactionCode, input);
             }
             public void SubCodeInput(string input)
             {
-                GrabGeneric(context).ProtectedElementClick(SubCode);
-                GrabGeneric(context).ProtectedElementSendKeys(SubCode, input);
-                GrabGeneric(context).ProtectedElementSendKeys(SubCode, Keys.Tab);
+                GrabGeneric(context).Click(SubCode);
+                GrabGeneric(context).SendKeys(SubCode, input);
+                GrabGeneric(context).SendKeys(SubCode, Keys.Tab);
 
             }
             public void BuyInEligibilityCodeInput(string input)
             {
-                GrabGeneric(context).ProtectedElementClick(EligibilityCode_Input);
-                GrabGeneric(context).ProtectedElementSendKeys(EligibilityCode_Input, input);
-                GrabGeneric(context).ProtectedElementSendKeys(EligibilityCode_Input, Keys.Tab);
+                GrabGeneric(context).Click(EligibilityCode_Input);
+                GrabGeneric(context).SendKeys(EligibilityCode_Input, input);
+                GrabGeneric(context).SendKeys(EligibilityCode_Input, Keys.Tab);
             }
             public void TransactionEffectiveDateFromInput(string input)
             {
-                GrabGeneric(context).ProtectedElementClick(BuyInEffFromDate_dateInput_wrapper);
+                GrabGeneric(context).Click(BuyInEffFromDate_dateInput_wrapper);
 
-                GrabGeneric(context).ProtectedElementSendKeys(BuyInEffFromDate_dateInput, input);
+                GrabGeneric(context).SendKeys(BuyInEffFromDate_dateInput, input);
 
             }
             public void TransactionEffectiveToFromInput(string input)
             {
-                GrabGeneric(context).ProtectedElementClick(dpBuyInEffToDate_dateInput_wrapper);
+                GrabGeneric(context).Click(dpBuyInEffToDate_dateInput_wrapper);
                 BuyInEffToDatedateInput.SendKeys(input);
 
-                //GrabGeneric(context).ProtectedElementSendKeys(BuyInEffToDatedateInput, input);
+                //GrabGeneric(context).SendKeys(BuyInEffToDatedateInput, input);
 
             }
             public void SentRecievedDateInput(string input)
             {
-                GrabGeneric(context).ProtectedElementClick(SentRecievedDate_dateInput_wrapper);
-                GrabGeneric(context).ProtectedElementSendKeys(SentRecievedDate_dateInput, input);
+                GrabGeneric(context).Click(SentRecievedDate_dateInput_wrapper);
+                GrabGeneric(context).SendKeys(SentRecievedDate_dateInput, input);
 
             }
             public void PremiumInput(string input)
             {
-                GrabGeneric(context).ProtectedElementSendKeys(txtPremium, input);
+                GrabGeneric(context).SendKeys(txtPremium, input);
             }
             #endregion
 

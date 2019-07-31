@@ -6,13 +6,13 @@ namespace NUnit.Tests1.Pages.WorkerPortal.Claims
 {
     public class SubmitClaimApplicationPage
     {
-        static IWebDriver context;
         public class ClaimSummaryInformation
         {
             IWebDriver context;
             public ClaimSummaryInformation(IWebDriver context)
             {
                 this.context = context;
+#pragma warning disable CS0618 // Type or member is obsolete
                 PageFactory.InitElements(context, this);
             }
             private Generic Generic
@@ -81,8 +81,6 @@ namespace NUnit.Tests1.Pages.WorkerPortal.Claims
                 this.context = context;
                 PageFactory.InitElements(context, this);
             }
-
-
             #region Elements
             [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'txtClaimNo')]")]
             private IWebElement txtClaimNo { get; set; }
@@ -154,16 +152,90 @@ namespace NUnit.Tests1.Pages.WorkerPortal.Claims
             private IWebElement QuarterlyValidationDueDates { get; set; }
             #endregion
             #region Method and Calls
-            public IWebElement InputDateOfReciept(string text = null) => Generic.AccessElement(DateOfRec_dateInput, DateOfRec_dateInput_wrapper, text);
-            public IWebElement InputDateOfCurrent(string text = null) => Generic.AccessElement(DateofCur_dateInput, DateofCur_dateInput_wrapper, text);
-            public IWebElement InputUnableToWorkFrom(string text = null) => Generic.AccessElement(UnabletoFrom_dateInput_wrapper, UnabletoFrom_dateInput, text);
-
-            public IWebElement InputUnableToWorkTo(string text = null) => Generic.AccessElement(UnabletoFrom_dateInput, UnabletoFrom_dateInput_wrapper, text);
-            public IWebElement InputHospitalizationDateFrom(string text = null) => Generic.AccessElement(Hospitafrom_dateInput, Hospitafrom_dateInput_wrapper, text);
-            public IWebElement InputHospitalizationDateTo(string text = null) => Generic.AccessElement(Hospitato_dateInput, Hospitato_dateInput_wrapper, text);
+            public IWebElement InputDateOfReciept(string text = null) => Generic.SendKeys(DateOfRec_dateInput, DateOfRec_dateInput_wrapper, text);
+            public IWebElement InputDateOfCurrent(string text = null) => Generic.SendKeys(DateofCur_dateInput, DateofCur_dateInput_wrapper, text);
+            public IWebElement InputUnableToWorkFrom(string text = null) => Generic.SendKeys(UnabletoFrom_dateInput, UnabletoFrom_dateInput_wrapper, text);
+            public IWebElement InputUnableToWorkTo(string text = null) => Generic.SendKeys(UnabletoFrom_dateInput, UnabletoFrom_dateInput_wrapper, text);
+            public IWebElement InputHospitalizationDateFrom(string text = null) => Generic.SendKeys(Hospitafrom_dateInput, Hospitafrom_dateInput_wrapper, text);
+            public IWebElement InputHospitalizationDateTo(string text = null) => Generic.SendKeys(Hospitato_dateInput, Hospitato_dateInput_wrapper, text);
 
             #endregion
+        }
+        public class ClaimsAdmissionAndDischarge
+        {
+            IWebDriver context;
+            public ClaimsAdmissionAndDischarge(IWebDriver context)
+            {
+                this.context = context;
+                PageFactory.InitElements(context, this);
+            }
+            private Generic Generic
+            {
+                get
+                {
+                    Generic generic = new Generic(context);
+                    return generic;
+                }
+            }
+            #region Elements
+            [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'TypeOfBill')]")]
+            private IWebElement TypeOfBill { get; set; }
+            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'dpAdmissionDate_dateInput')]")]
+            private IWebElement dpAdmissionDate_dateInput { get; set; }
+            [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'dpAdmissionDate_dateInput_wrapper')]")]
+            private IWebElement dpAdmissionDate_dateInput_wrapper { get; set; }
+            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'AdmissionHours_Input')]")]
+            private IWebElement AdmissionHours_Input { get; set; }
+            [FindsBy(How = How.XPath, Using = "//span[contains(@id, 'AdmissionHours_Arrow')]")]
+            private IWebElement AdmissionHours_Arrow { get; set; }
+            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'cboAdmissionType_Input')]")]
+            private IWebElement AdmissionType_Input { get; set; }
+            [FindsBy(How = How.XPath, Using = "//span[contains(@id, 'AdmissionType_Input_Arrow')]")]
+            private IWebElement AdmissionType_Arrow { get; set; }
+            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'AdmissionSource_Input')]")]
+            private IWebElement AdmissionSource_Input { get; set; }
+            [FindsBy(How = How.XPath, Using = "//span[contains(@id, 'AdmissionSource_Arrow')]")]
+            private IWebElement AdmissionSource_Arrow { get; set; }
+            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'DischargeHours_Input')]")]
+            private IWebElement DischargeHours_Input { get; set; }
+            [FindsBy(How = How.XPath, Using = "//span[contains(@id, 'DischargeHours_Arrow')]")]
+            private IWebElement DischargeHours_Arrow { get; set; }
+            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'DischargeStatus_Input')]")]
+            private IWebElement DischargeStatus_Input { get; set; }
+            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'DischargeStatus_Arrow')]")]
+            private IWebElement DischargeStatus_Arrow { get; set; }
+            [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'TotalDays')]")]
+            private IWebElement TotalDays { get; set; }
+            #endregion
+            #region Method and Calls
 
+            public IWebElement InputAdmissionDate(string text = null) => Generic.SendKeys(dpAdmissionDate_dateInput, dpAdmissionDate_dateInput_wrapper, text);
+            public string GetTypeOfBill => Generic.GetText(TypeOfBill);
+            public string GetTotalDays => Generic.GetText(TotalDays);
+            public IWebElement ClickAdmissionHoursArrow => Generic.Click(AdmissionHours_Arrow);
+            public IWebElement ClickAdmissionTypeArrow => Generic.Click(AdmissionType_Arrow);
+            public IWebElement ClickAdmissionSourceArrow => Generic.Click(AdmissionSource_Arrow);
+            public IWebElement ClickDischargeHoursArrow => Generic.Click(DischargeHours_Arrow);
+            public IWebElement ClickDischargeStatusArrow => Generic.Click(DischargeStatus_Arrow);
+            public IWebElement InputDischargeHours(string text = null) => Generic.SendKeys(DischargeHours_Input, text);
+            public IWebElement InputDischargeStatus(string text = null) => Generic.SendKeys(DischargeStatus_Input, text);
+            public IWebElement InputAdmissionHours(string text = null) => Generic.SendKeys(AdmissionHours_Input, text);
+            public IWebElement InputAdmissionType(string text = null) => Generic.SendKeys(AdmissionType_Input, text);
+            public IWebElement InputAdmissionSource(string text = null) => Generic.SendKeys(AdmissionSource_Input, text);
+
+            public void InputClaimsAdmissionAndDischarge(
+                string admissionSource = null,
+                string admissionType = null, 
+                string admissionHours = null, 
+                string dischargeStatus = null,
+                string dischargeHours = null
+                )
+            {
+                InputAdmissionSource(admissionHours);
+                InputAdmissionType(admissionType);
+                InputAdmissionHours(admissionHours);
+            }
+            #endregion
         }
         public class ClaimsDiagnosisCodes
         {
@@ -273,7 +345,7 @@ namespace NUnit.Tests1.Pages.WorkerPortal.Claims
             public string EncounterAmount => Generic.GetText(txtEncounterAmount);
             public string NetDifference => Generic.GetText(txtNetDifference);
             public string RepricedAmount => Generic.GetText(txtRepricedAmount);
-            public IWebElement InputMeidcaidPayableAmount(string text = null) => Generic.AccessElement(txtMedicaidPayableAmount, txtMedicaidPayableAmount_wrapper, text);
+            public IWebElement InputMeidcaidPayableAmount(string text = null) => Generic.SendKeys(txtMedicaidPayableAmount, txtMedicaidPayableAmount_wrapper, text);
 
             public string NetBilled => Generic.GetText(txtNetBilled);
             #endregion
@@ -371,13 +443,13 @@ namespace NUnit.Tests1.Pages.WorkerPortal.Claims
             public IWebElement InputPickUpAddressLineTwo(string text = null) => Generic.SendKeys(AddressLine2, text);
             public IWebElement InputPickUpCity(string text = null) => Generic.SendKeys(txtCity, text);
             public IWebElement InputPickUpState(string text = null) => Generic.SendKeys(State_Input, text);
-            public IWebElement InputPickUpZipCode(string text = null) => Generic.AccessElement(txtZipCode, txtZipCodeOverlay, text);
+            public IWebElement InputPickUpZipCode(string text = null) => Generic.SendKeys(txtZipCode, txtZipCodeOverlay, text);
 
             public IWebElement InputDropOffAddressLineOne(string text = null) => Generic.SendKeys(Address1, text);
             public IWebElement InputDropOffAddressLineTwo(string text = null) => Generic.SendKeys(Address2, text);
             public IWebElement InputDropOffCity(string text = null) => Generic.SendKeys(txtCity1, text);
             public IWebElement InputDropOffState(string text = null) => Generic.SendKeys(State1_Input, text);
-            public IWebElement InputDropOffZipCode(string text = null) => Generic.AccessElement(txtZipCode1, txtZipCodeOverlay1, text);
+            public IWebElement InputDropOffZipCode(string text = null) => Generic.SendKeys(txtZipCode1, txtZipCodeOverlay1, text);
 
             #endregion
 
@@ -466,9 +538,9 @@ namespace NUnit.Tests1.Pages.WorkerPortal.Claims
         
             #endregion
             #region Methods and Calls
-            public IWebElement InputDOSFrom(string text = null) => Generic.AccessElement(DOSFrom_dateInput, DOSFrom_dateInput_wrapper, text);
-            public IWebElement InputDOSTo(string text = null) => Generic.AccessElement(DOSTo_dateInput, DOSTo_dateInput_wrapper, text);
-            public IWebElement InputPOS(string text = null) => Generic.AccessElement(POS_Input, POS_Input, text);
+            public IWebElement InputDOSFrom(string text = null) => Generic.SendKeys(DOSFrom_dateInput, DOSFrom_dateInput_wrapper, text);
+            public IWebElement InputDOSTo(string text = null) => Generic.SendKeys(DOSTo_dateInput, DOSTo_dateInput_wrapper, text);
+            public IWebElement InputPOS(string text = null) => Generic.SendKeys(POS_Input, POS_Input, text);
             public IWebElement InputProcedureCode(string text = null) => Generic.SendKeys(txtProcedureCode, text);
             public IWebElement InputreProcdureCodeType(string text = null) => Generic.SendKeys(ProcedureCodeType, text);
             public IWebElement InputFirstModifier(string text = null) => Generic.SendKeys(txtMod1, text);
@@ -476,8 +548,8 @@ namespace NUnit.Tests1.Pages.WorkerPortal.Claims
             public IWebElement InputThirdModifier(string text = null) => Generic.SendKeys(txtMod3, text);
             public IWebElement InputFourthModifier(string text = null) => Generic.SendKeys(txtMod4, text);
             public IWebElement InputTotalBillUnits(string text = null) => Generic.SendKeys(txtUnits, text);
-            public IWebElement InputNDC(string text = null) => Generic.AccessElement(txtNDC, txtNDC_wrapper, text);
-            public IWebElement InputNDCUnits(string text = null) => Generic.AccessElement(txtUnit, txtUnit_wrapper, text);
+            public IWebElement InputNDC(string text = null) => Generic.SendKeys(txtNDC, txtNDC_wrapper, text);
+            public IWebElement InputNDCUnits(string text = null) => Generic.SendKeys(txtUnit, txtUnit_wrapper, text);
             public IWebElement InputNDCMeasurements(string text = null) => Generic.SendKeys(Measurements, text);
             public IWebElement InputRenderingProviderID(string text = null) => Generic.SendKeys(txtRenderingProviderId, text);
             public string GetCOBAmount => Generic.GetText(txtCOBAmount);
@@ -493,8 +565,6 @@ namespace NUnit.Tests1.Pages.WorkerPortal.Claims
             public IWebElement ClickEMGRadioButton() => Generic.Click(ChkEMG);
             public IWebElement ClickFamilyPlanningRadioButton() => Generic.Click(chkFamilyPlanning);
             #endregion
-
-
         }
         public class ClaimBillingProviderInformation
         {
@@ -581,7 +651,7 @@ namespace NUnit.Tests1.Pages.WorkerPortal.Claims
             public IWebElement InputAddressLineTwo(string text = null) => Generic.SendKeys(AddressLine2, text);
             public IWebElement InputCity(string text = null) => Generic.SendKeys(txtCity, text);
             public IWebElement InputState(string text = null) => Generic.SendKeys(State_Input, text);
-            public IWebElement InputZipCode(string text = null) => Generic.AccessElement(txtZipCode, txtZipCodeOverlay, text);
+            public IWebElement InputZipCode(string text = null) => Generic.SendKeys(txtZipCode, txtZipCodeOverlay, text);
             #endregion
         }
         public class ClaimsReferringProviderInformation
@@ -625,6 +695,98 @@ namespace NUnit.Tests1.Pages.WorkerPortal.Claims
             public IWebElement InputOtherIDQualifier(string text = null) => Generic.SendKeys(OtherIDQuali, text);
             public string GetReferringProviderName => Generic.GetText(txtRefProviderName);
             public IWebElement InputReferringNPI(string text = null) => Generic.SendKeys(ReferFacNPI, text);
+            #endregion
+        }
+        public class ClaimsOperatingProviderInformation
+        {
+            IWebDriver context;
+            public ClaimsOperatingProviderInformation(IWebDriver context)
+            {
+                this.context = context;
+            }
+            private Generic Generic
+            {
+                get
+                {
+                    Generic generic = new Generic(context);
+                    return generic;
+                }
+            }
+
+            #region Elements
+            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'OperProvNPI')]")]
+            private IWebElement OperProvNPI { get; set; }
+            [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'OperatingProviderName')]")]
+            private IWebElement OperatingProviderName { get; set; }
+            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'OtherIDQuali_Input')]")]
+            private IWebElement OtherIDQuali_Input { get; set; }
+            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'OthrID')]")]
+            private IWebElement OthrID { get; set; }
+            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtRenderTaxonomyCode')]")]
+            private IWebElement txtRenderTaxonomyCode { get; set; }
+
+
+
+
+
+
+            #endregion
+            #region Methods and Class
+            public IWebElement InputRenderingProviderTaxonomyCode(string text = null) => Generic.SendKeys(txtRenderTaxonomyCode, text);
+            public IWebElement InputOtherID(string text = null) => Generic.SendKeys(OthrID, text);
+            /// <summary>
+            /// State License;
+            /// UPIN
+            /// </summary>
+            /// <param name="text"></param>
+            public IWebElement InputOtherIDQualifier(string text = null) => Generic.SendKeys(OtherIDQuali_Input, text);
+            public string GetOperatingProviderName => Generic.GetText(OperatingProviderName);
+            public IWebElement InputOperProvNPI(string text = null) => Generic.SendKeys(OperProvNPI, text);
+            #endregion
+        }
+        public class ClaimsOtherOperatingProviderInformation
+        {
+            IWebDriver context;
+            public ClaimsOtherOperatingProviderInformation(IWebDriver context)
+            {
+                this.context = context;
+            }
+            private Generic Generic
+            {
+                get
+                {
+                    Generic generic = new Generic(context);
+                    return generic;
+                }
+            }
+
+            #region Elements
+            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'OtherOprtngFacNPI')]")]
+            private IWebElement OtherOprtngFacNPI { get; set; }
+            [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'OtherOprtngProviderName')]")]
+            private IWebElement OtherOprtngProviderName { get; set; }
+            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'OtherIDOther_Input')]")]
+            private IWebElement OtherIDOther_Input { get; set; }
+            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'OthrIDOther')]")]
+            private IWebElement OthrIDOther { get; set; }
+
+
+
+
+
+
+
+            #endregion
+            #region Methods and Class
+            public IWebElement InputOtherID(string text = null) => Generic.SendKeys(OthrIDOther, text);
+            /// <summary>
+            /// State License;
+            /// UPIN
+            /// </summary>
+            /// <param name="text"></param>
+            public IWebElement InputOtherIDQualifier(string text = null) => Generic.SendKeys(OtherIDOther_Input, text);
+            public string GetOtherOprtngProviderName => Generic.GetText(OtherOprtngProviderName);
+            public IWebElement InputOtherOprtngFacNPI(string text = null) => Generic.SendKeys(OtherOprtngFacNPI, text);
             #endregion
         }
         public class ClaimsRenderingProviderInformation
@@ -743,7 +905,7 @@ namespace NUnit.Tests1.Pages.WorkerPortal.Claims
             public IWebElement InputAddressLineTwo(string text = null) => Generic.SendKeys(AddressLine2, text);
             public IWebElement InputCity(string text = null) => Generic.SendKeys(txtCity, text);
             public IWebElement InputState(string text = null) => Generic.SendKeys(State_Input, text);
-            public IWebElement InputZipCode(string text = null) => Generic.AccessElement(txtZipCode, txtZipCodeOverlay, text);
+            public IWebElement InputZipCode(string text = null) => Generic.SendKeys(txtZipCode, txtZipCodeOverlay, text);
             #endregion
         }
         public class ClaimsSupervisingProviderInformation
@@ -787,6 +949,8 @@ namespace NUnit.Tests1.Pages.WorkerPortal.Claims
         public class ClaimsReferralAuthsEpisodes
         {
             IWebDriver context;
+
+            [System.Obsolete]
             public ClaimsReferralAuthsEpisodes(IWebDriver context)
             {
                 this.context = context;
@@ -817,7 +981,6 @@ namespace NUnit.Tests1.Pages.WorkerPortal.Claims
             #endregion
 
             #region Methods and Calls
-
             public IWebElement ClickAddButton() => Generic.Click(lnkAuthRefAdd);
             public IWebElement ClickCancelButton() => Generic.Click(btnRoleCancel);
             public IWebElement ClickSaveButton() => Generic.Click(btnRoleSave);
@@ -902,7 +1065,7 @@ namespace NUnit.Tests1.Pages.WorkerPortal.Claims
             #endregion
             #region Methods and Calls
             public IWebElement InputTreatmentResultingFrom(string text = null) => Generic.SendKeys(cboTreatResFrom, text);
-            public IWebElement InputDateOfAccident(string text = null) => Generic.AccessElement(tdtDateOfAcc_dateInput, DateOfAcc_dateInput_wrapper, text);
+            public IWebElement InputDateOfAccident(string text = null) => Generic.SendKeys(tdtDateOfAcc_dateInput, DateOfAcc_dateInput_wrapper, text);
             public IWebElement InputStateOfAccoutn(string text = null) => Generic.SendKeys(cboStateofAcc_Input, text);
             public IWebElement InputSubrogationList(string text = null) => Generic.SendKeys(SubrogationId_Input, text);
             #endregion
@@ -942,7 +1105,7 @@ namespace NUnit.Tests1.Pages.WorkerPortal.Claims
             #endregion
 
             #region Methods and Calls
-            public IWebElement InputOutsideLabChanges(string text = null) => Generic.AccessElement(txtOutLabCharge, OutLabCharge_wrapper, text);
+            public IWebElement InputOutsideLabChanges(string text = null) => Generic.SendKeys(txtOutLabCharge, OutLabCharge_wrapper, text);
             public string GetSubmitterID => Generic.GetText(txtSubmitterID);
             public string GetBatchID => Generic.GetText(txtBatchID);
             public string GetEncounterClaimNo => Generic.GetText(txtEncounterClaimNo);
@@ -1076,7 +1239,7 @@ namespace NUnit.Tests1.Pages.WorkerPortal.Claims
             public IWebElement InputPayerPaidAmount(string text = null) => Generic.SendKeys(PayerPaidAmount, text);
             public IWebElement InputNonCoveredAmount(string text = null) => Generic.SendKeys(NonCoveredAmount, text);
             public IWebElement InputRemainingPatientLiability(string text = null) => Generic.SendKeys(RemainingPatientLiability, text);
-            public IWebElement InputPaymentDate(string text = null) => Generic.AccessElement(PaymentDate_dateInput, PaymentDate_dateInput_wrapper, text);
+            public IWebElement InputPaymentDate(string text = null) => Generic.SendKeys(PaymentDate_dateInput, PaymentDate_dateInput_wrapper, text);
             #endregion
 
         }
@@ -1125,7 +1288,7 @@ namespace NUnit.Tests1.Pages.WorkerPortal.Claims
             public IWebElement ClickAdjustmentRemoveButton => Generic.Click(RemoveAdjustButton);
             public IWebElement ClickCancel => Generic.Click(btnCancel);
             public IWebElement ClickSave => Generic.Click(btnSave);
-            public IWebElement InputAmount(string text = null) => Generic.AccessElement(Amount, Amount_wrapper, text);
+            public IWebElement InputAmount(string text = null) => Generic.SendKeys(Amount, Amount_wrapper, text);
             /// <summary>
             /// Additional payment for Dental/Vision service utilization.;
             /// Adjustment code for mandated federal, state or local law/regulation that is not already covered by another code and is mandated before a new code can be created.;
@@ -1137,7 +1300,7 @@ namespace NUnit.Tests1.Pages.WorkerPortal.Claims
             /// <param name="text"></param>
             /// <returns></returns>
             public IWebElement InputClaimAdjustmentReasonCode(string text = null) => Generic.SendKeys(AdjustmentReasonCode_Input, text);
-            public IWebElement InputUnits(string text = null) => Generic.AccessElement(Units, Units_wrapper, text);
+            public IWebElement InputUnits(string text = null) => Generic.SendKeys(Units, Units_wrapper, text);
             #endregion
         }
         public class ClaimsCOBSubscriberDetails
@@ -1180,7 +1343,6 @@ namespace NUnit.Tests1.Pages.WorkerPortal.Claims
 
             #endregion
         }
-
         public class ClaimsVissionAndHearing
         {
             IWebDriver context; 
@@ -1219,7 +1381,7 @@ namespace NUnit.Tests1.Pages.WorkerPortal.Claims
             [FindsBy(How = How.XPath, Using = "//span[contains(@id, 'checkBoxContactLensVisionService')]")]
             private IWebElement checkBoxContactLensVisionService { get; set; }
             [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'checkBoxSpectacleFramesVisionService')]")]
-            private IWebElement SpectacleFramesVisionService { get; set; }
+            private IWebElement CheckBoxSpectacleFramesVisionService { get; set; }
             [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'SpectacleFramesVisionServiceCodes_Input')]")]
             private IWebElement SpectacleFramesVisionServiceCodes_Input { get; set; }
             [FindsBy(How = How.XPath, Using = "//span[contains(@id, 'SpectacleFramesVisionServiceCodes_Arrow')]")]
@@ -1227,8 +1389,7 @@ namespace NUnit.Tests1.Pages.WorkerPortal.Claims
             #endregion
 
             #region Methods and Calls
-            public IWebElement InputPresciptionDate(string text) => Generic.AccessElement(PartDate_dateInput, PartDate_dateInput_wrapper, text);
-            public IWebElement ClickSpectacleLensesCheckBox => Generic.Click(checkBoxSpectacleLensVisionService);
+            public IWebElement InputPresciptionDate(string text = null) => Generic.SendKeys(PartDate_dateInput, PartDate_dateInput_wrapper, text);
             /// <summary>
             /// General Standard of 20 Degree or .5 Diopter Sphere or Cylinder Change Met;
             /// Replacement Due to Patient Preference;
@@ -1237,17 +1398,177 @@ namespace NUnit.Tests1.Pages.WorkerPortal.Claims
             /// <param name="text"></param>
             /// <returns></returns>
             public IWebElement InputSpectacleLensesConditionCode(string text = null) => Generic.SendKeys(SpectacleFramesVisionServiceCodes_Input, text);
-
-
-
-            public IWebElement ClickContactLensesArrow => Generic.Click(checkBoxContactLensVisionService);
-            public IWebElement inputContactLensesConditionCode(string text = null) => Generic.SendKeys(ContactLensVisionService, text);
-            public IWebElement ClickSpectacleFrames => Generic.Click(SpectacleFramesVisionService);
+            public IWebElement InputContactLensesConditionCode(string text = null) => Generic.SendKeys(ContactLensVisionService, text);
             public IWebElement InputSpectacleFrame(string text = null) => Generic.SendKeys(SpectacleFramesVisionServiceCodes_Input, text);
-
-
+            public IWebElement InputSpectacleLensVisionServiceCodes(string text = null) => Generic.SendKeys(SpectacleLensVisionServiceCodes_Input, text);
+            public IWebElement InputContactLensVisionSerice(string text = null) => Generic.SendKeys(ContactLensVisionServiceCodes_Input, text);
+            public IWebElement ClickSpectacleFramesCheckBox => Generic.Click(CheckBoxSpectacleFramesVisionService);
+            public IWebElement ClickContactLensesCheckBox => Generic.Click(checkBoxContactLensVisionService);
+            public IWebElement ClickSpectacleLensesCheckBox => Generic.Click(checkBoxSpectacleLensVisionService);
+            public IWebElement ClickSpectacleLensVisionServiceCodesArrow => Generic.Click(SpectacleLensVisionServiceCodes_Arrow);
+            public IWebElement ClickContactLensVisionServiceCodesArrow => Generic.Click(ContactLensVisionServiceCodes_Arrow);
+            public IWebElement ClickSpectacleFramesVisionServiceCodes => Generic.Click(SpectacleFramesVisionServiceCodes_Arrow);
+            #endregion
+        }
+        public class ClaimsOccurenceSpanAndConditions
+        {
+            IWebDriver context;
+            ClaimsOccurenceSpanAndConditions(IWebDriver context)
+            {
+                this.context = context;
+                PageFactory.InitElements(context, this);
+            }
+            Generic Generic
+            {
+                get
+                {
+                    Generic generic = new Generic(context);
+                    return generic;
+                }
+            }
+            #region Elements
+            [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'lnkOccuranceAdd')]")]
+            private IWebElement lnkOccuranceAdd { get; set; }
+            [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'btnRoleCancel')]")]
+            private IWebElement btnRoleCancel { get; set; }
+            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'OccCode_Input')]")]
+            private IWebElement OccCode_Input { get; set; }
+            [FindsBy(How = How.XPath, Using = "//span[contains(@id, 'cboOccCode_Arrow')]")]
+            private IWebElement cboOccCode_Arrow { get; set; }
+            [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'OccFrom_dateInput_wrapper')]")]
+            private IWebElement OccFrom_dateInput_wrapper { get; set; }
+            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'OccFrom_dateInput')]")]
+            private IWebElement OccFrom_dateInput { get; set; }
+            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'OccTo_dateInput')]")]
+            private IWebElement OccTo_dateInput { get; set; }
+            [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'OccTo_dateInput_wrapper')]")]
+            private IWebElement OccTo_dateInput_wrapper { get; set; }
+            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'cboConditionCode_Input')]")]
+            private IWebElement cboConditionCode_Input { get; set; }
+            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'cboSubrogationId_Input')]")]
+            private IWebElement cboSubrogationId_Input { get; set; }
+            [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'btnRoleSave')]")]
+            private IWebElement btnRoleSave { get; set; }
+            [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'lnkOccuranceEdit')]")]
+            private IWebElement lnkOccuranceEdit { get; set; }
+            
+            [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'lnkOccuranceRem')]")]
+            private IWebElement lnkOccuranceRem { get; set; }
 
             #endregion
+            #region Methods and Calls
+            public IWebElement ClickAddButton() => Generic.Click(lnkOccuranceAdd);
+            public IWebElement ClickCancelButton() => Generic.Click(btnRoleCancel);
+            public IWebElement ClickSaveButton() => Generic.Click(btnRoleSave);
+            public IWebElement ClickEditButton() => Generic.Click(lnkOccuranceEdit);
+            public IWebElement ClickRemoveButton() => Generic.Click(lnkOccuranceRem);
+            public IWebElement ClickOccurenceCodeArrow() => Generic.Click(cboOccCode_Arrow);
+            public IWebElement InputOccurenceCode(string text = null) => Generic.SendKeys(OccCode_Input, text);
+            public IWebElement InputOccurenceDateFrom(string text = null) => Generic.SendKeys(OccFrom_dateInput, OccFrom_dateInput_wrapper, text);
+            public IWebElement InputOccurenceDateTo(string text = null) => Generic.SendKeys(OccTo_dateInput, OccTo_dateInput_wrapper, text);
+            /// <summary>
+            /// Any number from 00-99;
+            /// or A1 - W5;
+            /// </summary>
+            /// <param name="text"></param>
+            /// <returns></returns>
+            public IWebElement InputConditionCode(string text = null) => Generic.SendKeys(cboConditionCode_Input, text);
+            public IWebElement InputSubrogationList(string text = null) => Generic.SendKeys(cboSubrogationId_Input, text);
+            #endregion
+
+        }
+        public class ClaimsOccurenceCodes
+        {
+            IWebDriver context;
+            ClaimsOccurenceCodes(IWebDriver context)
+            {
+                this.context = context;
+                PageFactory.InitElements(context, this);
+            }
+            Generic Generic
+            {
+                get
+                {
+                    Generic generic = new Generic(context);
+                    return generic;
+                }
+            }
+            #region Elements
+            [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'lnkOccuranCodeAdd')]")]
+            private IWebElement lnkOccuranCodeAdd { get; set; }
+            [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'btnRoleCancel')]")]
+            private IWebElement btnRoleCancel { get; set; }
+            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'OccCode_Input')]")]
+            private IWebElement OccCode_Input { get; set; }
+            [FindsBy(How = How.XPath, Using = "//span[contains(@id, 'cboOccCode_Arrow')]")]
+            private IWebElement cboOccCode_Arrow { get; set; }
+            [FindsBy(How = How.XPath, Using = "//div[contains(@id, 'OccDate_dateInput_wrapper')]")]
+            private IWebElement OccDate_dateInput_wrapper { get; set; }
+            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'tdtOccDate_dateInput')]")]
+            private IWebElement tdtOccDate_dateInput { get; set; }
+
+            [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'btnRoleSave')]")]
+            private IWebElement btnRoleSave { get; set; }
+            [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'OccuranceCodeEdit')]")]
+            private IWebElement OccuranceCodeEdit { get; set; }
+
+            [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'OccuranCodeceRem')]")]
+            private IWebElement OccuranCodeceRem { get; set; }
+
+            #endregion
+            #region Methods and Calls
+            public IWebElement ClickAddButton() => Generic.Click(lnkOccuranCodeAdd);
+            public IWebElement ClickCancelButton() => Generic.Click(btnRoleCancel);
+            public IWebElement ClickSaveButton() => Generic.Click(btnRoleSave);
+            public IWebElement ClickEditButton() => Generic.Click(OccuranceCodeEdit);
+            public IWebElement ClickRemoveButton() => Generic.Click(OccuranCodeceRem);
+            public IWebElement InputOccurenceCode(string text = null) => Generic.SendKeys(OccCode_Input, text);
+            public IWebElement InputOccurenceDateFrom(string text = null) => Generic.SendKeys(tdtOccDate_dateInput, OccDate_dateInput_wrapper, text);
+
+            #endregion
+
+        }
+        public class ClaimsValueCodes
+        {
+            IWebDriver context;
+            ClaimsValueCodes(IWebDriver context)
+            {
+                this.context = context;
+                PageFactory.InitElements(context, this);
+            }
+            Generic Generic
+            {
+                get
+                {
+                    Generic generic = new Generic(context);
+                    return generic;
+                }
+            }
+            #region Elements
+            [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'lnkOccuranCodeAdd')]")]
+            private IWebElement lnkOccuranCodeAdd { get; set; }
+            [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'btnRoleCancel')]")]
+            private IWebElement btnRoleCancel { get; set; }
+            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'cboValueCode_Input')]")]
+            private IWebElement cboValueCode_Input { get; set; }
+            [FindsBy(How = How.XPath, Using = "//span[contains(@id, 'cboValueCode_Arrow')]")]
+            private IWebElement cboValueCode_Arrow { get; set; }
+            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtAmount')]")]
+            private IWebElement txtAmount { get; set; }
+            [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'btnRoleSave')]")]
+            private IWebElement btnRoleSave { get; set; }
+
+            #endregion
+            #region Methods and Calls
+            public IWebElement ClickAddButton() => Generic.Click(lnkOccuranCodeAdd);
+            public IWebElement ClickCancelButton() => Generic.Click(btnRoleCancel);
+            public IWebElement ClickSaveButton() => Generic.Click(btnRoleSave);
+            public IWebElement InputValueCode(string text = null) => Generic.SendKeys(cboValueCode_Input, text);
+            public IWebElement ClickValueCodesArrow() => Generic.Click(cboValueCode_Arrow);
+            public IWebElement InputValueCodesAmount(string text = null) => Generic.SendKeys(txtAmount, text);
+
+            #endregion
+
         }
     }
 }

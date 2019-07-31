@@ -83,7 +83,7 @@ namespace NUnit.Tests1
             {
                 doc.InsertBookmark("Pass 1");
                 doc.InsertBookmark("Pass 2");
-                loginPage.LoginPage("bryar.h.wrkr", "Password123");
+                loginPage.LoginPage("bryar.h.wrkr", "user@123A");
                 utility.RecordStepStatusMAIN("Login APHP success", screenshotLocation, "LoginSuccess", doc);
                 landingPage.HippApplicationSearch();
                 hIPPSearch.ClickBeginNewApp();
@@ -120,12 +120,12 @@ namespace NUnit.Tests1
                     Thread.Sleep(3000);
                     doc.SaveAs("C:\\Users\\" + userName + "\\Desktop\\TestResults\\" + testName);
                     Process.Start("WINWORD.EXE", "C:\\Users\\" + userName + "\\Desktop\\TestResults\\" + testName);
-                    Generic.signoutBtn.Click();
-                    context.Close();
+                    //Generic.signoutBtn.Click();
+                    //context.Close();
                 }
                 catch
                 {
-                    context.Close();
+                    //context.Close();
                 }
 
             }

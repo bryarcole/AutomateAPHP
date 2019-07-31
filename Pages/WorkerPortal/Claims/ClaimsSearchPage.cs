@@ -1,28 +1,18 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
-using NUnit.Tests1.Steps;
 using NUnit.Tests1.Utilities;
-using SeleniumExtras;
-using OpenQA.Selenium.Support.UI;
-using System;
-using System.Reflection;
-using System.Collections.Generic;
 
 namespace NUnit.Tests1.Pages.WorkerPortal
 {
     public class ClaimsSearchPage
     {
-
         IWebDriver context;
-
         public ClaimsSearchPage(IWebDriver context)
         {
             this.context = context;
             PageFactory.InitElements(context, this);
 
         }
-
-
         private Generic Generic
         {
             get
@@ -113,18 +103,9 @@ namespace NUnit.Tests1.Pages.WorkerPortal
         [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'txtCheckOrEFTNumber')]")]
         private IWebElement txtCheckOrEFTNumber { get; set; }
         #endregion
-
-
         #region Methods and Calls
-
-        public void InputCheckOrEFTNumber(string CheckOrEFTNumber)
-        {
-            Generic.SendKeys(txtCheckOrEFTNumber, CheckOrEFTNumber);
-        }
-        public void InputRemittanceAdviceNumber(string AdviceNumber)
-        {
-            Generic.SendKeys(txtRemittanceAdviceNumber, AdviceNumber);
-        }
+        public void InputCheckOrEFTNumber(string CheckOrEFTNumber) => Generic.SendKeys(txtCheckOrEFTNumber, CheckOrEFTNumber);
+        public void InputRemittanceAdviceNumber(string AdviceNumber) => Generic.SendKeys(txtRemittanceAdviceNumber, AdviceNumber);
         /// <summary>
         /// Three digits from 001-109
         /// </summary>
@@ -134,7 +115,6 @@ namespace NUnit.Tests1.Pages.WorkerPortal
             Generic.SendKeys(cboProgType_Input, ProgType);
             Generic.Click(cboProgType_Arrow);
         }
-
         /// <summary>
         /// Acute Myocardial Infarction (AMI)/Heart Attack,
         /// Broken Limb,
@@ -153,27 +133,15 @@ namespace NUnit.Tests1.Pages.WorkerPortal
             Generic.SendKeys(CboEpisodeType_Input, EpisodeType);
             Generic.Click(CboEpisodeType_Arrow);
         }
-        public void InputEpisodeId(string epID)
-        {
-            Generic.SendKeys(txtEpiId, epID);
-        }
+        public void InputEpisodeId(string epID) => Generic.SendKeys(txtEpiId, epID);
         public void InputMediaType(string MediaType)
         {
             Generic.SendKeys(cboMediaType_Input, MediaType);
             Generic.Click(cboMediaType_Arrow);
         }
-        public void InputProcCode(string ProcCode)
-        {
-            Generic.SendKeys(txtProcCode, ProcCode);
-        }
-        public void InputDiagnosisCode(string DiagnosisCode)
-        {
-            Generic.SendKeys(txtDiagnosisCode, DiagnosisCode);
-        }
-        public void InputResultCode(string ResultCode)
-        {
-            Generic.SendKeys(txtResultCode, ResultCode);
-        }
+        public void InputProcCode(string ProcCode) => Generic.SendKeys(txtProcCode, ProcCode);
+        public void InputDiagnosisCode(string DiagnosisCode) => Generic.SendKeys(txtDiagnosisCode, DiagnosisCode);
+        public void InputResultCode(string ResultCode) => Generic.SendKeys(txtResultCode, ResultCode);
         /// <summary>
         /// 
         /// </summary>

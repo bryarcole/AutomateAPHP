@@ -10,6 +10,7 @@ using TFSCommon.Data;
 using Xceed.Words.NET;
 using System.Drawing;
 using RequirementsTraceability;
+using System.Web;
 
 namespace NUnit.Tests1.Utilities
 {
@@ -57,7 +58,7 @@ namespace NUnit.Tests1.Utilities
                 var columnWidths = new float[] { 225f, 225f, 225f };
                 Table testSummary = doc.AddTable(2, 3);
                 //Test Objective table
-
+                string TestDescription = testCase.TestDescription.Replace("<br>&gt;", "\n >").Replace("&nbsp;", "").Replace("&nbsp", "").Replace("&gt", ">").Replace("&gt;", ">").Replace("<br> &nbsp ", "\n").Replace("condiditons", "conditions").Replace("&lt;", "<").Replace("<br>", "\n").Replace(";", "").Replace("	", " ");
                 doc.InsertParagraph("Test Objective").FontSize(16);
                 testSummary.Rows[0].Cells[0].Paragraphs.First().Append("#").Color(white);
                 testSummary.Rows[0].Cells[1].Paragraphs.First().Append("Title").Color(white);
@@ -67,7 +68,7 @@ namespace NUnit.Tests1.Utilities
                 testSummary.Rows[0].Cells[2].FillColor = royalBlue;
 
                 testSummary.Rows[1].Cells[0].Paragraphs.First().Append(testCase.TestCaseId.ToString());
-                testSummary.Rows[1].Cells[1].Paragraphs.First().Append(testCase.TestDescription);
+                testSummary.Rows[1].Cells[1].Paragraphs.First().Append(TestDescription);
                 testSummary.Rows[1].Cells[2].Paragraphs.First().Append(testCase.TestObjective);
                 testSummary.SetWidths(columnWidths);
                 doc.InsertTable(testSummary);
@@ -100,26 +101,37 @@ namespace NUnit.Tests1.Utilities
                     testActionResult.Rows[0].Cells[3].FillColor = royalBlue;
 
                 }
-
-
-                Console.WriteLine(testName);
                 int i = 0;
-                Console.WriteLine("Test Case Count " + testCase.TestSteps.Count);
-                foreach (TestStep testStep in testCase.TestSteps)
-                {
-                    i++;
-                    string action = Utility.RemoveTags(testStep.Action);
-                    string expected = Utility.RemoveTags(testStep.Expected);
-                    //Console.WriteLine("Test Step " + i);
 
-                    testActionResult.Rows[i].Cells[0].Paragraphs[0].Append(testStep.StepNumber.ToString());
-                    testActionResult.Rows[i].Cells[1].Paragraphs.First().Append(action);
-                    testActionResult.Rows[i].Cells[2].Paragraphs.First().Append(expected);
-                    if (claims)
+                if(testCase.TestSteps.Count == 0)
+                {
+                    testSummary.Rows[1].Cells[0].Paragraphs.First().Append("Test ");
+                    testSummary.Rows[1].Cells[1].Paragraphs.First().Append("Test ");
+                    testSummary.Rows[1].Cells[2].Paragraphs.First().Append("Test ");
+                    //if (claims)
+                    //{
+                    //    testSummary.Rows[1].Cells[3].Paragraphs.First().Append("Test ");
+                    //}
+                }
+                else
+                {
+                    foreach (TestStep testStep in testCase.TestSteps)
                     {
-                        testActionResult.Rows[i].Cells[3].Paragraphs.First();
+                        i++;
+                        string action = Utility.RemoveTags(testStep.Action);
+                        string expected = Utility.RemoveTags(testStep.Expected);
+
+                        //Console.WriteLine("Test Step " + i);
+                        testActionResult.Rows[i].Cells[0].Paragraphs[0].Append(testStep.StepNumber.ToString());
+                        testActionResult.Rows[i].Cells[1].Paragraphs.First().Append(action);
+                        testActionResult.Rows[i].Cells[2].Paragraphs.First().Append(expected);
+                        if (claims)
+                        {
+                            testActionResult.Rows[i].Cells[3].Paragraphs.First();
+                        }
                     }
                 }
+
                 doc.InsertTable(testActionResult);
                 doc.SaveAs(location + "//" + testName + ".docx");
             };
@@ -169,6 +181,7 @@ namespace NUnit.Tests1.Utilities
                 Table testSummary = doc.AddTable(2, 3);
                 //Test Objective table
 
+                string TestDescription = testCase.TestDescription.Replace("&nbsp", " "); 
                 doc.InsertParagraph("Test Objective").FontSize(16);
                 testSummary.Rows[0].Cells[0].Paragraphs.First().Append("#").Color(white);
                 testSummary.Rows[0].Cells[1].Paragraphs.First().Append("Title").Color(white);
@@ -176,7 +189,6 @@ namespace NUnit.Tests1.Utilities
                 testSummary.Rows[0].Cells[0].FillColor = royalBlue;
                 testSummary.Rows[0].Cells[1].FillColor = royalBlue;
                 testSummary.Rows[0].Cells[2].FillColor = royalBlue;
-
                 testSummary.Rows[1].Cells[0].Paragraphs.First().Append(testCase.TestCaseId.ToString());
                 testSummary.Rows[1].Cells[1].Paragraphs.First().Append(testCase.TestDescription);
                 testSummary.Rows[1].Cells[2].Paragraphs.First().Append(testCase.TestObjective);
@@ -205,7 +217,6 @@ namespace NUnit.Tests1.Utilities
                     i++;
                     string action = Utility.RemoveTags(testStep.Action);
                     string expected = Utility.RemoveTags(testStep.Expected);
-                    Console.WriteLine("Test Step " + i);
 
                     testActionResult.Rows[i].Cells[0].Paragraphs[0].Append(testStep.StepNumber.ToString());
                     testActionResult.Rows[i].Cells[1].Paragraphs.First().Append(action);

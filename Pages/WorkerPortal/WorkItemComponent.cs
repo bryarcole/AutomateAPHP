@@ -4,8 +4,7 @@ using NUnit.Tests1.Steps;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Reflection;
-
-
+using NUnit.Tests1.Utilities;
 
 namespace NUnit.Tests1.Pages.WorkerPortal
 {
@@ -17,6 +16,15 @@ namespace NUnit.Tests1.Pages.WorkerPortal
         {
             this.context = context;
             PageFactory.InitElements(context, this);
+        }
+
+        private Generic Generic
+        {
+            get
+            {
+                Generic generic = new Generic(context);
+                return generic;
+            }
         }
 
         /// <summary>
@@ -36,112 +44,9 @@ namespace NUnit.Tests1.Pages.WorkerPortal
         public IWebElement applicationNumber { get; set; }
         [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'btnClose')]")]
         public IWebElement btnClose { get; set; }
-        public string  GatherAppNumber()
-        {
-
-            
-            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(10));
-            string text = "";
-
-            wait.Until(context =>
-            {
-                try
-                {
-                    text = applicationNumber.Text;
-
-                }
-                catch (Exception ex)
-                {
-                    Type exType = ex.GetType();
-                    if (exType == typeof(TargetInvocationException) ||
-                        exType == typeof(NoSuchElementException) ||
-                        exType == typeof(ElementClickInterceptedException) ||
-                        exType == typeof(ElementNotVisibleException) ||
-                        exType == typeof(InvalidOperationException))
-                    {
-                        return false; //By returning false, wait will still rerun the func.
-                    }
-                    else
-                    {
-                        throw; //Rethrow exception if it's not ignore type.
-                    }
-                }
-
-                return true;
-            });
-            return text;
-        }
-        public string GatherWorkItemType()
-        {
-            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(10));
-            string text = "";
-
-            wait.Until(context =>
-            {
-                try
-                {
-                    text = txtWorkItemType.Text;
-
-                }
-                catch (Exception ex)
-                {
-                    Type exType = ex.GetType();
-                    if (exType == typeof(TargetInvocationException) ||
-                        exType == typeof(NoSuchElementException) ||
-                        exType == typeof(ElementClickInterceptedException) ||
-                        exType == typeof(ElementNotVisibleException) ||
-                        exType == typeof(InvalidOperationException))
-                    {
-                        return false; //By returning false, wait will still rerun the func.
-                    }
-                    else
-                    {
-                        throw; //Rethrow exception if it's not ignore type.
-                    }
-                }
-
-                return true;
-            });
-            return text;
-        }
-
-        public string GetGatherWorkItemStatus()
-        {
-            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(10));
-            string text = "";
-
-            wait.Until(context =>
-            {
-                try
-                {
-                    text = txtQueueStatus.Text;
-
-                }
-                catch (Exception ex)
-                {
-                    Type exType = ex.GetType();
-                    if (exType == typeof(TargetInvocationException) ||
-                        exType == typeof(NoSuchElementException) ||
-                        exType == typeof(ElementClickInterceptedException) ||
-                        exType == typeof(ElementNotVisibleException) ||
-                        exType == typeof(InvalidOperationException))
-                    {
-                        return false; //By returning false, wait will still rerun the func.
-                    }
-                    else
-                    {
-                        throw; //Rethrow exception if it's not ignore type.
-                    }
-                }
-
-                return true;
-            });
-            return text;
-        }
-
-
-
-
+        public string GatherAppNumber() => Generic.GetText(applicationNumber);
+        public string GatherWorkItemType() => Generic.GetText(txtWorkItemType);
+        public string GetGatherWorkItemStatus() => Generic.GetText(txtQueueStatus);
         /// <summary>
         /// Buttons
         /// </summary>
@@ -171,191 +76,12 @@ namespace NUnit.Tests1.Pages.WorkerPortal
         public IWebElement btnActivityDone { get; set; }
         [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'btnWorkItemTop')]")]
         public IWebElement btnWorkItemTop { get; set; }
-
-        public void ClickApproveButton()
-        {
-            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(10));
-            wait.Until(context =>
-            {
-                try
-                {
-                    btnActivityApprove.Click();
-
-                }
-                catch (Exception ex)
-                {
-                    Type exType = ex.GetType();
-                    if (exType == typeof(TargetInvocationException) ||
-                        exType == typeof(NoSuchElementException) ||
-                        exType == typeof(ElementClickInterceptedException) ||
-                        exType == typeof(ElementNotVisibleException) ||
-                        exType == typeof(InvalidOperationException))
-                    {
-                        return false; //By returning false, wait will still rerun the func.
-                    }
-                    else
-                    {
-                        throw; //Rethrow exception if it's not ignore type.
-                    }
-                }
-
-                return true;
-            });
-        }
-        public void ClickPendButton()
-        {
-            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(10));
-            wait.Until(context =>
-            {
-                try
-                {
-                    btnActivityPend.Click();
-
-                }
-                catch (Exception ex)
-                {
-                    Type exType = ex.GetType();
-                    if (exType == typeof(TargetInvocationException) ||
-                        exType == typeof(NoSuchElementException) ||
-                        exType == typeof(ElementClickInterceptedException) ||
-                        exType == typeof(ElementNotVisibleException) ||
-                        exType == typeof(InvalidOperationException))
-                    {
-                        return false; //By returning false, wait will still rerun the func.
-                    }
-                    else
-                    {
-                        throw; //Rethrow exception if it's not ignore type.
-                    }
-                }
-
-                return true;
-            });
-        }
-        public void ClickDenyButton()
-        {
-            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(10));
-            wait.Until(context =>
-            {
-                try
-                {
-                    btnActivityDeny.Click();
-
-                }
-                catch (Exception ex)
-                {
-                    Type exType = ex.GetType();
-                    if (exType == typeof(TargetInvocationException) ||
-                        exType == typeof(NoSuchElementException) ||
-                        exType == typeof(ElementClickInterceptedException) ||
-                        exType == typeof(ElementNotVisibleException) ||
-                        exType == typeof(InvalidOperationException))
-                    {
-                        return false; //By returning false, wait will still rerun the func.
-                    }
-                    else
-                    {
-                        throw; //Rethrow exception if it's not ignore type.
-                    }
-                }
-
-                return true;
-            });
-        }
-
-
-
-
-        public void ClickCompletedButton()
-        {
-            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(10));
-            wait.Until(context =>
-            {
-                try
-                {
-                    CompletedBottom.Click();
-
-                }
-                catch (Exception ex)
-                {
-                    Type exType = ex.GetType();
-                    if (exType == typeof(TargetInvocationException) ||
-                        exType == typeof(NoSuchElementException) ||
-                        exType == typeof(ElementClickInterceptedException) ||
-                        exType == typeof(ElementNotVisibleException) ||
-                        exType == typeof(InvalidOperationException))
-                    {
-                        return false; //By returning false, wait will still rerun the func.
-                    }
-                    else
-                    {
-                        throw; //Rethrow exception if it's not ignore type.
-                    }
-                }
-
-                return true;
-            });
-        }
-        public void ClickExitButton()
-        {
-            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(10));
-            wait.Until(context =>
-            {
-                try
-                {
-                    btnExitBottom.Click();
-
-                }
-                catch (Exception ex)
-                {
-                    Type exType = ex.GetType();
-                    if (exType == typeof(TargetInvocationException) ||
-                        exType == typeof(NoSuchElementException) ||
-                        exType == typeof(ElementClickInterceptedException) ||
-                        exType == typeof(ElementNotVisibleException) ||
-                        exType == typeof(InvalidOperationException))
-                    {
-                        return false; //By returning false, wait will still rerun the func.
-                    }
-                    else
-                    {
-                        throw; //Rethrow exception if it's not ignore type.
-                    }
-                }
-
-                return true;
-            });
-        }
-        public void ClickWorkItemButton()
-        {
-            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(10));
-            wait.Until(context =>
-            {
-                try
-                {
-                    btnWorkItemTop.Click();
-
-                }
-                catch (Exception ex)
-                {
-                    Type exType = ex.GetType();
-                    if (exType == typeof(TargetInvocationException) ||
-                        exType == typeof(NoSuchElementException) ||
-                        exType == typeof(ElementClickInterceptedException) ||
-                        exType == typeof(ElementNotVisibleException) ||
-                        exType == typeof(InvalidOperationException))
-                    {
-                        return false; //By returning false, wait will still rerun the func.
-                    }
-                    else
-                    {
-                        throw; //Rethrow exception if it's not ignore type.
-                    }
-                }
-
-                return true;
-            });
-        }
+        public IWebElement ClickApproveButton() => Generic.Click(btnActivityApprove);
+        public IWebElement ClickPendButton() => Generic.Click(btnActivityPend);
+        public IWebElement ClickDenyButton() => Generic.Click(btnActivityDeny);
+        public IWebElement ClickCompletedButton() => Generic.Click(CompletedBottom);
+        public IWebElement ClickExitButton() => Generic.Click(btnExitBottom);
+        public IWebElement ClickWorkItemButton() => Generic.Click(btnWorkItemTop);
 
     }
 }

@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Tests1.Utilities;
+﻿using NUnit.Tests1.Utilities;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
-using OpenQA.Selenium.Support;
 using OpenQA.Selenium.Support.PageObjects;
-
 namespace NUnit.Tests1.Pages.MemberPortal
 {
     public class MemberPortalDashBoard
@@ -19,10 +12,13 @@ namespace NUnit.Tests1.Pages.MemberPortal
             this.context = context;
             PageFactory.InitElements(context, this);
         }
-
-        public Generic GrabGeneric(IWebDriver context)
+        private Generic Generic
         {
-            return new Generic(context);
+            get
+            {
+                Generic generic = new Generic(context);
+                return generic;
+            }
         }
         [FindsBy(How = How.PartialLinkText, Using = "My Claims")]
         public IWebElement myClaims { get; set; }
@@ -40,27 +36,18 @@ namespace NUnit.Tests1.Pages.MemberPortal
 
         public void HIPPMyApplication()
         {
-            GrabGeneric(context);
             HiPPApplicationHover();
-            GrabGeneric(context).Click(MyHIPPApplication);
+            Generic.Click(MyHIPPApplication);
         }
         public void HIPPEIVData()
         {
             HiPPApplicationHover();
-            GrabGeneric(context).Click(HIPPEIV);
+            Generic.Click(HIPPEIV);
         }
-
-
-
         public void HiPPApplicationHover()
         {
             Actions action = new Actions(context);
             action.MoveToElement(HiPPApplicationLinkText).Perform();
-        }
-        public static IWebElement HIPPApp(IWebDriver context)
-        {
-            IWebElement HIPPApplicationSearch = context.FindElement(By.Id("pageContentMaster_WorkerHeader_MainNavigation_rptWorkerTopMenu_rptWorkerTopSubMenu_2_lnkWorkerTopSubMenu_1"));
-            return HIPPApplicationSearch;
         }
     }
 }

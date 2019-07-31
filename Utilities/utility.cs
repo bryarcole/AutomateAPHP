@@ -375,7 +375,12 @@ namespace NUnit.Tests1.Utilities
 
             return value;
         }
+        public static string CleanTestDescription(string value)
+        {
+            value = Regex.Replace(value, "([\\<br\\>] [\\&nbsp\\;])", "", RegexOptions.IgnoreCase | RegexOptions.Singleline);
 
+            return value;
+        }
         /// <summary>
         /// Replace the html commens (also html ifs of msword).
         /// </summary>
@@ -394,6 +399,7 @@ namespace NUnit.Tests1.Utilities
         {
             return Regex.Replace(value, "<a[^>]+href=\"?'?(?!#[\\w-]+)([^'\">]+)\"?'?[^>]*>(.*?)</a>", "<a href=\"$1\" rel=\"nofollow\" target=\"_blank\">$2</a>", RegexOptions.IgnoreCase | RegexOptions.Compiled);
         }
+
     }
 }
 

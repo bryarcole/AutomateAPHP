@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Tests1.Utilities;
+﻿using NUnit.Tests1.Utilities;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Interactions;
-using OpenQA.Selenium.Support;
 using OpenQA.Selenium.Support.PageObjects;
 
 
@@ -22,26 +15,23 @@ namespace NUnit.Tests1.Pages.MemberPortal
             PageFactory.InitElements(context, this);
         }
 
-        [FindsBy(How = How.XPath, Using = "//input[contains(@id, cboSelectType_Input")]
+        [FindsBy(How = How.XPath, Using = "//input[contains(@id, cboSelectType_Input)]")]
         private IWebElement SelectTypeInput { get; set; }
-
-        [FindsBy(How = How.XPath, Using = "//input[contains(@id, btnBeginApp")]
+        [FindsBy(How = How.XPath, Using = "//input[contains(@id, btnBeginApp)]")]
         private IWebElement BeginAppButton { get; set; }
-
-        public Generic GrabGeneric(IWebDriver context)
+        private Generic Generic
         {
-            return new Generic(context);
+            get
+            {
+                Generic generic = new Generic(context);
+                return generic;
+            }
         }
-
-
         public void InputSelectType(string text)
         {
-            GrabGeneric(context).Click(SelectTypeInput);
-            GrabGeneric(context).SendKeys(SelectTypeInput, text);
+            Generic.Click(SelectTypeInput);
+            Generic.SendKeys(SelectTypeInput, text);
         }
-        public void BeginApplicationClick()
-        {
-            GrabGeneric(context).Click(BeginAppButton);
-        }
+        public void BeginApplicationClick() => Generic.Click(BeginAppButton);
     }
 }

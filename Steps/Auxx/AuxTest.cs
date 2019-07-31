@@ -51,16 +51,6 @@ namespace NUnit.Tests1
         }
         int sucessCount = 1;
         int errorCount = 1;
-        
-        [Test]
-        [Category("Nav to HIPP Submission")]
-        public void NaveToHIPPSubmission()
-        {
-
-        }
-
-
-
         [Test]
         [Category("CreateDoctest")]
         public void CreateDoctest()
@@ -135,21 +125,14 @@ namespace NUnit.Tests1
             doc.Save();
             Process.Start("WINWORD.EXE", testName);
             #endregion
-
-
         }
 
         [Test]
         [Category("CreateWordDocSuite")]
         public void CreateWordDocSuite()
         {
-
-
             WordDocGen docs = new WordDocGen();
-
-            docs.CreateWordDocSuite("Bryar.h.cole", 149579, 152261, true);
-            docs.CreateWordDocSuite("Bryar.h.cole", 149579, 153830, true);
-
+            docs.CreateWordDocSuite("Bryar.h.cole", 149579, 153580, true);
             #region Boring stuff
             //// Test Case Pull
             //#region Pull Test Case from TFS

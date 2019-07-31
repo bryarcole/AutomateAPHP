@@ -20,6 +20,7 @@ namespace NUnit.Tests1.Utilities
         public Generic(IWebDriver context)
         {
             this.context = context;
+#pragma warning disable CS0618 // Type or member is obsolete
             PageFactory.InitElements(context, this);
         }
 
@@ -68,7 +69,7 @@ namespace NUnit.Tests1.Utilities
                         exType == typeof(InvalidOperationException))
                     {
 
-                        Console.Write(ex.Message);
+                        Console.Write("New exception: \n" + ex.Message);
 
                         return false; //By returning false, wait will still rerun the func.
                     }
@@ -81,14 +82,14 @@ namespace NUnit.Tests1.Utilities
             });
             return ele;
         }
-        public IWebElement SendKeys(IWebElement ele, string text)
+        public IWebElement SendKeys(IWebElement ele, IWebElement wrapper,string text)
         {
             WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(5));
             wait.Until(context =>
             {
                 try
                 {
-                    ele.Clear();
+                    Click(wrapper);
                     ele.SendKeys(text);
                 }
                 catch (Exception ex)
@@ -101,6 +102,41 @@ namespace NUnit.Tests1.Utilities
                         exType == typeof(StaleElementReferenceException) ||
                         exType == typeof(InvalidOperationException))
                     {
+                        Console.Write("New exception: \n" + ex.Message);
+
+                        return false; //By returning false, wait will still rerun the func.
+                    }
+                    else
+                    {
+                        throw; //Rethrow exception if it's not ignore type.
+                    }
+                }
+                return true;
+            });
+            return ele;
+        }
+
+        public IWebElement SendKeys(IWebElement ele, string text)
+        {
+            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(5));
+            wait.Until(context =>
+            {
+                try
+                {
+                    ele.SendKeys(text);
+                }
+                catch (Exception ex)
+                {
+                    Type exType = ex.GetType();
+                    if (exType == typeof(TargetInvocationException) ||
+                        exType == typeof(NoSuchElementException) ||
+                        exType == typeof(ElementClickInterceptedException) ||
+                        exType == typeof(ElementNotVisibleException) ||
+                        exType == typeof(StaleElementReferenceException) ||
+                        exType == typeof(InvalidOperationException))
+                    {
+                        Console.Write("New exception: \n" + ex.Message);
+
                         return false; //By returning false, wait will still rerun the func.
                     }
                     else
@@ -133,6 +169,8 @@ namespace NUnit.Tests1.Utilities
                         exType == typeof(StaleElementReferenceException) ||
                         exType == typeof(InvalidOperationException))
                     {
+                        Console.Write("New exception: \n" + ex.Message);
+
                         return false; //By returning false, wait will still rerun the func.
                     }
                     else
@@ -163,7 +201,7 @@ namespace NUnit.Tests1.Utilities
                         exType == typeof(StaleElementReferenceException) ||
                         exType == typeof(InvalidOperationException))
                     {
-                        Console.Write(ex.Message);
+                        Console.Write("New exception: \n" + ex.Message);
                         return false; //By returning false, wait will still rerun the func.
                     }
                     else
@@ -195,7 +233,7 @@ namespace NUnit.Tests1.Utilities
                         exType == typeof(StaleElementReferenceException) ||
                         exType == typeof(InvalidOperationException))
                     {
-                        Console.Write(ex.Message);
+                        Console.Write("New exception: \n" + ex.Message);
 
                         return false; //By returning false, wait will still rerun the func.
                     }
@@ -228,6 +266,8 @@ namespace NUnit.Tests1.Utilities
                         exType == typeof(StaleElementReferenceException) ||
                         exType == typeof(InvalidOperationException))
                     {
+                        Console.Write("New exception: \n" + ex.Message);
+
                         return false; //By returning false, wait will still rerun the func.
                     }
                     else
@@ -260,6 +300,8 @@ namespace NUnit.Tests1.Utilities
                         exType == typeof(StaleElementReferenceException) ||
                         exType == typeof(InvalidOperationException))
                     {
+                        Console.Write("New exception: \n" + ex.Message);
+
                         return false; //By returning false, wait will still rerun the func.
                     }
                     else
@@ -290,7 +332,7 @@ namespace NUnit.Tests1.Utilities
                         exType == typeof(StaleElementReferenceException) ||
                         exType == typeof(InvalidOperationException))
                     {
-                        Console.Write(ex.Message);
+                        Console.Write("New exception: \n" + ex.Message);
                         return false; //By returning false, wait will still rerun the func.
                     }
                     else
@@ -322,7 +364,7 @@ namespace NUnit.Tests1.Utilities
                         exType == typeof(StaleElementReferenceException) ||
                         exType == typeof(InvalidOperationException))
                     {
-                        Console.Write(ex.Message);
+                        Console.Write("New exception: \n" + ex.Message);
                         return false; //By returning false, wait will still rerun the func.
                     }
                     else

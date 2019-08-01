@@ -55,7 +55,7 @@ namespace NUnit.Tests1
             WorkerPortalLandingPage landingPage = new WorkerPortalLandingPage(context);
             HIPPSearchPage hIPPSearch = new HIPPSearchPage(context);
             InitiateTest startUp = new InitiateTest(context);
-            CreateHIPPApplication app = new CreateHIPPApplication();
+            CreateHIPPApplicationWorker app = new CreateHIPPApplicationWorker();
             HIPPWorkFlow workFlow = new HIPPWorkFlow();
             WordDocGen genWordDoc = new WordDocGen();
             context.Url = startUp.AWSINTWoker;
@@ -82,7 +82,7 @@ namespace NUnit.Tests1
                 hIPPSearch.ClickBeginNewApp();
                 //hIPPSearch.ClickBeginNewApp();
                 
-                app.SubmitHIPPCaseSubmissionUltimate(context, false,  screenshotLocation, doc);
+                app.SubmitHIPPCaseSubmissionWorker(context, false,  screenshotLocation, doc);
                 string appNumber = workFlow.HippWorkFlow(stat, context,screenshotLocation, doc);
 
 
@@ -143,9 +143,9 @@ namespace NUnit.Tests1
             WorkerPortalLandingPage landingPage = new WorkerPortalLandingPage(context);
             HIPPSearchPage hIPPSearch = new HIPPSearchPage(context);
             InitiateTest startUp = new InitiateTest(context);
-            HIPPSubmitApplicationPage submitApp = new HIPPSubmitApplicationPage(context);
+            HIPPSubmitApplicationPageWorker submitApp = new HIPPSubmitApplicationPageWorker(context);
             WorkItemComponent workitem = new WorkItemComponent(context);
-            CreateHIPPApplication app = new CreateHIPPApplication();
+            CreateHIPPApplicationWorker app = new CreateHIPPApplicationWorker();
 
             context.Url = startUp.AWSINTWoker;
             context.Manage().Window.Maximize();
@@ -164,12 +164,12 @@ namespace NUnit.Tests1
             hIPPSearch.SearchHiPPCase("Contains", "Application ID", "10000214");
             hIPPSearch.SearchButtonClick();
             utility.RecordStepStatusMAIN("Search results", screenshotLocation, "SearchResults", doc);
-            generic.GenericLinkTextClick("10000214");
+            generic.LinkTextClick("10000214");
             
             workitem.ClickWorkItemButton();
             Thread.Sleep(3000);
             //hIPPSearch.ClickBeginNewApp();
-            app.SubmitHIPPCaseSubmissionUltimate(context, false, screenshotLocation, doc);
+            app.SubmitHIPPCaseSubmissionWorker(context, false, screenshotLocation, doc);
 
 
 

@@ -150,22 +150,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pages\MemberPortal\MyHIPPApplication.cs" />
-    <Compile Include="Pages\MemberPortal\MyHIPPApplicationSubmitPage.cs" />
+    <Compile Include="Pages\MemberPortal\HIPPSubmitApplicationPageMember.cs" />
     <Compile Include="Pages\WorkerPortal\Claims\BeginNewClaimPage.cs" />
     <Compile Include="Pages\WorkerPortal\Claims\ClaimsSearchPage.cs" />
     <Compile Include="Pages\WorkerPortal\Claims\SubmitClaimApplicationPage.cs" />
     <Compile Include="Pages\WorkerPortal\Member\MemberEligibilityDetails.cs" />
     <Compile Include="Pages\WorkerPortal\Member\MemberSearchPage.cs" />
     <Compile Include="Pages\WorkerPortal\Validations\HIPPWorkerPortalNegativeValidation.cs" />
-    <Compile Include="Pages\WorkerPortal\HIPP\HIPPSubmitApplicationPage.cs" />
+    <Compile Include="Pages\WorkerPortal\HIPP\HIPPSubmitApplicationPageWorker.cs" />
     <Compile Include="Pages\WorkerPortal\WorkItemComponent.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShowAndTell.cs" />
     <Compile Include="Steps\Auxx\SimpleDelegate.cs" />
-    <Compile Include="Steps\Modules\CreateHIPPApplication.cs" />
-    <Compile Include="Steps\Modules\HIPPSearch.cs" />
-    <Compile Include="Steps\Modules\HIPPWorkFlow.cs" />
+    <Compile Include="Steps\Modules\HIPP\CreateHIPPApplicationMember.cs" />
+    <Compile Include="Steps\Modules\HIPP\CreateHIPPApplicationWorker.cs" />
+    <Compile Include="Steps\Modules\HIPP\HIPPSearch.cs" />
+    <Compile Include="Steps\Modules\HIPP\HIPPWorkFlow.cs" />
+    <Compile Include="Steps\TestScripts\HIPP\HIPPApplicationInputMemberTest.cs" />
     <Compile Include="Steps\TestScripts\HIPP\HIPPSearchTest.cs" />
     <Compile Include="Pages\APHPHomePage.cs" />
     <Compile Include="Pages\MemberPortal\MemberPortalLandingPage.cs" />
@@ -194,6 +196,7 @@
   <ItemGroup>
     <Folder Include="Pages\ProviderPortal\" />
     <Folder Include="Reports\" />
+    <Folder Include="Steps\Modules\Claims\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="extent-config.Designer.xml" />

@@ -15,9 +15,9 @@ namespace NUnit.Tests1.Pages.MemberPortal
             PageFactory.InitElements(context, this);
         }
 
-        [FindsBy(How = How.XPath, Using = "//input[contains(@id, cboSelectType_Input)]")]
+        [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'cboSelectType_Input')]")]
         private IWebElement SelectTypeInput { get; set; }
-        [FindsBy(How = How.XPath, Using = "//input[contains(@id, btnBeginApp)]")]
+        [FindsBy(How = How.XPath, Using = "//a[contains(@id, 'btnBeginApp')]")]
         private IWebElement BeginAppButton { get; set; }
         private Generic Generic
         {
@@ -29,8 +29,7 @@ namespace NUnit.Tests1.Pages.MemberPortal
         }
         public void InputSelectType(string text)
         {
-            Generic.Click(SelectTypeInput);
-            Generic.SendKeys(SelectTypeInput, text);
+            Generic.SendKeys(SelectTypeInput, SelectTypeInput, text);
         }
         public void BeginApplicationClick() => Generic.Click(BeginAppButton);
     }

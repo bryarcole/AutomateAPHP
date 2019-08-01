@@ -43,7 +43,7 @@ namespace NUnit.Tests1
 
             Assert.IsTrue(table.Displayed);
 
-            generic.GenericLinkTextClick(appnumber);
+            generic.LinkTextClick(appnumber);
 
 
 

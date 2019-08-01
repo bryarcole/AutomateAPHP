@@ -91,7 +91,7 @@ namespace NUnit.Tests1
             WorkerPortalLandingPage landingPage = new WorkerPortalLandingPage(context);
             HIPPSearchPage hIPPSearch = new HIPPSearchPage(context);
             InitiateTest startUp = new InitiateTest(context);
-            HIPPSubmitApplicationPage submitApp = new HIPPSubmitApplicationPage(context);
+            HIPPSubmitApplicationPageWorker submitApp = new HIPPSubmitApplicationPageWorker(context);
             context.Url = startUp.AssetPTWorker;
             context.Manage().Window.Maximize();
             #endregion

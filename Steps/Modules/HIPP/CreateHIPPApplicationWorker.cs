@@ -5,19 +5,19 @@ using System;
 using System.Threading;
 using Xceed.Words.NET;
 using NUnit.Tests1.Pages.WorkerPortal;
-using static NUnit.Tests1.Pages.WorkerPortal.HIPPSubmitApplicationPage;
+using static NUnit.Tests1.Pages.WorkerPortal.HIPPSubmitApplicationPageWorker;
 
 
 namespace NUnit.Tests1.Steps
 {
-    public class CreateHIPPApplication
+    public class CreateHIPPApplicationWorker
     {
-        public void SubmitHIPPCaseSubmissionUltimate(IWebDriver context, bool renewal, string screenshotLocation, DocX doc)
+        public void SubmitHIPPCaseSubmissionWorker(IWebDriver context, bool renewal, string screenshotLocation, DocX doc)
         {
 
             #region Pages and Sections
             HouseholdInformation householdInformation = new HouseholdInformation(context);
-            HIPPSubmitApplicationPage submitApp = new HIPPSubmitApplicationPage(context);
+            HIPPSubmitApplicationPageWorker submitApp = new HIPPSubmitApplicationPageWorker(context);
             ApplicationOverview applicationOverview = new ApplicationOverview(context);
             EmploymentStatusHiringDetails hiringdetails = new EmploymentStatusHiringDetails(context);
             CompanyInformation companyInformation = new CompanyInformation(context);
@@ -64,7 +64,7 @@ namespace NUnit.Tests1.Steps
 
             #region Required Input
             utility.RecordStepStatusMAIN("Input application Overview Sucess", screenshotLocation,  "ApplicationOverview", doc);
-            generic.GenericCheveronClick("10");
+            generic.CheveronClick("10");
             householdInformation.HouseHoldInformationInput(
                 "Self",
                 "Test",
@@ -75,8 +75,8 @@ namespace NUnit.Tests1.Steps
                 "333402593",
                 "Yes",
                 "Yes");
-            generic.GenericCheveronClick("10");
-            generic.GenericCheveronClick("9");
+            generic.CheveronClick("10");
+            generic.CheveronClick("9");
             policyHolderEmployeeInformation.PolicyHolderEmployerInformationInput(
                 "Test",
                 "",
@@ -90,18 +90,18 @@ namespace NUnit.Tests1.Steps
                 "7034449999",
                 "2020001111",
                 "TestPerson@gmail.com");
-            generic.GenericCheveronClick("9");
+            generic.CheveronClick("9");
 
-            generic.GenericCheveronClick("11");
-            generic.GenericCheveronClick("12");
+            generic.CheveronClick("11");
+            generic.CheveronClick("12");
             hiringdetails.EmploymentStatusHiringInput(
                 "Yes",
                 now.AddYears(-9).ToString("MM/dd/yyyy"),
                 "No",
                 "Yes",
                 "No");
-            generic.GenericCheveronClick("12");
-            generic.GenericCheveronClick("13");
+            generic.CheveronClick("12");
+            generic.CheveronClick("13");
             employerAndResourcesInformation.EmploymentHumanResourcesInformationInput(
                 "Accenture",
                 "101010101",
@@ -113,9 +113,9 @@ namespace NUnit.Tests1.Steps
                 "Dale Dimmadone",
                 "technology",
                 "2022213300");
-            generic.GenericCheveronClick("13");
-            generic.GenericCheveronClick("14");
-            generic.GenericCheveronClick("15");
+            generic.CheveronClick("13");
+            generic.CheveronClick("14");
+            generic.CheveronClick("15");
             companyInformation.CompanyInformationInput(
                 "Insurance Co.",
                 utility.RandomNumericString(9),
@@ -126,19 +126,19 @@ namespace NUnit.Tests1.Steps
                 "23019",
                 "Mike Adams",
                 "8883930023");
-            generic.GenericCheveronClick("15");
-            generic.GenericCheveronClick("16");
+            generic.CheveronClick("15");
+            generic.CheveronClick("16");
             planInformation.PlanInformationInput(
                 "COBRA",
                 "No",
                 now.AddYears(-12).ToString("MM/dd/yyyy"),
                 "Monthly",
                 utility.RandomNumericString(3));
-            generic.GenericCheveronClick("16");
-            generic.GenericCheveronClick("14");
-            generic.GenericCheveronClick("17");
+            generic.CheveronClick("16");
+            generic.CheveronClick("14");
+            generic.CheveronClick("17");
 
-            generic.GenericCheveronClick("18");
+            generic.CheveronClick("18");
             employeeInformation.EmployeeInformationInput(
                 "Employee",
                 "Middle",
@@ -149,8 +149,8 @@ namespace NUnit.Tests1.Steps
                 "No",
                 "No",
                 "No");
-            generic.GenericCheveronClick("18");
-            generic.GenericCheveronClick("19");
+            generic.CheveronClick("18");
+            generic.CheveronClick("19");
             membershipInformation.EmployeeMemberInput(
                 "No",
                 "Employee",
@@ -160,22 +160,22 @@ namespace NUnit.Tests1.Steps
                 "Guardian"
                 
                 );
-            generic.GenericCheveronClick("19");
-            generic.GenericCheveronClick("20");
+            generic.CheveronClick("19");
+            generic.CheveronClick("20");
             coverageAreasInformation.CoverageSelection(utility.RandomNumericString(1));
             coverageAreasInformation.CoverageSelection(utility.RandomNumericString(1));
             coverageAreasInformation.CoverageSelection(utility.RandomNumericString(1));
 
-            generic.GenericCheveronClick("20");
-            generic.GenericCheveronClick("21");
+            generic.CheveronClick("20");
+            generic.CheveronClick("21");
             openEnrollmentInformation.OpenEnrollmentInformationInput(
                 DateTime.Today.ToString("MM/dd/yyyy"),
                 DateTime.Today.ToString("MM/dd/yyyy"),
                 DateTime.Today.ToString("MM/dd/yyyy")
                 );
             Thread.Sleep(2000);
-            generic.GenericCheveronClick("21");
-            generic.GenericCheveronClick("22");
+            generic.CheveronClick("21");
+            generic.CheveronClick("22");
             insuranceType.InsuranceTypeInput(
                 "Medical",
                 "Big Insurance Co.",
@@ -223,12 +223,12 @@ namespace NUnit.Tests1.Steps
 
             #endregion
         }
-        public void SubmitHIPPCaseSubmissionUltimate(IWebDriver context, bool renewal)
+        public void SubmitHIPPCaseSubmissionWorker(IWebDriver context, bool renewal)
         {
 
             #region Pages and Sections
             HouseholdInformation householdInformation = new HouseholdInformation(context);
-            HIPPSubmitApplicationPage submitApp = new HIPPSubmitApplicationPage(context);
+            HIPPSubmitApplicationPageWorker submitApp = new HIPPSubmitApplicationPageWorker(context);
             ApplicationOverview applicationOverview = new ApplicationOverview(context);
             EmploymentStatusHiringDetails hiringdetails = new EmploymentStatusHiringDetails(context);
             CompanyInformation companyInformation = new CompanyInformation(context);
@@ -274,7 +274,7 @@ namespace NUnit.Tests1.Steps
             #endregion
 
             #region Required Input
-            generic.GenericCheveronClick("10");
+            generic.CheveronClick("10");
             householdInformation.HouseHoldInformationInput(
                 "Self",
                 "Test",
@@ -285,8 +285,8 @@ namespace NUnit.Tests1.Steps
                 "333402593",
                 "Yes",
                 "Yes");
-            generic.GenericCheveronClick("10");
-            generic.GenericCheveronClick("9");
+            generic.CheveronClick("10");
+            generic.CheveronClick("9");
             policyHolderEmployeeInformation.PolicyHolderEmployerInformationInput(
                 "Test",
                 "",
@@ -300,18 +300,18 @@ namespace NUnit.Tests1.Steps
                 "7034449999",
                 "2020001111",
                 "TestPerson@gmail.com");
-            generic.GenericCheveronClick("9");
+            generic.CheveronClick("9");
 
-            generic.GenericCheveronClick("11");
-            generic.GenericCheveronClick("12");
+            generic.CheveronClick("11");
+            generic.CheveronClick("12");
             hiringdetails.EmploymentStatusHiringInput(
                 "Yes",
                 now.AddYears(-9).ToString("MM/dd/yyyy"),
                 "No",
                 "Yes",
                 "No");
-            generic.GenericCheveronClick("12");
-            generic.GenericCheveronClick("13");
+            generic.CheveronClick("12");
+            generic.CheveronClick("13");
             employerAndResourcesInformation.EmploymentHumanResourcesInformationInput(
                 "Accenture",
                 "101010101",
@@ -323,9 +323,9 @@ namespace NUnit.Tests1.Steps
                 "Dale Dimmadone",
                 "technology",
                 "2022213300");
-            generic.GenericCheveronClick("13");
-            generic.GenericCheveronClick("14");
-            generic.GenericCheveronClick("15");
+            generic.CheveronClick("13");
+            generic.CheveronClick("14");
+            generic.CheveronClick("15");
             companyInformation.CompanyInformationInput(
                 "Insurance Co.",
                 "9483924",
@@ -336,19 +336,19 @@ namespace NUnit.Tests1.Steps
                 "23019",
                 "Mike Adams",
                 "8883930023");
-            generic.GenericCheveronClick("15");
-            generic.GenericCheveronClick("16");
+            generic.CheveronClick("15");
+            generic.CheveronClick("16");
             planInformation.PlanInformationInput(
                 "COBRA",
                 "No",
                 now.AddYears(-12).ToString("MM/dd/yyyy"),
                 "Monthly",
                 utility.RandomNumericString(3));
-            generic.GenericCheveronClick("16");
-            generic.GenericCheveronClick("14");
-            generic.GenericCheveronClick("17");
+            generic.CheveronClick("16");
+            generic.CheveronClick("14");
+            generic.CheveronClick("17");
 
-            generic.GenericCheveronClick("18");
+            generic.CheveronClick("18");
             employeeInformation.EmployeeInformationInput(
                 "Employee",
                 "Middle",
@@ -359,8 +359,8 @@ namespace NUnit.Tests1.Steps
                 "No",
                 "No",
                 "No");
-            generic.GenericCheveronClick("18");
-            generic.GenericCheveronClick("19");
+            generic.CheveronClick("18");
+            generic.CheveronClick("19");
             membershipInformation.EmployeeMemberInput(
                 "Employee",
                 "Middle",
@@ -369,22 +369,22 @@ namespace NUnit.Tests1.Steps
                 "Guardian",
                 "No"
                 );
-            generic.GenericCheveronClick("19");
-            generic.GenericCheveronClick("20");
+            generic.CheveronClick("19");
+            generic.CheveronClick("20");
             coverageAreasInformation.CoverageSelection(utility.RandomNumericString(1));
             coverageAreasInformation.CoverageSelection(utility.RandomNumericString(1));
             coverageAreasInformation.CoverageSelection(utility.RandomNumericString(1));
 
-            generic.GenericCheveronClick("20");
-            generic.GenericCheveronClick("21");
+            generic.CheveronClick("20");
+            generic.CheveronClick("21");
             openEnrollmentInformation.OpenEnrollmentInformationInput(
                 DateTime.Today.ToString("MM/dd/yyyy"),
                 DateTime.Today.ToString("MM/dd/yyyy"),
                 DateTime.Today.ToString("MM/dd/yyyy")
                 );
             Thread.Sleep(2000);
-            generic.GenericCheveronClick("21");
-            generic.GenericCheveronClick("22");
+            generic.CheveronClick("21");
+            generic.CheveronClick("22");
             insuranceType.InsuranceTypeInput(
                 "Medical",
                 "Big Insurance Co.",

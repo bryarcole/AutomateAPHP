@@ -199,7 +199,7 @@ namespace NUnit.Tests1.Pages.WorkerPortal
         public void SearchHiPPCase(string How, string Where, string InputValue, string Mode, string Type)
         {
             Generic generic = new Generic(context);
-            GrabGeneric(context).GenericCheveronClick("0");
+            GrabGeneric(context).CheveronClick("0");
             HowSearchInput(How);
             WhereSearchInput(Where);
             SearchInputBox(InputValue);

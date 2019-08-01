@@ -15,7 +15,7 @@ using NUnit.Tests1.Utilities;
 using NUnit.Tests1.Pages;
 using NUnit.Tests1.Steps.StartUp;
 using NUnit.Tests1.Steps;
-using NUnit.Tests1.Pages.WorkerPortal;
+using NUnit.Tests1.Pages.MemberPortal;
 using OpenQA.Selenium.Chrome;
 using System.Diagnostics;
 using System.Threading;
@@ -24,14 +24,14 @@ namespace NUnit.Tests1
 {
     [TestFixture]
     [Author("Bryar Cole", "Bryar.h.cole@gmail.com")]
-    public class HIPPApplicationInput
+    public class HIPPApplicationInputMember
     {
         ExtentReports extent = null;
         [OneTimeSetUp]
         public void ExtentStart()
         {
             extent = new ExtentReports();
-            var htmlReporter = new ExtentV3HtmlReporter(@"C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Reports\HIPPSubmit\index.html");
+            var htmlReporter = new ExtentV3HtmlReporter(@"C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Reports\HIPPSubmitMember\index.html");
             extent.AttachReporter(htmlReporter);
         }
         [OneTimeTearDown]
@@ -42,12 +42,12 @@ namespace NUnit.Tests1
 
         public IWebDriver context;
 
-        string screenshotLocation = @"C:\\Users\\bryar.h.cole\Desktop\AutomationProjects\NUnit.Tests1\Reports\HIPPSubmit\images\";
+        string screenshotLocation = @"C:\\Users\\bryar.h.cole\Desktop\AutomationProjects\NUnit.Tests1\Reports\HIPPSubmitMember\images\";
         int sucessCount = 1;
         int errorCount = 1;
-        [TestCase("Approved", 152492, false)]
-        [Category("HIPP WorkFlow"), Category("Paper Initial")]
-        public void TC_IT03_HIPP_Workflow(string stat, int testCaseID, bool renewalStatus)
+        //[TestCase("Approved", 152492, false)]
+        [Category("HIPP WorkFlow"), Category("Member Initial")]
+        public void MemberInput()
         {
             ScreenCaputres caputres = new ScreenCaputres();
             //caputres.TakeVideo(@"C:\\Users\\bryar.h.cole\Desktop\\TestResults\\");
@@ -56,15 +56,13 @@ namespace NUnit.Tests1
             ExtentTest test = null;
             context = new ChromeDriver();
             context.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-
+            Generic generic = new Generic(context);
             Utility utility = new Utility(context);
             APHPHomePage loginPage = new APHPHomePage(context);
-            WorkerPortalLandingPage landingPage = new WorkerPortalLandingPage(context);
-            HIPPSearchPage hIPPSearch = new HIPPSearchPage(context);
+            MemberPortalDashBoard landingPage = new MemberPortalDashBoard(context);
             InitiateTest startUp = new InitiateTest(context);
-            CreateHIPPApplicationWorker app = new CreateHIPPApplicationWorker();
-            HIPPWorkFlow workFlow = new HIPPWorkFlow();
-            WordDocGen genWordDoc = new WordDocGen();
+            CreateHIPPApplicationMember app = new CreateHIPPApplicationMember();
+            MyHIPPApplicationPage myHIPPApplicationPage = new MyHIPPApplicationPage(context);
             context.Url = startUp.AWSINTWoker;
             context.Manage().Window.Maximize();
             DateTime now = DateTime.Now;
@@ -73,24 +71,24 @@ namespace NUnit.Tests1
 
             System.IO.Directory.CreateDirectory(screenshotLocation);
 
-            DocX doc = genWordDoc.CreateWordDoc(testCaseID, 152045);
-            TestCase testCase = utility.GetTestCase(testCaseID, 152045);
-            string testName = testCase.TestCaseId.ToString() + "_" + testCase.TestCaseName.Replace(" ", "_") + ".docx";
-            string scenario = testCase.TestCaseName;
+            //DocX doc = genWordDoc.CreateWordDoc(testCaseID, 152045);
+            //TestCase testCase = utility.GetTestCase(testCaseID, 152045);
+            //string testName = testCase.TestCaseId.ToString() + "_" + testCase.TestCaseName.Replace(" ", "_") + ".docx";
+            //string scenario = testCase.TestCaseName;
 
 
             try
             {
-                doc.InsertBookmark("Pass 1");
-                doc.InsertBookmark("Pass 2");
-                loginPage.LoginPage("bryar.h.wrkr", "user@123A");
-                utility.RecordStepStatusMAIN("Login APHP success", screenshotLocation, "LoginSuccess", doc);
-                landingPage.HippApplicationSearch();
-                hIPPSearch.ClickBeginNewApp();
-                //hIPPSearch.ClickBeginNewApp();
 
-                app.SubmitHIPPCaseSubmissionWorker(context, renewalStatus, screenshotLocation, doc);
-                string appNumber = workFlow.HippWorkFlow(stat, context, screenshotLocation, doc);
+                loginPage.LoginPage("willbsmith", "user@123A");
+                //utility.RecordStepStatusMAIN("Login APHP success", screenshotLocation, "LoginSuccess");
+
+                //hIPPSearch.ClickBeginNewApp();
+                generic.HoverByLinkText("HIPP Application");
+                generic.LinkTextClick("My HIPP Application");
+                myHIPPApplicationPage.InputSelectType("New");
+                myHIPPApplicationPage.BeginApplicationClick();
+                app.SubmitHIPPCaseSubmissionMember(context);
 
 
             }
@@ -99,16 +97,13 @@ namespace NUnit.Tests1
             catch (NoSuchElementException e)
             {
 
-                utility.RecordStepStatusMAIN("Element you are looking for does not exist, error mssage is as follows: " + e.Message, screenshotLocation, "NoSuchElement", doc);
-                //caputres.StopVideo();
+                //utility.RecordStepStatusMAIN("Element you are looking for does not exist, error mssage is as follows: " + e.Message, screenshotLocation, "NoSuchElement");
                 throw;
             }
             catch (Exception e)
             {
 
-                utility.RecordStepStatusMAIN("An exception occurred within the code, please see error message: " + e.Message, screenshotLocation, "Error", doc);
-                //caputres.StopVideo();
-
+                //utility.RecordStepStatusMAIN("An exception occurred within the code, please see error message: " + e.Message, screenshotLocation, "Error", doc);
                 throw;
             }
 
@@ -118,8 +113,8 @@ namespace NUnit.Tests1
                 try
                 {
                     Thread.Sleep(3000);
-                    doc.SaveAs("C:\\Users\\" + userName + "\\Desktop\\TestResults\\" + testName);
-                    Process.Start("WINWORD.EXE", "C:\\Users\\" + userName + "\\Desktop\\TestResults\\" + testName);
+                    //doc.SaveAs("C:\\Users\\" + userName + "\\Desktop\\TestResults\\" + testName);
+                    //Process.Start("WINWORD.EXE", "C:\\Users\\" + userName + "\\Desktop\\TestResults\\" + testName);
                     //Generic.signoutBtn.Click();
                     //context.Close();
                 }
@@ -134,6 +129,85 @@ namespace NUnit.Tests1
         [Category("HIPP WF Paper App")]
         public void TC_IT03_HIPP_Workflow_Deny_Initial_Paper_Application()
         {
+            MemberInput();
+            void MemberInput()
+            {
+                ScreenCaputres caputres = new ScreenCaputres();
+                //caputres.TakeVideo(@"C:\\Users\\bryar.h.cole\Desktop\\TestResults\\");
+                string userName = "bryar.h.cole";
+                #region Start up
+                ExtentTest test = null;
+                context = new ChromeDriver();
+                context.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+                Generic generic = new Generic(context);
+                Utility utility = new Utility(context);
+                APHPHomePage loginPage = new APHPHomePage(context);
+                MemberPortalDashBoard landingPage = new MemberPortalDashBoard(context);
+                InitiateTest startUp = new InitiateTest(context);
+                CreateHIPPApplicationMember app = new CreateHIPPApplicationMember();
+                MyHIPPApplicationPage myHIPPApplicationPage = new MyHIPPApplicationPage(context);
+                context.Url = startUp.AWSINTWoker;
+                context.Manage().Window.Maximize();
+                DateTime now = DateTime.Now;
+
+                #endregion
+
+                System.IO.Directory.CreateDirectory(screenshotLocation);
+
+                //DocX doc = genWordDoc.CreateWordDoc(testCaseID, 152045);
+                //TestCase testCase = utility.GetTestCase(testCaseID, 152045);
+                //string testName = testCase.TestCaseId.ToString() + "_" + testCase.TestCaseName.Replace(" ", "_") + ".docx";
+                //string scenario = testCase.TestCaseName;
+
+
+                try
+                {
+
+                    loginPage.LoginPage("willbsmith", "user@123A");
+                    //utility.RecordStepStatusMAIN("Login APHP success", screenshotLocation, "LoginSuccess");
+
+                    //hIPPSearch.ClickBeginNewApp();
+                    generic.HoverByLinkText("HIPP Application");
+                    generic.LinkTextClick("My HIPP Application");
+                    myHIPPApplicationPage.InputSelectType("New");
+                    myHIPPApplicationPage.BeginApplicationClick();
+                    app.SubmitHIPPCaseSubmissionMember(context);
+
+
+                }
+
+
+                catch (NoSuchElementException e)
+                {
+
+                    //utility.RecordStepStatusMAIN("Element you are looking for does not exist, error mssage is as follows: " + e.Message, screenshotLocation, "NoSuchElement");
+                    throw;
+                }
+                catch (Exception e)
+                {
+
+                    //utility.RecordStepStatusMAIN("An exception occurred within the code, please see error message: " + e.Message, screenshotLocation, "Error", doc);
+                    throw;
+                }
+
+                finally
+                {
+
+                    try
+                    {
+                        Thread.Sleep(3000);
+                        //doc.SaveAs("C:\\Users\\" + userName + "\\Desktop\\TestResults\\" + testName);
+                        //Process.Start("WINWORD.EXE", "C:\\Users\\" + userName + "\\Desktop\\TestResults\\" + testName);
+                        //Generic.signoutBtn.Click();
+                        //context.Close();
+                    }
+                    catch
+                    {
+                        //context.Close();
+                    }
+
+                }
+            }
 
         }
         [Test]

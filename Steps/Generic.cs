@@ -26,7 +26,6 @@ namespace NUnit.Tests1.Utilities
 
         [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'signoutBtn')]")]
         public static IWebElement signoutBtn { get; set; }
-
         public IWebElement AccessElement(IWebElement element, IWebElement wrapper, string text)
         {
             Click(wrapper);
@@ -50,7 +49,7 @@ namespace NUnit.Tests1.Utilities
         }
         public IWebElement Click(IWebElement ele)
         {
-            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(5));
+            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(10));
             wait.Until(context =>
             {
                 try
@@ -69,7 +68,7 @@ namespace NUnit.Tests1.Utilities
                         exType == typeof(InvalidOperationException))
                     {
 
-                        Console.Write("New exception: \n" + ex.Message);
+                        Console.Write("New exception: \n" + ex.InnerException.Message + "\n \n");
 
                         return false; //By returning false, wait will still rerun the func.
                     }
@@ -84,12 +83,13 @@ namespace NUnit.Tests1.Utilities
         }
         public IWebElement SendKeys(IWebElement ele, IWebElement wrapper,string text)
         {
-            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(5));
+            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(10));
             wait.Until(context =>
             {
                 try
                 {
                     Click(wrapper);
+                    Console.WriteLine("Click Successful");
                     ele.SendKeys(text);
                 }
                 catch (Exception ex)
@@ -115,10 +115,9 @@ namespace NUnit.Tests1.Utilities
             });
             return ele;
         }
-
         public IWebElement SendKeys(IWebElement ele, string text)
         {
-            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(5));
+            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(10));
             wait.Until(context =>
             {
                 try
@@ -151,7 +150,7 @@ namespace NUnit.Tests1.Utilities
         public string GetText(IWebElement ele)
         {
             string text = "";
-            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(5));
+            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(10));
             wait.Until(context =>
             {
                 try
@@ -175,7 +174,7 @@ namespace NUnit.Tests1.Utilities
                     }
                     else
                     {
-                        throw; //Rethrow exception if it's not ignore type.
+                        //throw; //Rethrow exception if it's not ignore type.
                     }
                 }
                 return true;
@@ -184,7 +183,7 @@ namespace NUnit.Tests1.Utilities
         }
         public IWebElement Clear(IWebElement ele)
         {
-            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(5));
+            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(10));
             wait.Until(context =>
             {
                 try
@@ -213,7 +212,6 @@ namespace NUnit.Tests1.Utilities
             });
             return ele;
         }
-
         public IWebElement Click(IWebElement ele, int timeInSeconds)
         {
             WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(timeInSeconds));
@@ -344,7 +342,6 @@ namespace NUnit.Tests1.Utilities
             });
             return ele;
         }
-
         public IWebElement CheckBox(IWebElement ele, int timeInSeconds)
         {
             WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(timeInSeconds));
@@ -376,7 +373,6 @@ namespace NUnit.Tests1.Utilities
             });
             return ele;
         }
-
         #region Search Result and assigned items buttons
         /// <summary>
         /// Search Result buttons
@@ -409,17 +405,42 @@ namespace NUnit.Tests1.Utilities
 
         #endregion
         //Shout out to BV for this Idea
-
         #region Generic Item Hover    
         /// <summary>
         /// Generic Item Hover
         /// </summary>
         /// <param name="elementLinkText"></param>
-        /// 
         public Actions HoverByElement(IWebElement element)
         {
             Actions action = new Actions(context);
-            action.MoveToElement(element).Perform();
+            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(3));
+            wait.Until(context =>
+            {
+                try
+                {
+                    action.MoveToElement(element).Perform();
+                }
+                catch (Exception ex)
+                {
+                    Type exType = ex.GetType();
+                    if (exType == typeof(TargetInvocationException) ||
+                        exType == typeof(NoSuchElementException) ||
+                        exType == typeof(WebDriverTimeoutException) ||
+                        exType == typeof(ElementClickInterceptedException) ||
+                        exType == typeof(ElementNotVisibleException) ||
+                        exType == typeof(StaleElementReferenceException) ||
+                        exType == typeof(InvalidOperationException))
+                    {
+                        Console.Write("New exception: \n" + ex.Message);
+                        return false; //By returning false, wait will still rerun the func.
+                    }
+                    else
+                    {
+                        throw; //Rethrow exception if it's not ignore type.
+                    }
+                }
+                return true;
+            });
             return action;
         }
         public Actions HoverByLinkText(string elementLinkText)
@@ -442,7 +463,7 @@ namespace NUnit.Tests1.Utilities
         }
         #endregion
         //Yes IDs matter bruh
-        public void GenericCheveronClick(string id)
+        public void CheveronClick(string id)
         {
             WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(20));
             wait.Until(context =>
@@ -475,8 +496,7 @@ namespace NUnit.Tests1.Utilities
             });
 
         }
-
-        public void GenericLinkTextClick(string linkText)
+        public void LinkTextClick(string linkText)
         {
 
 
@@ -508,11 +528,7 @@ namespace NUnit.Tests1.Utilities
 
                 return true;
             });
-
         }
-        //'//*[@id="TestTable"]//tr[3]//td[2]'          // cell by row and column (e.g. 3rd row, 2nd column) (css: #TestTable tr:nth-child(3) td:nth-child(2))
-        //'//td[preceding-sibling::td="t"]'             // cell immediately following cell containing 't' exactly
-        //'td[preceding-sibling::td[contains(.,"t")]]'  // cell immediately following cell containing 't' (css: td:contains('t') ~ td)
         public void SelectTableCell(string tableID, string row, string column)
 
         {
@@ -545,7 +561,6 @@ namespace NUnit.Tests1.Utilities
                 return true;
             });
         }
-
         /// <summary>
         /// For displaying images in the report
         /// </summary>

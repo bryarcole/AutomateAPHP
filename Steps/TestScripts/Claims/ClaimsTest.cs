@@ -51,7 +51,7 @@ namespace NUnit.Tests1
             WorkerPortalLandingPage landingPage = new WorkerPortalLandingPage(context);
             HIPPSearchPage hIPPSearch = new HIPPSearchPage(context);
             InitiateTest startUp = new InitiateTest(context);
-            CreateHIPPApplication app = new CreateHIPPApplication();
+            CreateHIPPApplicationWorker app = new CreateHIPPApplicationWorker();
             HIPPWorkFlow workFlow = new HIPPWorkFlow();
             WordDocGen genWordDoc = new WordDocGen();
             ClaimsSearchPage claimsSearchPage = new ClaimsSearchPage(context);
@@ -79,11 +79,11 @@ namespace NUnit.Tests1
                 loginPage.LoginPage(usernameINTWorker, passwordINTWorker);
                 //utility.RecordStepStatusMAIN("Login APHP success", screenshotLocation, "LoginSuccess", doc);
                 generic.HoverByLinkText("Claims And Authorizations");
-                generic.GenericLinkTextClick("Claim Search");
+                generic.LinkTextClick("Claim Search");
                 claimsSearchPage.BeginNewClaimClick();
                 beginNewClaimPage.SelectClaimType("Professional");
                 beginNewClaimPage.ClickBeginNewClaim();
-                generic.GenericCheveronClick("9");
+                generic.CheveronClick("9");
                 Console.WriteLine(summaryInformation.GetAdjustedStatus);
                 Console.WriteLine(summaryInformation.GetBenefitPlan);
                 Console.WriteLine(summaryInformation.GetClaimEncounterStatus);

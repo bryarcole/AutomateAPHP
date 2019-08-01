@@ -163,7 +163,6 @@ namespace NUnit.Tests1.Utilities
 
             props.Logger = logger;
             #endregion
-
             Color royalBlue = Color.FromName("RoyalBlue");
             Color white = Color.FromName("White");
             RequirementsTraceabilityJobs requirementsTraceabilityJob = new RequirementsTraceabilityJobs(props);

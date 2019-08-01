@@ -46,8 +46,10 @@ namespace NUnit.Tests1.Pages
             GrabGeneric(context).Click(PasswordOverlay);
             GrabGeneric(context).SendKeys(PasswordInput, password);
             GrabGeneric(context).Click(LoginButton);
+            context.Url = startUp.AWSINTWoker;
+
         }
-        
+
         public static IWebElement User(IWebDriver driver)
         {
             IWebElement UserNameInput = driver.FindElement(By.Id("UsernameTextBox"));

@@ -32,11 +32,6 @@ namespace NUnit.Tests1
             extent.Flush();
         }
 
-        /////////////////////////////////////////
-      
-
-
-
         static public IWebDriver context;
         string screenshotLocation = @"C:\Users\bryar.h.cole\Desktop\AutomationProvjects\NUnit.Tests1\Reports\HippSearch\images\";
 

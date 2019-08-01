@@ -66,14 +66,14 @@ namespace NUnit.Tests1
                 utility.RecordStepStatusMAIN("Login APHP success", screenshotLocation, "LoginSuccess", doc);
 
                 landingPage.MemberHover();
-                generic.GenericLinkTextClick("Member Search");
+                generic.LinkTextClick("Member Search");
                 membersearch.SearchMember("Member ID", "Contains", memberId);
                 membersearch.SearchButtonClick();
 
-                generic.GenericLinkTextClick(memberId);
-                generic.GenericLinkTextClick("Transactions");
+                generic.LinkTextClick(memberId);
+                generic.LinkTextClick("Transactions");
                 utility.RecordStepStatusMAIN("Add new item displayed", screenshotLocation, "Buy in displayed", doc);
-                generic.GenericLinkTextClick("Add new item");
+                generic.LinkTextClick("Add new item");
                 utility.RecordStepStatusMAIN("Add new item", screenshotLocation, "Grid is displayed", doc);
 
                 //input info
@@ -83,19 +83,19 @@ namespace NUnit.Tests1
                 buyIn.SentRecievedDateInput(now.ToString("MM/dd/yyyy"));
                 utility.RecordStepStatusMAIN("Input before insert", screenshotLocation, "InfoInput", doc);
 
-                generic.GenericLinkTextClick("Insert");
+                generic.LinkTextClick("Insert");
                 utility.RecordStepStatusMAIN("Input after insert", screenshotLocation, "Afterinput", doc);
 
                 buyIn.clickSaveButton();
                 utility.RecordStepStatusMAIN("Save Button", screenshotLocation, "AfterSave", doc);
                 //input info
                 landingPage.MemberHover();
-                generic.GenericLinkTextClick("Member Search");
+                generic.LinkTextClick("Member Search");
                 membersearch.SearchMember("Member ID", "Contains", memberId);
                 membersearch.SearchButtonClick();
-                generic.GenericLinkTextClick(memberId);
+                generic.LinkTextClick(memberId);
 
-                generic.GenericLinkTextClick("Transactions");
+                generic.LinkTextClick("Transactions");
                 utility.RecordStepStatusMAIN("Results", screenshotLocation, "ResultDisplayed", doc);
 
 
@@ -180,14 +180,14 @@ namespace NUnit.Tests1
                 utility.RecordStepStatusMAIN("Login APHP success", screenshotLocation, "LoginSuccess", doc);
 
                 landingPage.MemberHover();
-                generic.GenericLinkTextClick("Member Search");
+                generic.LinkTextClick("Member Search");
                 membersearch.SearchMember("Member ID", "Contains",memberId);
                 membersearch.SearchButtonClick();
 
-                generic.GenericLinkTextClick(memberId);
-                generic.GenericLinkTextClick("Transactions");
+                generic.LinkTextClick(memberId);
+                generic.LinkTextClick("Transactions");
                 utility.RecordStepStatusMAIN("Add new item displayed", screenshotLocation, "Buy in displayed", doc);
-                generic.GenericLinkTextClick("Add new item");
+                generic.LinkTextClick("Add new item");
                 utility.RecordStepStatusMAIN("Add new item", screenshotLocation, "Grid is displayed", doc);
 
                 buyIn.MedicarePartInput("A");
@@ -197,19 +197,19 @@ namespace NUnit.Tests1
                 buyIn.SentRecievedDateInput(now.ToString("MM/dd/yyyy"));
                 utility.RecordStepStatusMAIN("Input before insert", screenshotLocation, "InfoInput", doc);
 
-                generic.GenericLinkTextClick("Insert");
+                generic.LinkTextClick("Insert");
                 utility.RecordStepStatusMAIN("Input after insert", screenshotLocation, "Afterinput", doc);
 
                 buyIn.clickSaveButton();
                 utility.RecordStepStatusMAIN("Save Button", screenshotLocation, "AfterSave", doc);
 
                 landingPage.MemberHover();
-                generic.GenericLinkTextClick("Member Search");
+                generic.LinkTextClick("Member Search");
                 membersearch.SearchMember("Member ID", "Contains", memberId);
                 membersearch.SearchButtonClick();
-                generic.GenericLinkTextClick(memberId);
+                generic.LinkTextClick(memberId);
 
-                generic.GenericLinkTextClick("Transactions");
+                generic.LinkTextClick("Transactions");
                 utility.RecordStepStatusMAIN("Results", screenshotLocation, "ResultDisplayed", doc);
 
 
@@ -295,14 +295,14 @@ namespace NUnit.Tests1
                 utility.RecordStepStatusMAIN("Login APHP success", screenshotLocation, "LoginSuccess", doc);
 
                 landingPage.MemberHover();
-                generic.GenericLinkTextClick("Member Search");
+                generic.LinkTextClick("Member Search");
                 membersearch.SearchMember("Member ID", "Contains", memberId);
                 membersearch.SearchButtonClick();
 
-                generic.GenericLinkTextClick(memberId);
-                generic.GenericLinkTextClick("Transactions");
+                generic.LinkTextClick(memberId);
+                generic.LinkTextClick("Transactions");
                 utility.RecordStepStatusMAIN("Add new item displayed", screenshotLocation, "Buy in displayed", doc);
-                generic.GenericLinkTextClick("Add new item");
+                generic.LinkTextClick("Add new item");
                 utility.RecordStepStatusMAIN("Add new item", screenshotLocation, "Grid is displayed", doc);
 
                 buyIn.MedicarePartInput("A");
@@ -312,19 +312,19 @@ namespace NUnit.Tests1
                 buyIn.SentRecievedDateInput(now.ToString("CC/"+ "MM/dd/yyyy"));
                 utility.RecordStepStatusMAIN("Input before insert", screenshotLocation, "InfoInput", doc);
 
-                generic.GenericLinkTextClick("Insert");
+                generic.LinkTextClick("Insert");
                 utility.RecordStepStatusMAIN("Input after insert", screenshotLocation, "Afterinput", doc);
 
                 buyIn.clickSaveButton();
                 utility.RecordStepStatusMAIN("Save Button", screenshotLocation, "AfterSave", doc);
 
                 landingPage.MemberHover();
-                generic.GenericLinkTextClick("Member Search");
+                generic.LinkTextClick("Member Search");
                 membersearch.SearchMember("Member ID", "Contains", memberId);
                 membersearch.SearchButtonClick();
-                generic.GenericLinkTextClick(memberId);
+                generic.LinkTextClick(memberId);
 
-                generic.GenericLinkTextClick("Transactions");
+                generic.LinkTextClick("Transactions");
                 utility.RecordStepStatusMAIN("Results", screenshotLocation, "ResultDisplayed", doc);
 
 
@@ -410,14 +410,14 @@ namespace NUnit.Tests1
                 utility.RecordStepStatusMAIN("Login APHP success", screenshotLocation, "LoginSuccess", doc);
 
                 landingPage.MemberHover();
-                generic.GenericLinkTextClick("Member Search");
+                generic.LinkTextClick("Member Search");
                 membersearch.SearchMember("Member ID", "Contains", memberId);
                 membersearch.SearchButtonClick();
 
-                generic.GenericLinkTextClick(memberId);
-                generic.GenericLinkTextClick("Transactions");
+                generic.LinkTextClick(memberId);
+                generic.LinkTextClick("Transactions");
                 utility.RecordStepStatusMAIN("Add new item displayed", screenshotLocation, "Buy in displayed", doc);
-                generic.GenericLinkTextClick("Add new item");
+                generic.LinkTextClick("Add new item");
                 utility.RecordStepStatusMAIN("Add new item", screenshotLocation, "Grid is displayed", doc);
 
                 //Inputs
@@ -431,19 +431,19 @@ namespace NUnit.Tests1
 
                 utility.RecordStepStatusMAIN("Input before insert", screenshotLocation, "InfoInput", doc);
 
-                generic.GenericLinkTextClick("Insert");
+                generic.LinkTextClick("Insert");
                 utility.RecordStepStatusMAIN("Input after insert", screenshotLocation, "Afterinput", doc);
 
                 buyIn.clickSaveButton();
                 utility.RecordStepStatusMAIN("Save Button", screenshotLocation, "AfterSave", doc);
 
                 landingPage.MemberHover();
-                generic.GenericLinkTextClick("Member Search");
+                generic.LinkTextClick("Member Search");
                 membersearch.SearchMember("Member ID", "Contains", memberId);
                 membersearch.SearchButtonClick();
-                generic.GenericLinkTextClick(memberId);
+                generic.LinkTextClick(memberId);
 
-                generic.GenericLinkTextClick("Transactions");
+                generic.LinkTextClick("Transactions");
                 utility.RecordStepStatusMAIN("Results", screenshotLocation, "ResultDisplayed", doc);
 
 
@@ -528,14 +528,14 @@ namespace NUnit.Tests1
                 utility.RecordStepStatusMAIN("Login APHP success", screenshotLocation, "LoginSuccess", doc);
 
                 landingPage.MemberHover();
-                generic.GenericLinkTextClick("Member Search");
+                generic.LinkTextClick("Member Search");
                 membersearch.SearchMember("Member ID", "Contains", memberId);
                 membersearch.SearchButtonClick();
 
-                generic.GenericLinkTextClick(memberId);
-                generic.GenericLinkTextClick("Transactions");
+                generic.LinkTextClick(memberId);
+                generic.LinkTextClick("Transactions");
                 utility.RecordStepStatusMAIN("Add new item displayed", screenshotLocation, "Buy in displayed", doc);
-                generic.GenericLinkTextClick("Add new item");
+                generic.LinkTextClick("Add new item");
                 utility.RecordStepStatusMAIN("Add new item", screenshotLocation, "Grid is displayed", doc);
 
                 //Inputs
@@ -548,19 +548,19 @@ namespace NUnit.Tests1
 
                 utility.RecordStepStatusMAIN("Input before insert", screenshotLocation, "InfoInput", doc);
 
-                generic.GenericLinkTextClick("Insert");
+                generic.LinkTextClick("Insert");
                 utility.RecordStepStatusMAIN("Input after insert", screenshotLocation, "Afterinput", doc);
 
                 buyIn.clickSaveButton();
                 utility.RecordStepStatusMAIN("Save Button", screenshotLocation, "AfterSave", doc);
 
                 landingPage.MemberHover();
-                generic.GenericLinkTextClick("Member Search");
+                generic.LinkTextClick("Member Search");
                 membersearch.SearchMember("Member ID", "Contains", memberId);
                 membersearch.SearchButtonClick();
-                generic.GenericLinkTextClick(memberId);
+                generic.LinkTextClick(memberId);
 
-                generic.GenericLinkTextClick("Transactions");
+                generic.LinkTextClick("Transactions");
                 utility.RecordStepStatusMAIN("Results", screenshotLocation, "ResultDisplayed", doc);
 
 
@@ -646,14 +646,14 @@ namespace NUnit.Tests1
                 utility.RecordStepStatusMAIN("Login APHP success", screenshotLocation, "LoginSuccess", doc);
 
                 landingPage.MemberHover();
-                generic.GenericLinkTextClick("Member Search");
+                generic.LinkTextClick("Member Search");
                 membersearch.SearchMember("Member ID", "Contains", memberId);
                 membersearch.SearchButtonClick();
 
-                generic.GenericLinkTextClick(memberId);
-                generic.GenericLinkTextClick("Transactions");
+                generic.LinkTextClick(memberId);
+                generic.LinkTextClick("Transactions");
                 utility.RecordStepStatusMAIN("Add new item displayed", screenshotLocation, "Buy in displayed", doc);
-                generic.GenericLinkTextClick("Add new item");
+                generic.LinkTextClick("Add new item");
                 utility.RecordStepStatusMAIN("Add new item", screenshotLocation, "Grid is displayed", doc);
 
                 //Inputs
@@ -668,19 +668,19 @@ namespace NUnit.Tests1
 
                 utility.RecordStepStatusMAIN("Input before insert", screenshotLocation, "InfoInput", doc);
 
-                generic.GenericLinkTextClick("Insert");
+                generic.LinkTextClick("Insert");
                 utility.RecordStepStatusMAIN("Input after insert", screenshotLocation, "Afterinput", doc);
 
                 buyIn.clickSaveButton();
                 utility.RecordStepStatusMAIN("Save Button", screenshotLocation, "AfterSave", doc);
 
                 landingPage.MemberHover();
-                generic.GenericLinkTextClick("Member Search");
+                generic.LinkTextClick("Member Search");
                 membersearch.SearchMember("Member ID", "Contains", memberId);
                 membersearch.SearchButtonClick();
-                generic.GenericLinkTextClick(memberId);
+                generic.LinkTextClick(memberId);
 
-                generic.GenericLinkTextClick("Transactions");
+                generic.LinkTextClick("Transactions");
                 utility.RecordStepStatusMAIN("Results", screenshotLocation, "ResultDisplayed", doc);
 
 
@@ -767,14 +767,14 @@ namespace NUnit.Tests1
                 utility.RecordStepStatusMAIN("Login APHP success", screenshotLocation, "LoginSuccess", doc);
 
                 landingPage.MemberHover();
-                generic.GenericLinkTextClick("Member Search");
+                generic.LinkTextClick("Member Search");
                 membersearch.SearchMember("Member ID", "Contains", memberId);
                 membersearch.SearchButtonClick();
 
-                generic.GenericLinkTextClick(memberId);
-                generic.GenericLinkTextClick("Transactions");
+                generic.LinkTextClick(memberId);
+                generic.LinkTextClick("Transactions");
                 utility.RecordStepStatusMAIN("Add new item displayed", screenshotLocation, "Buy in displayed", doc);
-                generic.GenericLinkTextClick("Add new item");
+                generic.LinkTextClick("Add new item");
                 utility.RecordStepStatusMAIN("Add new item", screenshotLocation, "Grid is displayed", doc);
 
                 //Inputs
@@ -795,19 +795,19 @@ namespace NUnit.Tests1
 
                 utility.RecordStepStatusMAIN("Input before insert", screenshotLocation, "InfoInput", doc);
 
-                generic.GenericLinkTextClick("Insert");
+                generic.LinkTextClick("Insert");
                 utility.RecordStepStatusMAIN("Input after insert", screenshotLocation, "Afterinput", doc);
 
                 buyIn.clickSaveButton();
                 utility.RecordStepStatusMAIN("Save Button", screenshotLocation, "AfterSave", doc);
 
                 landingPage.MemberHover();
-                generic.GenericLinkTextClick("Member Search");
+                generic.LinkTextClick("Member Search");
                 membersearch.SearchMember("Member ID", "Contains", memberId);
                 membersearch.SearchButtonClick();
-                generic.GenericLinkTextClick(memberId);
+                generic.LinkTextClick(memberId);
 
-                generic.GenericLinkTextClick("Transactions");
+                generic.LinkTextClick("Transactions");
                 utility.RecordStepStatusMAIN("Results", screenshotLocation, "ResultDisplayed", doc);
 
 

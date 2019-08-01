@@ -112,10 +112,10 @@ namespace NUnit.Tests1.Utilities
         #endregion
         #region RecordPass Statuses with Extent Report and Word doc
         public ExtentTest RecordPassStatusExtent(
-            string LogNote, 
-            Status TestStatus, 
-            string ScreenshotLocation, 
-            string TestCase, 
+            string LogNote,
+            Status TestStatus,
+            string ScreenshotLocation,
+            string TestCase,
             ExtentTest test)
         {
             ScreenCaputres.TakeSreenShot(context, ScreenshotLocation + TestCase + ".png");
@@ -130,15 +130,15 @@ namespace NUnit.Tests1.Utilities
             string TestCase,
             ExtentTest test,
             DocX doc)
-        { 
+        {
 
             ScreenCaputres.TakeSreenShot(context, ScreenshotLocation + TestCase + ".png");
             //Extent Report
             test.Log(TestStatus, LogNote);
-            test.CreateNode(LogNote).AddScreenCaptureFromPath("images\\" + TestCase  + ".png");
+            test.CreateNode(LogNote).AddScreenCaptureFromPath("images\\" + TestCase + ".png");
 
             //Document
-            Xceed.Words.NET.Image img = doc.AddImage(ScreenshotLocation + TestCase  + ".png");
+            Xceed.Words.NET.Image img = doc.AddImage(ScreenshotLocation + TestCase + ".png");
             Picture p = img.CreatePicture();
             //Create a new paragraph  
             Paragraph par = doc.InsertParagraph(LogNote);
@@ -163,7 +163,7 @@ namespace NUnit.Tests1.Utilities
         {
             Thread.Sleep(2000);
 
-            ScreenCaputres.TakeSreenShot(context, ScreenshotLocation + TestCase  + ".png");
+            ScreenCaputres.TakeSreenShot(context, ScreenshotLocation + TestCase + ".png");
             test.Log(TestStatus, LogNote);
             test.CreateNode(LogNote).Log(TestStatus, description).AddScreenCaptureFromPath("images\\" + TestCase + ".png");
             Xceed.Words.NET.Image img = doc.AddImage(ScreenshotLocation + TestCase + ".png");
@@ -214,7 +214,7 @@ namespace NUnit.Tests1.Utilities
             ScreenCaputres.TakeSreenShot(context, ScreenshotLocation + TestCase + ".png");
             test.Log(TestStatus, LogNote);
             test.CreateNode(LogNote).Log(TestStatus, description).AddScreenCaptureFromPath("images\\" + TestCase + ".png");
-            Xceed.Words.NET.Image img = doc.AddImage(ScreenshotLocation + TestCase  + ".png");
+            Xceed.Words.NET.Image img = doc.AddImage(ScreenshotLocation + TestCase + ".png");
             Picture p = img.CreatePicture();
             //Create a new paragraph  
             Paragraph par = doc.InsertParagraph(LogNote);
@@ -291,6 +291,12 @@ namespace NUnit.Tests1.Utilities
         public string RandomAlphaString(int length)
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+        public string RandomNumberAlphaString(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ12345678912345678900";
             return new string(Enumerable.Repeat(chars, length)
               .Select(s => s[random.Next(s.Length)]).ToArray());
         }
@@ -399,7 +405,47 @@ namespace NUnit.Tests1.Utilities
         {
             return Regex.Replace(value, "<a[^>]+href=\"?'?(?!#[\\w-]+)([^'\">]+)\"?'?[^>]*>(.*?)</a>", "<a href=\"$1\" rel=\"nofollow\" target=\"_blank\">$2</a>", RegexOptions.IgnoreCase | RegexOptions.Compiled);
         }
-
+        public string GetRandomFirstName()
+        {
+            string[] names = { "Micheal", "Lee", "Aaron", "Shannon", "David", "Lisa", "Mary", "Austin", "Sam", "John", "Thomas", "Luka", "Marie", "Carlos", "Rose", "Lily", "Chance", "Shaun", "Ryan", "Ceasar" };
+            Random random = new Random();
+            int i = random.Next(names.Count());
+            return names[i];
+        }
+        public string GetRandomSurName()
+        {
+            string[] names = { "Micheal", "Lee", "Hammons", "Shannon", "David", "Lisa", "Mary", "Austin", "Sam", "Johnson", "Thomas", "Luka", "Marie", "Ryans", "Rose", "Lily", "Francis", "Shaun", "Gale", "Ceasar", "Malcom","Cole", "Wilson", "Brown", "Rowan", "DesMaris", "Barton", "Foster", "Vann", "Stephens", "Schiender", "Louis"};
+            Random random = new Random();
+            int i = random.Next(names.Count());
+            return names[i];
+        }
+        public string GetRandomCompanyName()
+        {
+            string[] names = { "Microsoft", "Accenture", "Global Inc.", "WalMart", "CNN", "Target", "All World Systems", "HP", "YETI Coolers", "State Government", "Local Government", "Barton Construction Inc.", "Swytch", "GLOBAL VISSE Inc", "Arrive Logistics", "Genius Business Solutions, Inc.", "Aptive Resources", "Indio", "LUV Inc.", "All Web Leads", "Technozant", "PROLIM Corp.", "ITL Corp", "Brown", "Rowans and Company", "Thai How Are You", "Dominoes Pizza", "Thundercloud Subs", "Ironworks BBQ", "Reagan Hospital", "Shereens Garden", "Turbo Tax" };
+            Random random = new Random();
+            int i = random.Next(names.Count());
+            return names[i];
+        }
+        public string GetRandomYesNo()
+        {
+            string[] names = { "Yes", "No" };
+            Random random = new Random();
+            int i = random.Next(names.Count());
+            return names[i];
+        }
+        public string GetRandomInsuranceType()
+        {
+            string[] names = { "Employer Plan", "COBRA" , "Individual Policy" };
+            Random random = new Random();
+            int i = random.Next(names.Count());
+            return names[i];
+        }
+        public string GetRandomCity()
+        {
+            string[] names = { "Richmond", "Roanoke", "Hopewell", "Virginia Beach", "Alexandria", "Norfolk", "Poquoson", "Portsmouth" };
+            Random random = new Random();
+            int i = random.Next(names.Count());
+            return names[i];
+        }
     }
 }
-

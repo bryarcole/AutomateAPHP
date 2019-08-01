@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 namespace NUnit.Tests1.Pages.WorkerPortal
 {
-    public class HIPPSubmitApplicationPage
+    public class HIPPSubmitApplicationPageWorker
     {
         IWebDriver context;
         WebDriverWait wait;
@@ -23,7 +23,7 @@ namespace NUnit.Tests1.Pages.WorkerPortal
         DateTime today = new DateTime();
         //utility utility = new utility(context);
 
-        public HIPPSubmitApplicationPage(IWebDriver context)
+        public HIPPSubmitApplicationPageWorker(IWebDriver context)
         {
             this.context = context;
             PageFactory.InitElements(context, this);
@@ -119,6 +119,8 @@ namespace NUnit.Tests1.Pages.WorkerPortal
             private IWebElement QuarterlyValidationDueDates { get; set; }
             #endregion
         }
+
+
         public class PolicyHolderEmployeeInformation
         {
             IWebDriver context;
@@ -426,9 +428,9 @@ namespace NUnit.Tests1.Pages.WorkerPortal
             private IWebElement SchoolEmpYes { get; set; }
             [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'SchoolEmp_1')]")]
             private IWebElement SchoolEmpNo { get; set; }
-            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'SchoolEmpPeriod')]")]
+            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'SchoolEmpPeriod_0')]")]
             private IWebElement SchoolEmpPeriod { get; set; }
-            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'SchoolEmpPeriod')]")]
+            [FindsBy(How = How.XPath, Using = "//input[contains(@id, 'SchoolEmpPeriod_1')]")]
             private IWebElement SchoolEmpPeriod2 { get; set; }
             #endregion
         }

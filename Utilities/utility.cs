@@ -409,43 +409,42 @@ namespace NUnit.Tests1.Utilities
         {
             string[] names = { "Micheal", "Lee", "Aaron", "Shannon", "David", "Lisa", "Mary", "Austin", "Sam", "John", "Thomas", "Luka", "Marie", "Carlos", "Rose", "Lily", "Chance", "Shaun", "Ryan", "Ceasar" };
             Random random = new Random();
-            int i = random.Next(names.Count());
-            return names[i];
+            return names[random.Next(names.Count())];
+
         }
         public string GetRandomSurName()
         {
             string[] names = { "Micheal", "Lee", "Hammons", "Shannon", "David", "Lisa", "Mary", "Austin", "Sam", "Johnson", "Thomas", "Luka", "Marie", "Ryans", "Rose", "Lily", "Francis", "Shaun", "Gale", "Ceasar", "Malcom","Cole", "Wilson", "Brown", "Rowan", "DesMaris", "Barton", "Foster", "Vann", "Stephens", "Schiender", "Louis"};
             Random random = new Random();
-            int i = random.Next(names.Count());
-            return names[i];
+            return names[random.Next(names.Count())];
+
         }
         public string GetRandomCompanyName()
         {
             string[] names = { "Microsoft", "Accenture", "Global Inc.", "WalMart", "CNN", "Target", "All World Systems", "HP", "YETI Coolers", "State Government", "Local Government", "Barton Construction Inc.", "Swytch", "GLOBAL VISSE Inc", "Arrive Logistics", "Genius Business Solutions, Inc.", "Aptive Resources", "Indio", "LUV Inc.", "All Web Leads", "Technozant", "PROLIM Corp.", "ITL Corp", "Brown", "Rowans and Company", "Thai How Are You", "Dominoes Pizza", "Thundercloud Subs", "Ironworks BBQ", "Reagan Hospital", "Shereens Garden", "Turbo Tax" };
             Random random = new Random();
-            int i = random.Next(names.Count());
-            return names[i];
+            return names[random.Next(names.Count())];
         }
         public string GetRandomYesNo()
         {
             string[] names = { "Yes", "No" };
             Random random = new Random();
-            int i = random.Next(names.Count());
-            return names[i];
+            return names[random.Next(names.Count())];
+
         }
         public string GetRandomInsuranceType()
         {
             string[] names = { "Employer Plan", "COBRA" , "Individual Policy" };
             Random random = new Random();
-            int i = random.Next(names.Count());
-            return names[i];
+            return names[random.Next(names.Count())];
+
         }
         public string GetRandomCity()
         {
             string[] names = { "Richmond", "Roanoke", "Hopewell", "Virginia Beach", "Alexandria", "Norfolk", "Poquoson", "Portsmouth" };
             Random random = new Random();
-            int i = random.Next(names.Count());
-            return names[i];
+            return names[random.Next(names.Count())];
+
         }
     }
 }

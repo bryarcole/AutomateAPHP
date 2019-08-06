@@ -227,6 +227,30 @@ namespace NUnit.Tests1.Steps
 
 
         }
+        public void FIllHIPPApplicationInfo(IWebDriver context, string AppNumber)
+        {
+            #region Start up
+            context.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            Generic generic = new Generic(context);
+
+            APHPHomePage loginPage = new APHPHomePage(context);
+            WorkerPortalLandingPage landingPage = new WorkerPortalLandingPage(context);
+            HIPPSearchPage hIPPSearch = new HIPPSearchPage(context);
+            InitiateTest startUp = new InitiateTest(context);
+            HIPPSubmitApplicationPageWorker submitApp = new HIPPSubmitApplicationPageWorker(context);
+            WorkItemComponent workitem = new WorkItemComponent(context);
+            CreateHIPPApplicationWorker app = new CreateHIPPApplicationWorker();
+            #endregion
+            loginPage.LoginPage("bryar.h.wrkr", "user@123A");
+            landingPage.HippApplicationSearch();
+            hIPPSearch.SearchHiPPCase("Contains", "Application ID", AppNumber);
+            hIPPSearch.SearchButtonClick();
+            generic.LinkTextClick(AppNumber);
+            workitem.ClickWorkItemButton();
+            Thread.Sleep(3000);
+            //hIPPSearch.ClickBeginNewApp();
+            app.SubmitHIPPCaseSubmissionWorker(context, false);
+        }
 
     }
 }

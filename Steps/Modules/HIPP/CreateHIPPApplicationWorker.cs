@@ -129,7 +129,7 @@ namespace NUnit.Tests1.Steps
             generic.CheveronClick("15");
             generic.CheveronClick("16");
             planInformation.PlanInformationInput(
-                "COBRA",
+                utility.GetRandomInsuranceType(),
                 "No",
                 now.AddYears(-12).ToString("MM/dd/yyyy"),
                 "Monthly",
@@ -143,7 +143,7 @@ namespace NUnit.Tests1.Steps
                 "Employee",
                 "Middle",
                 "Worker",
-                "4942005931",
+                utility.RandomNumericString(9),
                 now.AddYears(-43).ToString("MM/dd/yyyy"),
                 now.AddYears(-12).ToString("MM/dd/yyyy"),
                 "No",
@@ -152,14 +152,13 @@ namespace NUnit.Tests1.Steps
             generic.CheveronClick("18");
             generic.CheveronClick("19");
             membershipInformation.EmployeeMemberInput(
-                "No",
-                "Employee",
+                "Yes",
+                utility.GetRandomFirstName(),
                 "Middle",
-                "Worker",
-                DateTime.Today.AddYears(-15).ToString("MM/dd/yyyy"),
+                utility.GetRandomSurName(),
+                DateTime.Today.AddYears(-25).ToString("MM/dd/yyyy"),
                 "Guardian"
-                
-                );
+                ); 
             generic.CheveronClick("19");
             generic.CheveronClick("20");
             coverageAreasInformation.CoverageSelection(utility.RandomNumericString(1));
@@ -203,11 +202,11 @@ namespace NUnit.Tests1.Steps
                 "300",
                 "1,200"
                 );
-            planBenefit.SelectPlansBenefitsCoverage(utility.RandomNumericString(1));
-            planBenefit.SelectPlansBenefitsCoverage(utility.RandomNumericString(1));
-            planBenefit.SelectPlansBenefitsCoverage(utility.RandomNumericString(1));
+            planBenefit.SelectTypeOfHealthPlan(utility.RandomNumericString(1));
+            planBenefit.SelectTypeOfHealthPlan(utility.RandomNumericString(1));
+            planBenefit.SelectTypeOfHealthPlan(utility.RandomNumericString(1));
 
-            planBenefit.SelectPlansBenefitsCoverage(utility.RandomNumericString(1));
+            planBenefit.SelectTypeOfHealthPlan(utility.RandomNumericString(1));
 
             Thread.Sleep(2000);
             submitApp.ClickSave();
@@ -277,29 +276,29 @@ namespace NUnit.Tests1.Steps
             generic.CheveronClick("10");
             householdInformation.HouseHoldInformationInput(
                 "Self",
-                "Test",
+                utility.GetRandomFirstName(),
                 "",
-                "Person",
+                utility.GetRandomSurName(),
                 now.AddYears(-35).ToString("MM/dd/yyyy"),
-                "0298443004",
-                "333402593",
+                utility.RandomNumberAlphaString(10),
+                utility.RandomNumericString(9),
                 "Yes",
-                "Yes");
+                "Yes"); ;
             generic.CheveronClick("10");
             generic.CheveronClick("9");
             policyHolderEmployeeInformation.PolicyHolderEmployerInformationInput(
-                "Test",
+                utility.GetRandomFirstName(),
                 "",
-                "Person",
+                utility.GetRandomSurName(),
                 "233 Buchanan St",
                 "Apt101",
-                "Alexandria",
+                utility.GetRandomCity(),
                 "VA",
                 "22314",
-                "7033482934",
-                "7034449999",
-                "2020001111",
-                "TestPerson@gmail.com");
+                "703" + utility.RandomNumericString(7),
+                "703" + utility.RandomNumericString(7),
+                "202" + utility.RandomNumericString(7),
+                "TestPerson@gmail.com"); ;
             generic.CheveronClick("9");
 
             generic.CheveronClick("11");
@@ -313,29 +312,29 @@ namespace NUnit.Tests1.Steps
             generic.CheveronClick("12");
             generic.CheveronClick("13");
             employerAndResourcesInformation.EmploymentHumanResourcesInformationInput(
-                "Accenture",
-                "101010101",
+                utility.GetRandomCompanyName(),
+                utility.RandomNumericString(9),
                 "Made Up Street",
                 "Apt101",
-                "Alexandria",
+                utility.GetRandomCity(),
                 "VA",
                 "22314",
-                "Dale Dimmadone",
+                utility.GetRandomFirstName() + utility.GetRandomSurName(),
                 "technology",
-                "2022213300");
+                "2022213300"); ;
             generic.CheveronClick("13");
             generic.CheveronClick("14");
             generic.CheveronClick("15");
             companyInformation.CompanyInformationInput(
-                "Insurance Co.",
-                "9483924",
+                utility.GetRandomCompanyName(),
+                utility.RandomNumericString(9),
                 "Address Line One",
                 "Address line two",
-                "Charlotesvill",
+                utility.GetRandomCity(),
                 "VA",
                 "23019",
-                "Mike Adams",
-                "8883930023");
+                utility.GetRandomFirstName() + utility.GetRandomSurName(),
+                "8883930023"); ;
             generic.CheveronClick("15");
             generic.CheveronClick("16");
             planInformation.PlanInformationInput(
@@ -362,12 +361,12 @@ namespace NUnit.Tests1.Steps
             generic.CheveronClick("18");
             generic.CheveronClick("19");
             membershipInformation.EmployeeMemberInput(
-                "Employee",
+                "No",
+                utility.GetRandomFirstName(),
                 "Middle",
-                "Worker",
-                DateTime.Today.AddYears(-15).ToString("MM/dd/yyyy"),
-                "Guardian",
-                "No"
+                utility.GetRandomSurName(),
+                DateTime.Today.AddYears(-25).ToString("MM/dd/yyyy"),
+                "Guardian"
                 );
             generic.CheveronClick("19");
             generic.CheveronClick("20");
@@ -387,7 +386,7 @@ namespace NUnit.Tests1.Steps
             generic.CheveronClick("22");
             insuranceType.InsuranceTypeInput(
                 "Medical",
-                "Big Insurance Co.",
+                utility.GetRandomCompanyName(),
                 "Address One St.",
                 "101",
                 "Alexandria",
@@ -398,24 +397,24 @@ namespace NUnit.Tests1.Steps
             Thread.Sleep(2000);
             insuranceType.InsuranceTypeInput(
                 "Dental",
-                "Big Dental Co.",
+                utility.GetRandomCompanyName(),
                 "Maker St.",
                 "202",
-                "Potamic",
+                utility.GetRandomCity(),
                 "VA",
-                "22314",
+                "22" + utility.RandomNumericString(3),
                 "7039837771",
                 "86903954");
             Thread.Sleep(2000);
             planBenefit.PlanBenifitsInput(
                 "Yes",
-                "300",
-                "1,200"
+                utility.RandomNumericString(3),
+                utility.RandomNumericString(4)
                 );
-            planBenefit.SelectPlansBenefitsCoverage(utility.RandomNumericString(1));
-            planBenefit.SelectPlansBenefitsCoverage(utility.RandomNumericString(1));
-            planBenefit.SelectPlansBenefitsCoverage(utility.RandomNumericString(1));
-            planBenefit.SelectPlansBenefitsCoverage(utility.RandomNumericString(1));
+            planBenefit.SelectTypeOfHealthPlan(utility.RandomNumericString(1));
+            planBenefit.SelectTypeOfHealthPlan(utility.RandomNumericString(1));
+            planBenefit.SelectServicesUnderHealthPlan(utility.RandomNumericString(1));
+            planBenefit.SelectServicesUnderHealthPlan(utility.RandomNumericString(1));
             Thread.Sleep(2000);
             submitApp.ClickSave();
             Thread.Sleep(2000);

@@ -128,9 +128,8 @@ namespace NUnit.Tests1
 
         [Test]
         [Category("Fill Info")]
-        public void FillInfo()
-        {
-
+        public void FIllHIPPApplicationInfo()
+        { 
             #region Start up
             ExtentTest test = null;
             string scenario = "HIPP Submisssion WorkFlow";
@@ -156,23 +155,15 @@ namespace NUnit.Tests1
 
             #endregion
 
-            doc.InsertBookmark("Pass 1");
-            doc.InsertBookmark("Pass 2");
             loginPage.LoginPage("bryar.h.wrkr", "user@123A");
-            utility.RecordStepStatusMAIN("Log in in APHP Sucess", screenshotLocation, "LoginSuccess", doc);
             landingPage.HippApplicationSearch();
             hIPPSearch.SearchHiPPCase("Contains", "Application ID", "10000214");
             hIPPSearch.SearchButtonClick();
-            utility.RecordStepStatusMAIN("Search results", screenshotLocation, "SearchResults", doc);
             generic.LinkTextClick("10000214");
-            
             workitem.ClickWorkItemButton();
             Thread.Sleep(3000);
             //hIPPSearch.ClickBeginNewApp();
             app.SubmitHIPPCaseSubmissionWorker(context, false, screenshotLocation, doc);
-
-
-
         }
     }
 

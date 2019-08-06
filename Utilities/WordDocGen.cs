@@ -55,7 +55,7 @@ namespace NUnit.Tests1.Utilities
             {
                 string testName = testCase.TestCaseId.ToString() + "_" + testCase.TestCaseName.Replace(" ", "_").Replace(")", "_").Replace("(", "_").Replace("/", "_").Replace("\\", "_").Replace(" - ", "_").Replace("\"", "_").Replace("'", "_");
                 DocX doc = DocX.Create(testName);
-                var columnWidths = new float[] { 225f, 225f, 225f };
+                var columnWidths = new float[] { 225f, 225f, 400f };
                 Table testSummary = doc.AddTable(2, 3);
                 //Test Objective table
                 string TestDescription = testCase.TestDescription.Replace("<br>&gt;", "\n >").Replace("&nbsp;", "").Replace("&nbsp", "").Replace("&gt", ">").Replace("&gt;", ">").Replace("<br> &nbsp ", "\n").Replace("condiditons", "conditions").Replace("&lt;", "<").Replace("<br>", "\n").Replace(";", "").Replace("	", " ");
@@ -118,8 +118,8 @@ namespace NUnit.Tests1.Utilities
                     foreach (TestStep testStep in testCase.TestSteps)
                     {
                         i++;
-                        string action = Utility.RemoveTags(testStep.Action);
-                        string expected = Utility.RemoveTags(testStep.Expected);
+                        string action = Utility.RemoveTags(testStep.Action).Replace("<br>&gt;", "\n >").Replace("&nbsp;", "").Replace("&nbsp", "").Replace("&gt", ">").Replace("&gt;", ">").Replace("<br> &nbsp ", "\n").Replace("condiditons", "conditions").Replace("&lt;", "<").Replace("<br>", "\n").Replace(";", "").Replace("	", " "); 
+                        string expected = Utility.RemoveTags(testStep.Expected).Replace("<br>&gt;", "\n >").Replace("&nbsp;", "").Replace("&nbsp", "").Replace("&gt", ">").Replace("&gt;", ">").Replace("<br> &nbsp ", "\n").Replace("condiditons", "conditions").Replace("&lt;", "<").Replace("<br>", "\n").Replace(";", "").Replace("	", " ");
 
                         //Console.WriteLine("Test Step " + i);
                         testActionResult.Rows[i].Cells[0].Paragraphs[0].Append(testStep.StepNumber.ToString());

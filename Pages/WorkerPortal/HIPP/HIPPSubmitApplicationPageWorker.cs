@@ -1127,7 +1127,7 @@ namespace NUnit.Tests1.Pages.WorkerPortal
                         ClickMedicalLink();
                         InputCompanyName(companyName);
                         InputAddressLineOne(addressLineOne);
-                        InputAddressLineOne(addressLineTwo);
+                        InputAddressLineTwo(addressLineTwo);
                         InputCity(city);
                         InputState(state);
                         InputZipCode(zipCode);
@@ -1260,7 +1260,7 @@ namespace NUnit.Tests1.Pages.WorkerPortal
             /// 7 = Dental Covred;
             /// </summary>
             /// <param name="selection"></param>
-            public void SelectPlansBenefitsCoverage(string selection = null)
+            public void SelectTypeOfHealthPlan(string selection = null)
             {
                 switch (selection)
                 {
@@ -1277,6 +1277,43 @@ namespace NUnit.Tests1.Pages.WorkerPortal
                         ClickHealthPlanOther();
                         break;
                     case "4":
+                        ClickComprehensiveMajorMedical();
+                        break;
+                    case "5":
+                        ClickHmoPPO();
+                        break;
+                    case "6":
+                        ClickHospitalOnlyHealPlan();
+                        break;
+                    case "7":
+                        ClickHealthPlanOther();
+                        break;
+                    case "8":
+                        ClickComprehensiveMajorMedical();
+                        break;
+                    case "9":
+                        ClickHmoPPO();
+                        break;
+                }
+
+            }
+            public void SelectServicesUnderHealthPlan(string selection = null)
+            {
+                switch (selection)
+                {
+                    case "0":
+                        ClickMedicalCovered();
+                        break;
+                    case "1":
+                        ClickPharmacyCovered();
+                        break;
+                    case "2":
+                        ClickVisionCovered();
+                        break;
+                    case "3":
+                        ClickDentalCovered();
+                        break;
+                    case "4":
                         ClickMedicalCovered();
                         break;
                     case "5":
@@ -1287,6 +1324,12 @@ namespace NUnit.Tests1.Pages.WorkerPortal
                         break;
                     case "7":
                         ClickDentalCovered();
+                        break;
+                    case "8":
+                        ClickMedicalCovered();
+                        break;
+                    case "9":
+                        ClickPharmacyCovered();
                         break;
                 }
             }

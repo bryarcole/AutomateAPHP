@@ -40,8 +40,8 @@ namespace NUnit.Tests1.Pages
 
             InitiateTest startUp = new InitiateTest(context);
             //Thread.Sleep(3000);
-            context.Url = startUp.AWSINTWoker;
             context.Manage().Window.Maximize();
+
             GrabGeneric(context).SendKeys(UserNameInput, username);
             GrabGeneric(context).Click(PasswordOverlay);
             GrabGeneric(context).SendKeys(PasswordInput, password);

@@ -26,6 +26,8 @@ namespace NUnit.Tests1.Utilities
 
         [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'signoutBtn')]")]
         public static IWebElement signoutBtn { get; set; }
+        public IWebElement ClickSignoutButton() => Click(signoutBtn);
+
         public IWebElement AccessElement(IWebElement element, IWebElement wrapper, string text)
         {
             Click(wrapper);
@@ -47,14 +49,15 @@ namespace NUnit.Tests1.Utilities
             return null;
 
         }
-        public IWebElement Click(IWebElement ele)
+        public bool IsVisible(IWebElement ele)
         {
+            bool displayed = false;
             WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(10));
             wait.Until(context =>
             {
                 try
                 {
-                    ele.Click();
+                    displayed = ele.Displayed;
                 }
                 catch (Exception ex)
                 {
@@ -79,18 +82,64 @@ namespace NUnit.Tests1.Utilities
                 }
                 return true;
             });
-            return ele;
+            return displayed;
         }
-        public IWebElement SendKeys(IWebElement ele, IWebElement wrapper,string text)
+        public IWebElement Click(IWebElement ele)
         {
             WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(10));
             wait.Until(context =>
             {
                 try
                 {
-                    Click(wrapper);
-                    Console.WriteLine("Click Successful");
-                    ele.SendKeys(text);
+                    ele.Click();
+                }
+                catch (Exception ex)
+                {
+                    Type exType = ex.GetType();
+                    if (exType == typeof(TargetInvocationException) ||
+                        exType == typeof(NoSuchElementException) ||
+                        exType == typeof(ElementClickInterceptedException) ||
+                        exType == typeof(ElementNotVisibleException) ||
+                        exType == typeof(StaleElementReferenceException) ||
+                        exType == typeof(InvalidOperationException))
+                    {
+
+                        Console.Write("New exception: \n" + ex.InnerException.Message + "\n \n");
+
+                        return false; //By returning false, wait will still rerun the func.
+                    }
+                    else
+                    {
+                        throw; //Rethrow exception if it's not ignore type.
+                    }
+                }
+                return true;
+            });
+            return ele;
+        }
+        public IWebElement SendKeys(IWebElement ele, IWebElement wrapper, string text)
+
+        {
+            WebDriverWait wait = new WebDriverWait(context, TimeSpan.FromSeconds(10));
+            wait.Until(context =>
+            {
+                try
+                {
+                    string val = ele.GetAttribute("value");
+                    if (val.Equals(" "))
+                    {
+                        Click(wrapper);
+                        Console.WriteLine("\n" + "Element empty");
+                        ele.SendKeys(text);
+                    }
+                    else
+                    {
+                        Console.Write("\n" + "Vetting element.... ");
+                        string elementText = GetText(ele);
+                        VetElement(ele, wrapper, val, text);
+                        Console.Write("\n" + "Finished vetting element successfully" + "\n");
+
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -122,7 +171,21 @@ namespace NUnit.Tests1.Utilities
             {
                 try
                 {
-                    ele.SendKeys(text);
+                    string val = ele.GetAttribute("value");
+
+                    if (val.Equals(" ")) 
+                    {
+                        Console.WriteLine("\n" + "Element empty");
+                        ele.SendKeys(text);
+                    }
+                    else
+                    {
+                        Console.Write("\nVettin element.... ");
+
+                        VetElement(ele, val, text);
+                        Console.Write("\n" + "Finished vetting element successfully" + "\n");
+
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -572,5 +635,82 @@ namespace NUnit.Tests1.Utilities
             string location = "images\\" + testCase + testCount + ".png";
             return location;
         }
+
+        private void VetElement(IWebElement element,IWebElement wrapper , string elementText, string text)
+        {
+            switch (elementText)
+            {
+                case "###-###-####":
+                    Click(wrapper);
+                    element.SendKeys(text);
+                    break;
+                case "#####-####":
+                    Click(wrapper);
+                    element.SendKeys(text);
+                    break;
+                case "mm/dd/yyyy":
+                    Click(wrapper);
+                    element.SendKeys(text);
+                    break;
+                case "__-_______":
+                    Click(wrapper);
+                    element.SendKeys(text);
+                    break;
+                case "_____-____":
+                    Click(wrapper);
+                    element.SendKeys(text);
+                    break;
+                case "User Name":
+                    Click(wrapper);
+                    element.SendKeys(text);
+                    break;
+                case "Password":
+                    Click(wrapper);
+                    element.SendKeys(text);
+                    break;
+                default:
+                    Console.Write(" \nElement Text not matching cases: ");
+                    Console.Write("\n" + elementText);
+                    return;
+
+            }
+        }
+        private void VetElement(IWebElement element, string elementText, string text)
+        {
+            switch (elementText)
+            {
+                case "###-###-####":
+                    element.SendKeys(text);
+                    break;
+                case "#####-####":
+                    element.SendKeys(text);
+                    break;
+                case "mm/dd/yyyy":
+                    element.SendKeys(text);
+                    break;
+                case "__-_______":
+                    element.SendKeys(text);
+                    break;
+                case "_____-____":
+                    element.SendKeys(text);
+                    break;
+                case "User Name":
+                    element.SendKeys(text);
+                    break;
+                case "Password":
+                    element.SendKeys(text);
+                    break;
+                default:
+                    Console.Write("\n*********\n");
+                    Console.Write("\n*********\n");
+                    Console.Write("\nElement Text not matching cases but being valued as empty: ");
+                    Console.Write("\n" + elementText);
+                    Console.Write("\n*********\n");
+                    Console.Write("\n*********\n");
+                    return;
+
+            }
+        }
+
     }
 }

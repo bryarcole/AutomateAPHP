@@ -132,6 +132,8 @@ namespace NUnit.Tests1
             MemberInput();
             void MemberInput()
             {
+
+                IWebDriver context;
                 ScreenCaputres caputres = new ScreenCaputres();
                 //caputres.TakeVideo(@"C:\\Users\\bryar.h.cole\Desktop\\TestResults\\");
                 string userName = "bryar.h.cole";
@@ -144,6 +146,7 @@ namespace NUnit.Tests1
                 APHPHomePage loginPage = new APHPHomePage(context);
                 MemberPortalDashBoard landingPage = new MemberPortalDashBoard(context);
                 InitiateTest startUp = new InitiateTest(context);
+                HIPPWorkFlow hIPPWorkFlow = new HIPPWorkFlow();
                 CreateHIPPApplicationMember app = new CreateHIPPApplicationMember();
                 MyHIPPApplicationPage myHIPPApplicationPage = new MyHIPPApplicationPage(context);
                 context.Url = startUp.AWSINTWoker;
@@ -152,7 +155,7 @@ namespace NUnit.Tests1
 
                 #endregion
 
-                System.IO.Directory.CreateDirectory(screenshotLocation);
+                //System.IO.Directory.CreateDirectory(screenshotLocation);
 
                 //DocX doc = genWordDoc.CreateWordDoc(testCaseID, 152045);
                 //TestCase testCase = utility.GetTestCase(testCaseID, 152045);
@@ -165,13 +168,23 @@ namespace NUnit.Tests1
 
                     loginPage.LoginPage("willbsmith", "user@123A");
                     //utility.RecordStepStatusMAIN("Login APHP success", screenshotLocation, "LoginSuccess");
-
+                    string appnumber;
                     //hIPPSearch.ClickBeginNewApp();
                     generic.HoverByLinkText("HIPP Application");
                     generic.LinkTextClick("My HIPP Application");
                     myHIPPApplicationPage.InputSelectType("New");
                     myHIPPApplicationPage.BeginApplicationClick();
-                    app.SubmitHIPPCaseSubmissionMember(context);
+                    if (myHIPPApplicationPage.IsErrorVisible())
+                    {
+                        appnumber = myHIPPApplicationPage.GetAppNumber();
+                        generic.LinkTextClick("Logout");
+                        hIPPWorkFlow.FIllHIPPApplicationInfo(context, appnumber);
+
+                    }
+                    else
+                    {
+                        app.SubmitHIPPCaseSubmissionMember(context);
+                    }
 
 
                 }
@@ -208,6 +221,7 @@ namespace NUnit.Tests1
 
                 }
             }
+
 
         }
         [Test]

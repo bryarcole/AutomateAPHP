@@ -45,7 +45,7 @@ namespace NUnit.Tests1.Utilities
             Color royalBlue = Color.FromName("RoyalBlue");
             Color white = Color.FromName("White");
             RequirementsTraceabilityJobs requirementsTraceabilityJob = new RequirementsTraceabilityJobs(props);
-            string location = "C:\\Users\\" + userName + "\\Desktop\\Evidence Docs for Suite " + suiteID;
+            string location = "C:\\Users\\" + userName + "\\Desktop\\EvidenceSuite " + suiteID;
             System.IO.Directory.CreateDirectory(location);
 
             List<TestCase> cases = new List<TestCase>();
@@ -53,23 +53,51 @@ namespace NUnit.Tests1.Utilities
 
             foreach (TestCase testCase in cases)
             {
-                string testName = testCase.TestCaseId.ToString() + "_" + testCase.TestCaseName.Replace(" ", "_").Replace(")", "_").Replace("(", "_").Replace("/", "_").Replace("\\", "_").Replace(" - ", "_").Replace("\"", "_").Replace("'", "_");
+                string fileName = "";
+                string testName = testCase.TestCaseId.ToString() + "_" + testCase.TestCaseName.Replace(" ", "_").Replace(")", "_").Replace("(", "_").Replace("/", "_").Replace("\\", "_").Replace(" - ", "_").Replace("\"", "_").Replace("'", "_").Replace("▪","_");
+                if (testName.Length > 150)
+                {
+                    fileName = testName.Substring(0,100);
+                }
+                else
+                {
+                    fileName = testName;
+                }
+
                 DocX doc = DocX.Create(testName);
                 var columnWidths = new float[] { 225f, 225f, 400f };
                 Table testSummary = doc.AddTable(2, 3);
                 //Test Objective table
-                string TestDescription = testCase.TestDescription.Replace("<br>&gt;", "\n >").Replace("&nbsp;", "").Replace("&nbsp", "").Replace("&gt", ">").Replace("&gt;", ">").Replace("<br> &nbsp ", "\n").Replace("condiditons", "conditions").Replace("&lt;", "<").Replace("<br>", "\n").Replace(";", "").Replace("	", " ");
-                doc.InsertParagraph("Test Objective").FontSize(16);
-                testSummary.Rows[0].Cells[0].Paragraphs.First().Append("#").Color(white);
-                testSummary.Rows[0].Cells[1].Paragraphs.First().Append("Title").Color(white);
-                testSummary.Rows[0].Cells[2].Paragraphs.First().Append("Test Objective").Color(white);
-                testSummary.Rows[0].Cells[0].FillColor = royalBlue;
-                testSummary.Rows[0].Cells[1].FillColor = royalBlue;
-                testSummary.Rows[0].Cells[2].FillColor = royalBlue;
 
-                testSummary.Rows[1].Cells[0].Paragraphs.First().Append(testCase.TestCaseId.ToString());
-                testSummary.Rows[1].Cells[1].Paragraphs.First().Append(TestDescription);
-                testSummary.Rows[1].Cells[2].Paragraphs.First().Append(testCase.TestObjective);
+                try
+                {
+                    string TestDescription = testCase.TestDescription.Replace("<br>&gt;", "\n >").Replace("&nbsp;", "").Replace("&nbsp", "").Replace("&gt", ">").Replace("&gt;", ">").Replace("<br> &nbsp ", "\n").Replace("condiditons", "conditions").Replace("&lt;", "<").Replace("<br>", "\n").Replace(";", "").Replace("	", " ");
+                    doc.InsertParagraph("Test Objective").FontSize(16);
+                    testSummary.Rows[0].Cells[0].Paragraphs.First().Append("#").Color(white);
+                    testSummary.Rows[0].Cells[1].Paragraphs.First().Append("Title").Color(white);
+                    testSummary.Rows[0].Cells[2].Paragraphs.First().Append("Test Objective").Color(white);
+                    testSummary.Rows[0].Cells[0].FillColor = royalBlue;
+                    testSummary.Rows[0].Cells[1].FillColor = royalBlue;
+                    testSummary.Rows[0].Cells[2].FillColor = royalBlue;
+
+                    testSummary.Rows[1].Cells[0].Paragraphs.First().Append(testCase.TestCaseId.ToString());
+                    testSummary.Rows[1].Cells[1].Paragraphs.First().Append(TestDescription);
+                    testSummary.Rows[1].Cells[2].Paragraphs.First().Append(testCase.TestObjective);
+                }catch(NullReferenceException e)
+                {
+                    doc.InsertParagraph("Test Objective").FontSize(16);
+                    testSummary.Rows[0].Cells[0].Paragraphs.First().Append("#").Color(white);
+                    testSummary.Rows[0].Cells[1].Paragraphs.First().Append("Title").Color(white);
+                    testSummary.Rows[0].Cells[2].Paragraphs.First().Append("Test Objective").Color(white);
+                    testSummary.Rows[0].Cells[0].FillColor = royalBlue;
+                    testSummary.Rows[0].Cells[1].FillColor = royalBlue;
+                    testSummary.Rows[0].Cells[2].FillColor = royalBlue;
+
+                    testSummary.Rows[1].Cells[0].Paragraphs.First().Append(testCase.TestCaseId.ToString());
+                    testSummary.Rows[1].Cells[1].Paragraphs.First().Append("Test description is empty");
+                    testSummary.Rows[1].Cells[2].Paragraphs.First().Append(testCase.TestObjective);
+                }
+
                 testSummary.SetWidths(columnWidths);
                 doc.InsertTable(testSummary);
 
@@ -133,7 +161,7 @@ namespace NUnit.Tests1.Utilities
                 }
 
                 doc.InsertTable(testActionResult);
-                doc.SaveAs(location + "//" + testName + ".docx");
+                doc.SaveAs(location + "//" + fileName + ".docx");
             };
             #endregion
         }

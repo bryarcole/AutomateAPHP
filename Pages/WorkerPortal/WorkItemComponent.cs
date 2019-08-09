@@ -76,6 +76,7 @@ namespace NUnit.Tests1.Pages.WorkerPortal
         public IWebElement btnActivityDone { get; set; }
         [FindsBy(How = How.XPath, Using = "//button[contains(@id, 'btnWorkItemTop')]")]
         public IWebElement btnWorkItemTop { get; set; }
+        
         public IWebElement ClickApproveButton() => Generic.Click(btnActivityApprove);
         public IWebElement ClickPendButton() => Generic.Click(btnActivityPend);
         public IWebElement ClickDenyButton() => Generic.Click(btnActivityDeny);

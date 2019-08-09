@@ -133,8 +133,7 @@ namespace NUnit.Tests1
         public void CreateWordDocSuite()
         {
             WordDocGen docs = new WordDocGen();
-            docs.CreateWordDocSuite("Bryar.h.cole", 149579, 152295, true);
-            //docs.CreateWordDocSuite("Bryar.h.cole", 149579, 156027, false);
+            docs.CreateWordDocSuite("Bryar.h.cole", 149579, 153713, false);
             //docs.CreateWordDocSuite("Bryar.h.cole", 149579, 153808, false);
             
             #region Boring stuff

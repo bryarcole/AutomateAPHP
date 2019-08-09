@@ -668,6 +668,11 @@ namespace NUnit.Tests1.Utilities
                     Click(wrapper);
                     element.SendKeys(text);
                     break;
+                case "__ / __ / ____":
+                    Click(wrapper);
+                    element.SendKeys(text);
+                    break;
+
                 default:
                     Console.Write(" \nElement Text not matching cases: ");
                     Console.Write("\n" + elementText);
@@ -698,6 +703,9 @@ namespace NUnit.Tests1.Utilities
                     element.SendKeys(text);
                     break;
                 case "Password":
+                    element.SendKeys(text);
+                    break;
+                case "__ / __ / ____":
                     element.SendKeys(text);
                     break;
                 default:

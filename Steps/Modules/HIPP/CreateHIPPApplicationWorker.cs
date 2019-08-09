@@ -78,17 +78,17 @@ namespace NUnit.Tests1.Steps
             generic.CheveronClick("10");
             generic.CheveronClick("9");
             policyHolderEmployeeInformation.PolicyHolderEmployerInformationInput(
-                "Test",
+                utility.GetRandomFirstName(),
                 "",
-                "Person",
+                utility.GetRandomSurName(),
                 "233 Buchanan St",
                 "Apt101",
-                "Alexandria",
+                utility.GetRandomCity(),
                 "VA",
                 "22314",
-                "7033482934",
-                "7034449999",
-                "2020001111",
+                "703" + utility.RandomNumericString(7),
+                "703" + utility.RandomNumericString(7),
+                "202" + utility.RandomNumericString(7),
                 "TestPerson@gmail.com");
             generic.CheveronClick("9");
 
@@ -117,7 +117,7 @@ namespace NUnit.Tests1.Steps
             generic.CheveronClick("14");
             generic.CheveronClick("15");
             companyInformation.CompanyInformationInput(
-                "Insurance Co.",
+                utility.GetRandomCompanyName(),
                 utility.RandomNumericString(9),
                 "Address Line One",
                 "Address line two",

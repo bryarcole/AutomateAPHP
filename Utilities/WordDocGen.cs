@@ -37,15 +37,18 @@ namespace NUnit.Tests1.Utilities
             props.TestPlanId = Convert.ToInt32(config.get("testplanid"));
             props.TestSuiteId = Convert.ToInt32(config.get("testsuiteid"));
 
-            Logger logger = new Logger(props.SaveLocation);
-
-            props.Logger = logger;
             #endregion
 
             Color royalBlue = Color.FromName("RoyalBlue");
             Color white = Color.FromName("White");
-            RequirementsTraceabilityJobs requirementsTraceabilityJob = new RequirementsTraceabilityJobs(props);
+
             string location = "C:\\Users\\" + userName + "\\Desktop\\EvidenceSuite " + suiteID;
+
+            Logger logger = new Logger(location + "\\");
+
+            props.Logger = logger;
+
+            RequirementsTraceabilityJobs requirementsTraceabilityJob = new RequirementsTraceabilityJobs(props);
             System.IO.Directory.CreateDirectory(location);
 
             List<TestCase> cases = new List<TestCase>();
@@ -54,10 +57,11 @@ namespace NUnit.Tests1.Utilities
             foreach (TestCase testCase in cases)
             {
                 string fileName = "";
-                string testName = testCase.TestCaseId.ToString() + "_" + testCase.TestCaseName.Replace(" ", "_").Replace(")", "_").Replace("(", "_").Replace("/", "_").Replace("\\", "_").Replace(" - ", "_").Replace("\"", "_").Replace("'", "_").Replace("▪","_");
+                int currentID = testCase.TestCaseId;
+                string testName = testCase.TestCaseId.ToString() + "_" + testCase.TestCaseName.Replace("<","Less Than").Replace(">", "Greater Than").Replace(" ", "_").Replace(")", "_").Replace("(", "_").Replace("/", "_").Replace("\\", "_").Replace(" - ", "_").Replace("\"", "_").Replace("'", "_").Replace("▪", "_").Replace("*","_");
                 if (testName.Length > 150)
                 {
-                    fileName = testName.Substring(0,100);
+                    fileName = testName.Substring(0,150);
                 }
                 else
                 {
@@ -131,7 +135,7 @@ namespace NUnit.Tests1.Utilities
                 }
                 int i = 0;
 
-                if(testCase.TestSteps.Count == 0)
+                if(testCase.TestSteps.Count <= 0)
                 {
                     testSummary.Rows[1].Cells[0].Paragraphs.First().Append("Test ");
                     testSummary.Rows[1].Cells[1].Paragraphs.First().Append("Test ");
@@ -161,7 +165,13 @@ namespace NUnit.Tests1.Utilities
                 }
 
                 doc.InsertTable(testActionResult);
-                doc.SaveAs(location + "//" + fileName + ".docx");
+                try
+                {
+                    doc.SaveAs(location + "//" + fileName + ".docx");
+                }catch(Exception e)
+                {
+                    Console.WriteLine("Unable to make test case " + testCase.TestCaseId + " due to invalid name");
+                }
             };
             #endregion
         }

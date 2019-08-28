@@ -96,6 +96,78 @@ namespace NUnit.Tests1.Steps
             }
             return appNumber;
         }
+        public string HippWorkFlow(string activityReason, IWebDriver context)
+        {
+
+            APHPHomePage loginPage = new APHPHomePage(context);
+            WorkerPortalLandingPage landingPage = new WorkerPortalLandingPage(context);
+            HIPPSearchPage hIPPSearchpage = new HIPPSearchPage(context);
+            HIPPSubmitApplicationPageWorker submitApp = new HIPPSubmitApplicationPageWorker(context);
+            WorkItemComponent workitem = new WorkItemComponent(context);
+            Generic generic = new Generic(context);
+            Utility utility = new Utility(context);
+            InitiateTest startUp = new InitiateTest(context);
+
+            //Gather Data from app
+            generic.CheveronClick("2");
+            generic.CheveronClick("3");
+            generic.CheveronClick("4");
+
+            ///Pend Application
+            workitem.ActivitystatusResn_Input.Click();
+            workitem.ActivitystatusResn_Input.SendKeys(activityReason);
+
+            switch (activityReason)
+            {
+                case "Approved":
+                    workitem.ClickApproveButton();
+                    break;
+                case "Denied":
+                    workitem.ClickDenyButton();
+                    break;
+                case "Pended":
+                    workitem.ClickApproveButton();
+                    break;
+
+            }
+            generic.CheveronClick("3");
+            generic.CheveronClick("4");
+            generic.HoverByElement(workitem.CompletedBottom);
+
+
+            workitem.ClickCompletedButton();
+
+            string appNumber = workitem.GatherAppNumber();
+            string workItem = workitem.GatherWorkItemType();
+            string appQueue = workitem.GetGatherWorkItemStatus();
+
+
+            // Refresh Page
+            context.Url = startUp.AWSINTWoker;
+
+            workitem.ClickExitButton();
+            landingPage.HippApplicationSearch();
+            hIPPSearchpage.SearchHiPPCase("Contains", "Application ID", appNumber);
+            hIPPSearchpage.SearchButtonClick();
+            generic.HoverByLinkText(appNumber);
+            generic.LinkTextClick(appNumber);
+            if (activityReason == "Denied")
+            {
+                return appNumber;
+            }
+            workitem.ClickWorkItemButton();
+            Thread.Sleep(3000);
+            generic.CheveronClick("3");
+            generic.CheveronClick("4");
+            string workItem2 = workitem.GatherWorkItemType();
+            string appQueue2 = workitem.GetGatherWorkItemStatus();
+            if (activityReason == "Pended")
+            {
+                HippPendCase(appNumber, context);
+            }
+            return appNumber;
+        }
+
         public string HippWorkFlowRenewal(string activityReason, IWebDriver context, string screenshotLocation, DocX doc)
         {
 
@@ -227,6 +299,48 @@ namespace NUnit.Tests1.Steps
 
 
         }
+        public void HippPendCase(string appNumber, IWebDriver context)
+        {
+
+            APHPHomePage loginPage = new APHPHomePage(context);
+            WorkerPortalLandingPage landingPage = new WorkerPortalLandingPage(context);
+            HIPPSearchPage hIPPSearchpage = new HIPPSearchPage(context);
+            HIPPSubmitApplicationPageWorker submitApp = new HIPPSubmitApplicationPageWorker(context);
+            WorkItemComponent workitem = new WorkItemComponent(context);
+            Generic generic = new Generic(context);
+            Utility utility = new Utility(context);
+            HIPPSearch hIPPSearch = new HIPPSearch();
+            InitiateTest startUp = new InitiateTest(context);
+            generic.CheveronClick("3");
+            generic.CheveronClick("4");
+            workitem.btnActivityDone.Click();
+            workitem.ClickCompletedButton();
+            context.Url = startUp.AWSINTWoker;
+            workitem.ClickExitButton();
+            landingPage.HippApplicationSearch();
+            hIPPSearchpage.SearchHiPPCase("Contains", "Application ID", appNumber);
+            hIPPSearchpage.SearchButtonClick();
+            generic.HoverByLinkText(appNumber);
+            generic.LinkTextClick(appNumber);
+
+            workitem.ClickWorkItemButton();
+            Thread.Sleep(3000);
+
+            generic.CheveronClick("3");
+            generic.CheveronClick("4");
+            workitem.ClickPendButton();
+            generic.CheveronClick("3");
+            generic.CheveronClick("4");
+            generic.HoverByElement(workitem.ActivitystatusResn);
+
+            Thread.Sleep(2000);
+
+            workitem.ClickCompletedButton();
+
+
+
+        }
+
         public void FIllHIPPApplicationInfo(IWebDriver context, string AppNumber)
         {
             #region Start up

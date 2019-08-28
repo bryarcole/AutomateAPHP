@@ -19,6 +19,7 @@ using NUnit.Tests1.Pages.WorkerPortal;
 using OpenQA.Selenium.Chrome;
 using System.Diagnostics;
 using System.Threading;
+using System.Text;
 
 namespace NUnit.Tests1
 {
@@ -83,7 +84,9 @@ namespace NUnit.Tests1
             {
                 doc.InsertBookmark("Pass 1");
                 doc.InsertBookmark("Pass 2");
-                loginPage.LoginPage("bryar.h.wrkr", "user@123A");
+                loginPage.LoginPage("bryar.h.wrkr", "user@123A", startUp.AWSINTWoker);
+                //loginPage.LoginPage("harish.ne.wrkr", "user@1234");
+                
                 utility.RecordStepStatusMAIN("Login APHP success", screenshotLocation, "LoginSuccess", doc);
                 landingPage.HippApplicationSearch();
                 hIPPSearch.ClickBeginNewApp();
@@ -705,9 +708,217 @@ namespace NUnit.Tests1
 
         #endregion
         [Test]
+        [TestCase("Approved", 1, true)]
+        [TestCase("Approved", 10, false)]
+        [TestCase("Approved", 15, true)]
+        [TestCase("Approved", 25, true)]
+        [TestCase("Approved", 30, true)]
+        [TestCase("Approved", 35, true)]
+        [TestCase("Approved", 45, true)]
+        [TestCase("Approved", 50, false)]
+        [TestCase("Approved", 55, true)]
+        [TestCase("Approved", 60, false)]
+        [TestCase("Approved", 65, false)]
+        [TestCase("Approved", 70, false)]
+        [TestCase("Approved", 1, false)]
+        [TestCase("Approved", 10, false)]
+        [TestCase("Approved", 15, true)]
+        [TestCase("Approved", 25, false)]
+        [TestCase("Approved", 30, false)]
+        [TestCase("Approved", 35, false)]
+        [TestCase("Approved", 45, true)]
+        [TestCase("Approved", 50, false)]
+        [TestCase("Approved", 55, true)]
+        [TestCase("Approved", 60, true)]
+        [TestCase("Approved", 65, true)]
+        [TestCase("Approved", 70, true)]
         [Category("HIPP Submission")]
-        public void HIPPSubmissionDev()
+        public void HIPPSubmissionDev(string stat, int age, bool renewalStatus)
         {
+            ScreenCaputres caputres = new ScreenCaputres();
+            //caputres.TakeVideo(@"C:\\Users\\bryar.h.cole\Desktop\\TestResults\\");
+            string userName = "bryar.h.cole";
+            #region Start up
+            ExtentTest test = null;
+            ChromeOptions options = new ChromeOptions();
+            //options.AddArgument("--headless");
+            context = new ChromeDriver(options);
+            context.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+
+            Utility utility = new Utility(context);
+            APHPHomePage loginPage = new APHPHomePage(context);
+            WorkerPortalLandingPage landingPage = new WorkerPortalLandingPage(context);
+            HIPPSearchPage hIPPSearch = new HIPPSearchPage(context);
+            InitiateTest startUp = new InitiateTest(context);
+            CreateHIPPApplicationWorker app = new CreateHIPPApplicationWorker();
+            HIPPWorkFlow workFlow = new HIPPWorkFlow();
+            WordDocGen genWordDoc = new WordDocGen();
+            context.Url = startUp.AWSINTWoker;
+            context.Manage().Window.Maximize();
+            DateTime now = DateTime.Now;
+
+            #endregion
+            StringBuilder stringBuilder = new StringBuilder();
+            string screenshotLocation = @"C:\Users\bryar.h.cole\Desktop\TestResults\";
+
+
+            try
+            {
+
+                loginPage.LoginPage("bryar.h.wrkr", "user@123A", startUp.AWSINTWoker);
+                //loginPage.LoginPage("harish.ne.wrkr", "user@1234");
+
+                landingPage.HippApplicationSearch();
+
+                while (context.Title == "HIPP Application Search")
+                    hIPPSearch.ClickBeginNewApp();
+                if (context.Title == "HIPP Application")
+                    try
+                    {
+                        app.SubmitHIPPCaseSubmissionWorker(context, renewalStatus, age);
+                    }
+                    catch (WebDriverTimeoutException e)
+                    {
+                        stringBuilder.AppendLine("Seems like a timeout exception occured. For this test. Status was " + stat + ", age: " + age);
+                        ScreenCaputres.TakeSreenShot(context, screenshotLocation + stat + age + "error.png");
+                    }
+                else
+                {
+                    hIPPSearch.ClickBeginNewApp();
+                }
+                string appNumber = workFlow.HippWorkFlow(stat, context);
+                stringBuilder.AppendLine("Appnumber is " + appNumber + " for candidate who is age: " + age + "\n" + "Time of test: " + now + "\n" + "***********");
+
+
+            }
+
+            finally
+            {
+
+                try
+                {
+                    Thread.Sleep(3000);
+                    Generic.signoutBtn.Click();
+                    context.Close();
+                    System.IO.File.AppendAllText(@"C:\Users\bryar.h.cole\Desktop\testResults.txt", stringBuilder.ToString());
+
+                }
+                catch
+                {
+                    System.IO.File.AppendAllText(@"C:\Users\bryar.h.cole\Desktop\testResults.txt", stringBuilder.ToString());
+                    context.Close();
+                }
+
+            }
+
+        }
+
+        [TestCase("Pended", 60, true)]
+        [Category("HIPP Submission")]
+        public void HIPPSubmissionPend(string stat, int age, bool renewalStatus)
+        {
+            ScreenCaputres caputres = new ScreenCaputres();
+            //caputres.TakeVideo(@"C:\\Users\\bryar.h.cole\Desktop\\TestResults\\");
+            string userName = "bryar.h.cole";
+            #region Start up
+            ExtentTest test = null;
+            ChromeOptions options = new ChromeOptions();
+            //options.AddArgument("--headless");
+            context = new ChromeDriver(options);
+            context.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+
+            Utility utility = new Utility(context);
+            APHPHomePage loginPage = new APHPHomePage(context);
+            WorkerPortalLandingPage landingPage = new WorkerPortalLandingPage(context);
+            HIPPSearchPage hIPPSearch = new HIPPSearchPage(context);
+            InitiateTest startUp = new InitiateTest(context);
+            CreateHIPPApplicationWorker app = new CreateHIPPApplicationWorker();
+            HIPPWorkFlow workFlow = new HIPPWorkFlow();
+            WordDocGen genWordDoc = new WordDocGen();
+            context.Url = startUp.AWSINTWoker;
+            context.Manage().Window.Maximize();
+            DateTime now = DateTime.Now;
+
+            #endregion
+            StringBuilder stringBuilder = new StringBuilder();
+            string screenshotLocation = @"C:\Users\bryar.h.cole\Desktop\TestResults\";
+
+
+            try
+            {
+
+                loginPage.LoginPage("bryar.h.wrkr", "user@123A", startUp.AWSINTWoker);
+                //loginPage.LoginPage("harish.ne.wrkr", "user@1234");
+
+                landingPage.HippApplicationSearch();
+
+                while (context.Title == "HIPP Application Search")
+                    hIPPSearch.ClickBeginNewApp();
+                if (context.Title == "HIPP Application")
+                    try
+                    {
+                        app.SubmitHIPPCaseSubmissionWorker(context, renewalStatus, age);
+                    }
+                    catch (WebDriverTimeoutException e)
+                    {
+                        stringBuilder.AppendLine("Seems like a timeout exception occured. For this test. Status was " + stat + ", age: " + age);
+                        ScreenCaputres.TakeSreenShot(context, screenshotLocation + stat + age + "error.png");
+                    }
+                else
+                {
+                    hIPPSearch.ClickBeginNewApp();
+                }
+                try
+                {
+                    string appNumber = workFlow.HippWorkFlow(stat, context);
+                    stringBuilder.AppendLine("Appnumber is " + appNumber + " for candidate who is age: " + age + "\n" + "Time of test: " + now + "\n" + "***********");
+                }
+                catch (WebDriverTimeoutException e)
+                {
+
+                    WorkItemComponent workItemComponent = new WorkItemComponent(context);
+                   
+                    string appNumber = workItemComponent.GatherAppNumber();
+
+                    stringBuilder.AppendLine("Appnumber is " + appNumber + " for candidate who is age: " + age + "\n" + "Time of test: " + now + "\n" + "***********");
+
+                }
+
+
+            }
+
+
+            catch (NoSuchElementException e)
+            {
+
+                //caputres.StopVideo();
+                throw;
+            }
+            catch (Exception e)
+            {
+
+                //caputres.StopVideo();
+
+                throw;
+            }
+
+            finally
+            {
+
+                try
+                {
+                    Thread.Sleep(3000);
+                    //Generic.signoutBtn.Click();
+                    //context.Close();
+                    System.IO.File.AppendAllText(@"C:\Users\bryar.h.cole\Desktop\testResults.txt", stringBuilder.ToString());
+
+                }
+                catch
+                {
+                    //context.Close();
+                }
+
+            }
 
         }
         [Test]

@@ -17,7 +17,7 @@ using NUnit.Tests1.Pages.MemberPortal;
 
 namespace NUnit.Tests1
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {

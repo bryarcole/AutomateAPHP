@@ -35,6 +35,7 @@ namespace NUnit.Tests1.Steps.StartUp
         public string AWSINTWoker = "https://10.3.29.100:44305";
         public string AWSINTMember = "https://10.3.29.100:44304";
         public string AWSINTProvider = "https://10.3.29.100:44303";
+        public string DEV03 = "https://10.3.38.19:44305/WorkerDashboard.aspx";
 
 
         //private static void FireFoxStartUp(string username, string password, string url)

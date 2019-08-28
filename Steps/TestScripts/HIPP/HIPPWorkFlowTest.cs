@@ -133,6 +133,8 @@ namespace NUnit.Tests1
             #region Start up
             ExtentTest test = null;
             string scenario = "HIPP Submisssion WorkFlow";
+            ChromeOptions chromeOptions = new ChromeOptions();
+            chromeOptions.AddArgument("--headless");
             context = new ChromeDriver();
             context.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
             Generic generic = new Generic(context);

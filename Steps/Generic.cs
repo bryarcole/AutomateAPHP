@@ -20,7 +20,7 @@ namespace NUnit.Tests1.Utilities
         public Generic(IWebDriver context)
         {
             this.context = context;
-#pragma warning disable CS0618 // Type or member is obsolete
+            #pragma warning disable CS0618 // Type or member is obsolete
             PageFactory.InitElements(context, this);
         }
 
@@ -126,18 +126,15 @@ namespace NUnit.Tests1.Utilities
                 try
                 {
                     string val = ele.GetAttribute("value");
-                    if (val.Equals(" "))
+                    if (val.Equals(""))
                     {
                         Click(wrapper);
-                        Console.WriteLine("\n" + "Element empty");
                         ele.SendKeys(text);
                     }
                     else
                     {
-                        Console.Write("\n" + "Vetting element.... ");
                         string elementText = GetText(ele);
                         VetElement(ele, wrapper, val, text);
-                        Console.Write("\n" + "Finished vetting element successfully" + "\n");
 
                     }
                 }
@@ -173,17 +170,13 @@ namespace NUnit.Tests1.Utilities
                 {
                     string val = ele.GetAttribute("value");
 
-                    if (val.Equals(" ")) 
+                    if (val.Equals("")) 
                     {
-                        Console.WriteLine("\n" + "Element empty");
                         ele.SendKeys(text);
                     }
                     else
                     {
-                        Console.Write("\nVettin element.... ");
-
                         VetElement(ele, val, text);
-                        Console.Write("\n" + "Finished vetting element successfully" + "\n");
 
                     }
                 }
@@ -665,6 +658,7 @@ namespace NUnit.Tests1.Utilities
                     element.SendKeys(text);
                     break;
                 case "Password":
+                    Console.Write("Reached Passwrod Case");
                     Click(wrapper);
                     element.SendKeys(text);
                     break;
@@ -672,7 +666,14 @@ namespace NUnit.Tests1.Utilities
                     Click(wrapper);
                     element.SendKeys(text);
                     break;
-
+                case "Select":
+                    Click(wrapper);
+                    element.SendKeys(text);
+                    break;
+                case "###-##-####":
+                    Click(wrapper);
+                    element.SendKeys(text);
+                    break;
                 default:
                     Console.Write(" \nElement Text not matching cases: ");
                     Console.Write("\n" + elementText);
@@ -708,13 +709,15 @@ namespace NUnit.Tests1.Utilities
                 case "__ / __ / ____":
                     element.SendKeys(text);
                     break;
+                case "Select":
+                    element.SendKeys(text);
+                    break;
+                case "###-##-####":
+                    element.SendKeys(text);
+                    break;
                 default:
-                    Console.Write("\n*********\n");
-                    Console.Write("\n*********\n");
                     Console.Write("\nElement Text not matching cases but being valued as empty: ");
                     Console.Write("\n" + elementText);
-                    Console.Write("\n*********\n");
-                    Console.Write("\n*********\n");
                     return;
 
             }

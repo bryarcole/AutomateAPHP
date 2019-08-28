@@ -35,18 +35,33 @@ namespace NUnit.Tests1.Pages
         public IWebElement PasswordOverlay { get; set; }
 
 
+        public void LoginPage(string username, string password, string url)
+        {
+
+            InitiateTest startUp = new InitiateTest(context);
+            //Thread.Sleep(3000);
+            context.Manage().Window.Maximize();
+            context.Url = url;
+            GrabGeneric(context).SendKeys(UserNameInput, username);
+            //GrabGeneric(context).Click(PasswordOverlay);
+            PasswordOverlay.Click();
+            PasswordInput.SendKeys(password);
+            //GrabGeneric(context).SendKeys(PasswordInput, PasswordOverlay, password);
+            GrabGeneric(context).Click(LoginButton);
+
+        }
         public void LoginPage(string username, string password)
         {
 
             InitiateTest startUp = new InitiateTest(context);
             //Thread.Sleep(3000);
             context.Manage().Window.Maximize();
-
             GrabGeneric(context).SendKeys(UserNameInput, username);
-            GrabGeneric(context).Click(PasswordOverlay);
-            GrabGeneric(context).SendKeys(PasswordInput, password);
+            //GrabGeneric(context).Click(PasswordOverlay);
+            PasswordOverlay.Click();
+            PasswordInput.SendKeys(password);
+            //GrabGeneric(context).SendKeys(PasswordInput, PasswordOverlay, password);
             GrabGeneric(context).Click(LoginButton);
-            context.Url = startUp.AWSINTWoker;
 
         }
 

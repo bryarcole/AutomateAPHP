@@ -133,9 +133,11 @@ namespace NUnit.Tests1
         public void CreateWordDocSuite()
         {
             WordDocGen docs = new WordDocGen();
-            docs.CreateWordDocSuite("Bryar.h.cole", 149579, 153713, false);
-            //docs.CreateWordDocSuite("Bryar.h.cole", 149579, 153808, false);
-            
+            docs.CreateWordDocSuite("Bryar.h.cole", 149579, 153809, false);
+            //docs.CreateWordDocSuite("Bryar.h.cole", 149579, 153817, false);
+            //docs.CreateWordDocSuite("Bryar.h.cole", 149579, 155970, true);
+            //docs.CreateWordDocSuite("Bryar.h.cole", 149579, 155685, true);
+
             #region Boring stuff
             //// Test Case Pull
             //#region Pull Test Case from TFS
@@ -227,38 +229,19 @@ namespace NUnit.Tests1
 
 
         [Test]
-        [Category("InterfaceTest")]
-        public void InterfaceTest()
+        [Category("ExcelTest")]
+        public void GenerateExcel()
         {
-
-            //PropertiesReader config = new PropertiesReader("config.txt");
-
-            //Properties props = new Properties();
-            //props.PersonalAccessToken = config.get("personalaccesstoken");
-            //props.TestPlanId = Convert.ToInt32(config.get("testplanid"));
-            //props.TestSuiteId = Convert.ToInt32(config.get("testsuiteid"));
-            //props.Project = config.get("project");
-            //props.Uri = config.get("server");
-            //props.SaveLocation = config.get("saveLocation");
-            //props.FileName = StringTools.addExtension(config.get("fileName"), "xlsx"); ;
-            //props.ExecutionSheetName = config.get("executionsheetname");
-            //props.ScriptSheetName = config.get("scriptsheetname");
-            //props.TestPlanId = Convert.ToInt32(config.get("testplanid"));
-            //props.TestSuiteId = Convert.ToInt32(config.get("testsuiteid"));
-
-            //Logger logger = new Logger(props.SaveLocation);
-
-            //props.Logger = logger;
-
-            ////IRequirementsTracabilityJobs requirementsTracabilityJobs = new RequirementsTraceabilityJobs(props);
+            Read_From_Excel excel = new Read_From_Excel();
+            excel.getExcelFile("Copy of DMAS_NPM_Worker Roles.xlsx");
+            //excel.GenerateExcelFile();
 
         }
         [Test]
         [Category("WordDocCreate")]
         public void CreaetWordDocuments()
         {
-            REFERENCEONLYCreateWordDoc doc = new REFERENCEONLYCreateWordDoc();
-            doc.CreateDocument2();
+            
 
         }
     }

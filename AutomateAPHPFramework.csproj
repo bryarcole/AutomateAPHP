@@ -54,6 +54,10 @@
     <Reference Include="Microsoft.Expression.Encoder, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86">
       <HintPath>packages\Microsoft.Expression.Encoder.4.0.4276.3\lib\net45\Microsoft.Expression.Encoder.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Office.Interop.Word.15.0.4797.1003\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -177,6 +181,7 @@
     <Compile Include="Steps\Generic.cs" />
     <Compile Include="Steps\TestScripts\Claims\ClaimsTest.cs" />
     <Compile Include="Steps\TestScripts\Member\MemberBuyInTest.cs" />
+    <Compile Include="Utilities\GenExcel.cs" />
     <Compile Include="Utilities\StartUp.cs" />
     <Compile Include="Help\ExtentReportTemplate.cs" />
     <Compile Include="Steps\TestScripts\HIPP\HIPPWorkFlowTest.cs" />
@@ -224,16 +229,16 @@
     <Error Condition="!Exists('packages\NUnit.3.12.0\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\NUnit.3.12.0\build\NUnit.props'))" />
     <Error Condition="!Exists('packages\NUnit3TestAdapter.3.13.0\build\net35\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\NUnit3TestAdapter.3.13.0\build\net35\NUnit3TestAdapter.props'))" />
     <Error Condition="!Exists('packages\Selenium.Firefox.WebDriver.0.24.0\build\Selenium.Firefox.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Selenium.Firefox.WebDriver.0.24.0\build\Selenium.Firefox.WebDriver.targets'))" />
-    <Error Condition="!Exists('packages\Selenium.WebDriver.ChromeDriver.74.0.3729.6\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Selenium.WebDriver.ChromeDriver.74.0.3729.6\build\Selenium.WebDriver.ChromeDriver.targets'))" />
     <Error Condition="!Exists('packages\Selenium.WebDriver.GeckoDriver.0.24.0\build\Selenium.WebDriver.GeckoDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Selenium.WebDriver.GeckoDriver.0.24.0\build\Selenium.WebDriver.GeckoDriver.targets'))" />
     <Error Condition="!Exists('packages\Selenium.WebDriver.IEDriver.3.141.59\build\Selenium.WebDriver.IEDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Selenium.WebDriver.IEDriver.3.141.59\build\Selenium.WebDriver.IEDriver.targets'))" />
     <Error Condition="!Exists('packages\Selenium.WebDriver.Server.3.0.1.1\build\Selenium.WebDriver.Server.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Selenium.WebDriver.Server.3.0.1.1\build\Selenium.WebDriver.Server.targets'))" />
+    <Error Condition="!Exists('packages\Selenium.WebDriver.ChromeDriver.76.0.3809.6801\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Selenium.WebDriver.ChromeDriver.76.0.3809.6801\build\Selenium.WebDriver.ChromeDriver.targets'))" />
   </Target>
   <Import Project="packages\Selenium.Firefox.WebDriver.0.24.0\build\Selenium.Firefox.WebDriver.targets" Condition="Exists('packages\Selenium.Firefox.WebDriver.0.24.0\build\Selenium.Firefox.WebDriver.targets')" />
-  <Import Project="packages\Selenium.WebDriver.ChromeDriver.74.0.3729.6\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('packages\Selenium.WebDriver.ChromeDriver.74.0.3729.6\build\Selenium.WebDriver.ChromeDriver.targets')" />
   <Import Project="packages\Selenium.WebDriver.GeckoDriver.0.24.0\build\Selenium.WebDriver.GeckoDriver.targets" Condition="Exists('packages\Selenium.WebDriver.GeckoDriver.0.24.0\build\Selenium.WebDriver.GeckoDriver.targets')" />
   <Import Project="packages\Selenium.WebDriver.IEDriver.3.141.59\build\Selenium.WebDriver.IEDriver.targets" Condition="Exists('packages\Selenium.WebDriver.IEDriver.3.141.59\build\Selenium.WebDriver.IEDriver.targets')" />
   <Import Project="packages\Selenium.WebDriver.Server.3.0.1.1\build\Selenium.WebDriver.Server.targets" Condition="Exists('packages\Selenium.WebDriver.Server.3.0.1.1\build\Selenium.WebDriver.Server.targets')" />
+  <Import Project="packages\Selenium.WebDriver.ChromeDriver.76.0.3809.6801\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('packages\Selenium.WebDriver.ChromeDriver.76.0.3809.6801\build\Selenium.WebDriver.ChromeDriver.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
